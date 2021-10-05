@@ -39,9 +39,7 @@ https://user-images.githubusercontent.com/74236080/136040660-43d360e5-662d-46aa-
 - 이메일과 비밀번호를 정확하게 입력하지 않으면 알림
 - 추천코드는 숫자만 허용
 
-<img src = "https://user-images.githubusercontent.com/74236080/136041858-81a8d92b-b9b3-4fe0-887b-c0528b52b4df.png" width="30%" height="30%">
-<img src = "https://user-images.githubusercontent.com/74236080/136041861-81867fcc-32c5-489c-82f3-7719013ede2c.png" width="30%" height="30%">
-
+<img src = "https://user-images.githubusercontent.com/74236080/136041858-81a8d92b-b9b3-4fe0-887b-c0528b52b4df.png" width="30%" height="30%"><img src = "https://user-images.githubusercontent.com/74236080/136041861-81867fcc-32c5-489c-82f3-7719013ede2c.png" width="30%" height="30%">
 
 
 5단계: 결과 확인하기
@@ -71,6 +69,4 @@ https://user-images.githubusercontent.com/74236080/136040660-43d360e5-662d-46aa-
     }
 ```
 
-<img src = "https://user-images.githubusercontent.com/74236080/136041234-3aead93f-8f8b-4332-b8e9-7e8769f2e10f.png" width="30%" height="30%">
-<img src = "https://user-images.githubusercontent.com/74236080/136041246-c33396b5-65e8-4a9a-942f-1cb127604a5e.png" width="30%" height="30%">
-
+<img src = "https://user-images.githubusercontent.com/74236080/136041234-3aead93f-8f8b-4332-b8e9-7e8769f2e10f.png" width="30%" height="30%"><img src = "https://user-images.githubusercontent.com/74236080/136041246-c33396b5-65e8-4a9a-942f-1cb127604a5e.png" width="30%" height="30%">
