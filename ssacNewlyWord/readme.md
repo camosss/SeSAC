@@ -17,7 +17,7 @@
 3단계: Tap Gesture
 - 탭제스쳐가 실행되면 키보드가 올라와있을 때 키보드를 내려줍니다.
 
-코드로 작성
+***코드로 작성****
 
 ```swift
 import UIKit
@@ -45,17 +45,28 @@ https://user-images.githubusercontent.com/74236080/136046159-f26e6094-9042-4191-
 
 
 ```swift
+fileprivate func setAlert(message: String) {
+    let alert = UIAlertController(title: "알림",
+                                  message: message,
+                                  preferredStyle: UIAlertController.Style.alert)
+    let okAction = UIAlertAction(title: "확인", style: .default)
+        
+    alert.addAction(okAction)
+    present(alert, animated: true, completion: nil)
+}
+
 @IBAction func searchResult(_ sender: UIButton) {
         
-        if wordDictionary[inputText.text!] == nil {
-            setAlert(message: "해당하는 신조어를 찾을 수 없습니다.")
-        } else {
-            resultLabel.text = wordDictionary[inputText.text!]!
-        }
+    if wordDictionary[inputText.text!] == nil {
+        setAlert(message: "해당하는 신조어를 찾을 수 없습니다.")
+    } else {
+        resultLabel.text = wordDictionary[inputText.text!]!
     }
+}
 ```
 
 https://user-images.githubusercontent.com/74236080/136046997-4a365c61-0f4f-4ebc-998b-5e45acac53d9.mov
+
 https://user-images.githubusercontent.com/74236080/136047139-2583cf6f-4025-41d2-9504-788c24b5e723.mov
 
 
@@ -63,9 +74,9 @@ https://user-images.githubusercontent.com/74236080/136047139-2583cf6f-4025-41d2-
 
 ```swift
 @IBAction func searchHashTag(_ sender: UIButton) {
-        inputText.text = sender.currentTitle
-        resultLabel.text = wordDictionary[inputText.text!]!
-    }
+    inputText.text = sender.currentTitle
+    resultLabel.text = wordDictionary[inputText.text!]!
+}
 ```
 
 https://user-images.githubusercontent.com/74236080/136047319-287706f4-3d36-4a2f-a1a2-0f60b9b2f1b0.mov
