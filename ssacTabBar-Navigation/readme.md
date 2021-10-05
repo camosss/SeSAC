@@ -18,7 +18,7 @@
 
 ⬇️
 
-****viewWillApear*** - view 가 화면에 추가되기 직전에 호출된다.
+***viewWillApear*** - view 가 화면에 추가되기 직전에 호출된다.
 
 ```swift
 
@@ -46,7 +46,7 @@ view 가 이미 메모리에 로드되어 있기 때문에 viewDidLoad 는 실�
 
 ### Test
 
-아래와 같이 3 개의 ViewController 에 작성
+아래와 같이 2 개의 ViewController 에 작성
 
 ![code](https://user-images.githubusercontent.com/74236080/136052959-00210418-833c-47d8-8e9a-4ede5e745a1d.png)
 
