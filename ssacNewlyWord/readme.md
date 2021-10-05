@@ -17,7 +17,7 @@
 3단계: Tap Gesture
 - 탭제스쳐가 실행되면 키보드가 올라와있을 때 키보드를 내려줍니다.
 
-***코드로 작성****
+***코드로 작성***
 
 ```swift
 import UIKit
@@ -37,6 +37,7 @@ extension UIViewController {
 
 https://user-images.githubusercontent.com/74236080/136046159-f26e6094-9042-4191-9474-7f5a359e32b1.mov
 
+---
 
 4단계: Search Action
 
