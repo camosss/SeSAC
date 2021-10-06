@@ -1,7 +1,7 @@
 ## TabBarController, NavigationController
 
 
-<img src = "https://user-images.githubusercontent.com/74236080/136051039-99d7c403-e152-4337-8efa-5ef7cc32bfbb.png" width="50%" height="50%">
+<img src = "https://user-images.githubusercontent.com/74236080/136120007-09ed09a6-82fc-4162-a783-2c5f319b08e1.png" width="60%" height="60%">
 
 - 아래 탭바의 갯수는 최대 5개이며, 5개가 넘어가면 More 이 생성된다.
 - 표시하지 못한 탭은 More 탭을 클릭하면 2번 view 에서 5, 6번의 탭을 갈 수 있다.
