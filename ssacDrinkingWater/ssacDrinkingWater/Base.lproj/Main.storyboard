@@ -132,7 +132,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addValueTextLabel" destination="6C5-7j-IwN" id="YjI-sf-QaD"/>
+                        <outlet property="addValueTextField" destination="6C5-7j-IwN" id="YjI-sf-QaD"/>
                         <outlet property="currentLevelImage" destination="kbX-Qh-pqE" id="gqd-Ov-Qsc"/>
                         <outlet property="drinkButton" destination="h27-Vr-5v7" id="W6D-WU-jp0"/>
                         <outlet property="intakeLabel" destination="nUa-8N-EfN" id="fd8-qw-fAk"/>
