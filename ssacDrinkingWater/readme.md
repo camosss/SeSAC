@@ -1,34 +1,3 @@
-## Unwind Segue 로 데이터 전달
-
-**ProfileVC** 에서 User 의 `이름`, `키`, `몸무게` 의 데이터를 **MainVC** 로 전달
-
-데이터를 불러오는 쪽인 **MainVC** 에 메서드 작성
-
-```swift
-@IBAction func backButton(_ sender: UIStoryboardSegue) {
-        
-if let vc = sender.source as? ProfileVC {
-   if let height = vc.heightTextField.text, let weight = vc.weightTextField.text {
-       let intHeight = Double(height) ?? 1, intWeight = Double(weight) ?? 1
-       let nickName = vc.nameTextField.text ?? "" // 닉네임
-
-       let recommend = (intHeight + intWeight) / 100 // 권장 섭취량 계산
-       let totalNum = userDefaults.integer(forKey: "totalML") // 오늘 마신 양 가져오기
-       let goal = Double(totalNum) / Double(recommend) / 10 // 목표 퍼센트 계산
-                
-       intakeLabel.text = "\(nickName)님의 하루 물 권장 섭취량은 \(recommend)L 입니다."
-       todayGoal.text = "목표의 \(Int(goal))%"
-       
-	// 닉네임, 권장 섭취량, 목표 퍼센트 저장
-        userDefaults.set(nickName, forKey: "name")
-        userDefaults.set(recommend, forKey: "recommend")
-        userDefaults.set(Int(goal), forKey: "goal")
-             
-       }
-    }
-}
-```
-
 ## 프로필 정보 저장
 
 `이름`, `키`, `몸무게` 의 데이터를 저장 (set) 하고, 해당 text에 값을 넣어준다.
@@ -67,6 +36,37 @@ if let vc = sender.source as? ProfileVC {
         
         present(alert, animated: true, completion: nil)
     }
+```
+
+## Unwind Segue 로 데이터 전달
+
+**ProfileVC** 에서 User 의 `이름`, `키`, `몸무게` 의 데이터를 **MainVC** 로 전달
+
+데이터를 불러오는 쪽인 **MainVC** 에 메서드 작성
+
+```swift
+@IBAction func backButton(_ sender: UIStoryboardSegue) {
+        
+if let vc = sender.source as? ProfileVC {
+   if let height = vc.heightTextField.text, let weight = vc.weightTextField.text {
+       let intHeight = Double(height) ?? 1, intWeight = Double(weight) ?? 1
+       let nickName = vc.nameTextField.text ?? "" // 닉네임
+
+       let recommend = (intHeight + intWeight) / 100 // 권장 섭취량 계산
+       let totalNum = userDefaults.integer(forKey: "totalML") // 오늘 마신 양 가져오기
+       let goal = Double(totalNum) / Double(recommend) / 10 // 목표 퍼센트 계산
+                
+       intakeLabel.text = "\(nickName)님의 하루 물 권장 섭취량은 \(recommend)L 입니다."
+       todayGoal.text = "목표의 \(Int(goal))%"
+       
+	// 닉네임, 권장 섭취량, 목표 퍼센트 저장
+        userDefaults.set(nickName, forKey: "name")
+        userDefaults.set(recommend, forKey: "recommend")
+        userDefaults.set(Int(goal), forKey: "goal")
+             
+       }
+    }
+}
 ```
 
 https://user-images.githubusercontent.com/74236080/136707683-92b6f176-db75-47a4-9164-e06cadc68112.mov
