@@ -62,7 +62,6 @@ class MainVC: UIViewController {
     @IBAction func searchHashTag(_ sender: UIButton) {
         inputText.text = sender.currentTitle
         resultLabel.text = wordDictionary[inputText.text!]!
-        
     }
         
     @IBAction func searchResult(_ sender: UIButton) {
