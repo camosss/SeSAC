@@ -53,7 +53,7 @@ class MainVC: UIViewController {
         
         let nickname = userDefaults.string(forKey: "name")
         let recommend = userDefaults.double(forKey: "recommend")
-        intakeLabel.text = "\(nickname ?? "")님의 하루 물 권장 섭취량은 \(recommend)L 입니다."
+        intakeLabel.text = "\(nickname ?? "")님의 하루 물 권장 섭취량은 \(String(format: "%.2f", (recommend)))L 입니다."
         
         let goal = userDefaults.integer(forKey: "goal")
         if goal < 100 {
@@ -158,7 +158,7 @@ class MainVC: UIViewController {
                 let totalNum = userDefaults.integer(forKey: "totalML")
                 let goal = Double(totalNum) / Double(recommend) / 10
                 
-                intakeLabel.text = "\(nickName)님의 하루 물 권장 섭취량은 \(recommend)L 입니다."
+                intakeLabel.text = "\(nickName)님의 하루 물 권장 섭취량은 \(String(format: "%.2f", (recommend)))L 입니다."
                 todayGoal.text = "목표의 \(Int(goal))%"
                 
                 userDefaults.set(nickName, forKey: "name")
@@ -168,6 +168,5 @@ class MainVC: UIViewController {
             }
         }
     }
-    
 }
 
