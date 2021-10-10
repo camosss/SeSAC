@@ -1,4 +1,4 @@
-### Unwind Segue 로 데이터 전달
+## Unwind Segue 로 데이터 전달
 
 **ProfileVC** 에서 User 의 `이름`, `키`, `몸무게` 의 데이터를 **MainVC** 로 전달
 
@@ -29,7 +29,7 @@ if let vc = sender.source as? ProfileVC {
 }
 ```
 
-### 프로필 정보 저장
+## 프로필 정보 저장
 
 `이름`, `키`, `몸무게` 의 데이터를 저장 (set) 하고, 해당 text에 값을 넣어준다.
 
@@ -73,7 +73,7 @@ https://user-images.githubusercontent.com/74236080/136707683-92b6f176-db75-47a4-
 
 ---
 
-### 마신 물의 양 추가
+## 마신 물의 양 추가
 
 1. 추가할 값을 입력할 TextField 인 addValueTextLabel 의 String 값 text 를 Int 로 형변환
 2. `오늘 마신 물의 양` 키값에 저장되어있는 값 가져오기
@@ -116,7 +116,7 @@ https://user-images.githubusercontent.com/74236080/136707696-8963d99f-876f-484f-
 
 ---
 
-### 새로고침
+## 새로고침
 
 `오늘 마신 물의 양`과 `목표 퍼센트` 를 0으로 저장하고, 값을 가져와서 text 에 넣어준다.
 
