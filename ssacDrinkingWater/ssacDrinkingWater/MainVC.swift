@@ -51,8 +51,10 @@ class MainVC: UIViewController {
         let totalNum = userDefaults.integer(forKey: "totalML") // 6. 저장되어있는 값 가져와서 view가 로드될 때, text에 값 띄우기
         totalToday.text = "\(totalNum)ml"
         
-        let recommend = userDefaults.string(forKey: "recommend")
-        intakeLabel.text = recommend
+//        let recommend = userDefaults.string(forKey: "recommend")
+//        intakeLabel.text = recommend
+        let recommend = userDefaults.double(forKey: "recommend")
+        intakeLabel.text = "하루 물 권장 섭취량은 \(recommend)L 입니다."
         
         let goal = userDefaults.integer(forKey: "goal")
         if goal < 100 {
@@ -63,6 +65,10 @@ class MainVC: UIViewController {
             todayGoal.textColor = .red
         }
         
+        changeImage(goal)
+    }
+    
+    fileprivate func changeImage(_ goal: Int) {
         // 이미지 변경
         switch goal {
         case 0..<20:
@@ -124,7 +130,20 @@ class MainVC: UIViewController {
             let updateNum = userDefaults.integer(forKey: "totalML") // 4. + textField 값 가져오기
             totalToday.text = "\(updateNum)ml" // 5. totalToday 값에 update값 넣기
             
+            let recommend = userDefaults.double(forKey: "recommend")
+            let goal = Double(totalNum) / Double(recommend) / 10
+
+            userDefaults.set(goal, forKey: "goal")
             
+            if goal < 100 {
+                todayGoal.text = "목표의 \(Int(goal))%"
+                todayGoal.textColor = .white
+            } else {
+                todayGoal.text = "목표의 \(Int(goal))%"
+                todayGoal.textColor = .red
+            }
+            
+            changeImage(Int(goal))
         }
     }
     
@@ -141,10 +160,12 @@ class MainVC: UIViewController {
                 let totalNum = userDefaults.integer(forKey: "totalML")
                 let goal = Double(totalNum) / Double(recommend) / 10
                 
-                intakeLabel.text = "\(vc.nameTextField.text ?? "")님의 하루 물 권장 섭취량은 \(recommend)L 입니다."
+//                intakeLabel.text = "\(vc.nameTextField.text ?? "")님의 하루 물 권장 섭취량은 \(recommend)L 입니다."
+                intakeLabel.text = "하루 물 권장 섭취량은 \(recommend)L 입니다."
                 todayGoal.text = "목표의 \(Int(goal))%"
                 
-                userDefaults.set(intakeLabel.text, forKey: "recommend")
+//                userDefaults.set(intakeLabel.text, forKey: "recommend")
+                userDefaults.set(recommend, forKey: "recommend")
                 userDefaults.set(Int(goal), forKey: "goal")
                 
             }
