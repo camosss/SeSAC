@@ -16,7 +16,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var todayGoal: UILabel!
     @IBOutlet weak var intakeLabel: UILabel!
     
-    @IBOutlet weak var addValueTextLabel: UITextField!
+    @IBOutlet weak var addValueTextField: UITextField!
     @IBOutlet weak var drinkButton: UIButton!
     @IBOutlet weak var currentLevelImage: UIImageView!
     
@@ -51,10 +51,9 @@ class MainVC: UIViewController {
         let totalNum = userDefaults.integer(forKey: "totalML") // 6. 저장되어있는 값 가져와서 view가 로드될 때, text에 값 띄우기
         totalToday.text = "\(totalNum)ml"
         
-//        let recommend = userDefaults.string(forKey: "recommend")
-//        intakeLabel.text = recommend
+        let nickname = userDefaults.string(forKey: "name")
         let recommend = userDefaults.double(forKey: "recommend")
-        intakeLabel.text = "하루 물 권장 섭취량은 \(recommend)L 입니다."
+        intakeLabel.text = "\(nickname ?? "")님의 하루 물 권장 섭취량은 \(recommend)L 입니다."
         
         let goal = userDefaults.integer(forKey: "goal")
         if goal < 100 {
@@ -104,7 +103,6 @@ class MainVC: UIViewController {
             self.userDefaults.set(0, forKey: "totalML") // (1) 데이터를 0으로 저장
             let resetNum = self.userDefaults.integer(forKey: "totalML") // (2) 값을 가져와서
             self.totalToday.text = "\(resetNum)ml" // (3) totalToday 값에 reset값 넣기
-            self.totalToday.textColor = .white
             
             self.userDefaults.set(0, forKey: "goal")
             self.todayGoal.text = "목표의 0%"
@@ -121,7 +119,7 @@ class MainVC: UIViewController {
     
     @IBAction func addValueButton(_ sender: UIButton) {
         
-        if let addValue = addValueTextLabel.text {
+        if let addValue = addValueTextField.text {
             let intAddValue = Int(addValue) ?? 0 // 1. textField의 string값 -> Int로 형변환
             
             let totalNum = userDefaults.integer(forKey: "totalML") // 2. 현재 키값에 저장되어있는 값 가져오기
@@ -154,17 +152,16 @@ class MainVC: UIViewController {
         if let vc = sender.source as? ProfileVC {
             if let height = vc.heightTextField.text, let weight = vc.weightTextField.text {
                 let intHeight = Double(height) ?? 1, intWeight = Double(weight) ?? 1
+                let nickName = vc.nameTextField.text ?? ""
                 
                 let recommend = (intHeight + intWeight) / 100
-                
                 let totalNum = userDefaults.integer(forKey: "totalML")
                 let goal = Double(totalNum) / Double(recommend) / 10
                 
-//                intakeLabel.text = "\(vc.nameTextField.text ?? "")님의 하루 물 권장 섭취량은 \(recommend)L 입니다."
-                intakeLabel.text = "하루 물 권장 섭취량은 \(recommend)L 입니다."
+                intakeLabel.text = "\(nickName)님의 하루 물 권장 섭취량은 \(recommend)L 입니다."
                 todayGoal.text = "목표의 \(Int(goal))%"
                 
-//                userDefaults.set(intakeLabel.text, forKey: "recommend")
+                userDefaults.set(nickName, forKey: "name")
                 userDefaults.set(recommend, forKey: "recommend")
                 userDefaults.set(Int(goal), forKey: "goal")
                 
