@@ -7,7 +7,9 @@ Case 1
 형태로 구현해보세요.
 ```
 
-<img src = "https://user-images.githubusercontent.com/74236080/136911430-03403e6f-94fe-4dbc-8560-2a2052599525.png" width="40%" height="40%">
+<img src = "https://user-images.githubusercontent.com/74236080/136911430-03403e6f-94fe-4dbc-8560-2a2052599525.png" width="30%" height="30%">
+
+---
 
 ### 코드
 
@@ -16,5 +18,7 @@ Case2
 이번에는 테이블뷰컨트롤러의 Dynamic Prototypes를 학습합니다. 애플의 테이
 블뷰셀 스타일을 사용하여 코드로 설정 화면을 구현해보세요.
 ```
+
+[코드](https://github.com/camosss/SSAC/blob/main/ssacTableView/ssacTableView/CodeVC.swift)
 
 <img src = "https://user-images.githubusercontent.com/74236080/136911659-dd1ae593-8205-4a31-9540-a22dceb54716.png" width="40%" height="40%">
