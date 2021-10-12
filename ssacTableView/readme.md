@@ -21,4 +21,4 @@ Case2
 
 [코드](https://github.com/camosss/SSAC/blob/main/ssacTableView/ssacTableView/CodeVC.swift)
 
-<img src = "https://user-images.githubusercontent.com/74236080/136911659-dd1ae593-8205-4a31-9540-a22dceb54716.png" width="40%" height="40%">
+<img src = "https://user-images.githubusercontent.com/74236080/136911659-dd1ae593-8205-4a31-9540-a22dceb54716.png" width="30%" height="30%">
