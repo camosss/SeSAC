@@ -22,3 +22,24 @@ Case2
 [코드](https://github.com/camosss/SSAC/blob/main/ssacTableView/ssacTableView/CodeVC.swift)
 
 <img src = "https://user-images.githubusercontent.com/74236080/136911659-dd1ae593-8205-4a31-9540-a22dceb54716.png" width="30%" height="30%">
+
+---
+
+### 쇼핑 리스트
+
+```swift
+쇼핑 목록 리스트 만들기
+
+커스텀 테이블뷰셀을 활용하는 예제입니다.
+셀 디자인은 자유이나 체크박스 버튼, 컨텐츠 레이블,
+즐겨찾기 버튼 세 가지는 꼭 포함해주세요!
+String 배열을 선언해 쇼핑 목록을 구성합니다! 텍스트
+필드 텍스트를 입력하면 셀이 추가되고, 테이블뷰셀을
+스와이프해 삭제하면 데이터를 삭제할 수 있습니다.
+체크박스 버튼과 즐겨찾기 버튼에 기능은 별도로 구현
+하지 않습니다.
+```
+
+[코드](https://github.com/camosss/SSAC/tree/main/ssacTableView/ssacTableView/ShoppingList)
+
+https://user-images.githubusercontent.com/74236080/137115870-d0d1eeca-a6d1-415b-8611-fea2f859d01c.mov
