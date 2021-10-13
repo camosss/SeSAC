@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B459D18A2716D8DA00AAB202 /* ShoppingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B459D1892716D8DA00AAB202 /* ShoppingVC.swift */; };
+		B459D18C2716D8DF00AAB202 /* ShoppingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B459D18B2716D8DF00AAB202 /* ShoppingCell.swift */; };
 		B4C76BE427155547007C392F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C76BE327155547007C392F /* AppDelegate.swift */; };
 		B4C76BE627155547007C392F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C76BE527155547007C392F /* SceneDelegate.swift */; };
 		B4C76BEB27155547007C392F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4C76BE927155547007C392F /* Main.storyboard */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B459D1892716D8DA00AAB202 /* ShoppingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingVC.swift; sourceTree = "<group>"; };
+		B459D18B2716D8DF00AAB202 /* ShoppingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCell.swift; sourceTree = "<group>"; };
 		B4C76BE027155547007C392F /* ssacTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ssacTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4C76BE327155547007C392F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4C76BE527155547007C392F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +43,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B459D1882716D8CD00AAB202 /* ShoppingList */ = {
+			isa = PBXGroup;
+			children = (
+				B459D1892716D8DA00AAB202 /* ShoppingVC.swift */,
+				B459D18B2716D8DF00AAB202 /* ShoppingCell.swift */,
+			);
+			path = ShoppingList;
+			sourceTree = "<group>";
+		};
 		B4C76BD727155547007C392F = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +71,7 @@
 		B4C76BE227155547007C392F /* ssacTableView */ = {
 			isa = PBXGroup;
 			children = (
+				B459D1882716D8CD00AAB202 /* ShoppingList */,
 				B4C76BE327155547007C392F /* AppDelegate.swift */,
 				B4C76BE527155547007C392F /* SceneDelegate.swift */,
 				B4C76BF727155583007C392F /* StoryboardVC.swift */,
@@ -142,6 +156,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4C76BE427155547007C392F /* AppDelegate.swift in Sources */,
+				B459D18C2716D8DF00AAB202 /* ShoppingCell.swift in Sources */,
+				B459D18A2716D8DA00AAB202 /* ShoppingVC.swift in Sources */,
 				B4C76BE627155547007C392F /* SceneDelegate.swift in Sources */,
 				B4C76BF827155583007C392F /* StoryboardVC.swift in Sources */,
 				B4C76BFA27155589007C392F /* CodeVC.swift in Sources */,
