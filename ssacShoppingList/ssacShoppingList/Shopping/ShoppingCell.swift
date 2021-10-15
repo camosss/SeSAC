@@ -22,7 +22,7 @@ class ShoppingCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -41,6 +41,7 @@ class ShoppingCell: UITableViewCell {
             check = false
             checkButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
         }
+        
     }
     
     @IBAction func tapStar(_ sender: UIButton) {

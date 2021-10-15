@@ -23,13 +23,14 @@ class ShoppingVC: UITableViewController {
         super.viewDidLoad()
         
         loadData()
+        navigationItem.title = "쇼핑"
     }
     
     // MARK: - Helper
     
     func saveData() {
         let jsonEncoder = JSONEncoder()
-        
+
         if let saveData = try? jsonEncoder.encode(shoppingList) {
             userDefaults.set(saveData, forKey: "List")
         } else {
@@ -39,7 +40,7 @@ class ShoppingVC: UITableViewController {
     
     func loadData() {
         let jsonDecoder = JSONDecoder()
-        
+
         if let loadData = userDefaults.object(forKey: "List") as? Data {
             do {
                 shoppingList = try jsonDecoder.decode([List].self, from: loadData)
@@ -47,13 +48,14 @@ class ShoppingVC: UITableViewController {
                 print("Failed to load lists")
             }
         }
+        
     }
     
     // MARK: - Action
     
     @IBAction func addButton(_ sender: UIButton) {
         if !searchTextField.text!.isEmpty {
-            let list = List(list: searchTextField.text!)
+            let list = List(list: searchTextField.text!, check: false, star: false)
             shoppingList.append(list)
             saveData()
             tableView.reloadData()
@@ -90,4 +92,3 @@ extension ShoppingVC {
     }
     
 }
-

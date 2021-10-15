@@ -9,4 +9,6 @@ import Foundation
 
 struct List: Codable {
     var list: String
+    var check: Bool
+    var star: Bool
 }

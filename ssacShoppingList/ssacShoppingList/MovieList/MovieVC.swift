@@ -17,7 +17,8 @@ class MovieVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        navigationItem.title = "영화"
     }
 }
 
@@ -47,6 +48,10 @@ extension MovieVC {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let sb = UIStoryboard(name: "Movie", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "MovieDetailVC") as! MovieDetailVC
+        navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
