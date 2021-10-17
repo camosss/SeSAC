@@ -11,16 +11,18 @@ class SearchVC: UIViewController {
     
     // MARK: - Properties
     
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     let tvShowInfo = TvShowInfo()
+    let searchController = UISearchController(searchResultsController: nil)
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        navigationItem.title = "영화 검색"
+        configureSearchBar()
+        
         tableView.rowHeight = 150
         tableView.dataSource = self
         tableView.delegate = self
@@ -28,10 +30,20 @@ class SearchVC: UIViewController {
     
     // MARK: - Action
     
-    @IBAction func exitButton(_ sender: UIButton) {
+    @IBAction func exitButton(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
     
+    // MARK: - Helper
+    
+    // search bar
+    func configureSearchBar() {
+        navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.searchBar.placeholder = "검색"
+    }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -65,5 +77,13 @@ extension SearchVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+// MARK: - UISearchResultsUpdating
+
+extension SearchVC: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        print(searchController.searchBar.text ?? "")
     }
 }
