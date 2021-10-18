@@ -15,7 +15,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var headerIconView: UIView!
     
     let tvShowInfo = TvShowInfo()
-    
+
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -31,7 +31,6 @@ class MainVC: UIViewController {
     // MARK: - Helper
     
     func configureHeader() {
-        
         headerIconView.layer.cornerRadius = 10
         headerIconView.layer.shadowOpacity = 0.5
         headerIconView.layer.shadowRadius = 10
@@ -44,7 +43,6 @@ class MainVC: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.triangle"), style: .plain, target: self, action: #selector(tapMenu))
         navigationController?.navigationBar.tintColor = .black
     }
-    
     
     // MARK: - Action
     
@@ -96,11 +94,17 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "Detail", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "DetailVC") as! DetailVC
+        
+        // 프로퍼티에 직접 접근해서 Data 전달
+        let tvShow = tvShowInfo.tvShow[indexPath.row]
+        vc.imageString = tvShow.backdropImage
+        vc.titleString = tvShow.title
+        
         navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UIScreen.main.bounds.height / 2
+        return UIScreen.main.bounds.height / 1.9
     }
 }

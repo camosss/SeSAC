@@ -12,7 +12,12 @@ class DetailVC: UIViewController {
     // MARK: - Properties
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
     
+    var imageString = ""
+    var titleString = ""
+        
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -22,9 +27,24 @@ class DetailVC: UIViewController {
         tableView.rowHeight = 100
         tableView.dataSource = self
         tableView.delegate = self
+        
+        configureHeaderView()
     }
     
+    // MARK: - Helper
     
+    func configureHeaderView() {
+        
+        titleLabel.text = titleString
+        
+        let url = URL(string: imageString)
+        do {
+            let data = try Data(contentsOf: url!)
+            postImageView.image = UIImage(data: data)
+        } catch {
+            print("Upload Image Error!")
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -48,6 +68,5 @@ extension DetailVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
     
 }
