@@ -1,3 +1,103 @@
-### 화면 전환
+## #1 화면 전환
 
 https://user-images.githubusercontent.com/74236080/137635789-57feeb91-b8ac-4813-9ab0-74acaeef4b50.mov
+
+---
+
+## #2
+
+1번 View (MainVC)에서 해당 TableCell 을 선택했을 때, 데이터를 전달하고 1번 View (MainVC)에서 받은 데이터를 통해 2번 View (DetailVC)를 그린다.
+
+<img src = "https://user-images.githubusercontent.com/74236080/137711980-1363c9aa-29d3-4f81-8640-9158ed0c6a62.png" width="30%" height="30%"><img src = "https://user-images.githubusercontent.com/74236080/137712063-c32bf4fb-2f73-46e4-b2eb-8cec769979f1.png" width="30%" height="30%">
+
+
+
+### 프로퍼티에 직접 접근해서 Data 전달
+
+1. 2번(DetailVC)에 데이터를 전달받을 프로퍼티를 생성한다.
+
+![스크린샷 2021-10-18 오후 7 14 02](https://user-images.githubusercontent.com/74236080/137712368-5d14e20d-f3d9-4ff0-b13e-c670194e2bd4.png)
+
+2. 1번(MainVC)에서 "DetailVC" 라는 identifier을 가지고 있는 ViewController(DetailVC)를 선언하고, 2번(DetailVC)에 있는 전달받을 프로퍼티를에 접근해서 전달할 데이터를 넣어준다.
+
+![스크린샷 2021-10-18 오후 7 14 31](https://user-images.githubusercontent.com/74236080/137712570-dc75c54b-e254-4c4d-9423-e2d345ce51e0.png)
+
+
+3. 데이터를 전달받은 2번(DetailVC)으로 와서 데이터를 대입한다.
+
+![스크린샷 2021-10-18 오후 7 14 50](https://user-images.githubusercontent.com/74236080/137712594-99684b2d-4170-43d4-9186-6db946e6120b.png)
+
+
+
+https://user-images.githubusercontent.com/74236080/137712785-64ffa589-2b84-4012-8756-1ae278a75a60.mov
+
+
+
+### 링크 버튼을 클릭하면 WebVC로 화면 전환
+
+화면 전환 시 타이틀 값을 전달하고, 전달한 값을 네비게이션 타이틀 넣기
+
+```swift
+@IBAction func tapLink(_ sender: UIButton) {
+    
+		// cell의 indexPath
+    let buttonPosition = sender.convert(CGPoint.zero, to: self.tableView)
+    let indexPath = self.tableView.indexPathForRow(at:buttonPosition)
+    let cell = self.tableView.cellForRow(at: indexPath!) as! MainCell
+       
+    let sb = UIStoryboard(name: "Web", bundle: nil)
+    let vc = sb.instantiateViewController(withIdentifier: "WebVC") as! WebVC
+    vc.navigationTitle = cell.titleLabel.text ?? ""
+
+    let nav = UINavigationController(rootViewController: vc)
+    self.present(nav, animated: true, completion: nil)
+}
+```
+
+- 링크 버튼에 액션을 줬을 때, 해당 cell 의 데이터를 가져오기 위해 MainCell의 **indexPath** 값을 가져온다.
+- WebVC인 vc에 데이터를 전달받을 프로퍼티를 생성해서 해당 cell의 title값을 넣어준다.
+
+[셀에서 버튼을 클릭하면 UITableViewCell의 indexPath 가져오기](https://newbedev.com/get-indexpath-of-uitableviewcell-on-click-of-button-from-cell)
+
+
+https://user-images.githubusercontent.com/74236080/137712744-7103028c-b96d-45e9-8de0-2ac9a54b8299.mov
+
+
+
+### Kingfisher 라이브러리
+
+파일을 새로 생성해서, 이미지를 설정할 imageView에 메소드체이닝으로 KingFisher를 호출하여 setImage() 메소드를 이용한다.
+
+아래와 같이 코드를 작성하면 KingFisher가 url로 부터 이미지를 다운받고, 이를 메모리와 디스크 캐시에 저장한다. 그 후 imageView에 띄운다.
+
+**첫 다운로드 때 이를 캐시에 저장**해놓기 때문에 추후 같은 URL에 대한 이미지 요청시 캐시로부터 데이터를 바로 가져오기 때문에, 빠른 속도로 처리가 가능하다.
+
+```swift
+import UIKit
+import Kingfisher
+
+extension UIImageView {
+    func setImage(imageUrl: String) {
+        self.kf.setImage(with: URL(string: imageUrl))
+    }
+}
+```
+
+***url String을 Kingfisher 라이브러리 사용 ❌***
+
+```swift
+let url = URL(string: tvShow.backdropImage)
+do {
+    let data = try Data(contentsOf: url!)
+    cell.postImageView.image = UIImage(data: data)
+} catch {
+     print("Upload Image Error!")
+}
+```
+
+
+***Kingfisher 라이브러리를 사용 ⭕️***
+
+```swift
+cell.postImageView.setImage(imageUrl: tvShow.backdropImage)
+```
