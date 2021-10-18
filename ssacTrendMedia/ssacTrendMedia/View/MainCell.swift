@@ -19,6 +19,7 @@ class MainCell: UITableViewCell {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var starringLabel: UILabel!
+    @IBOutlet weak var linkButton: UIButton!
     
     // MARK: - Lifecycle
     
@@ -29,6 +30,5 @@ class MainCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
 }

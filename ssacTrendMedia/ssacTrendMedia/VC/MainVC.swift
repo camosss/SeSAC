@@ -15,7 +15,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var headerIconView: UIView!
     
     let tvShowInfo = TvShowInfo()
-
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -49,7 +49,6 @@ class MainVC: UIViewController {
     @objc func tapMenu() {
         print("Menu")
     }
-    
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -70,23 +69,17 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
         cell.releaseDateLabel.text = tvShow.releaseDate
         cell.starringLabel.text = tvShow.starring
         
-        
-        let url = URL(string: tvShow.backdropImage)
-        do {
-            let data = try Data(contentsOf: url!)
-            cell.postImageView.image = UIImage(data: data)
-            cell.postImageView.layer.cornerRadius = 10
-            cell.postImageView.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
-
-        } catch {
-            print("Upload Image Error!")
-        }
+        cell.postImageView.setImage(imageUrl: tvShow.backdropImage)
+        cell.postImageView.layer.cornerRadius = 10
+        cell.postImageView.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
         
         cell.shadowView.layer.cornerRadius = 10
         cell.shadowView.layer.shadowOpacity = 0.5
         cell.shadowView.layer.shadowRadius = 10
         cell.shadowView.layer.shadowOffset = .init(width: 0, height: -5)
         cell.shadowView.layer.shadowColor = UIColor.lightGray.cgColor
+        
+        cell.linkButton.layer.cornerRadius = 40 / 2
         
         return cell
     }

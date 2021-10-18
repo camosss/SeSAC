@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90CBC5A83F794CBEA151BF16 /* Pods_ssacTrendMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 406A5CB7F7E9E9D177640468 /* Pods_ssacTrendMedia.framework */; };
+		B429E7B8271D5B5400BF3BE7 /* ExtensionKingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B429E7B7271D5B5400BF3BE7 /* ExtensionKingfisher.swift */; };
+		B429E7BB271D612A00BF3BE7 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B429E7B9271D612A00BF3BE7 /* WebVC.swift */; };
 		B44A1CB7271BDE530077067D /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44A1CB6271BDE530077067D /* SearchVC.swift */; };
 		B44A1CB9271BDE590077067D /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44A1CB8271BDE590077067D /* DetailVC.swift */; };
 		B44A1CBB271BDF050077067D /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B44A1CBA271BDF050077067D /* Detail.storyboard */; };
@@ -24,6 +27,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		406A5CB7F7E9E9D177640468 /* Pods_ssacTrendMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ssacTrendMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E1ACF5D979DCFE8A016D1AF /* Pods-ssacTrendMedia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ssacTrendMedia.debug.xcconfig"; path = "Target Support Files/Pods-ssacTrendMedia/Pods-ssacTrendMedia.debug.xcconfig"; sourceTree = "<group>"; };
+		B429E7B7271D5B5400BF3BE7 /* ExtensionKingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionKingfisher.swift; sourceTree = "<group>"; };
+		B429E7B9271D612A00BF3BE7 /* WebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
 		B44A1CB6271BDE530077067D /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		B44A1CB8271BDE590077067D /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		B44A1CBA271BDF050077067D /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
@@ -40,6 +47,7 @@
 		B44BE5EA27195E0E005F1C75 /* TvShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShow.swift; sourceTree = "<group>"; };
 		B44BE5EF27195F64005F1C75 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		B44BE5F3271963A9005F1C75 /* MainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
+		CF42429FD2A903FB90C6853F /* Pods-ssacTrendMedia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ssacTrendMedia.release.xcconfig"; path = "Target Support Files/Pods-ssacTrendMedia/Pods-ssacTrendMedia.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90CBC5A83F794CBEA151BF16 /* Pods_ssacTrendMedia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +67,8 @@
 			children = (
 				B44BE5D327195D79005F1C75 /* ssacTrendMedia */,
 				B44BE5D227195D79005F1C75 /* Products */,
+				F34979746A9429D2721F81EF /* Pods */,
+				E06DF1246CFAF4BD3E73F88C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,6 +88,7 @@
 				B44BE5EE27195EA6005F1C75 /* VC */,
 				B44BE5D627195D79005F1C75 /* SceneDelegate.swift */,
 				B44BE5D427195D79005F1C75 /* AppDelegate.swift */,
+				B429E7B7271D5B5400BF3BE7 /* ExtensionKingfisher.swift */,
 				B44BE5DD27195D7B005F1C75 /* Assets.xcassets */,
 				B44BE5DF27195D7B005F1C75 /* LaunchScreen.storyboard */,
 				B44BE5E227195D7B005F1C75 /* Info.plist */,
@@ -111,8 +123,26 @@
 				B44BE5EF27195F64005F1C75 /* MainVC.swift */,
 				B44A1CB6271BDE530077067D /* SearchVC.swift */,
 				B44A1CB8271BDE590077067D /* DetailVC.swift */,
+				B429E7B9271D612A00BF3BE7 /* WebVC.swift */,
 			);
 			path = VC;
+			sourceTree = "<group>";
+		};
+		E06DF1246CFAF4BD3E73F88C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				406A5CB7F7E9E9D177640468 /* Pods_ssacTrendMedia.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F34979746A9429D2721F81EF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4E1ACF5D979DCFE8A016D1AF /* Pods-ssacTrendMedia.debug.xcconfig */,
+				CF42429FD2A903FB90C6853F /* Pods-ssacTrendMedia.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,9 +152,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B44BE5E527195D7B005F1C75 /* Build configuration list for PBXNativeTarget "ssacTrendMedia" */;
 			buildPhases = (
+				D8D291BF6BBDEEF209668AB9 /* [CP] Check Pods Manifest.lock */,
 				B44BE5CD27195D79005F1C75 /* Sources */,
 				B44BE5CE27195D79005F1C75 /* Frameworks */,
 				B44BE5CF27195D79005F1C75 /* Resources */,
+				96EC6FCEF2C74D1AEBE8D19A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -182,6 +214,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		96EC6FCEF2C74D1AEBE8D19A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ssacTrendMedia/Pods-ssacTrendMedia-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ssacTrendMedia/Pods-ssacTrendMedia-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ssacTrendMedia/Pods-ssacTrendMedia-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8D291BF6BBDEEF209668AB9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ssacTrendMedia-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B44BE5CD27195D79005F1C75 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -196,6 +270,8 @@
 				B44BE5E927195DD6005F1C75 /* TvShowInfo.swift in Sources */,
 				B44A1CB9271BDE590077067D /* DetailVC.swift in Sources */,
 				B44BE5D727195D79005F1C75 /* SceneDelegate.swift in Sources */,
+				B429E7BB271D612A00BF3BE7 /* WebVC.swift in Sources */,
+				B429E7B8271D5B5400BF3BE7 /* ExtensionKingfisher.swift in Sources */,
 				B44A1CB7271BDE530077067D /* SearchVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,6 +416,7 @@
 		};
 		B44BE5E627195D7B005F1C75 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E1ACF5D979DCFE8A016D1AF /* Pods-ssacTrendMedia.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -368,6 +445,7 @@
 		};
 		B44BE5E727195D7B005F1C75 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF42429FD2A903FB90C6853F /* Pods-ssacTrendMedia.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

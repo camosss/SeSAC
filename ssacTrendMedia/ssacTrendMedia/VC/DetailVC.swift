@@ -34,16 +34,8 @@ class DetailVC: UIViewController {
     // MARK: - Helper
     
     func configureHeaderView() {
-        
         titleLabel.text = titleString
-        
-        let url = URL(string: imageString)
-        do {
-            let data = try Data(contentsOf: url!)
-            postImageView.image = UIImage(data: data)
-        } catch {
-            print("Upload Image Error!")
-        }
+        postImageView.setImage(imageUrl: imageString)
     }
 }
 

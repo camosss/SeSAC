@@ -63,14 +63,8 @@ extension SearchVC: UITableViewDataSource, UITableViewDelegate {
         cell.overViewLabel.text = tvShow.overview
         cell.overViewLabel.numberOfLines = 0
         
-        let url = URL(string: tvShow.backdropImage)
-        do {
-            let data = try Data(contentsOf: url!)
-            cell.postImageView.image = UIImage(data: data)
-            cell.postImageView.layer.cornerRadius = 10
-        } catch {
-            print("Upload Image Error!")
-        }
+        cell.postImageView.setImage(imageUrl: tvShow.backdropImage)
+        cell.postImageView.layer.cornerRadius = 10
         
         return cell
     }

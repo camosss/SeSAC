@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -154,10 +155,27 @@
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4C0-Zz-fTf">
+                                                            <rect key="frame" x="304" y="10" width="40" height="40"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="40" id="0Po-z9-2VG"/>
+                                                                <constraint firstAttribute="width" constant="40" id="yIf-Qs-V1i"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain">
+                                                                <imageReference key="image" image="link" catalog="system" symbolScale="large"/>
+                                                                <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </buttonConfiguration>
+                                                            <connections>
+                                                                <segue destination="i5x-Ew-CO8" kind="presentation" id="6Rb-1f-Y5W"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="CMz-py-b80" firstAttribute="leading" secondItem="4Nq-sf-JHh" secondAttribute="leadingMargin" constant="5" id="5jr-ch-elQ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="4C0-Zz-fTf" secondAttribute="trailing" constant="10" id="60g-OF-DG7"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lDh-iZ-oEz" secondAttribute="trailing" constant="20" symbolic="YES" id="69n-Hz-S9x"/>
                                                         <constraint firstItem="Aqd-YI-qhn" firstAttribute="leading" secondItem="4Nq-sf-JHh" secondAttribute="leading" constant="10" id="6a1-Rs-dwe"/>
                                                         <constraint firstAttribute="trailing" secondItem="hZj-pq-ZDs" secondAttribute="trailing" constant="10" id="8am-gf-w3P"/>
@@ -174,6 +192,7 @@
                                                         <constraint firstItem="Aqd-YI-qhn" firstAttribute="top" secondItem="hZj-pq-ZDs" secondAttribute="bottom" constant="10" id="ehk-Wn-zEj"/>
                                                         <constraint firstItem="CMz-py-b80" firstAttribute="trailing" secondItem="Aqd-YI-qhn" secondAttribute="trailing" id="kSP-Wz-SjL"/>
                                                         <constraint firstAttribute="trailing" secondItem="iXW-hV-uRs" secondAttribute="trailing" constant="10" id="qIn-GP-JWF"/>
+                                                        <constraint firstItem="4C0-Zz-fTf" firstAttribute="top" secondItem="4Nq-sf-JHh" secondAttribute="top" constant="10" id="t9Q-li-cIG"/>
                                                         <constraint firstItem="6xO-eA-s65" firstAttribute="top" secondItem="4Nq-sf-JHh" secondAttribute="top" id="xwk-62-yNT"/>
                                                     </constraints>
                                                 </view>
@@ -193,6 +212,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="genreLabel" destination="Rp9-65-Pq7" id="OGc-l8-NXh"/>
+                                            <outlet property="linkButton" destination="4C0-Zz-fTf" id="6d5-EO-nAE"/>
                                             <outlet property="postImageView" destination="6xO-eA-s65" id="3BY-bV-lgv"/>
                                             <outlet property="rateLabel" destination="lDh-iZ-oEz" id="b2d-C3-mLm"/>
                                             <outlet property="regionLabel" destination="9Mh-U3-7tr" id="hx9-iB-Ipg"/>
@@ -230,6 +250,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GRE-mX-HtL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="989.85507246376824" y="130.58035714285714"/>
+        </scene>
+        <!--WebVC-->
+        <scene sceneID="jtc-BW-EDD">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jav-YK-hhp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="WebVC" id="H0O-6G-bHb" customClass="WebVC" customModule="ssacTrendMedia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iXI-qP-Qk0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="wPB-19-A4x"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uGm-Am-HRU"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1900.0000000000002" y="825.66964285714278"/>
         </scene>
         <!--Title-->
         <scene sceneID="Mfc-z6-SH2">
@@ -369,11 +405,30 @@
             </objects>
             <point key="canvasLocation" x="1808.6956521739132" y="130.58035714285714"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="HPV-2v-Yrr">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z0g-XO-FP4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="i5x-Ew-CO8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iot-cz-fc0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="H0O-6G-bHb" kind="relationship" relationship="rootViewController" id="VLk-UD-C2P"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="989.85507246376824" y="825.66964285714278"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back" width="605" height="340"/>
         <image name="book.closed" catalog="system" width="115" height="128"/>
         <image name="film" catalog="system" width="128" height="93"/>
+        <image name="link" catalog="system" width="128" height="122"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="tv" catalog="system" width="128" height="97"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
