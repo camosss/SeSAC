@@ -17,8 +17,6 @@ class WebVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("---\(navigationTitle)")
         title = navigationTitle
-        
     }
 }

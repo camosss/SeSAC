@@ -49,6 +49,20 @@ class MainVC: UIViewController {
     @objc func tapMenu() {
         print("Menu")
     }
+    
+    @IBAction func tapLink(_ sender: UIButton) {
+        
+        let buttonPosition = sender.convert(CGPoint.zero, to: self.tableView)
+        let indexPath = self.tableView.indexPathForRow(at:buttonPosition)
+        let cell = self.tableView.cellForRow(at: indexPath!) as! MainCell
+        
+        let sb = UIStoryboard(name: "Web", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "WebVC") as! WebVC
+        vc.navigationTitle = cell.titleLabel.text ?? ""
+
+        let nav = UINavigationController(rootViewController: vc)
+        self.present(nav, animated: true, completion: nil)
+    }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -62,6 +76,7 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath) as! MainCell
         
         let tvShow = tvShowInfo.tvShow[indexPath.row]
+        
         cell.genreLabel.text = "#\(tvShow.genre)"
         cell.regionLabel.text = tvShow.region
         cell.rateLabel.text = "평점 \(tvShow.rate)"
