@@ -11,20 +11,24 @@ https://user-images.githubusercontent.com/74236080/137635789-57feeb91-b8ac-4813-
 <img src = "https://user-images.githubusercontent.com/74236080/137711980-1363c9aa-29d3-4f81-8640-9158ed0c6a62.png" width="30%" height="30%"><img src = "https://user-images.githubusercontent.com/74236080/137712063-c32bf4fb-2f73-46e4-b2eb-8cec769979f1.png" width="30%" height="30%">
 
 
+---
 
 ### 프로퍼티에 직접 접근해서 Data 전달
 
-1. 2번(DetailVC)에 데이터를 전달받을 프로퍼티를 생성한다.
+1. 2번(DetailVC)에서 데이터를 전달받을 프로퍼티를 생성한다.
 
+***DetailVC***
 ![스크린샷 2021-10-18 오후 7 14 02](https://user-images.githubusercontent.com/74236080/137712368-5d14e20d-f3d9-4ff0-b13e-c670194e2bd4.png)
 
-2. 1번(MainVC)에서 "DetailVC" 라는 identifier을 가지고 있는 ViewController(DetailVC)를 선언하고, 2번(DetailVC)에 있는 전달받을 프로퍼티를에 접근해서 전달할 데이터를 넣어준다.
+2. 1번(MainVC)에서 "DetailVC" identifier을 가지고 있는 ViewController(DetailVC)를 선언하고, 2번(DetailVC)에 있는 전달받을 프로퍼티에 접근해서 전달할 데이터를 넣어준다.
 
+***MainVC***
 ![스크린샷 2021-10-18 오후 7 14 31](https://user-images.githubusercontent.com/74236080/137712570-dc75c54b-e254-4c4d-9423-e2d345ce51e0.png)
 
 
 3. 데이터를 전달받은 2번(DetailVC)으로 와서 데이터를 대입한다.
 
+***DetailVC***
 ![스크린샷 2021-10-18 오후 7 14 50](https://user-images.githubusercontent.com/74236080/137712594-99684b2d-4170-43d4-9186-6db946e6120b.png)
 
 
@@ -32,6 +36,7 @@ https://user-images.githubusercontent.com/74236080/137635789-57feeb91-b8ac-4813-
 https://user-images.githubusercontent.com/74236080/137712785-64ffa589-2b84-4012-8756-1ae278a75a60.mov
 
 
+---
 
 ### 링크 버튼을 클릭하면 WebVC로 화면 전환
 
@@ -40,7 +45,7 @@ https://user-images.githubusercontent.com/74236080/137712785-64ffa589-2b84-4012-
 ```swift
 @IBAction func tapLink(_ sender: UIButton) {
     
-		// cell의 indexPath
+    // cell의 indexPath
     let buttonPosition = sender.convert(CGPoint.zero, to: self.tableView)
     let indexPath = self.tableView.indexPathForRow(at:buttonPosition)
     let cell = self.tableView.cellForRow(at: indexPath!) as! MainCell
@@ -62,7 +67,7 @@ https://user-images.githubusercontent.com/74236080/137712785-64ffa589-2b84-4012-
 
 https://user-images.githubusercontent.com/74236080/137712744-7103028c-b96d-45e9-8de0-2ac9a54b8299.mov
 
-
+---
 
 ### Kingfisher 라이브러리
 
