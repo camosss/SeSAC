@@ -25,9 +25,6 @@ class DetailVC: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "출연/제작"
         
-        tableView.dataSource = self
-        tableView.delegate = self
-        
         configureHeaderView()
     }
     
@@ -40,12 +37,10 @@ class DetailVC: UIViewController {
     
     // MARK: - Action
     
-    @IBAction func seeMoreButton(_ sender: UIButton) {
-        print("tttt")
-        sender.isSelected = !sender.isSelected
-        tableView.rowHeight = UITableView.automaticDimension
+    @objc func TapSeeMoreButton(button: UIButton) {
+        button.isSelected = !button.isSelected
+        
     }
-    
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -62,6 +57,8 @@ extension DetailVC: UITableViewDataSource, UITableViewDelegate {
             let summaryCell = tableView.dequeueReusableCell(withIdentifier: "SummaryCell", for: indexPath) as! SummaryCell
             summaryCell.summaryLabel.text = overViewString
             summaryCell.summaryLabel.numberOfLines = 2
+            
+            summaryCell.seeMoreButton.addTarget(self, action: #selector(TapSeeMoreButton(button:)), for: .touchUpInside)
             return summaryCell
         }
         
@@ -70,6 +67,7 @@ extension DetailVC: UITableViewDataSource, UITableViewDelegate {
         cell.roleLabel.text = "역할"
         cell.directorImageView.image = UIImage(named: "andrew")
         cell.directorImageView.layer.cornerRadius = 10
+        
         return cell
     }
     
@@ -81,6 +79,6 @@ extension DetailVC: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row == 0 {
             return 130
         }
-        return 100
+        return UIScreen.main.bounds.height / 10
     }
 }

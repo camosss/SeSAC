@@ -31,10 +31,8 @@ class BookVC: UIViewController {
     
     func configureLayout() {
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing * 2, bottom: spacing, right: spacing * 2)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
-        layout.scrollDirection = .vertical
         collectionView.collectionViewLayout = layout
     }
     
@@ -52,7 +50,7 @@ extension BookVC: UICollectionViewDataSource, UICollectionViewDelegate {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCell.identifier, for: indexPath) as? BookCell else { return UICollectionViewCell() }
         
         let bookInfo = bookInfo.tvShow[indexPath.item]
-        let colorList = [#colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1), #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), #colorLiteral(red: 0.9764705896, green: 0.8539345136, blue: 0.4624189993, alpha: 1), #colorLiteral(red: 0.8753982546, green: 0.2942236511, blue: 0.9764705896, alpha: 1), #colorLiteral(red: 0.7724966407, green: 0.8129963875, blue: 1, alpha: 1), #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1), #colorLiteral(red: 0.9764705896, green: 0.2338845934, blue: 0.4620435073, alpha: 1), #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)]
+        let colorList = [#colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1), #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1), #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1), #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1), #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1), #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)]
 
         cell.titleLabel.text = bookInfo.title
         cell.rateLabel.text = "\(bookInfo.rate)"
@@ -80,8 +78,12 @@ extension BookVC: UICollectionViewDataSource, UICollectionViewDelegate {
 extension BookVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         let width = UIScreen.main.bounds.width - (spacing * 5)
         return CGSize(width: width/2, height: width/2)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: spacing, left: spacing * 2, bottom: spacing, right: spacing * 2)
+    }
+    
 }

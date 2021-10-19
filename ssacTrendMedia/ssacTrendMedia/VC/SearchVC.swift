@@ -23,9 +23,7 @@ class SearchVC: UIViewController {
         navigationItem.title = "영화 검색"
         configureSearchBar()
         
-        tableView.rowHeight = 150
-        tableView.dataSource = self
-        tableView.delegate = self
+        tableView.rowHeight = UIScreen.main.bounds.height / 5
     }
     
     // MARK: - Action

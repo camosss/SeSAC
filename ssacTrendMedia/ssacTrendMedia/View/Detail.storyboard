@@ -80,9 +80,6 @@
                                                     <buttonConfiguration key="configuration" style="plain" image="chevron.down" catalog="system">
                                                         <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </buttonConfiguration>
-                                                    <connections>
-                                                        <action selector="seeMoreButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="JyO-iK-A9S"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -99,6 +96,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="seeMoreButton" destination="snp-9e-WlE" id="lG8-nH-0vJ"/>
                                             <outlet property="summaryLabel" destination="Vsb-fn-8Jg" id="B0K-Bj-utr"/>
                                         </connections>
                                     </tableViewCell>

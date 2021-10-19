@@ -23,7 +23,5 @@ class BookCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
     }
-
 }

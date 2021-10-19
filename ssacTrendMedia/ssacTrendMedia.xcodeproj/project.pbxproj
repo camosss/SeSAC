@@ -124,12 +124,12 @@
 				B44A1CBA271BDF050077067D /* Detail.storyboard */,
 				B429E7BF271D730300BF3BE7 /* Web.storyboard */,
 				B45E3F2E271ED30000C3A691 /* Book.storyboard */,
+				B45E3F2B271ECDFB00C3A691 /* BookCell.xib */,
 				B44BE5F3271963A9005F1C75 /* MainCell.swift */,
 				B44A1CC0271BECDF0077067D /* SearchCell.swift */,
 				B44A1CC2271BF5310077067D /* DetailCell.swift */,
 				B45E3F24271EBAC900C3A691 /* SummaryCell.swift */,
 				B45E3F2A271ECDFB00C3A691 /* BookCell.swift */,
-				B45E3F2B271ECDFB00C3A691 /* BookCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
