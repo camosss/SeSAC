@@ -17,6 +17,7 @@ class DetailVC: UIViewController {
     
     var imageString = ""
     var titleString = ""
+    var overViewString = ""
         
     // MARK: - Lifecycle
     
@@ -24,7 +25,6 @@ class DetailVC: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "출연/제작"
         
-        tableView.rowHeight = 100
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -37,6 +37,15 @@ class DetailVC: UIViewController {
         titleLabel.text = titleString
         postImageView.setImage(imageUrl: imageString)
     }
+    
+    // MARK: - Action
+    
+    @IBAction func seeMoreButton(_ sender: UIButton) {
+        print("tttt")
+        sender.isSelected = !sender.isSelected
+        tableView.rowHeight = UITableView.automaticDimension
+    }
+    
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -48,8 +57,15 @@ extension DetailVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! DetailCell
         
+        if indexPath.row == 0 {
+            let summaryCell = tableView.dequeueReusableCell(withIdentifier: "SummaryCell", for: indexPath) as! SummaryCell
+            summaryCell.summaryLabel.text = overViewString
+            summaryCell.summaryLabel.numberOfLines = 2
+            return summaryCell
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! DetailCell
         cell.nameLabel.text = "이름"
         cell.roleLabel.text = "역할"
         cell.directorImageView.image = UIImage(named: "andrew")
@@ -61,4 +77,10 @@ extension DetailVC: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 130
+        }
+        return 100
+    }
 }

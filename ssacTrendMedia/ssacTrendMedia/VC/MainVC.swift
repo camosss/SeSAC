@@ -50,6 +50,13 @@ class MainVC: UIViewController {
         print("Menu")
     }
     
+    @IBAction func tapBook(_ sender: UIButton) {
+        let sb = UIStoryboard(name: "Book", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "BookVC") as! BookVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
     @IBAction func tapLink(_ sender: UIButton) {
         
         let buttonPosition = sender.convert(CGPoint.zero, to: self.tableView)
@@ -107,6 +114,7 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
         let tvShow = tvShowInfo.tvShow[indexPath.row]
         vc.imageString = tvShow.backdropImage
         vc.titleString = tvShow.title
+        vc.overViewString = tvShow.overview
         
         navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)

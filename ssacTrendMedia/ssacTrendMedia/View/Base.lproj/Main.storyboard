@@ -30,40 +30,55 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IQg-JD-FIB">
                                             <rect key="frame" x="25" y="100" width="364" height="118"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="film" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TMF-qX-sDT">
-                                                    <rect key="frame" x="40" y="31" width="60" height="47.5"/>
-                                                    <color key="tintColor" red="0.67671879199999996" green="0.78370650770000005" blue="0.41695676949999999" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISf-xg-Kbk">
+                                                    <rect key="frame" x="40" y="34" width="50" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="KkP-G5-Mgn"/>
-                                                        <constraint firstAttribute="width" constant="60" id="zFo-Jp-qyP"/>
+                                                        <constraint firstAttribute="height" constant="50" id="H23-vT-EDJ"/>
+                                                        <constraint firstAttribute="width" constant="50" id="SNd-sL-YCY"/>
                                                     </constraints>
-                                                </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book.closed" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yce-cn-JxL">
-                                                    <rect key="frame" x="260" y="30" width="64" height="50"/>
-                                                    <color key="tintColor" red="0.37798979189999998" green="0.56515908829999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="film" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="35"/>
+                                                        <color key="baseForegroundColor" systemColor="systemGreenColor"/>
+                                                    </buttonConfiguration>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDQ-Nq-e9S">
+                                                    <rect key="frame" x="274" y="34" width="50" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="f4b-dc-qov"/>
+                                                        <constraint firstAttribute="width" constant="50" id="QvS-wN-dUy"/>
+                                                        <constraint firstAttribute="height" constant="50" id="s1A-Sm-0N1"/>
                                                     </constraints>
-                                                </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tv" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BGo-8o-1cr">
-                                                    <rect key="frame" x="150" y="30.5" width="60" height="49"/>
-                                                    <color key="tintColor" systemColor="systemOrangeColor"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="book.closed" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="35"/>
+                                                        <color key="baseForegroundColor" systemColor="tintColor"/>
+                                                    </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="tapBook:" destination="gpi-xr-15O" eventType="touchUpInside" id="JDI-b9-UtS"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQX-dU-nyc">
+                                                    <rect key="frame" x="157" y="34" width="50" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="iXz-C0-vm7"/>
-                                                        <constraint firstAttribute="width" constant="60" id="m6e-JJ-Vya"/>
+                                                        <constraint firstAttribute="height" constant="50" id="9wM-IY-mK5"/>
+                                                        <constraint firstAttribute="width" constant="50" id="abv-mn-POL"/>
                                                     </constraints>
-                                                </imageView>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="tv" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="35"/>
+                                                        <color key="baseForegroundColor" systemColor="systemOrangeColor"/>
+                                                    </buttonConfiguration>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="TMF-qX-sDT" firstAttribute="top" secondItem="IQg-JD-FIB" secondAttribute="top" constant="30" id="CLg-Fk-JXg"/>
-                                                <constraint firstItem="yce-cn-JxL" firstAttribute="top" secondItem="IQg-JD-FIB" secondAttribute="top" constant="30" id="Cml-VZ-pO6"/>
-                                                <constraint firstItem="BGo-8o-1cr" firstAttribute="top" secondItem="IQg-JD-FIB" secondAttribute="top" constant="30" id="R6Z-eW-ePw"/>
-                                                <constraint firstItem="BGo-8o-1cr" firstAttribute="leading" secondItem="TMF-qX-sDT" secondAttribute="trailing" constant="50" id="TJO-ve-6yN"/>
-                                                <constraint firstItem="yce-cn-JxL" firstAttribute="leading" secondItem="BGo-8o-1cr" secondAttribute="trailing" constant="50" id="V2r-fX-aFv"/>
-                                                <constraint firstItem="BGo-8o-1cr" firstAttribute="leading" secondItem="TMF-qX-sDT" secondAttribute="trailing" constant="50" id="b5k-0i-e1G"/>
-                                                <constraint firstAttribute="trailing" secondItem="yce-cn-JxL" secondAttribute="trailing" constant="40" id="bWw-XV-u3l"/>
-                                                <constraint firstItem="TMF-qX-sDT" firstAttribute="leading" secondItem="IQg-JD-FIB" secondAttribute="leading" constant="40" id="hvT-oF-Y2I"/>
+                                                <constraint firstItem="bDQ-Nq-e9S" firstAttribute="centerY" secondItem="IQg-JD-FIB" secondAttribute="centerY" id="5It-Ni-7fr"/>
+                                                <constraint firstItem="ISf-xg-Kbk" firstAttribute="centerY" secondItem="IQg-JD-FIB" secondAttribute="centerY" id="MDK-BE-TVh"/>
+                                                <constraint firstItem="bQX-dU-nyc" firstAttribute="centerX" secondItem="IQg-JD-FIB" secondAttribute="centerX" id="Qvh-Cc-neR"/>
+                                                <constraint firstItem="bQX-dU-nyc" firstAttribute="centerY" secondItem="IQg-JD-FIB" secondAttribute="centerY" id="c3D-q3-ACg"/>
+                                                <constraint firstAttribute="trailing" secondItem="bDQ-Nq-e9S" secondAttribute="trailing" constant="40" id="dr3-Uo-mQs"/>
+                                                <constraint firstItem="ISf-xg-Kbk" firstAttribute="leading" secondItem="IQg-JD-FIB" secondAttribute="leading" constant="40" id="gQD-vP-6zz"/>
+                                                <constraint firstItem="bQX-dU-nyc" firstAttribute="centerX" secondItem="IQg-JD-FIB" secondAttribute="centerX" id="oLI-OM-lZ9"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -401,8 +416,14 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
