@@ -14,11 +14,14 @@ class DetailVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var posterImageView: UIImageView!
     
     var imageString = ""
     var titleString = ""
     var overViewString = ""
-        
+            
+    var expand = false
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -33,13 +36,14 @@ class DetailVC: UIViewController {
     func configureHeaderView() {
         titleLabel.text = titleString
         postImageView.setImage(imageUrl: imageString)
+        posterImageView.image = UIImage(named: titleString)
     }
     
     // MARK: - Action
     
     @objc func TapSeeMoreButton(button: UIButton) {
-        button.isSelected = !button.isSelected
-        
+        expand = !expand
+        tableView.reloadRows(at: [IndexPath(item: 0, section: 0)], with: .fade)
     }
 }
 
@@ -56,8 +60,10 @@ extension DetailVC: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row == 0 {
             let summaryCell = tableView.dequeueReusableCell(withIdentifier: "SummaryCell", for: indexPath) as! SummaryCell
             summaryCell.summaryLabel.text = overViewString
-            summaryCell.summaryLabel.numberOfLines = 2
+            summaryCell.summaryLabel.numberOfLines = expand ? 0 : 2
             
+            let img = expand ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down")
+            summaryCell.seeMoreButton.setImage(img, for: .normal)
             summaryCell.seeMoreButton.addTarget(self, action: #selector(TapSeeMoreButton(button:)), for: .touchUpInside)
             return summaryCell
         }
@@ -77,7 +83,7 @@ extension DetailVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return 130
+            return UITableView.automaticDimension
         }
         return UIScreen.main.bounds.height / 10
     }
