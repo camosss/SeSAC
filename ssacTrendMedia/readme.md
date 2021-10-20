@@ -123,8 +123,18 @@ var expand = false
 
 ...
 
+@objc func TapSeeMoreButton(button: UIButton) {
+    expand = !expand
+    tableView.reloadRows(at: [IndexPath(item: 0, section: 0)], with: .fade)
+}
+
+...
+
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     ...
+    
+    summaryCell.summaryLabel.numberOfLines = expand ? 0 : 2
+    
     let img = expand ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down")
     summaryCell.seeMoreButton.setImage(img, for: .normal)
     summaryCell.seeMoreButton.addTarget(self, action: #selector(TapSeeMoreButton(button:)), for: .touchUpInside)
@@ -136,9 +146,11 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
 
 ...
 
-@objc func TapSeeMoreButton(button: UIButton) {
-    expand = !expand
-    tableView.reloadRows(at: [IndexPath(item: 0, section: 0)], with: .fade)
+func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+     if indexPath.row == 0 {
+        return UITableView.automaticDimension
+     }
+     return UIScreen.main.bounds.height / 10
 }
 
 ```
