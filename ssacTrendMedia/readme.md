@@ -132,11 +132,14 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     }
     
     ...
-    
-    @objc func TapSeeMoreButton(button: UIButton) {
-        expand = !expand
-        tableView.reloadRows(at: [IndexPath(item: 0, section: 0)], with: .fade)
-    }
+}
+
+...
+
+@objc func TapSeeMoreButton(button: UIButton) {
+    expand = !expand
+    tableView.reloadRows(at: [IndexPath(item: 0, section: 0)], with: .fade)
+}
 
 ```
 
