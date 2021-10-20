@@ -106,3 +106,21 @@ do {
 ```swift
 cell.postImageView.setImage(imageUrl: tvShow.backdropImage)
 ```
+
+---
+
+## #3
+
+- 도서 화면을 컬렉션뷰로 구현
+
+<img src = "https://user-images.githubusercontent.com/74236080/137934089-e12ba499-edcb-4e4f-8605-6b11299c0d49.png" width="30%" height="30%">
+
+
+- Chevron 버튼을 클릭할 때마다 줄거리 전체가 보이고, 다시 클릭하면 줄거리 일부가 보이도록 구현
+
+***버튼 액션기능 줘야함,,***
+
+<img src = "https://user-images.githubusercontent.com/74236080/137934748-70bc5a87-88fb-463e-b680-4d930a8ebea5.png" width="30%" height="30%">
+
+
+
