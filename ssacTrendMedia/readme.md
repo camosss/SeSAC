@@ -4,7 +4,7 @@ https://user-images.githubusercontent.com/74236080/137635789-57feeb91-b8ac-4813-
 
 ---
 
-## #2
+## #2 데이터 전달
 
 1번 View (MainVC)에서 해당 TableCell 을 선택했을 때, 데이터를 전달하고 1번 View (MainVC)에서 받은 데이터를 통해 2번 View (DetailVC)를 그린다.
 
@@ -109,7 +109,7 @@ cell.postImageView.setImage(imageUrl: tvShow.backdropImage)
 
 ---
 
-## #3
+## #3 CollectionView, Resizing TableView Cell
 
 - 도서 화면을 컬렉션뷰로 구현
 
@@ -161,7 +161,7 @@ https://user-images.githubusercontent.com/74236080/138010921-fefa570a-22c4-40d4-
 
 ---
 
-## #4
+## #4 Map
 
 MapKit 구현 ***1***
 
@@ -172,7 +172,7 @@ MapKit 구현 ***1***
 - 위치 버튼을 누를 경우, 위치 권한을 거부한 경우라면 Alert을 띄워 iOS 설정 화면으로 유도해주세요. 
 ```
 
-***권한 허용 ✅***
+***권한 허용 ✅*** -> 사용자의 현재 위치가 MapView의 중심
 
 https://user-images.githubusercontent.com/74236080/138138771-d4c26bb2-1bb0-4026-b51e-cb68fb3a8de2.mov
 
