@@ -40,7 +40,11 @@ class MainVC: UIViewController {
     
     func configureNavigation() {
         navigationItem.title = "TREND MEDIA"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.triangle"), style: .plain, target: self, action: #selector(tapMenu))
+        
+        let menuButton = UIBarButtonItem(image: UIImage(systemName: "list.triangle"), style: .plain, target: self, action: #selector(tapMenu))
+        let mapButton = UIBarButtonItem(image: UIImage(systemName: "map")!, style: .plain, target: self, action: #selector(tapMap))
+        
+        navigationItem.leftBarButtonItems = [menuButton, mapButton]
         navigationController?.navigationBar.tintColor = .black
     }
     
@@ -48,6 +52,12 @@ class MainVC: UIViewController {
     
     @objc func tapMenu() {
         print("Menu")
+    }
+    
+    @objc func tapMap() {
+        let sb = UIStoryboard(name: "Map", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "MapVC") as! MapVC
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func tapBook(_ sender: UIButton) {
@@ -58,7 +68,6 @@ class MainVC: UIViewController {
     
     
     @IBAction func tapLink(_ sender: UIButton) {
-        
         let buttonPosition = sender.convert(CGPoint.zero, to: self.tableView)
         let indexPath = self.tableView.indexPathForRow(at:buttonPosition)
         let cell = self.tableView.cellForRow(at: indexPath!) as! MainCell

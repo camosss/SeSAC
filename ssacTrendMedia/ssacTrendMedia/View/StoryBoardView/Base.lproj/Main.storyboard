@@ -81,17 +81,27 @@
                                                 <constraint firstItem="bQX-dU-nyc" firstAttribute="centerX" secondItem="IQg-JD-FIB" secondAttribute="centerX" id="oLI-OM-lZ9"/>
                                             </constraints>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TREND MEDIA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5xc-tD-XFU">
+                                            <rect key="frame" x="20" y="39" width="374" height="30"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
+                                        <constraint firstItem="5xc-tD-XFU" firstAttribute="centerY" secondItem="Zwg-mR-W0L" secondAttribute="centerY" constant="-60" id="180-YN-Rcq"/>
                                         <constraint firstAttribute="trailing" secondItem="IQg-JD-FIB" secondAttribute="trailing" constant="25" id="5EZ-hX-bVh"/>
                                         <constraint firstItem="HCQ-lr-5lD" firstAttribute="leading" secondItem="Zwg-mR-W0L" secondAttribute="leading" id="8j7-QD-Lxu"/>
+                                        <constraint firstItem="5xc-tD-XFU" firstAttribute="centerX" secondItem="Zwg-mR-W0L" secondAttribute="centerX" id="DRh-Ez-kwP"/>
                                         <constraint firstAttribute="bottom" secondItem="IQg-JD-FIB" secondAttribute="bottom" constant="10" id="OAR-hL-cip"/>
+                                        <constraint firstItem="5xc-tD-XFU" firstAttribute="leading" secondItem="Zwg-mR-W0L" secondAttribute="leading" constant="20" id="QLf-GK-ESL"/>
                                         <constraint firstItem="IQg-JD-FIB" firstAttribute="leading" secondItem="Zwg-mR-W0L" secondAttribute="leading" constant="25" id="SY5-da-dq8"/>
                                         <constraint firstItem="HCQ-lr-5lD" firstAttribute="top" secondItem="Zwg-mR-W0L" secondAttribute="top" id="UMW-BK-crB"/>
                                         <constraint firstAttribute="bottom" secondItem="HCQ-lr-5lD" secondAttribute="bottom" constant="100" id="a0i-ra-hUO"/>
                                         <constraint firstItem="IQg-JD-FIB" firstAttribute="top" secondItem="Zwg-mR-W0L" secondAttribute="top" constant="100" id="c4G-yi-wL0"/>
                                         <constraint firstAttribute="trailing" secondItem="HCQ-lr-5lD" secondAttribute="trailing" id="cO3-nW-PC7"/>
+                                        <constraint firstAttribute="trailing" secondItem="5xc-tD-XFU" secondAttribute="trailing" constant="20" id="zCk-5K-cXN"/>
                                     </constraints>
                                 </view>
                                 <prototypes>

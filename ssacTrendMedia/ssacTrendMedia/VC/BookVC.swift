@@ -21,6 +21,8 @@ class BookVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = "책"
+        
         let nibName = UINib(nibName: BookCell.identifier, bundle: nil)
         collectionView.register(nibName, forCellWithReuseIdentifier: BookCell.identifier)
         
