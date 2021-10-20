@@ -118,9 +118,29 @@ cell.postImageView.setImage(imageUrl: tvShow.backdropImage)
 
 - Chevron 버튼을 클릭할 때마다 줄거리 전체가 보이고, 다시 클릭하면 줄거리 일부가 보이도록 구현
 
-***버튼 액션기능 줘야함,,***
+```swift
+var expand = false
 
-<img src = "https://user-images.githubusercontent.com/74236080/137934748-70bc5a87-88fb-463e-b680-4d930a8ebea5.png" width="30%" height="30%">
+...
 
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    ...
+    let img = expand ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down")
+    summaryCell.seeMoreButton.setImage(img, for: .normal)
+    summaryCell.seeMoreButton.addTarget(self, action: #selector(TapSeeMoreButton(button:)), for: .touchUpInside)
+    return summaryCell
+    }
+    
+    ...
+    
+    @objc func TapSeeMoreButton(button: UIButton) {
+        expand = !expand
+        tableView.reloadRows(at: [IndexPath(item: 0, section: 0)], with: .fade)
+    }
+
+```
+
+
+https://user-images.githubusercontent.com/74236080/138010921-fefa570a-22c4-40d4-824d-09878516a13e.mov
 
 
