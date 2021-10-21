@@ -172,10 +172,13 @@ https://user-images.githubusercontent.com/74236080/138010921-fefa570a-22c4-40d4-
 - 위치 버튼을 누를 경우, 위치 권한을 거부한 경우라면 Alert을 띄워 iOS 설정 화면으로 유도해주세요. 
 ```
 
-| 권한 허용 ✅ | 권한 거부 ❌ |
-| ------ | ------ |
-| https://user-images.githubusercontent.com/74236080/138138771-d4c26bb2-1bb0-4026-b51e-cb68fb3a8de2.mov
- | https://user-images.githubusercontent.com/74236080/138138843-276e79a8-79ef-462b-8b50-8e986ffaa01f.mov |
+***권한 허용 ✅ ***
+
+https://user-images.githubusercontent.com/74236080/138138771-d4c26bb2-1bb0-4026-b51e-cb68fb3a8de2.mov
+
+***권한 거부 ❌ ***
+
+https://user-images.githubusercontent.com/74236080/138138843-276e79a8-79ef-462b-8b50-8e986ffaa01f.mov
 
 
 ```swift
@@ -201,9 +204,18 @@ https://user-images.githubusercontent.com/74236080/138139395-91e5001a-9b97-4e04-
 4️⃣   권한 관련 코드 다시
 
 
-| 핀의 주소 | Annotations | 권한 거부 ❌ |
-| ------ | ------ | ------ |
-| https://user-images.githubusercontent.com/74236080/138279810-497b0b5c-1401-4550-9cb0-737e4de5b9a8.mov | https://user-images.githubusercontent.com/74236080/138279831-cf5d24cf-44fb-4e2e-b6b7-3fbc1ef095b2.mov | https://user-images.githubusercontent.com/74236080/138280933-02f09604-8bf7-4d6f-bea1-345802f6224d.mov |
+***핀의 주소***
+
+https://user-images.githubusercontent.com/74236080/138279810-497b0b5c-1401-4550-9cb0-737e4de5b9a8.mov
+
+***Annotations***
+
+https://user-images.githubusercontent.com/74236080/138279831-cf5d24cf-44fb-4e2e-b6b7-3fbc1ef095b2.mov
+
+
+***권한 거부 ❌***
+
+https://user-images.githubusercontent.com/74236080/138280933-02f09604-8bf7-4d6f-bea1-345802f6224d.mov
 
 
 
