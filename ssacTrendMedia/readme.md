@@ -193,5 +193,20 @@ https://user-images.githubusercontent.com/74236080/138138843-276e79a8-79ef-462b-
 
 https://user-images.githubusercontent.com/74236080/138139395-91e5001a-9b97-4e04-960b-76c9a50a8511.mov
 
+---
+
+MapKit 구현 ***2***
+
+- 지도 화면을 움직일 때, 지도 중앙에 표시되는 주소 띄우기
+- 필터버튼 변경
+- Annotations 코드 깔끔하게,,
+
+https://user-images.githubusercontent.com/74236080/138279810-497b0b5c-1401-4550-9cb0-737e4de5b9a8.mov
+
+
+https://user-images.githubusercontent.com/74236080/138279831-cf5d24cf-44fb-4e2e-b6b7-3fbc1ef095b2.mov
+
+
+
 
 
