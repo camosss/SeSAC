@@ -163,7 +163,7 @@ https://user-images.githubusercontent.com/74236080/138010921-fefa570a-22c4-40d4-
 
 ## #4 Map
 
-MapKit 구현 ***1***
+### MapKit 구현 ***1***
 
 ```swift
 - 사용자가 위치 권한을 허용한 경우에는 맵뷰의 중심을 사용자의 현재 위치로 설정합니다.
@@ -195,16 +195,23 @@ https://user-images.githubusercontent.com/74236080/138139395-91e5001a-9b97-4e04-
 
 ---
 
-MapKit 구현 ***2***
+### MapKit 구현 ***2***
 
-- 지도 화면을 움직일 때, 지도 중앙에 표시되는 주소 띄우기
-- 필터버튼 변경
-- Annotations 코드 깔끔하게,,
+1️⃣  화면을 움직일 때, 지도 중앙에 표시되는 핀의 주소 띄우기
+2️⃣  필터버튼 변경
+3️⃣  Annotations 코드 정리
+4️⃣  권한 관련 코드 다시
 
+
+***화면을 움직일 때, 지도 중앙에 표시되는 핀의 주소 띄우기***
 https://user-images.githubusercontent.com/74236080/138279810-497b0b5c-1401-4550-9cb0-737e4de5b9a8.mov
 
-
+***Annotations***
 https://user-images.githubusercontent.com/74236080/138279831-cf5d24cf-44fb-4e2e-b6b7-3fbc1ef095b2.mov
+
+
+***권한 거부 ❌***
+https://user-images.githubusercontent.com/74236080/138280933-02f09604-8bf7-4d6f-bea1-345802f6224d.mov
 
 
 
