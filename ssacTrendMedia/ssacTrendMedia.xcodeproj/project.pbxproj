@@ -123,13 +123,13 @@
 				B44BE5EC27195E8B005F1C75 /* Model */,
 				B44BE5ED27195E97005F1C75 /* View */,
 				B44BE5EE27195EA6005F1C75 /* VC */,
+				B44682592720755400FD031E /* AlertHelper.swift */,
 				B44BE5D627195D79005F1C75 /* SceneDelegate.swift */,
 				B44BE5D427195D79005F1C75 /* AppDelegate.swift */,
 				B429E7B7271D5B5400BF3BE7 /* ExtensionKingfisher.swift */,
 				B44BE5DD27195D7B005F1C75 /* Assets.xcassets */,
 				B44BE5DF27195D7B005F1C75 /* LaunchScreen.storyboard */,
 				B44BE5E227195D7B005F1C75 /* Info.plist */,
-				B44682592720755400FD031E /* AlertHelper.swift */,
 			);
 			path = ssacTrendMedia;
 			sourceTree = "<group>";

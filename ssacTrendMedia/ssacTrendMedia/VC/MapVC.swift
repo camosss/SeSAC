@@ -14,25 +14,26 @@ class MapVC: UIViewController {
     // MARK: - Properties
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var filterButton: UIButton!
     
-    var manager = CLLocationManager()
+    var locationManager = CLLocationManager()
     var previousLocation: CLLocation? // 현재 위치 저장
+    let regionInMeters: Double = 10000
     
     let mapAnnotations = MapAnnotations()
-    let userDefaults = UserDefaults.standard
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         checkLocationServices()
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "필터", style: .plain, target: self, action: #selector(tapFilter))
+        filterButton.layer.cornerRadius = 50/2
     }
     
     // MARK: - Action
     
-    @objc func tapFilter() {
+    @IBAction func handleFilter(_ sender: UIButton) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         for theater in TheaterOptions.allCases {
@@ -52,54 +53,61 @@ class MapVC: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    
     // MARK: - Helper
     
     // 1. 위치서비스 권한 확인
     func checkLocationServices() {
         let authorizationStatus: CLAuthorizationStatus
         
-        if #available(iOS 14, *) { authorizationStatus = manager.authorizationStatus }
+        if #available(iOS 14, *) { authorizationStatus = locationManager.authorizationStatus }
         else { authorizationStatus = CLLocationManager.authorizationStatus() }
         
         if CLLocationManager.locationServicesEnabled() {
             setupLocationManager()
             checkLocationAuthorization(authorizationStatus)
         } else {
-            AlertHelper.setAlert(title: "오류", message: "위치 서비스 권한을 허용해야 서비스 정상 이용이 가능합니다. 권한 요청을 허용해주세요.", okMessage: "확인", over: self)
+            AlertHelper.setAlert(title: "권한 요청을 허용해주세요.", message: "위치 서비스 권한을 허용해야 서비스 정상 이용이 가능합니다.", okMessage: "확인", over: self)
         }
     }
     
-    // 2. 위치 업데이트
+    // 2. 위치 관리 설정
     func setupLocationManager() {
-        manager.delegate = self
-        manager.requestWhenInUseAuthorization() // 사용자에게 승인 요구
-        manager.desiredAccuracy = kCLLocationAccuracyBest // 정확도 (정밀한 정확도는 배터리를 많이 소모한다)
-        manager.startUpdatingLocation()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest // 정확도
+        mapView.delegate = self
     }
     
-    // 3. 권한 설정
+    // 3. 앱 내에서의 위치 서비스 권한을 요청
     func checkLocationAuthorization(_ authorizationStatus: CLAuthorizationStatus) {
+        
         // switch-case문을 통해 GPS 권한 설정 여부에 따라 로직을 나눈다.
         switch authorizationStatus {
-        case .authorizedAlways, .authorizedWhenInUse:
+        case .authorizedWhenInUse:
             print("GPS 권한 설정됨")
-            startTrackingUserLocation() // 4 사용자 위치
+            startTrackingUserLocation()
             
         case .notDetermined: // 아직 결정 x - 시스템 팝업 호출
             print("GPS 권한 설정되지 않음")
-            setupLocationManager()
+            locationManager.requestWhenInUseAuthorization()
             
         case .denied, .restricted: // 거부 - 설정 창으로 가서 권한을 변경하도록 유도
             print("GPS 권한 요청 거부됨")
             
-            AlertHelper.okHandlerAlert(title: "위치 서비스 권한이 거부되었습니다.", message: "설정에서 위치 서비스 권한을 승인해주세요.", onConfirm: {
+            AlertHelper.okAndNoHandlerAlert(title: "위치 서비스 권한이 거부되었습니다.", message: "설정에서 위치 서비스 권한을 승인해주세요.", onConfirm: {
                 guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
                 
                 if UIApplication.shared.canOpenURL(url) {
                     UIApplication.shared.open(url)
                 }
+            }, onCancel: {
+                self.defaultLocation()
+                self.title = "서울 시청"
+                self.addressLabel.text = "위치 서비스 권한을 허용해주세요."
             }, over: self)
             
+        case .authorizedAlways:
+            print("항상 허용")
         default:
             print("GPS: Default")
         }
@@ -108,137 +116,120 @@ class MapVC: UIViewController {
     // 4-1. 권한 허용 X, 기본 주소
     func defaultLocation() {
         let coordinate = CLLocationCoordinate2D(latitude: 37.5638155, longitude: 126.965426)
-        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-        let region = MKCoordinateRegion(center: coordinate, span: span)
-        
+        let region = MKCoordinateRegion(center: coordinate,
+                                        latitudinalMeters: regionInMeters,
+                                        longitudinalMeters: regionInMeters)
         mapView.setRegion(region, animated: true)
 
         let annotation = MKPointAnnotation()
         annotation.title = "서울 시청"
         annotation.coordinate = coordinate
-        
         mapView.addAnnotation(annotation)
     }
     
     // 4-2. 권한이 허용됐을 때, 사용자 위치 업데이트
     func startTrackingUserLocation() {
-        manager.startUpdatingLocation()
+        mapView.showsUserLocation = true // 현위치
         centerViewOnUserLocation()
-        previousLocation = getCenterLocation(for: mapView) // 위치 저장
+        locationManager.startUpdatingLocation() // 지도를 움직일때마다 현위치를 업데이트한다.
+        previousLocation = getPinCenterLocation(for: mapView)
     }
     
-    // 5. 현재 위치 반경
+    // 사용자 위치 확대
     func centerViewOnUserLocation() {
-        if let location = manager.location?.coordinate {
-            let region = MKCoordinateRegion(center: location, latitudinalMeters: 100, longitudinalMeters: 100)
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion(center: location,
+                                            latitudinalMeters: regionInMeters,
+                                            longitudinalMeters: regionInMeters)
+            print(location.latitude, location.longitude)
             mapView.setRegion(region, animated: true)
         }
     }
     
-    // 6 사용자 위치 (위도, 경도) 가져오기
-    func getCenterLocation(for mapView: MKMapView) -> CLLocation {
+    // 핀의 중심 위치
+    func getPinCenterLocation(for mapView: MKMapView) -> CLLocation {
         let latitude = mapView.centerCoordinate.latitude
         let longitude = mapView.centerCoordinate.longitude
         
-        getCurrentAddress(location: CLLocation(latitude: latitude, longitude: longitude))
         return CLLocation(latitude: latitude, longitude: longitude)
-    }
-    
-    // 7. 현재 위치 주소
-    func getCurrentAddress(location: CLLocation) {
-        let location: CLLocation = location
-        let geoCoder = CLGeocoder()
-        let locale = Locale(identifier: "Ko-kr") // 한국어 주소 설정
-        
-        geoCoder.reverseGeocodeLocation(location, preferredLocale: locale) { placemarks, error in
-            guard error == nil, let placemark = placemarks?.first else {
-                print("주소 설정 불가능")
-                return
-            }
-            // UI 업데이트마다 메인 스레드로 다시 이동
-            DispatchQueue.main.async {
-                let address = "\(placemark.administrativeArea ?? "") \(placemark.locality ?? "") \(placemark.subThoroughfare ?? "") \(placemark.thoroughfare ?? "")"
-                self.title = address
-            }
-        }
     }
     
     // MARK: - Annotations
     
-    func getTheaterAnnotations(_ theater: String) {
-        let annotations = mapView.annotations
-        mapView.removeAnnotations(annotations)
-        
-        currentAnnotations()
-        
-        for location in mapAnnotations.mapAnnotations {
-            if location.type == theater {
-                let theaterCoordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-                let theaterAnnotation = MKPointAnnotation()
-                
-                theaterAnnotation.title = location.location
-                theaterAnnotation.coordinate = theaterCoordinate
-                mapView.addAnnotation(theaterAnnotation)
-            }
-        }
-    }
-    
-    // 현재 사용자 위치
-    func currentAnnotations() {
-        let coordinate = userDefaults.object(forKey: "coordinate") as! [Double]
-        let latitude = coordinate[0]
-        let longitude = coordinate[1]
-        print(latitude, longitude)
-        let nowCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        
-        let nowAnnotaion = MKPointAnnotation()
-        nowAnnotaion.title = "현위치"
-        nowAnnotaion.coordinate = nowCoordinate
-        mapView.addAnnotation(nowAnnotaion)
-    }
-    
-    // 전체 위치
+    // 전체 위치 Annotations
     func allAnnotations() {
         let annotations = mapView.annotations
         mapView.removeAnnotations(annotations)
-        
-        currentAnnotations()
-        
+
         for location in mapAnnotations.mapAnnotations {
             let theaterCoordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
             let theaterAnnotation = MKPointAnnotation()
-            
+
             theaterAnnotation.title = location.location
             theaterAnnotation.coordinate = theaterCoordinate
             mapView.addAnnotation(theaterAnnotation)
         }
     }
     
+    // 타입별 영화관 위치 Annotations
+    func getTheaterAnnotations(_ theater: String) {
+        let annotations = mapView.annotations
+        mapView.removeAnnotations(annotations)
+        
+        for location in mapAnnotations.mapAnnotations {
+            if location.type == theater {
+                let theaterCoordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+                let theaterAnnotation = MKPointAnnotation()
+
+                theaterAnnotation.title = location.location
+                theaterAnnotation.coordinate = theaterCoordinate
+                mapView.addAnnotation(theaterAnnotation)
+            }
+        }
+    }
+
 }
 
 // MARK: - CLLocationManagerDelegate
 
 extension MapVC: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let coordinate = locations.last?.coordinate {
-            let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-            let region = MKCoordinateRegion(center: coordinate, span: span)
-            
-            mapView.setRegion(region, animated: true)
-            UserDefaults.standard.set([coordinate.latitude, coordinate.longitude], forKey: "coordinate")
-            
-            manager.startUpdatingLocation()
-            allAnnotations()
-        }
+        
+        guard let location = locations.last else { return }
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion.init(center: center, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+        mapView.setRegion(region, animated: true)
+        allAnnotations() // 전체 annotation 업데이트
     }
-    
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        checkLocationServices()
+        checkLocationAuthorization(status)
     }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        AlertHelper.setAlert(title: "위치를 찾을 수 없습니다.", message: "위치 서비스 권한을 허용해주세요.", okMessage: "확인", over: self)
-        defaultLocation()
+}
+
+// MARK: - MKMapViewDelegate
+
+extension MapVC: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        let center = getPinCenterLocation(for: mapView)
+        let geoCoder = CLGeocoder()
+        let locale = Locale(identifier: "Ko-kr")
+        
+        guard let previousLocation = self.previousLocation else { return }
+        guard center.distance(from: previousLocation) > 50 else { return }
+        self.previousLocation = center
+        
+        geoCoder.reverseGeocodeLocation(center, preferredLocale: locale) { placemark, error in
+            guard error == nil, let place = placemark?.first else {
+                print("주소 설정 불가능")
+                return
+            }
+            
+            // UI 업데이트마다 메인 스레드로 다시 이동
+            DispatchQueue.main.async {
+                let address = "\(place.administrativeArea ?? "") \(place.locality ?? "") \(place.subThoroughfare ?? "") \(place.thoroughfare ?? "")"
+                self.addressLabel.text = address
+            }
+        }
     }
 }
