@@ -204,13 +204,16 @@ https://user-images.githubusercontent.com/74236080/138139395-91e5001a-9b97-4e04-
 
 
 ***화면을 움직일 때, 지도 중앙에 표시되는 핀의 주소 띄우기***
+
 https://user-images.githubusercontent.com/74236080/138279810-497b0b5c-1401-4550-9cb0-737e4de5b9a8.mov
 
 ***Annotations***
+
 https://user-images.githubusercontent.com/74236080/138279831-cf5d24cf-44fb-4e2e-b6b7-3fbc1ef095b2.mov
 
 
 ***권한 거부 ❌***
+
 https://user-images.githubusercontent.com/74236080/138280933-02f09604-8bf7-4d6f-bea1-345802f6224d.mov
 
 
