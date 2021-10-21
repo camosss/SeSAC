@@ -198,8 +198,11 @@ https://user-images.githubusercontent.com/74236080/138139395-91e5001a-9b97-4e04-
 ### MapKit 구현 ***2***
 
 1️⃣  화면을 움직일 때, 지도 중앙에 표시되는 핀의 주소 띄우기
+
 2️⃣  필터버튼 변경
+
 3️⃣  Annotations 코드 정리
+
 4️⃣  권한 관련 코드 다시
 
 
