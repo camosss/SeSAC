@@ -141,7 +141,6 @@ class MapVC: UIViewController {
             let region = MKCoordinateRegion(center: location,
                                             latitudinalMeters: regionInMeters,
                                             longitudinalMeters: regionInMeters)
-            print(location.latitude, location.longitude)
             mapView.setRegion(region, animated: true)
         }
     }
