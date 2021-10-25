@@ -15,3 +15,7 @@
 - [쇼핑 리스트](https://github.com/camosss/SSAC/tree/main/ssacShoppingList)
 
 - [트렌드 미디어](https://github.com/camosss/SSAC/tree/main/ssacTrendMedia)
+
+- [당첨 번호](https://github.com/camosss/SSAC/tree/main/ssacLottery)
+
+- [날씨](https://github.com/camosss/SSAC/tree/main/ssacWeather)
