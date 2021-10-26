@@ -129,10 +129,7 @@ class WeatherVC: UIViewController {
         if CLLocationManager.locationServicesEnabled() {
             checkLocationAuthorization(authorizationStatus)
         } else {
-            let alert = UIAlertController(title: "위치 설정 권한이 필요합니다", message: "설정에 위치 서비스를 켜주세요", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "확인", style: .default)
-            alert.addAction(ok)
-            present(alert, animated: true, completion: nil)
+            AlertHelper.setAlert(title: "위치 설정 권한이 필요합니다", message: "설정에 위치 서비스를 켜주세요", okMessage: "확인", over: self)
         }
     }
     
