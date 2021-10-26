@@ -94,14 +94,14 @@ class WeatherVC: UIViewController {
             case .success(let data):
                 let json = JSON(data)
                 print(json)
-                self.addWeatherData(json: json)
+                self.configureData(json: json)
             case .failure(let error):
                 print(error)
             }
         }
     }
     
-    func addWeatherData(json: JSON) {
+    func configureData(json: JSON) {
         let temp = json["main"]["temp"].doubleValue
         temperatureLabel.text = "지금은 \(String(format: "%.1f", temp))℃ 에요"
         
