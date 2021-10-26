@@ -24,7 +24,6 @@ class WeatherVC: UIViewController {
     @IBOutlet weak var textLabel: UILabel!
     
     @IBOutlet weak var weatherImageView: UIImageView!
-    
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var refreshButton: UIButton!
     
