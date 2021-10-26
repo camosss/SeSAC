@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		B467233627282F6F00182649 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B467233527282F6F00182649 /* Kingfisher */; };
 		B4672338272832FA00182649 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4672337272832FA00182649 /* AlertHelper.swift */; };
-		B467233A2728364E00182649 /* WeatherInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = B46723392728364E00182649 /* WeatherInfo.plist */; };
 		B467233C2728382100182649 /* HideApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B467233B2728382100182649 /* HideApiKey.swift */; };
+		B467233E272841EF00182649 /* WeatherInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = B467233D272841EF00182649 /* WeatherInfo.plist */; };
 		B48E1C012726984900712403 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48E1C002726984900712403 /* AppDelegate.swift */; };
 		B48E1C032726984900712403 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48E1C022726984900712403 /* SceneDelegate.swift */; };
 		B48E1C082726984900712403 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B48E1C062726984900712403 /* Main.storyboard */; };
@@ -23,8 +23,8 @@
 
 /* Begin PBXFileReference section */
 		B4672337272832FA00182649 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
-		B46723392728364E00182649 /* WeatherInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = WeatherInfo.plist; sourceTree = "<group>"; };
 		B467233B2728382100182649 /* HideApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideApiKey.swift; sourceTree = "<group>"; };
+		B467233D272841EF00182649 /* WeatherInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = WeatherInfo.plist; sourceTree = "<group>"; };
 		B48E1BFD2726984900712403 /* ssacWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ssacWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B48E1C002726984900712403 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B48E1C022726984900712403 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,8 +76,8 @@
 				B48E1C062726984900712403 /* Main.storyboard */,
 				B48E1C142726987F00712403 /* WeatherVC.swift */,
 				B4672337272832FA00182649 /* AlertHelper.swift */,
-				B46723392728364E00182649 /* WeatherInfo.plist */,
 				B467233B2728382100182649 /* HideApiKey.swift */,
+				B467233D272841EF00182649 /* WeatherInfo.plist */,
 			);
 			path = ssacWeather;
 			sourceTree = "<group>";
@@ -153,7 +153,7 @@
 				B48E1C0D2726984B00712403 /* LaunchScreen.storyboard in Resources */,
 				B48E1C0A2726984B00712403 /* Assets.xcassets in Resources */,
 				B48E1C082726984900712403 /* Main.storyboard in Resources */,
-				B467233A2728364E00182649 /* WeatherInfo.plist in Resources */,
+				B467233E272841EF00182649 /* WeatherInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
