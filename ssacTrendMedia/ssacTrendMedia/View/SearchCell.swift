@@ -11,10 +11,11 @@ class SearchCell: UITableViewCell {
     
     // MARK: - Properties
 
-    @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var releaseDateLabel: UILabel!
-    @IBOutlet weak var overViewLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    var boxOfficeModel: BoxOffice?
     
     // MARK: - Lifecycle
     
