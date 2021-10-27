@@ -165,6 +165,8 @@ https://user-images.githubusercontent.com/74236080/138010921-fefa570a-22c4-40d4-
 
 ### MapKit 구현
 
+[코드](https://github.com/camosss/SSAC/blob/main/ssacTrendMedia/ssacTrendMedia/VC/MapVC.swift)
+
 ```swift
 - 사용자가 위치 권한을 허용한 경우에는 맵뷰의 중심을 사용자의 현재 위치로 설정합니다.
 - 사용자가 위치 권한을 거부한 경우에는 서울시청이 맵뷰의 중심이 되도록 설정합니다.
@@ -202,6 +204,36 @@ https://user-images.githubusercontent.com/74236080/138279831-cf5d24cf-44fb-4e2e-
 - ***권한 거부 ❌***
 
 https://user-images.githubusercontent.com/74236080/138280933-02f09604-8bf7-4d6f-bea1-345802f6224d.mov
+
+---
+
+## #5 영화진흥위원회 API 구현하기
+
+```swift
+영화진흥위원회 API 구현하기
+- 영화진흥위원회 API를 통해 어제 날짜 기준으로 일간 박스오피스 정보를 보여
+주는 예제입니다.
+- 새 프로젝트에 작업해주셔도 되시고, 트렌드 미디어 프로젝트에 작업해주셔도
+괜찮습니다.
+- 어제 날짜 기준으로 네트워크 통신을 진행하고, Response에서 영화 제목에 관
+련된 정보만 문자열 배열에 담아줍니다. 그리고 테이블뷰에 문자열 배열에 담긴
+정보를 보여주세요.
+- (도전) 처음 네트워크 통신을 할 때, 고정된 날짜값이 아니라 항상 어제 기준의
+날짜로 일간 박스오피스 정보를 가지고 오고 싶다면 어떻게 해야 할까요?
+```
+
+
+- ***API Data***
+
+<img src = "https://user-images.githubusercontent.com/74236080/139110615-73b32ea0-b7bc-44a3-b8cf-8e426c963377.png" width="60%" height="60%">
+
+
+
+
+https://user-images.githubusercontent.com/74236080/139110663-3e43394d-2bea-405f-b8a8-df70f002dc58.mov
+
+
+
 
 
 
