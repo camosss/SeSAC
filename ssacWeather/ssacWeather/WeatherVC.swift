@@ -82,11 +82,11 @@ class WeatherVC: UIViewController {
     func fetchCoordinate(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         let apikey = Bundle.main.apiKey
         let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=\(apikey)&units=metric"
-        
+
         let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitude)"
         getData(with: urlString)
     }
-    
+
     func getData(with urlString: String) {
         AF.request(urlString, method: .get).validate().responseJSON { response in
             switch response.result {
@@ -99,17 +99,17 @@ class WeatherVC: UIViewController {
             }
         }
     }
-    
+
     func configureData(json: JSON) {
         let temp = json["main"]["temp"].doubleValue
         temperatureLabel.text = "지금은 \(String(format: "%.1f", temp))℃ 에요"
-        
+
         let humidity = json["main"]["humidity"].doubleValue
         humidityLabel.text = "\(humidity)% 만큼 습해요"
-        
+
         let windSpeed = json["wind"]["speed"].doubleValue
         windLabel.text = "\(windSpeed)m/s의 바람이 불어요"
-        
+
         let weatherImage = json["weather"][0]["icon"]
         let url = URL(string: "https://openweathermap.org/img/wn/\(weatherImage)@2x.png")
         weatherImageView.kf.setImage(with: url)
