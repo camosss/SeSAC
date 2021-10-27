@@ -163,7 +163,7 @@ https://user-images.githubusercontent.com/74236080/138010921-fefa570a-22c4-40d4-
 
 ## #4 Map
 
-### MapKit 구현 ***#1***
+### MapKit 구현
 
 ```swift
 - 사용자가 위치 권한을 허용한 경우에는 맵뷰의 중심을 사용자의 현재 위치로 설정합니다.
@@ -171,15 +171,6 @@ https://user-images.githubusercontent.com/74236080/138010921-fefa570a-22c4-40d4-
 - 사용자의 위치를 네비게이션 타이틀에 표시합니다. ( 00구 00동으로 표시 )
 - 위치 버튼을 누를 경우, 위치 권한을 거부한 경우라면 Alert을 띄워 iOS 설정 화면으로 유도해주세요. 
 ```
-
-- ***권한 허용 ✅***
-
-https://user-images.githubusercontent.com/74236080/138138771-d4c26bb2-1bb0-4026-b51e-cb68fb3a8de2.mov
-
-- ***권한 거부 ❌***
-
-https://user-images.githubusercontent.com/74236080/138138843-276e79a8-79ef-462b-8b50-8e986ffaa01f.mov
-
 
 ```swift
 주변 영화관을 맵뷰 어노테이션으로 표시합니다.
@@ -189,11 +180,6 @@ https://user-images.githubusercontent.com/74236080/138138843-276e79a8-79ef-462b-
 - 전체보기를 누르면 최초 뷰컨트롤러 진입과 동일하게 전체 어노테이션을 보여주세요.
 ```
 
-https://user-images.githubusercontent.com/74236080/138139395-91e5001a-9b97-4e04-960b-76c9a50a8511.mov
-
----
-
-### MapKit 구현 ***#2***
 
 1️⃣   화면을 움직일 때, 지도 중앙에 표시되는 핀의 주소 띄우기
 
