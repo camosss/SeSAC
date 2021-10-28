@@ -166,6 +166,7 @@ https://user-images.githubusercontent.com/74236080/138010921-fefa570a-22c4-40d4-
 ### MapKit 구현
 
 [코드](https://github.com/camosss/SSAC/blob/main/ssacTrendMedia/ssacTrendMedia/VC/MapVC.swift)
+[Map 정리](https://www.notion.so/Map-87b87d6f0be046c9b2a8fbd54fee1306)
 
 ```swift
 - 사용자가 위치 권한을 허용한 경우에는 맵뷰의 중심을 사용자의 현재 위치로 설정합니다.
@@ -183,31 +184,36 @@ https://user-images.githubusercontent.com/74236080/138010921-fefa570a-22c4-40d4-
 ```
 
 
-1️⃣   화면을 움직일 때, 지도 중앙에 표시되는 핀의 주소 띄우기
+1️⃣   권한 요청
 
-2️⃣   필터버튼 변경
+2️⃣   Annotations 필터
 
-3️⃣   Annotations 코드 정리
-
-4️⃣   권한 관련 코드 다시
-
-
-- ***핀의 주소***
-
-https://user-images.githubusercontent.com/74236080/138279810-497b0b5c-1401-4550-9cb0-737e4de5b9a8.mov
-
-- ***Annotations***
-
-https://user-images.githubusercontent.com/74236080/138279831-cf5d24cf-44fb-4e2e-b6b7-3fbc1ef095b2.mov
+3️⃣   화면을 움직일 때, 지도 중앙에 표시되는 핀의 주소 띄우기
 
 
 - ***권한 거부 ❌***
 
 https://user-images.githubusercontent.com/74236080/138280933-02f09604-8bf7-4d6f-bea1-345802f6224d.mov
 
+
+- ***Annotations***
+
+https://user-images.githubusercontent.com/74236080/138279831-cf5d24cf-44fb-4e2e-b6b7-3fbc1ef095b2.mov
+
+
+
+- ***핀의 주소***
+
+https://user-images.githubusercontent.com/74236080/138279810-497b0b5c-1401-4550-9cb0-737e4de5b9a8.mov
+
+
+
+
 ---
 
-## #5 영화진흥위원회 API 구현하기
+## #5 영화진흥위원회 API
+
+[코드](https://github.com/camosss/SSAC/blob/main/ssacTrendMedia/ssacTrendMedia/VC/SearchVC.swift)
 
 ```swift
 영화진흥위원회 API 구현하기
@@ -225,15 +231,49 @@ https://user-images.githubusercontent.com/74236080/138280933-02f09604-8bf7-4d6f-
 
 - ***API Data***
 
-<img src = "https://user-images.githubusercontent.com/74236080/139110615-73b32ea0-b7bc-44a3-b8cf-8e426c963377.png" width="60%" height="60%">
 
+<img src = "https://user-images.githubusercontent.com/74236080/139110615-73b32ea0-b7bc-44a3-b8cf-8e426c963377.png" width="40%" height="40%">
 
+ViewController가 검색창에 응답하기 위해 ***UISearchResultsUpdating*** 프로토콜을 사용해서 검색창에 입력한 정보를 기반으로 검색 결과 업데이트한다.
+(searchText에 날짜를 입력하여 데이터를 가져온다.)
 
+```swift
+searchController.searchResultsUpdater = self
+
+...
+
+extension SearchVC: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchText = searchController.searchBar.text ?? ""
+        fetchData(date: searchText)
+    }
+}
+```
 
 https://user-images.githubusercontent.com/74236080/139110663-3e43394d-2bea-405f-b8a8-df70f002dc58.mov
 
 
+---
 
+## #6 TMDB API
+
+[코드](https://github.com/camosss/SSAC/blob/main/ssacTrendMedia/ssacTrendMedia/VC/MainVC.swift)
+
+```swift
+API: https://developers.themoviedb.org/3/trending/get-trending
+
+- 트렌드 미디어 프로젝트 첫 화면에 daily/weekly 트렌드 정보를 보여줍니다.
+Media Type을 movie, tv 중 하나로 설정한 URL을 통해 네트워크 통신 실습을
+진행합니다.
+- 해당 API에서 제공해주는 response 값들을 확인해보는 연습도 함께 합니다.
+- 페이지네이션 기능도 구현해봅니다.
+- (도전) Media Type을 all로 설정한 경우에는, tv, movie, person의 정보가 섞
+여서 response가 오게되고, 각 Media Type마다 json response 구조는 조금
+씩 달라집니다. 하나의 모델에 모든 Media Type의 정보를 포함하고 테이블뷰에
+보여주고 싶다면 어떻게 해야 할까요?
+```
+
+https://user-images.githubusercontent.com/74236080/139242973-94bbcd77-7ee9-45fa-b889-b51d735fcb6d.mov
 
 
 
