@@ -18,6 +18,7 @@
 		B42AFEE42729397900E7E826 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B42AFEE32729397900E7E826 /* Alamofire */; };
 		B42AFEFB2729601100E7E826 /* kakaoInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = B42AFEFA2729601100E7E826 /* kakaoInfo.plist */; };
 		B42AFEFD2729603800E7E826 /* HideAPIKEY.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42AFEFC2729603800E7E826 /* HideAPIKEY.swift */; };
+		B462F207272A223F004A12BF /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = B462F206272A223F004A12BF /* JGProgressHUD */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B42AFEE12729397000E7E826 /* SwiftyJSON in Frameworks */,
+				B462F207272A223F004A12BF /* JGProgressHUD in Frameworks */,
 				B42AFEE42729397900E7E826 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -99,6 +101,7 @@
 			packageProductDependencies = (
 				B42AFEE02729397000E7E826 /* SwiftyJSON */,
 				B42AFEE32729397900E7E826 /* Alamofire */,
+				B462F206272A223F004A12BF /* JGProgressHUD */,
 			);
 			productName = ssacVision;
 			productReference = B42AFEC42729391400E7E826 /* ssacVision.app */;
@@ -131,6 +134,7 @@
 			packageReferences = (
 				B42AFEDF2729397000E7E826 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				B42AFEE22729397800E7E826 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				B462F205272A223F004A12BF /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = B42AFEC52729391400E7E826 /* Products */;
 			projectDirPath = "";
@@ -402,6 +406,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		B462F205272A223F004A12BF /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -414,6 +426,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B42AFEE22729397800E7E826 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		B462F206272A223F004A12BF /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B462F205272A223F004A12BF /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
