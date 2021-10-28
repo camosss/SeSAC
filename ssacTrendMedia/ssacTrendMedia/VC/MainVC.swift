@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class MainVC: UIViewController {
     
@@ -13,8 +15,10 @@ class MainVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerIconView: UIView!
-    
-    let tvShowInfo = TvShowInfo()
+        
+    private var media = [Media]() {
+        didSet { tableView.reloadData() }
+    }
     
     // MARK: - Lifecycle
     
@@ -22,7 +26,8 @@ class MainVC: UIViewController {
         super.viewDidLoad()
         configureHeader()
         configureNavigation()
-        
+        fetchData()
+
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
@@ -47,7 +52,54 @@ class MainVC: UIViewController {
         navigationItem.leftBarButtonItems = [menuButton, mapButton]
         navigationController?.navigationBar.tintColor = .black
     }
+
+    // MARK: - Fetch Data
     
+    func fetchData() {
+        let appid = Bundle.main.tmDBApiKey
+        let url = "https://api.themoviedb.org/3/trending/all/day?api_key=\(appid)"
+        
+        AF.request(url, method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success(let data):
+                let json = JSON(data)
+                for item in json["results"].arrayValue {
+                    
+                    if item["media_type"].stringValue == "tv" {
+                        let genre = item["genre_ids"][0].stringValue
+                        let mediaType = item["media_type"].stringValue
+                        let title = item["name"].stringValue
+                        let voteAverage = item["vote_average"].stringValue
+                        let releaseDate = item["first_air_date"].stringValue
+                        let overView = item["overview"].stringValue
+                        let posterImage = item["poster_path"].stringValue
+                        let backDropImage = item["backdrop_path"].stringValue
+                        
+                        self.media.append(Media(genre: genre, mediaType: mediaType, title: title, voteAverage: voteAverage, releaseDate: releaseDate, overView: overView, posterImage: posterImage, backDropImage: backDropImage))
+                        
+                    } else if item["media_type"].stringValue == "movie" {
+                        let genre = item["genre_ids"][0].stringValue
+                        let mediaType = item["media_type"].stringValue
+                        let title = item["title"].stringValue
+                        let voteAverage = item["vote_average"].stringValue
+                        let releaseDate = item["release_date"].stringValue
+                        let overView = item["overview"].stringValue
+                        let posterImage = item["poster_path"].stringValue
+                        let backDropImage = item["backdrop_path"].stringValue
+
+                        self.media.append(Media(genre: genre, mediaType: mediaType, title: title, voteAverage: voteAverage, releaseDate: releaseDate, overView: overView, posterImage: posterImage, backDropImage: backDropImage))
+                    } else {
+                        print("")
+                    }
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
+
     // MARK: - Action
     
     @objc func tapMenu() {
@@ -85,24 +137,23 @@ class MainVC: UIViewController {
 
 extension MainVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tvShowInfo.tvShow.count
+        return media.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath) as! MainCell
         
-        let tvShow = tvShowInfo.tvShow[indexPath.row]
+        let media = media[indexPath.row]
+        cell.typeLabel.text = "#\(media.mediaType)"
+        cell.releaseDateLabel.text = media.releaseDate
+        cell.titleLabel.text = media.title
+        cell.voteLabel.text = media.voteAverage
+        cell.overViewLabel.text = media.overView
         
-        cell.genreLabel.text = "#\(tvShow.genre)"
-        cell.regionLabel.text = tvShow.region
-        cell.rateLabel.text = "평점 \(tvShow.rate)"
-        cell.titleLabel.text = tvShow.title
-        cell.releaseDateLabel.text = tvShow.releaseDate
-        cell.starringLabel.text = tvShow.starring
-        
-        cell.postImageView.setImage(imageUrl: tvShow.backdropImage)
-        cell.postImageView.layer.cornerRadius = 10
-        cell.postImageView.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
+        let imageUrl = "https://image.tmdb.org/t/p/original/\(media.backDropImage)"
+        cell.backDropImageView.setImage(imageUrl: imageUrl)
+        cell.backDropImageView.layer.cornerRadius = 10
+        cell.backDropImageView.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
         
         cell.shadowView.layer.cornerRadius = 10
         cell.shadowView.layer.shadowOpacity = 0.5
@@ -120,16 +171,17 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
         let vc = sb.instantiateViewController(withIdentifier: "DetailVC") as! DetailVC
         
         // 프로퍼티에 직접 접근해서 Data 전달
-        let tvShow = tvShowInfo.tvShow[indexPath.row]
-        vc.imageString = tvShow.backdropImage
-        vc.titleString = tvShow.title
-        vc.overViewString = tvShow.overview
+        let media = media[indexPath.row]
+        vc.backDropImageString = media.backDropImage
+        vc.posterImageString = media.posterImage
+        vc.titleString = media.title
+        vc.overViewString = media.overView
         
         navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UIScreen.main.bounds.height / 1.9
+        return UIScreen.main.bounds.height / 2
     }
 }

@@ -48,14 +48,14 @@ class SearchVC: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = true
-        searchController.searchBar.placeholder = "ex) 20210101 와 같이 날짜를 검색해주세요"
+        searchController.searchBar.placeholder = "ex) 20210101"
     }
     
-    // MARK: - fetch Data
+    // MARK: - Fetch Data
     
     func fetchData(date: String) {
         var tmp = [BoxOffice]()
-        let appid = Bundle.main.apiKey
+        let appid = Bundle.main.kobisApiKey
         let url = "https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=\(appid)&targetDt=\(date)"
 
         AF.request(url, method: .get).validate().responseJSON { response in

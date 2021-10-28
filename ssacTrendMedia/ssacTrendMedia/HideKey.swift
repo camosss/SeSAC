@@ -8,17 +8,22 @@
 import Foundation
 
 extension Bundle {
-    var apiKey: String {
+    var kobisApiKey: String {
         get {
-            // 생성한 .plist 파일 경로
             guard let filePath = self.path(forResource: "keyInfo", ofType: "plist") else { fatalError("Couldn't find file 'KeyList.plist'.")}
-            
-            // plist를 딕셔너리로 받아오기
             let plist = NSDictionary(contentsOfFile: filePath)
             
-            // 딕셔너리에서 값 찾기
-            guard let value = plist?.object(forKey: "API_KEY") as? String else { fatalError("Couldn't find key 'OPENWEATHERMAP_KEY' in 'KeyList.plist'.") }
+            guard let value = plist?.object(forKey: "kobis_API_KEY") as? String else { fatalError("Couldn't find key 'OPENWEATHERMAP_KEY' in 'KeyList.plist'.") }
+            return value
+        }
+    }
+    
+    var tmDBApiKey: String {
+        get {
+            guard let filePath = self.path(forResource: "keyInfo", ofType: "plist") else { fatalError("Couldn't find file 'KeyList.plist'.")}
+            let plist = NSDictionary(contentsOfFile: filePath)
             
+            guard let value = plist?.object(forKey: "tmDB_API_KEY") as? String else { fatalError("Couldn't find key 'OPENWEATHERMAP_KEY' in 'KeyList.plist'.") }
             return value
         }
     }

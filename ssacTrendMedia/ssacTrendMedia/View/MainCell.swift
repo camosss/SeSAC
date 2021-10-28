@@ -11,14 +11,13 @@ class MainCell: UITableViewCell {
     
     // MARK: - Properties
     
-    @IBOutlet weak var genreLabel: UILabel!
-    @IBOutlet weak var regionLabel: UILabel!
-    @IBOutlet weak var postImageView: UIImageView!
-    @IBOutlet weak var rateLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
+    @IBOutlet weak var backDropImageView: UIImageView!
+    @IBOutlet weak var voteLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var shadowView: UIView!
-    @IBOutlet weak var starringLabel: UILabel!
+    @IBOutlet weak var overViewLabel: UILabel!
     @IBOutlet weak var linkButton: UIButton!
     
     // MARK: - Lifecycle

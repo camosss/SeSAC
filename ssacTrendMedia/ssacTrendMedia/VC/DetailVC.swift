@@ -12,13 +12,14 @@ class DetailVC: UIViewController {
     // MARK: - Properties
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var backDropImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     
-    var imageString = ""
+    var backDropImageString = ""
     var titleString = ""
     var overViewString = ""
+    var posterImageString = ""
             
     var expand = false
     
@@ -27,7 +28,6 @@ class DetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "출연/제작"
-        
         configureHeaderView()
     }
     
@@ -35,8 +35,12 @@ class DetailVC: UIViewController {
     
     func configureHeaderView() {
         titleLabel.text = titleString
-        postImageView.setImage(imageUrl: imageString)
-        posterImageView.image = UIImage(named: titleString)
+        
+        let backDropImageUrl = "https://image.tmdb.org/t/p/original/\(backDropImageString)"
+        backDropImageView.setImage(imageUrl: backDropImageUrl)
+        
+        let posterImageUrl = "https://image.tmdb.org/t/p/original/\(posterImageString)"
+        posterImageView.setImage(imageUrl: posterImageUrl)
     }
     
     // MARK: - Action
