@@ -276,6 +276,69 @@ Media Type을 movie, tv 중 하나로 설정한 URL을 통해 네트워크 통�
 https://user-images.githubusercontent.com/74236080/139242973-94bbcd77-7ee9-45fa-b889-b51d735fcb6d.mov
 
 
+---
+
+## #7 Pagenation
+
+```swift
+
+동작구조 <SSAC 21 자료>
+
+1. 테이블뷰 생성 및 프로토콜 선언, 그리고 프로토콜 프로퍼티 (prefetchDataSource)를 테이블뷰에 할당
+    a. 테이블뷰를 생성하고 UITableViewDelegate, UITableViewDataSource 프로토콜 선언 후 테이블뷰에 프로퍼티(tableView.delegate = self)를 할당하는 것과 동일한 구조
+
+2. TableView CellForRowAt 메서드가 호출되기 전에 미리 필요한 데이터를 로딩함
+    a. prefetchRowAt에서 필요한 데이터를 다운 받는 등의 작업을 진행
+    b. 비동기 처리 필요
+
+3. cellForRowAt 메서드가 호출되면 prefetchRowAt에서 미리 로딩해두었던 리소스와 데이터들을 표현
+
+4. 만약 사용자가 빠른 스크롤 등으로 화면에 셀을 보여줄 필요가 없는 경우에는 cancelPrefetchingForRowsAt가 호출되고, 해당 메서드에서 관련 작업을 취소
+
+```
+
+***UITableViewDataSourcePrefetching***
+
+- TableView와 UICollectionView에 사용할 수 있는 UITableViewDataSourcePrefetching 프로토콜은 iOS 10부터 사용가능
+- Cell이 디스플레이에 보여지는 Cell 이외의 Cell의 정보를 미리 호출하여 데이터를 받아올 수 있다.
+
+<img src = "https://user-images.githubusercontent.com/74236080/139283460-dd98748a-56c1-48f0-ae21-939be51727eb.png" width="30%" height="30%">
+
+- 두가지 메서드가 있는데, prefetchRowsAt 부분에서는 해당되는 Cell에 필요한 데이터를 미리받아오는 메서드이다.
+주로 GCD나 Operation으로 비동기 처리 작업을 명시하고, 10개의 Cell을 미리 받아온다.
+
+- cancelPrefetchingForRowsAt 부분은 필요치 않은 Cell들에 대해 작업을 취소하는 메서드이다.
+일반적으로 스크롤 방향이 바뀔 때 필요에 따라 데이터 로딩이 되지 못한 것을 취소하는데 사용할 수 있고, 불필요한 작업을 취소하여 GPU 시간을 줄이는데 좋은 방법
+
+```swift
+var page = 1
+...
+tableView.prefetchDataSource = self
+...
+
+func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+    print(indexPaths)
+    for indexPath in indexPaths {
+        if media.count-1 == indexPath.row {
+            page += 1
+            fetchData()
+        }
+    }
+}
+    
+func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+    print(#function)
+}
+```
+
+
+
+
+
+
+
+
+
 
 
 
