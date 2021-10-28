@@ -131,15 +131,11 @@
 				B44BE5EC27195E8B005F1C75 /* Model */,
 				B44BE5ED27195E97005F1C75 /* View */,
 				B44BE5EE27195EA6005F1C75 /* VC */,
-				B44682592720755400FD031E /* AlertHelper.swift */,
-				B44BE5D627195D79005F1C75 /* SceneDelegate.swift */,
-				B44BE5D427195D79005F1C75 /* AppDelegate.swift */,
-				B429E7B7271D5B5400BF3BE7 /* ExtensionKingfisher.swift */,
-				B42AFF182729B78800E7E826 /* HideKey.swift */,
+				B462F212272AA9EB004A12BF /* Utils */,
+				B462F213272AAA1E004A12BF /* App+SceneDelegate */,
+				B462F214272AAA36004A12BF /* plist */,
 				B44BE5DD27195D7B005F1C75 /* Assets.xcassets */,
 				B44BE5DF27195D7B005F1C75 /* LaunchScreen.storyboard */,
-				B44BE5E227195D7B005F1C75 /* Info.plist */,
-				B42AFF162729B75400E7E826 /* keyInfo.plist */,
 			);
 			path = ssacTrendMedia;
 			sourceTree = "<group>";
@@ -182,6 +178,34 @@
 				B446824B272005D500FD031E /* MapVC.swift */,
 			);
 			path = VC;
+			sourceTree = "<group>";
+		};
+		B462F212272AA9EB004A12BF /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B44682592720755400FD031E /* AlertHelper.swift */,
+				B429E7B7271D5B5400BF3BE7 /* ExtensionKingfisher.swift */,
+				B42AFF182729B78800E7E826 /* HideKey.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B462F213272AAA1E004A12BF /* App+SceneDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				B44BE5D427195D79005F1C75 /* AppDelegate.swift */,
+				B44BE5D627195D79005F1C75 /* SceneDelegate.swift */,
+			);
+			path = "App+SceneDelegate";
+			sourceTree = "<group>";
+		};
+		B462F214272AAA36004A12BF /* plist */ = {
+			isa = PBXGroup;
+			children = (
+				B44BE5E227195D7B005F1C75 /* Info.plist */,
+				B42AFF162729B75400E7E826 /* keyInfo.plist */,
+			);
+			path = plist;
 			sourceTree = "<group>";
 		};
 		E06DF1246CFAF4BD3E73F88C /* Frameworks */ = {

@@ -2,7 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>API_KEY</key>
-	<string>API_KEY</string>
+	<key>tmDB_API_KEY</key>
+	<string>41228218ab5d729f608f18f42b7cf848</string>
+	<key>kobis_API_KEY</key>
+	<string>7e38fecf4aef9d11fa8e87f2660ba575</string>
 </dict>
 </plist>
