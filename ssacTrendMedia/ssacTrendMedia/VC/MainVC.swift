@@ -20,6 +20,8 @@ class MainVC: UIViewController {
         didSet { tableView.reloadData() }
     }
     
+    var page = 1
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -28,6 +30,7 @@ class MainVC: UIViewController {
         configureNavigation()
         fetchData()
 
+        tableView.prefetchDataSource = self
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
@@ -183,5 +186,23 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UIScreen.main.bounds.height / 2
+    }
+}
+
+// MARK: - UITableViewDataSourcePrefetching
+
+extension MainVC: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        print(indexPaths)
+        for indexPath in indexPaths {
+            if media.count-1 == indexPath.row {
+                page += 1
+                fetchData()
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+        print(#function)
     }
 }
