@@ -111,12 +111,12 @@ cell.postImageView.setImage(imageUrl: tvShow.backdropImage)
 
 ## #3 CollectionView, Resizing TableView Cell
 
-- 도서 화면을 컬렉션뷰로 구현
+### 도서 화면을 컬렉션뷰로 구현
 
 <img src = "https://user-images.githubusercontent.com/74236080/137934089-e12ba499-edcb-4e4f-8605-6b11299c0d49.png" width="30%" height="30%">
 
 
-- Chevron 버튼을 클릭할 때마다 줄거리 전체가 보이고, 다시 클릭하면 줄거리 일부가 보이도록 구현
+### Chevron 버튼을 클릭할 때마다 줄거리 전체가 보이고, 다시 클릭하면 줄거리 일부가 보이도록 구현
 
 ```swift
 var expand = false
@@ -165,8 +165,9 @@ https://user-images.githubusercontent.com/74236080/138010921-fefa570a-22c4-40d4-
 
 ### MapKit 구현
 
-[코드](https://github.com/camosss/SSAC/blob/main/ssacTrendMedia/ssacTrendMedia/VC/MapVC.swift)
-[Map 정리](https://www.notion.so/Map-87b87d6f0be046c9b2a8fbd54fee1306)
+- [코드](https://github.com/camosss/SSAC/blob/main/ssacTrendMedia/ssacTrendMedia/VC/MapVC.swift)
+
+- [Map 정리](https://www.notion.so/Map-87b87d6f0be046c9b2a8fbd54fee1306)
 
 ```swift
 - 사용자가 위치 권한을 허용한 경우에는 맵뷰의 중심을 사용자의 현재 위치로 설정합니다.
@@ -330,6 +331,44 @@ func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: 
     print(#function)
 }
 ```
+
+---
+
+
+## #8 Cast, Crew API
+
+[코드](https://github.com/camosss/SSAC/blob/main/ssacTrendMedia/ssacTrendMedia/VC/DetailVC.swift)
+
+***Cast, Crew API Data***
+
+
+<img src = "https://user-images.githubusercontent.com/74236080/139394775-ed50e3ff-5eb6-4ef8-bf28-7cbbee0e0d39.png" width="30%" height="30%"><img src = "https://user-images.githubusercontent.com/74236080/139394822-eb34bd0b-d7c1-45c5-9ecf-7cabdbb90600.png" width="30%" height="30%">
+
+
+```swift
+트렌드 미디어 프로젝트 첫 화면(트렌드 정보)이 구현되어 있으실 거에요. 그리고 영화를 선택하면 영화 상세 화면으로 전환이 되게 구현이 되어 있습니다.
+- 첫 화면에서 영화 상세 화면으로 movie_id 값을 전달하여, 영화에 대한 Cast, Crew 정보를 보여주세요. (API 문서를 참고해 구현을 합니다)
+- Get Credits API 활용
+- Cast 정보만 보여주셔도 되시고, (도전)2개의 섹션으로 구분하셔서 Cast와 Crew 모두 보여주셔도 되셔요.
+```
+
+- MainVC에서 Media의 id값과 mediaType값을 전달받는다.
+- mediaType이 movie인지 tv에 따라 url을 구분한다.
+- Cast 와 Crew 각각 데이터를 담을 모델을 생성하고, API로부터 받아온 데이터를 저장한다.
+- 섹션을 지정해주고, (OverView, Cast, Crew) 섹션별 Title과 데이터, 높이를 지정한다.
+- 프로필이미지 데이터가 없는 경우를 고려해준다.
+
+
+https://user-images.githubusercontent.com/74236080/139394916-0b2f9f31-1d1f-4fdc-9e37-328cfcd70025.mov
+
+
+
+
+
+
+
+
+
 
 
 
