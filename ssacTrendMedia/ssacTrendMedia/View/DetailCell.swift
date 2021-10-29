@@ -11,9 +11,9 @@ class DetailCell: UITableViewCell {
     
     // MARK: - Properties
 
-    @IBOutlet weak var directorImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var roleLabel: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subTitleLabel: UILabel!
     
     // MARK: - Lifecycle
     

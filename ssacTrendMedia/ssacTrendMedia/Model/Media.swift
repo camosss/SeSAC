@@ -8,7 +8,7 @@
 import Foundation
 
 struct Media {
-    let genre: String
+    let id: Int
     let mediaType: String
     let title: String
     let voteAverage: String
@@ -16,4 +16,16 @@ struct Media {
     let overView: String
     let posterImage: String
     let backDropImage: String
+}
+
+struct Cast {
+    let name: String
+    let character: String
+    let profileImage: String
+}
+
+struct Crew {
+    let originalName: String
+    let job: String
+    let profileImage: String
 }

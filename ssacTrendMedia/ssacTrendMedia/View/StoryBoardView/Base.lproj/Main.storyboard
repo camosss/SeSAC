@@ -342,10 +342,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="Mc1-mI-rkd" id="82O-jQ-syk"/>
-                                    <outlet property="delegate" destination="Mc1-mI-rkd" id="paE-YL-U21"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HsI-Lw-5JO"/>

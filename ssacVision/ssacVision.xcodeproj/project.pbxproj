@@ -18,6 +18,7 @@
 		B42AFEE42729397900E7E826 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B42AFEE32729397900E7E826 /* Alamofire */; };
 		B42AFEFB2729601100E7E826 /* kakaoInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = B42AFEFA2729601100E7E826 /* kakaoInfo.plist */; };
 		B42AFEFD2729603800E7E826 /* HideAPIKEY.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42AFEFC2729603800E7E826 /* HideAPIKEY.swift */; };
+		B4391E8B272B7EB200CD1BE9 /* AsyncVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4391E8A272B7EB200CD1BE9 /* AsyncVC.swift */; };
 		B462F207272A223F004A12BF /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = B462F206272A223F004A12BF /* JGProgressHUD */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		B42AFEDD2729395400E7E826 /* VisionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionManager.swift; sourceTree = "<group>"; };
 		B42AFEFA2729601100E7E826 /* kakaoInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = kakaoInfo.plist; sourceTree = "<group>"; };
 		B42AFEFC2729603800E7E826 /* HideAPIKEY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideAPIKEY.swift; sourceTree = "<group>"; };
+		B4391E8A272B7EB200CD1BE9 /* AsyncVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				B42AFEDB2729393A00E7E826 /* VisionVC.swift */,
 				B42AFEDD2729395400E7E826 /* VisionManager.swift */,
 				B42AFEFC2729603800E7E826 /* HideAPIKEY.swift */,
+				B4391E8A272B7EB200CD1BE9 /* AsyncVC.swift */,
 			);
 			path = ssacVision;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B42AFEC82729391400E7E826 /* AppDelegate.swift in Sources */,
+				B4391E8B272B7EB200CD1BE9 /* AsyncVC.swift in Sources */,
 				B42AFEDC2729393A00E7E826 /* VisionVC.swift in Sources */,
 				B42AFEFD2729603800E7E826 /* HideAPIKEY.swift in Sources */,
 				B42AFEDE2729395400E7E826 /* VisionManager.swift in Sources */,
@@ -245,7 +249,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -300,7 +304,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -325,6 +329,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -353,6 +358,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Network
 import JGProgressHUD
 
 class VisionVC: UIViewController {
@@ -19,6 +20,9 @@ class VisionVC: UIViewController {
     let progress = JGProgressHUD()
     let imagePicker = UIImagePickerController()
     
+    // 네트워크 변경 감지
+    let networkMoniter = NWPathMonitor()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -26,13 +30,39 @@ class VisionVC: UIViewController {
         imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = false
         imagePicker.delegate = self
+        
+        // 네트워크 변경 감지 클래스를 통해 사용자의 네트워크 상태가 변경될 때마다 실행
+        networkMoniter.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                print("network connected")
+                
+                if path.usesInterfaceType(.cellular) {
+                    print("cellular status")
+                } else if path.usesInterfaceType(.wifi) {
+                    print("wifi status")
+                } else {
+                    print("others")
+                }
+                
+            } else {
+                print("network disconnected")
+            }
+        }
+        
+        networkMoniter.start(queue: DispatchQueue.global())
     }
     
     // MARK: - Action
     
     @IBAction func requestButton(_ sender: UIButton) {
         progress.show(in: view)
-        VisionAPIManager.shared.fetchFaceData(image: postImageView.image!) { code, json in
+        guard let image = postImageView.image else {
+            print("No Image")
+            progress.dismiss();
+            return
+        }
+        
+        VisionAPIManager.shared.fetchFaceData(image: image) { code, json in
             let jsonData = json["result"]["faces"][0]["facial_attributes"]
             let age = jsonData["age"].doubleValue
             self.ageLabel.text = "\(Int(age))세"

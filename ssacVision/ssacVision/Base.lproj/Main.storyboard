@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RcH-xS-OCp">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -130,6 +131,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="40.579710144927539" y="83.705357142857139"/>
+        </scene>
+        <!--AsyncVC-->
+        <scene sceneID="ANq-UG-xAY">
+            <objects>
+                <viewController id="RcH-xS-OCp" customClass="AsyncVC" customModule="ssacVision" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1eq-u9-0we">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6rH-Cv-pGK">
+                                <rect key="frame" x="0.0" y="44" width="414" height="460"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="460" id="vi1-o3-ETk"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVQ-mB-qen">
+                                <rect key="frame" x="51" y="512" width="312" height="68"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="requestButtonClicked:" destination="RcH-xS-OCp" eventType="touchUpInside" id="WnE-fG-ccz"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m6R-hA-4aI">
+                                <rect key="frame" x="73" y="633" width="51" height="30"/>
+                            </switch>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jx7-uj-UL9">
+                                <rect key="frame" x="162" y="633" width="201" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="201" id="14A-LH-2X2"/>
+                                    <constraint firstAttribute="height" constant="30" id="XKr-mV-ILU"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8NV-bE-wK3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6rH-Cv-pGK" firstAttribute="centerX" secondItem="1eq-u9-0we" secondAttribute="centerX" id="7gW-u7-Mdf"/>
+                            <constraint firstItem="8NV-bE-wK3" firstAttribute="bottom" secondItem="jx7-uj-UL9" secondAttribute="bottom" constant="199" id="AeP-Jw-6du"/>
+                            <constraint firstItem="jx7-uj-UL9" firstAttribute="top" secondItem="m6R-hA-4aI" secondAttribute="top" id="E89-mq-n2B"/>
+                            <constraint firstItem="6rH-Cv-pGK" firstAttribute="top" secondItem="8NV-bE-wK3" secondAttribute="top" id="Iuc-yU-rGA"/>
+                            <constraint firstItem="jx7-uj-UL9" firstAttribute="centerY" secondItem="m6R-hA-4aI" secondAttribute="centerY" id="ORn-oP-Vkt"/>
+                            <constraint firstItem="nVQ-mB-qen" firstAttribute="top" secondItem="6rH-Cv-pGK" secondAttribute="bottom" constant="8" id="dhb-eB-cbq"/>
+                            <constraint firstItem="8NV-bE-wK3" firstAttribute="trailing" secondItem="jx7-uj-UL9" secondAttribute="trailing" constant="51" id="eui-LS-KO2"/>
+                            <constraint firstItem="jx7-uj-UL9" firstAttribute="trailing" secondItem="nVQ-mB-qen" secondAttribute="trailing" id="rcG-sJ-iIN"/>
+                            <constraint firstItem="6rH-Cv-pGK" firstAttribute="leading" secondItem="nVQ-mB-qen" secondAttribute="leading" constant="-51" id="th3-4W-q8c"/>
+                            <constraint firstItem="jx7-uj-UL9" firstAttribute="top" secondItem="nVQ-mB-qen" secondAttribute="bottom" constant="53" id="vDK-8y-hDf"/>
+                            <constraint firstItem="jx7-uj-UL9" firstAttribute="leading" secondItem="m6R-hA-4aI" secondAttribute="trailing" constant="40" id="wDS-dh-2dN"/>
+                            <constraint firstItem="jx7-uj-UL9" firstAttribute="trailing" secondItem="6rH-Cv-pGK" secondAttribute="trailing" constant="-51" id="z3o-Eg-Mi6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="6rH-Cv-pGK" id="jp7-5R-Qg4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ze0-WS-Ng0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="814.49275362318849" y="83.705357142857139"/>
         </scene>
     </scenes>
     <resources>

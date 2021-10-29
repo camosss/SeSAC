@@ -60,7 +60,7 @@ class MainVC: UIViewController {
     
     func fetchData() {
         let appid = Bundle.main.tmDBApiKey
-        let url = "https://api.themoviedb.org/3/trending/all/day?api_key=\(appid)"
+        let url = "https://api.themoviedb.org/3/trending/all/day?page=\(page)&api_key=\(appid)"
         
         AF.request(url, method: .get).validate().responseJSON { response in
             switch response.result {
@@ -69,7 +69,7 @@ class MainVC: UIViewController {
                 for item in json["results"].arrayValue {
                     
                     if item["media_type"].stringValue == "tv" {
-                        let genre = item["genre_ids"][0].stringValue
+                        let id = item["id"].intValue
                         let mediaType = item["media_type"].stringValue
                         let title = item["name"].stringValue
                         let voteAverage = item["vote_average"].stringValue
@@ -77,11 +77,11 @@ class MainVC: UIViewController {
                         let overView = item["overview"].stringValue
                         let posterImage = item["poster_path"].stringValue
                         let backDropImage = item["backdrop_path"].stringValue
-                        
-                        self.media.append(Media(genre: genre, mediaType: mediaType, title: title, voteAverage: voteAverage, releaseDate: releaseDate, overView: overView, posterImage: posterImage, backDropImage: backDropImage))
+                                                
+                        self.media.append(Media(id: id, mediaType: mediaType, title: title, voteAverage: voteAverage, releaseDate: releaseDate, overView: overView, posterImage: posterImage, backDropImage: backDropImage))
                         
                     } else if item["media_type"].stringValue == "movie" {
-                        let genre = item["genre_ids"][0].stringValue
+                        let id = item["id"].intValue
                         let mediaType = item["media_type"].stringValue
                         let title = item["title"].stringValue
                         let voteAverage = item["vote_average"].stringValue
@@ -89,8 +89,8 @@ class MainVC: UIViewController {
                         let overView = item["overview"].stringValue
                         let posterImage = item["poster_path"].stringValue
                         let backDropImage = item["backdrop_path"].stringValue
-
-                        self.media.append(Media(genre: genre, mediaType: mediaType, title: title, voteAverage: voteAverage, releaseDate: releaseDate, overView: overView, posterImage: posterImage, backDropImage: backDropImage))
+                        
+                        self.media.append(Media(id: id, mediaType: mediaType, title: title, voteAverage: voteAverage, releaseDate: releaseDate, overView: overView, posterImage: posterImage, backDropImage: backDropImage))
                     } else {
                         print("")
                     }
@@ -179,6 +179,8 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
         vc.posterImageString = media.posterImage
         vc.titleString = media.title
         vc.overViewString = media.overView
+        vc.id = media.id
+        vc.mediaType = media.mediaType
         
         navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
@@ -193,7 +195,7 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
 
 extension MainVC: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        print(indexPaths)
+       //print(indexPaths)
         for indexPath in indexPaths {
             if media.count-1 == indexPath.row {
                 page += 1
