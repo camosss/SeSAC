@@ -165,7 +165,7 @@ https://user-images.githubusercontent.com/74236080/138010921-fefa570a-22c4-40d4-
 
 ### MapKit 구현
 
-- [코드](https://github.com/camosss/SSAC/blob/main/ssacTrendMedia/ssacTrendMedia/VC/MapVC.swift)
+- [MapVC](https://github.com/camosss/SSAC/blob/main/ssacTrendMedia/ssacTrendMedia/VC/MapVC.swift)
 
 - [Map 정리](https://www.notion.so/Map-87b87d6f0be046c9b2a8fbd54fee1306)
 
@@ -214,7 +214,7 @@ https://user-images.githubusercontent.com/74236080/138279810-497b0b5c-1401-4550-
 
 ## #5 영화진흥위원회 API
 
-[코드](https://github.com/camosss/SSAC/blob/main/ssacTrendMedia/ssacTrendMedia/VC/SearchVC.swift)
+[SearchVC](https://github.com/camosss/SSAC/blob/main/ssacTrendMedia/ssacTrendMedia/VC/SearchVC.swift)
 
 ```swift
 영화진흥위원회 API 구현하기
@@ -258,7 +258,7 @@ https://user-images.githubusercontent.com/74236080/139110663-3e43394d-2bea-405f-
 
 ## #6 TMDB API
 
-[코드](https://github.com/camosss/SSAC/blob/main/ssacTrendMedia/ssacTrendMedia/VC/MainVC.swift)
+[MainVC](https://github.com/camosss/SSAC/blob/main/ssacTrendMedia/ssacTrendMedia/VC/MainVC.swift)
 
 ```swift
 API: https://developers.themoviedb.org/3/trending/get-trending
@@ -337,7 +337,7 @@ func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: 
 
 ## #8 Cast, Crew API
 
-[코드](https://github.com/camosss/SSAC/blob/main/ssacTrendMedia/ssacTrendMedia/VC/DetailVC.swift)
+[DetailVC](https://github.com/camosss/SSAC/blob/main/ssacTrendMedia/ssacTrendMedia/VC/DetailVC.swift)
 
 ***Cast, Crew API Data***
 
@@ -353,29 +353,39 @@ func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: 
 ```
 
 - MainVC에서 Media의 id값과 mediaType값을 전달받는다.
-- mediaType이 movie인지 tv에 따라 url을 구분한다.
-- Cast 와 Crew 각각 데이터를 담을 모델을 생성하고, API로부터 받아온 데이터를 저장한다.
-- 섹션을 지정해주고, (OverView, Cast, Crew) 섹션별 Title과 데이터, 높이를 지정한다.
-- 프로필이미지 데이터가 없는 경우를 고려해준다.
+- mediaType이 movie인지 tv에 따라 url을 구분
+- Cast 와 Crew 각각 데이터를 담을 모델을 생성하고, API로부터 받아온 데이터를 저장
+- 섹션을 지정해주고, (OverView, Cast, Crew) 섹션별 Title과 데이터, 높이를 지정
+- 프로필이미지 데이터가 없는 경우를 고려
 
 
 https://user-images.githubusercontent.com/74236080/139394916-0b2f9f31-1d1f-4fdc-9e37-328cfcd70025.mov
 
 
+---
 
+## #9 WebView
 
+[WebVC](https://github.com/camosss/SSAC/blob/main/ssacTrendMedia/ssacTrendMedia/VC/WebVC.swift)
 
+```swift
+- 첫 화면에서 링크 버튼을 클릭했을 때, 웹뷰컨트롤러로 화면전환이 되고 있습니다. 
+웹뷰를 활용하고, API에서 알려주는 유투브 링크를 통해 예고편 비디오 등을 실행해보세요.
+- Get Videos API 활용
+- Response Video 배열 중 0번째 요소에 해당하는 key를 통해 웹뷰로 구현을 해보시면 되셔요.
+```
 
+- MainVC에서 Media의 id값과 mediaType값을 전달받는다.
+- mediaType이 movie인지 tv에 따라 url을 구분
+- **0번째 요소에 해당하는 key를 통해 웹뷰로 구현**이기 때문에
+let key = `json["results"][0]["key"].stringValue`
 
+<img src = "https://user-images.githubusercontent.com/74236080/139521716-9a83f2fc-a20f-42ab-8722-468de7a9e1ad.png" width="30%" height="30%">
 
+- Storyboard에서 WebKit View생성하여 UIViewController에 추가
+- WebVC에서 WebKit을 임포트하고 key값을 대입한 url을 load
 
-
-
-
-
-
-
-
+https://user-images.githubusercontent.com/74236080/139521734-624b235a-454f-46e1-a536-9bf0f80433d4.mov
 
 
 
