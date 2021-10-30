@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Network
+
 import Alamofire
 import SwiftyJSON
+import Toast_Swift
 
 class MainVC: UIViewController {
     
@@ -22,6 +25,8 @@ class MainVC: UIViewController {
     
     var page = 1
     
+    let networkMoniter = NWPathMonitor() // 네트워크 변경 감지
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -29,6 +34,7 @@ class MainVC: UIViewController {
         configureHeader()
         configureNavigation()
         fetchData()
+        handleNetwork()
 
         tableView.prefetchDataSource = self
         tableView.dataSource = self
@@ -54,6 +60,28 @@ class MainVC: UIViewController {
         navigationController?.navigationBar.tintColor = .black
     }
 
+    func handleNetwork() {
+        networkMoniter.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                print("network connected")
+                if path.usesInterfaceType(.cellular) {
+                    print("cellular status")
+                } else if path.usesInterfaceType(.wifi) {
+                    print("wifi status")
+                } else {
+                    print("others")
+                }
+            } else {
+                print("network disconnected")
+                
+                DispatchQueue.main.async {
+                    self.view.makeToast("Network Disconnected ‼️")
+                }
+            }
+        }
+        networkMoniter.start(queue: DispatchQueue.global())
+    }
+    
     // MARK: - Fetch Data
     
     func fetchData() {
