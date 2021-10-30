@@ -46,10 +46,5 @@ class WebVC: UIViewController {
                 print(error)
             }
         }
-        
-        
     }
-    
-    
-    
 }
