@@ -380,7 +380,7 @@ https://user-images.githubusercontent.com/74236080/139394916-0b2f9f31-1d1f-4fdc-
 - **0번째 요소에 해당하는 key를 통해 웹뷰로 구현**이기 때문에
 let key = `json["results"][0]["key"].stringValue`
 
-<img src = "https://user-images.githubusercontent.com/74236080/139521716-9a83f2fc-a20f-42ab-8722-468de7a9e1ad.png" width="30%" height="30%">
+<img src = "https://user-images.githubusercontent.com/74236080/139521716-9a83f2fc-a20f-42ab-8722-468de7a9e1ad.png" width="50%" height="50%">
 
 - Storyboard에서 WebKit View생성하여 UIViewController에 추가
 - WebVC에서 WebKit을 임포트하고 key값을 대입한 url을 load
