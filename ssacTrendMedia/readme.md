@@ -387,6 +387,66 @@ let key = `json["results"][0]["key"].stringValue`
 
 https://user-images.githubusercontent.com/74236080/139521734-624b235a-454f-46e1-a536-9bf0f80433d4.mov
 
+--- 
+
+## #10 NWPathMonitor, Toast_Swift
+
+
+### 네트워크 모니터링을 통해 네트워크 연결이 되어 있지 않은 상태라면, 얼럿/토스트 등으로 사용자에게 알려주세요.
+
+
+```swift
+import Network
+import Toast_Swift
+```
+
+1. 클래스 초기화
+
+```swift
+let networkMoniter = NWPathMonitor() // 네트워크 변경 감지
+```
+
+2. 네트워크 모니터링을 시작하기위해, 아래 코드를 시작해주면 그때부터 인터넷 변경사항에 대한 체크를 시작
+
+```swift
+networkMoniter.start(queue: DispatchQueue.global())
+```
+
+3. 변화되는 네트워크 상태 체크
+
+```swift
+networkMoniter.pathUpdateHandler = { path in
+    if path.status == .satisfied {
+         print("network connected")
+	     if path.usesInterfaceType(.cellular) {
+	         print("cellular status")
+	     } else if path.usesInterfaceType(.wifi) {
+	         print("wifi status")
+	     } else {
+	         print("others")
+	     }
+    } else {
+          print("network disconnected")
+                
+          DispatchQueue.main.async {
+              self.view.makeToast("Network Disconnected ‼️")
+          }
+     }
+}
+```
+
+4. 네트워크가 연결되어있지 않았을 경우, UI에 Toast를 띄우기 때문에 **메인스레드**로 넘어가서 처리
+
+```swift
+DispatchQueue.main.async {
+     self.view.makeToast("Network Disconnected ‼️")
+}
+```
+
+
+
+
+
 
 
 
