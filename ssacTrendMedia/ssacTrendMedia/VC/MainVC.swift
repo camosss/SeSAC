@@ -127,6 +127,7 @@ class MainVC: UIViewController {
         
         let sb = UIStoryboard(name: "Web", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "WebVC") as! WebVC
+        
         vc.navigationTitle = cell.titleLabel.text ?? ""
         vc.id = media[indexPath?.row ?? 0].id
         vc.mediaType = media[indexPath?.row ?? 0].mediaType

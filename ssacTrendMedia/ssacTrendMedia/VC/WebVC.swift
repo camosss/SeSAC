@@ -41,7 +41,9 @@ class WebVC: UIViewController {
                 let json = JSON(data)
                 let key = json["results"][0]["key"].stringValue
                 
-                self.webView.load(URLRequest(url: URL(string: "https://www.youtube.com/watch?v=\(key)")!))
+                DispatchQueue.main.async {
+                    self.webView.load(URLRequest(url: URL(string: "https://www.youtube.com/watch?v=\(key)")!))
+                }
             case .failure(let error):
                 print(error)
             }
