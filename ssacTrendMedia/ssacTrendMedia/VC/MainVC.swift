@@ -47,8 +47,6 @@ class MainVC: UIViewController {
     }
     
     func configureNavigation() {
-        navigationItem.title = "TREND MEDIA"
-        
         let menuButton = UIBarButtonItem(image: UIImage(systemName: "list.triangle"), style: .plain, target: self, action: #selector(tapMenu))
         let mapButton = UIBarButtonItem(image: UIImage(systemName: "map")!, style: .plain, target: self, action: #selector(tapMap))
         
@@ -124,12 +122,14 @@ class MainVC: UIViewController {
     
     @IBAction func tapLink(_ sender: UIButton) {
         let buttonPosition = sender.convert(CGPoint.zero, to: self.tableView)
-        let indexPath = self.tableView.indexPathForRow(at:buttonPosition)
+        let indexPath = self.tableView.indexPathForRow(at: buttonPosition)
         let cell = self.tableView.cellForRow(at: indexPath!) as! MainCell
         
         let sb = UIStoryboard(name: "Web", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "WebVC") as! WebVC
         vc.navigationTitle = cell.titleLabel.text ?? ""
+        vc.id = media[indexPath?.row ?? 0].id
+        vc.mediaType = media[indexPath?.row ?? 0].mediaType
 
         let nav = UINavigationController(rootViewController: vc)
         self.present(nav, animated: true, completion: nil)

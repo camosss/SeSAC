@@ -28,6 +28,9 @@ class SearchVC: UIViewController {
         navigationItem.title = "박스오피스 순위"
         configureSearchBar()
         
+        tableView.dataSource = self
+        tableView.delegate = self
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyyMMdd"
         let dateString = formatter.string(from: Date(timeIntervalSinceNow: -86400))
@@ -97,7 +100,6 @@ extension SearchVC: UITableViewDataSource, UITableViewDelegate {
         cell.rankLabel.text = boxOfficeValue.rank
         cell.titleLabel.text = boxOfficeValue.title
         cell.dateLabel.text = boxOfficeValue.openDt
-        
         return cell
     }
     

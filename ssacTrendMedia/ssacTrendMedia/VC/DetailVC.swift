@@ -18,13 +18,6 @@ class DetailVC: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     
-    var backDropImageString = ""
-    var titleString = ""
-    var overViewString = ""
-    var posterImageString = ""
-    var mediaType = ""
-    var id = 0
-    
     var expand = false
     
     private var cast = [Cast]() {
@@ -34,6 +27,15 @@ class DetailVC: UIViewController {
     private var crew = [Crew]() {
         didSet { tableView.reloadData() }
     }
+    
+    // MARK: - Received data
+
+    var backDropImageString = ""
+    var titleString = ""
+    var overViewString = ""
+    var posterImageString = ""
+    var mediaType = ""
+    var id = 0
     
     
     // MARK: - Lifecycle
