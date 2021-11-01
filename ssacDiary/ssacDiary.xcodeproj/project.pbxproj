@@ -22,6 +22,16 @@
 		B49699F3272FDB3900D83090 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B49699F5272FDB3900D83090 /* Localizable.strings */; };
 		B49699FC272FDB6F00D83090 /* Setting.strings in Resources */ = {isa = PBXBuildFile; fileRef = B49699FE272FDB6F00D83090 /* Setting.strings */; };
 		B4969A03272FDB9700D83090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4969A05272FDB9700D83090 /* InfoPlist.strings */; };
+		B4969A0C272FDEF300D83090 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4969A0B272FDEF300D83090 /* HomeViewController.swift */; };
+		B4969A0E272FDEFB00D83090 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4969A0D272FDEFB00D83090 /* SearchViewController.swift */; };
+		B4969A10272FDF1300D83090 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4969A0F272FDF1300D83090 /* CalendarViewController.swift */; };
+		B4969A12272FDF1A00D83090 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4969A11272FDF1A00D83090 /* SettingViewController.swift */; };
+		B4969A15272FDFC600D83090 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4969A14272FDFC600D83090 /* Home.storyboard */; };
+		B4969A17272FDFD500D83090 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4969A16272FDFD500D83090 /* Search.storyboard */; };
+		B4969A19272FDFE000D83090 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4969A18272FDFE000D83090 /* Calendar.storyboard */; };
+		B4969A1D272FE02700D83090 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4969A1C272FE02700D83090 /* Setting.storyboard */; };
+		B4969A1F272FF56500D83090 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4969A1E272FF56500D83090 /* DiaryViewController.swift */; };
+		B4969A25272FFAEF00D83090 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4969A23272FFAEF00D83090 /* SearchCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +62,16 @@
 		B4969A04272FDB9700D83090 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B4969A06272FDB9800D83090 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B4969A07272FDB9800D83090 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B4969A0B272FDEF300D83090 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B4969A0D272FDEFB00D83090 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		B4969A0F272FDF1300D83090 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		B4969A11272FDF1A00D83090 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		B4969A14272FDFC600D83090 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		B4969A16272FDFD500D83090 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		B4969A18272FDFE000D83090 /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
+		B4969A1C272FE02700D83090 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		B4969A1E272FF56500D83090 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
+		B4969A23272FFAEF00D83090 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +104,9 @@
 		B41CD8B0272FD6E600B8EF08 /* ssacDiary */ = {
 			isa = PBXGroup;
 			children = (
-				B41CD8B5272FD6E600B8EF08 /* ViewController.swift */,
-				B41CD8B7272FD6E600B8EF08 /* Main.storyboard */,
+				B4969A20272FF9D500D83090 /* SB */,
+				B4969A13272FDFA800D83090 /* View */,
+				B4969A0A272FDEA700D83090 /* VC */,
 				B41CD8C6272FD71700B8EF08 /* Localization */,
 				B41CD8C7272FD71F00B8EF08 /* Extension */,
 				B41CD8C8272FD72A00B8EF08 /* Font */,
@@ -134,6 +155,39 @@
 				B41CD8C9272FD75B00B8EF08 /* SCDream9.otf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		B4969A0A272FDEA700D83090 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				B41CD8B5272FD6E600B8EF08 /* ViewController.swift */,
+				B4969A0B272FDEF300D83090 /* HomeViewController.swift */,
+				B4969A0D272FDEFB00D83090 /* SearchViewController.swift */,
+				B4969A0F272FDF1300D83090 /* CalendarViewController.swift */,
+				B4969A11272FDF1A00D83090 /* SettingViewController.swift */,
+				B4969A1E272FF56500D83090 /* DiaryViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		B4969A13272FDFA800D83090 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B4969A23272FFAEF00D83090 /* SearchCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B4969A20272FF9D500D83090 /* SB */ = {
+			isa = PBXGroup;
+			children = (
+				B41CD8B7272FD6E600B8EF08 /* Main.storyboard */,
+				B4969A14272FDFC600D83090 /* Home.storyboard */,
+				B4969A16272FDFD500D83090 /* Search.storyboard */,
+				B4969A18272FDFE000D83090 /* Calendar.storyboard */,
+				B4969A1C272FE02700D83090 /* Setting.storyboard */,
+			);
+			path = SB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,15 +250,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4969A19272FDFE000D83090 /* Calendar.storyboard in Resources */,
 				B41CD8CE272FD75B00B8EF08 /* SCDream2.otf in Resources */,
+				B4969A15272FDFC600D83090 /* Home.storyboard in Resources */,
 				B41CD8CD272FD75B00B8EF08 /* SCDream5.otf in Resources */,
 				B41CD8BE272FD6E700B8EF08 /* LaunchScreen.storyboard in Resources */,
 				B49699F3272FDB3900D83090 /* Localizable.strings in Resources */,
 				B41CD8BB272FD6E700B8EF08 /* Assets.xcassets in Resources */,
 				B49699FC272FDB6F00D83090 /* Setting.strings in Resources */,
+				B4969A17272FDFD500D83090 /* Search.storyboard in Resources */,
 				B41CD8B9272FD6E600B8EF08 /* Main.storyboard in Resources */,
 				B4969A03272FDB9700D83090 /* InfoPlist.strings in Resources */,
 				B41CD8CC272FD75B00B8EF08 /* SCDream9.otf in Resources */,
+				B4969A1D272FE02700D83090 /* Setting.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,9 +273,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4969A10272FDF1300D83090 /* CalendarViewController.swift in Sources */,
+				B4969A25272FFAEF00D83090 /* SearchCell.swift in Sources */,
+				B4969A12272FDF1A00D83090 /* SettingViewController.swift in Sources */,
 				B41CD8B6272FD6E600B8EF08 /* ViewController.swift in Sources */,
+				B4969A1F272FF56500D83090 /* DiaryViewController.swift in Sources */,
 				B41CD8D4272FD80E00B8EF08 /* LocalizableStrings.swift in Sources */,
 				B41CD8B2272FD6E600B8EF08 /* AppDelegate.swift in Sources */,
+				B4969A0E272FDEFB00D83090 /* SearchViewController.swift in Sources */,
+				B4969A0C272FDEF300D83090 /* HomeViewController.swift in Sources */,
 				B41CD8D0272FD7AC00B8EF08 /* UIFont+Extension.swift in Sources */,
 				B41CD8D2272FD7B300B8EF08 /* String+Extension.swift in Sources */,
 				B41CD8B4272FD6E600B8EF08 /* SceneDelegate.swift in Sources */,
