@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  ssacDiary
+
+  Created by 강호성 on 2021/11/01.
+  
+*/
+
+"tab_home" = "家";
+"tab_setting" = "設定";
+
+"welcome_text" = "こんにちは！ 会えて嬉しい";
