@@ -453,7 +453,7 @@ Media Data
 id: 796499, mediaType: "movie", title: "Army of Thieves", ... genre: "28")
 ```
 
-<img src = "https://user-images.githubusercontent.com/74236080/139639306-0e448520-40e6-4759-b3c8-cec19507b8f1.png" width="30%" height="30%">
+<img src = "https://user-images.githubusercontent.com/74236080/139639306-0e448520-40e6-4759-b3c8-cec19507b8f1.png" width="50%" height="50%">
 
 - 위와 같이 Media 데이터를 저장할 때, 장르는 숫자로 된 문자열에 저장되어있다. 
 그래서 해당 번호에 따른 장르 문자열을 저장하기 위해 각 타입별로 딕셔너리를 생성한다.
@@ -492,11 +492,11 @@ func fetchGenre(type: String) {
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath) as! MainCell
 		
-		...
+    ...
 
-		cell.genreLabel.text = media.mediaType == "movie" ? "#\(movieGenre[media.genre] ?? "")" : "#\(tvGenre[media.genre] ?? "")"
+    cell.genreLabel.text = media.mediaType == "movie" ? "#\(movieGenre[media.genre] ?? "")" : "#\(tvGenre[media.genre] ?? "")"
 
-		...
+    ...
 }
 ```
 
