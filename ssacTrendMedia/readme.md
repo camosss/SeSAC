@@ -443,6 +443,78 @@ DispatchQueue.main.async {
 }
 ```
 
+---
+
+## 장르 추가
+
+```swift
+Media Data
+
+id: 796499, mediaType: "movie", title: "Army of Thieves", ... genre: "28")
+```
+
+<img src = "https://user-images.githubusercontent.com/74236080/139639306-0e448520-40e6-4759-b3c8-cec19507b8f1.png" width="30%" height="30%">
+
+- 위와 같이 Media 데이터를 저장할 때, 장르는 숫자로 된 문자열에 저장되어있다. 
+그래서 해당 번호에 따른 장르 문자열을 저장하기 위해 각 타입별로 딕셔너리를 생성한다.
+
+```swift
+var movieGenre = [String: String]()
+var tvGenre = [String: String]()
+```
+
+- Tv, Movie 타입별로 각 딕셔너리에 값 추가
+
+```swift
+func fetchGenre(type: String) {
+    let url = "https://api.themoviedb.org/3/genre/\(type)/list?api_key=\(appid)&language=en-US"
+        
+    AF.request(url, method: .get).validate().responseJSON { response in
+        switch response.result {
+        case .success(let data):
+            let json = JSON(data)
+            for item in json["genres"].arrayValue {
+                if type == "movie" {
+                    self.movieGenre.updateValue(item["name"].stringValue, forKey: item["id"].stringValue)
+                } else {
+                    self.tvGenre.updateValue(item["name"].stringValue, forKey: item["id"].stringValue)
+                }
+            }
+            self.tableView.reloadData()
+                
+        ...
+}
+```
+
+- genreLabel → 각 타입 딕셔너리에 해당하는 번호(media.genre)의 문자열
+
+```swift
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath) as! MainCell
+		
+		...
+
+		cell.genreLabel.text = media.mediaType == "movie" ? "#\(movieGenre[media.genre] ?? "")" : "#\(tvGenre[media.genre] ?? "")"
+
+		...
+}
+```
+
+<img src = "https://user-images.githubusercontent.com/74236080/139639428-414353ca-7ad4-41d5-b860-73c1f3f800b4.png" width="30%" height="30%">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
