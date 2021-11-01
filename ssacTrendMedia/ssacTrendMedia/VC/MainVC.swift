@@ -23,26 +23,36 @@ class MainVC: UIViewController {
         didSet { tableView.reloadData() }
     }
     
+    var movieGenre = [String: String]()
+    var tvGenre = [String: String]()
+
     var page = 1
     
     let networkMoniter = NWPathMonitor() // 네트워크 변경 감지
-    
+    let appid = Bundle.main.tmDBApiKey
+
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureTableView()
         configureHeader()
         configureNavigation()
-        fetchData()
         handleNetwork()
 
+        fetchData()
+        fetchGenre(type: "movie", dict: movieGenre)
+        fetchGenre(type: "tv", dict: tvGenre)
+    }
+    
+    // MARK: - Helper
+    
+    func configureTableView() {
         tableView.prefetchDataSource = self
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = .none
     }
-    
-    // MARK: - Helper
     
     func configureHeader() {
         headerIconView.layer.cornerRadius = 10
@@ -84,8 +94,27 @@ class MainVC: UIViewController {
     
     // MARK: - Fetch Data
     
+    func fetchGenre(type: String, dict: Dictionary<String, String>) {
+        var dict = dict
+        let url = "https://api.themoviedb.org/3/genre/\(type)/list?api_key=\(appid)&language=en-US"
+        
+        AF.request(url, method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success(let data):
+                let json = JSON(data)
+                for item in json["genres"].arrayValue {
+                    dict.updateValue(item["name"].stringValue, forKey: item["id"].stringValue)
+                }
+                
+                print(dict)
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     func fetchData() {
-        let appid = Bundle.main.tmDBApiKey
         let url = "https://api.themoviedb.org/3/trending/all/day?page=\(page)&api_key=\(appid)"
         
         AF.request(url, method: .get).validate().responseJSON { response in
@@ -103,8 +132,9 @@ class MainVC: UIViewController {
                         let overView = item["overview"].stringValue
                         let posterImage = item["poster_path"].stringValue
                         let backDropImage = item["backdrop_path"].stringValue
-                                                
-                        self.media.append(Media(id: id, mediaType: mediaType, title: title, voteAverage: voteAverage, releaseDate: releaseDate, overView: overView, posterImage: posterImage, backDropImage: backDropImage))
+                        let genre = item["genre_ids"][0].stringValue
+                        
+                        self.media.append(Media(id: id, mediaType: mediaType, title: title, voteAverage: voteAverage, releaseDate: releaseDate, overView: overView, posterImage: posterImage, backDropImage: backDropImage, genre: genre))
                         
                     } else if item["media_type"].stringValue == "movie" {
                         let id = item["id"].intValue
@@ -115,8 +145,9 @@ class MainVC: UIViewController {
                         let overView = item["overview"].stringValue
                         let posterImage = item["poster_path"].stringValue
                         let backDropImage = item["backdrop_path"].stringValue
+                        let genre = item["genre_ids"][0].stringValue
                         
-                        self.media.append(Media(id: id, mediaType: mediaType, title: title, voteAverage: voteAverage, releaseDate: releaseDate, overView: overView, posterImage: posterImage, backDropImage: backDropImage))
+                        self.media.append(Media(id: id, mediaType: mediaType, title: title, voteAverage: voteAverage, releaseDate: releaseDate, overView: overView, posterImage: posterImage, backDropImage: backDropImage, genre: genre))
                     } else {
                         print("")
                     }
@@ -127,7 +158,6 @@ class MainVC: UIViewController {
             }
         }
     }
-
 
     // MARK: - Action
     
@@ -187,6 +217,15 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
         cell.backDropImageView.layer.cornerRadius = 10
         cell.backDropImageView.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
         
+        if media.mediaType == "movie" {
+            cell.genreLabel.text = "#\(movieGenre[media.genre] ?? "")"
+        } else {
+            cell.genreLabel.text = "#\(tvGenre[media.genre] ?? "")"
+        }
+        
+        print(media.genre, movieGenre[media.genre] ?? "null")
+        print("movieGenre \(movieGenre)")
+        
         cell.shadowView.layer.cornerRadius = 10
         cell.shadowView.layer.shadowOpacity = 0.5
         cell.shadowView.layer.shadowRadius = 10
@@ -216,7 +255,7 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UIScreen.main.bounds.height / 2
+        return UIScreen.main.bounds.height / 1.8
     }
 }
 

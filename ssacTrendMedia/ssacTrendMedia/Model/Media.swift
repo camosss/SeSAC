@@ -16,6 +16,7 @@ struct Media {
     let overView: String
     let posterImage: String
     let backDropImage: String
+    let genre: String
 }
 
 struct Cast {

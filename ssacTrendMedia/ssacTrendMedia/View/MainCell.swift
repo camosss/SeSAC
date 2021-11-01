@@ -19,6 +19,7 @@ class MainCell: UITableViewCell {
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var overViewLabel: UILabel!
     @IBOutlet weak var linkButton: UIButton!
+    @IBOutlet weak var genreLabel: UILabel!
     
     // MARK: - Lifecycle
     
