@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		90CBC5A83F794CBEA151BF16 /* Pods_ssacTrendMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 406A5CB7F7E9E9D177640468 /* Pods_ssacTrendMedia.framework */; };
-		B429E7B8271D5B5400BF3BE7 /* ExtensionKingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B429E7B7271D5B5400BF3BE7 /* ExtensionKingfisher.swift */; };
+		B429E7B8271D5B5400BF3BE7 /* KF+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B429E7B7271D5B5400BF3BE7 /* KF+Extension.swift */; };
 		B429E7BB271D612A00BF3BE7 /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B429E7B9271D612A00BF3BE7 /* WebVC.swift */; };
 		B429E7C0271D730300BF3BE7 /* Web.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B429E7BF271D730300BF3BE7 /* Web.storyboard */; };
 		B42AFF152729B59000E7E826 /* BoxOffice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42AFF142729B59000E7E826 /* BoxOffice.swift */; };
@@ -43,7 +43,7 @@
 /* Begin PBXFileReference section */
 		406A5CB7F7E9E9D177640468 /* Pods_ssacTrendMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ssacTrendMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E1ACF5D979DCFE8A016D1AF /* Pods-ssacTrendMedia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ssacTrendMedia.debug.xcconfig"; path = "Target Support Files/Pods-ssacTrendMedia/Pods-ssacTrendMedia.debug.xcconfig"; sourceTree = "<group>"; };
-		B429E7B7271D5B5400BF3BE7 /* ExtensionKingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionKingfisher.swift; sourceTree = "<group>"; };
+		B429E7B7271D5B5400BF3BE7 /* KF+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KF+Extension.swift"; sourceTree = "<group>"; };
 		B429E7B9271D612A00BF3BE7 /* WebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
 		B429E7BF271D730300BF3BE7 /* Web.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Web.storyboard; sourceTree = "<group>"; };
 		B42AFF142729B59000E7E826 /* BoxOffice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOffice.swift; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				B44682592720755400FD031E /* AlertHelper.swift */,
-				B429E7B7271D5B5400BF3BE7 /* ExtensionKingfisher.swift */,
+				B429E7B7271D5B5400BF3BE7 /* KF+Extension.swift */,
 				B42AFF182729B78800E7E826 /* HideKey.swift */,
 			);
 			path = Utils;
@@ -353,7 +353,7 @@
 				B45E3F2C271ECDFB00C3A691 /* BookCell.swift in Sources */,
 				B429E7BB271D612A00BF3BE7 /* WebVC.swift in Sources */,
 				B446825827206DB500FD031E /* TheaterOptions.swift in Sources */,
-				B429E7B8271D5B5400BF3BE7 /* ExtensionKingfisher.swift in Sources */,
+				B429E7B8271D5B5400BF3BE7 /* KF+Extension.swift in Sources */,
 				B446824C272005D500FD031E /* MapVC.swift in Sources */,
 				B44A1CB7271BDE530077067D /* SearchVC.swift in Sources */,
 				B45E3F27271ECC4700C3A691 /* BookVC.swift in Sources */,

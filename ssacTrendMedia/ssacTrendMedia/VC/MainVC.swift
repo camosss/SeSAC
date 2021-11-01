@@ -39,10 +39,10 @@ class MainVC: UIViewController {
         configureHeader()
         configureNavigation()
         handleNetwork()
-
+        
         fetchData()
-        fetchGenre(type: "movie", dict: movieGenre)
-        fetchGenre(type: "tv", dict: tvGenre)
+        fetchGenre(type: "movie")
+        fetchGenre(type: "tv")
     }
     
     // MARK: - Helper
@@ -94,8 +94,7 @@ class MainVC: UIViewController {
     
     // MARK: - Fetch Data
     
-    func fetchGenre(type: String, dict: Dictionary<String, String>) {
-        var dict = dict
+    func fetchGenre(type: String) {
         let url = "https://api.themoviedb.org/3/genre/\(type)/list?api_key=\(appid)&language=en-US"
         
         AF.request(url, method: .get).validate().responseJSON { response in
@@ -103,10 +102,14 @@ class MainVC: UIViewController {
             case .success(let data):
                 let json = JSON(data)
                 for item in json["genres"].arrayValue {
-                    dict.updateValue(item["name"].stringValue, forKey: item["id"].stringValue)
+                    
+                    if type == "movie" {
+                        self.movieGenre.updateValue(item["name"].stringValue, forKey: item["id"].stringValue)
+                    } else {
+                        self.tvGenre.updateValue(item["name"].stringValue, forKey: item["id"].stringValue)
+                    }
                 }
-                
-                print(dict)
+                self.tableView.reloadData()
                 
             case .failure(let error):
                 print(error)
@@ -211,20 +214,12 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
         cell.titleLabel.text = media.title
         cell.voteLabel.text = media.voteAverage
         cell.overViewLabel.text = media.overView
+        cell.genreLabel.text = media.mediaType == "movie" ? "#\(movieGenre[media.genre] ?? "")" : "#\(tvGenre[media.genre] ?? "")"
         
         let imageUrl = "https://image.tmdb.org/t/p/original/\(media.backDropImage)"
         cell.backDropImageView.setImage(imageUrl: imageUrl)
         cell.backDropImageView.layer.cornerRadius = 10
         cell.backDropImageView.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
-        
-        if media.mediaType == "movie" {
-            cell.genreLabel.text = "#\(movieGenre[media.genre] ?? "")"
-        } else {
-            cell.genreLabel.text = "#\(tvGenre[media.genre] ?? "")"
-        }
-        
-        print(media.genre, movieGenre[media.genre] ?? "null")
-        print("movieGenre \(movieGenre)")
         
         cell.shadowView.layer.cornerRadius = 10
         cell.shadowView.layer.shadowOpacity = 0.5
@@ -263,7 +258,6 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
 
 extension MainVC: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-       //print(indexPaths)
         for indexPath in indexPaths {
             if media.count-1 == indexPath.row {
                 page += 1
