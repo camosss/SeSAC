@@ -21,3 +21,5 @@
 - [날씨](https://github.com/camosss/SSAC/tree/main/ssacWeather)
 
 - [비전](https://github.com/camosss/SSAC/tree/main/ssacVision)
+
+- [일기장](https://github.com/camosss/SSAC/tree/main/ssacDiary)
