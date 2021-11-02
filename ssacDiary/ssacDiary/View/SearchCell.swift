@@ -13,6 +13,11 @@ class SearchCell: UITableViewCell {
 
     static let identifier = "SearchCell"
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var postImageView: UIImageView!
+    
     // MARK: - Lifecycle
     
     override func awakeFromNib() {

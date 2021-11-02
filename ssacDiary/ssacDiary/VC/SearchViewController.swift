@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SearchViewController: UIViewController {
 
@@ -13,12 +14,22 @@ class SearchViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    let localRealm = try! Realm()
+    
+    var tasks: Results<UserDiary>!
     
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 150
+
+        tasks = localRealm.objects(UserDiary.self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 }
 
@@ -26,11 +37,16 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchCell.identifier, for: indexPath) as! SearchCell
+        
+        let row = tasks[indexPath.row]
+        cell.titleLabel.text = row.diaryTitle
+        cell.dateLabel.text = "\(row.createdDate)"
+        cell.contentLabel.text = row.content
         return cell
     }
     
