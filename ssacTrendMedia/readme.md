@@ -197,13 +197,14 @@ https://user-images.githubusercontent.com/74236080/138280933-02f09604-8bf7-4d6f-
 
 - ***Annotations***
 
-https://user-images.githubusercontent.com/74236080/138279831-cf5d24cf-44fb-4e2e-b6b7-3fbc1ef095b2.mov
 
+https://user-images.githubusercontent.com/74236080/139879791-42983d9a-d6a0-4c21-b3f0-13fd0f7a31d3.mov
 
 
 - ***핀의 주소***
 
-https://user-images.githubusercontent.com/74236080/138279810-497b0b5c-1401-4550-9cb0-737e4de5b9a8.mov
+
+https://user-images.githubusercontent.com/74236080/139879809-396b1bd1-a201-4f2b-83ee-efaa9ef71cbb.mov
 
 
 
