@@ -130,7 +130,7 @@ class MainVC: UIViewController {
                         let id = item["id"].intValue
                         let mediaType = item["media_type"].stringValue
                         let title = item["name"].stringValue
-                        let voteAverage = item["vote_average"].stringValue
+                        let voteAverage = item["vote_average"].doubleValue
                         let releaseDate = item["first_air_date"].stringValue
                         let overView = item["overview"].stringValue
                         let posterImage = item["poster_path"].stringValue
@@ -143,7 +143,7 @@ class MainVC: UIViewController {
                         let id = item["id"].intValue
                         let mediaType = item["media_type"].stringValue
                         let title = item["title"].stringValue
-                        let voteAverage = item["vote_average"].stringValue
+                        let voteAverage = item["vote_average"].doubleValue
                         let releaseDate = item["release_date"].stringValue
                         let overView = item["overview"].stringValue
                         let posterImage = item["poster_path"].stringValue
@@ -212,7 +212,7 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
         cell.typeLabel.text = "#\(media.mediaType)"
         cell.releaseDateLabel.text = media.releaseDate
         cell.titleLabel.text = media.title
-        cell.voteLabel.text = media.voteAverage
+        cell.voteLabel.text = String(format: "%.1f", media.voteAverage)
         cell.overViewLabel.text = media.overView
         cell.genreLabel.text = media.mediaType == "movie" ? "#\(movieGenre[media.genre] ?? "")" : "#\(tvGenre[media.genre] ?? "")"
         

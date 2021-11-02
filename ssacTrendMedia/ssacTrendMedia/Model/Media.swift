@@ -11,7 +11,7 @@ struct Media {
     let id: Int
     let mediaType: String
     let title: String
-    let voteAverage: String
+    let voteAverage: Double
     let releaseDate: String
     let overView: String
     let posterImage: String
