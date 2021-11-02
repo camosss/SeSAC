@@ -122,6 +122,7 @@
                     </tableView>
                     <connections>
                         <outlet property="searchTextField" destination="MR9-L8-j4Q" id="gYJ-tR-dBU"/>
+                        <outlet property="tableView" destination="G3R-lM-z3x" id="XNU-HH-24j"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1yR-hf-HDT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
