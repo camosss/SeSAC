@@ -24,6 +24,7 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         tableView.rowHeight = 150
         title = LocalizableStrings.search.localized
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont().mainDemiBold]
 
         tasks = localRealm.objects(UserDiary.self)
     }

@@ -38,7 +38,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yu" translatesAutoresizingMaskIntoConstraints="NO" id="IrO-PA-dBC">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ex" translatesAutoresizingMaskIntoConstraints="NO" id="IrO-PA-dBC">
                                 <rect key="frame" x="0.0" y="88" width="414" height="300"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -61,7 +61,9 @@
                                     <constraint firstAttribute="height" constant="40" id="772-7p-CLm"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="날짜"/>
+                                <buttonConfiguration key="configuration" style="plain" title="0000.00.00">
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pxM-s6-ccw">
                                 <rect key="frame" x="30" y="538" width="354" height="294"/>
@@ -102,7 +104,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="ContentsTextView" destination="pxM-s6-ccw" id="uFs-iL-lfM"/>
+                        <outlet property="contentTextView" destination="pxM-s6-ccw" id="uFs-iL-lfM"/>
                         <outlet property="imageView" destination="IrO-PA-dBC" id="rlu-jL-B38"/>
                         <outlet property="selectDateButton" destination="tPc-VH-kp4" id="ONu-Ib-b68"/>
                         <outlet property="titleTextField" destination="NPd-Ej-ihi" id="gdt-64-5yr"/>
@@ -152,10 +154,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ex" width="1125" height="1110"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
-        <image name="yu" width="450" height="600"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -12,3 +12,8 @@
 "calendar" = "캘린더";
 "setting" = "설정";
 "diary" = "일기 작성";
+
+"title_text" = "제목을 입력해주세요";
+"date_text" = "날짜";
+"textView_text" = "내용을 입력해주세요";
+"save" = "저장";

@@ -6,7 +6,14 @@
   
 */
 
-"tab_home" = "家";
-"tab_setting" = "設定";
 
-"welcome_text" = "こんにちは！ 会えて嬉しい";
+"home" = "家";
+"search" = "検索";
+"calendar" = "カレンダー";
+"setting" = "設定";
+"diary" = "日記を書く";
+
+"title_text" = "タイトルを入力してください";
+"date_text" = "日付";
+"textView_text" = "内容を入力してください";
+"save" = "保存";

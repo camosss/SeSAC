@@ -6,7 +6,14 @@
   
 */
 
-"tab_home" = "Home";
-"tab_setting" = "Setting";
 
-"welcome_text" = "Hello! Nice to meet you";
+"home" = "HOME";
+"search" = "Search";
+"calendar" = "Calender";
+"setting" = "Setting";
+"diary" = "Keep a diary";
+
+"title_text" = "Please enter the subject";
+"date_text" = "Date";
+"textView_text" = "Please enter your details";
+"save" = "save";

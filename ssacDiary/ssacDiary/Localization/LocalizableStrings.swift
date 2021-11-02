@@ -13,6 +13,10 @@ enum LocalizableStrings: String {
     case calendar
     case setting
     case diary
+    case title_text
+    case date_text
+    case textView_text
+    case save
     
     var localized: String {
         return self.rawValue.localized() // default - Localizable.strings
