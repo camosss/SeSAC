@@ -17,5 +17,13 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        firstLabel.font = UIFont().mainBold
+
+        title = LocalizableStrings.home.localized
+        
+        tabBarController?.tabBar.items![0].title = LocalizableStrings.home.localized
+        tabBarController?.tabBar.items![1].title = LocalizableStrings.search.localized
+        tabBarController?.tabBar.items![2].title = LocalizableStrings.calendar.localized
+        tabBarController?.tabBar.items![3].title = LocalizableStrings.setting.localized
     }
 }

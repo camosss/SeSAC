@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B41CD8B2272FD6E600B8EF08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41CD8B1272FD6E600B8EF08 /* AppDelegate.swift */; };
 		B41CD8B4272FD6E600B8EF08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41CD8B3272FD6E600B8EF08 /* SceneDelegate.swift */; };
-		B41CD8B6272FD6E600B8EF08 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41CD8B5272FD6E600B8EF08 /* ViewController.swift */; };
 		B41CD8B9272FD6E600B8EF08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B41CD8B7272FD6E600B8EF08 /* Main.storyboard */; };
 		B41CD8BB272FD6E700B8EF08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B41CD8BA272FD6E700B8EF08 /* Assets.xcassets */; };
 		B41CD8BE272FD6E700B8EF08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B41CD8BC272FD6E700B8EF08 /* LaunchScreen.storyboard */; };
@@ -41,7 +40,6 @@
 		B41CD8AE272FD6E600B8EF08 /* ssacDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ssacDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B41CD8B1272FD6E600B8EF08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B41CD8B3272FD6E600B8EF08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B41CD8B5272FD6E600B8EF08 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B41CD8B8272FD6E600B8EF08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B41CD8BA272FD6E700B8EF08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B41CD8BD272FD6E700B8EF08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -175,7 +173,6 @@
 		B4969A0A272FDEA700D83090 /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				B41CD8B5272FD6E600B8EF08 /* ViewController.swift */,
 				B4969A0B272FDEF300D83090 /* HomeViewController.swift */,
 				B4969A0D272FDEFB00D83090 /* SearchViewController.swift */,
 				B4969A0F272FDF1300D83090 /* CalendarViewController.swift */,
@@ -298,7 +295,6 @@
 				B4969A10272FDF1300D83090 /* CalendarViewController.swift in Sources */,
 				B4969A25272FFAEF00D83090 /* SearchCell.swift in Sources */,
 				B4969A12272FDF1A00D83090 /* SettingViewController.swift in Sources */,
-				B41CD8B6272FD6E600B8EF08 /* ViewController.swift in Sources */,
 				B4969A1F272FF56500D83090 /* DiaryViewController.swift in Sources */,
 				B41CD8D4272FD80E00B8EF08 /* LocalizableStrings.swift in Sources */,
 				B41CD8B2272FD6E600B8EF08 /* AppDelegate.swift in Sources */,

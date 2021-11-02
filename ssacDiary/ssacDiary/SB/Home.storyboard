@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--HOME-->
+        <!--홈-->
         <scene sceneID="74X-Mt-M7V">
             <objects>
                 <viewController id="gKe-fD-Ndr" customClass="HomeViewController" customModule="ssacDiary" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,10 +18,10 @@
                         <viewLayoutGuide key="safeArea" id="fiF-NK-xAI"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <navigationItem key="navigationItem" title="HOME" id="VTb-yv-bjY">
+                    <navigationItem key="navigationItem" title="홈" id="VTb-yv-bjY">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="UgL-8C-88c">
                             <connections>
-                                <segue destination="XAr-f4-LSl" kind="presentation" modalPresentationStyle="fullScreen" id="wfi-aJ-X0L"/>
+                                <segue destination="VRr-ZV-hle" kind="presentation" modalPresentationStyle="fullScreen" id="wfi-aJ-X0L"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -30,7 +30,7 @@
             </objects>
             <point key="canvasLocation" x="-539" y="1484"/>
         </scene>
-        <!--Diary View Controller-->
+        <!--일기 작성-->
         <scene sceneID="15b-Wm-ATD">
             <objects>
                 <viewController id="XAr-f4-LSl" customClass="DiaryViewController" customModule="ssacDiary" customModuleProvider="target" sceneMemberID="viewController">
@@ -38,25 +38,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xLu-YE-EAn">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <navigationItem title="일기 작성" id="eZk-0n-Y4n">
-                                        <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="JQ2-9g-oLc">
-                                            <connections>
-                                                <action selector="cancelButton:" destination="XAr-f4-LSl" id="EhU-wK-6Z4"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="저장" id="3jL-Tf-icx">
-                                            <connections>
-                                                <action selector="saveButton:" destination="XAr-f4-LSl" id="b8B-ih-mUd"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yu" translatesAutoresizingMaskIntoConstraints="NO" id="IrO-PA-dBC">
                                 <rect key="frame" x="0.0" y="88" width="414" height="300"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -98,20 +79,28 @@
                             <constraint firstItem="pxM-s6-ccw" firstAttribute="leading" secondItem="KD3-fe-UVU" secondAttribute="leading" constant="30" id="Nvj-Bi-tQN"/>
                             <constraint firstItem="KD3-fe-UVU" firstAttribute="trailing" secondItem="pxM-s6-ccw" secondAttribute="trailing" constant="30" id="PyP-Ap-by5"/>
                             <constraint firstItem="IrO-PA-dBC" firstAttribute="centerX" secondItem="NPd-Ej-ihi" secondAttribute="centerX" id="Y9L-y5-XZe"/>
-                            <constraint firstItem="IrO-PA-dBC" firstAttribute="trailing" secondItem="xLu-YE-EAn" secondAttribute="trailing" id="YFk-Tu-oHs"/>
                             <constraint firstItem="tPc-VH-kp4" firstAttribute="top" secondItem="NPd-Ej-ihi" secondAttribute="bottom" constant="20" id="dPA-fu-E21"/>
-                            <constraint firstItem="IrO-PA-dBC" firstAttribute="leading" secondItem="xLu-YE-EAn" secondAttribute="leading" id="ed7-vV-vsh"/>
                             <constraint firstItem="NPd-Ej-ihi" firstAttribute="leading" secondItem="KD3-fe-UVU" secondAttribute="leading" constant="50" id="fNf-dg-7T0"/>
                             <constraint firstItem="KD3-fe-UVU" firstAttribute="trailing" secondItem="NPd-Ej-ihi" secondAttribute="trailing" constant="50" id="fSe-R0-Y2L"/>
                             <constraint firstItem="IrO-PA-dBC" firstAttribute="top" secondItem="Bec-q5-4Eo" secondAttribute="top" constant="88" id="iVu-rT-sXy"/>
-                            <constraint firstItem="IrO-PA-dBC" firstAttribute="top" secondItem="xLu-YE-EAn" secondAttribute="bottom" id="j51-kU-fnd"/>
                             <constraint firstItem="tPc-VH-kp4" firstAttribute="leading" secondItem="KD3-fe-UVU" secondAttribute="leading" constant="50" id="mDO-tu-WlY"/>
                             <constraint firstItem="IrO-PA-dBC" firstAttribute="leading" secondItem="KD3-fe-UVU" secondAttribute="leading" id="mbZ-vU-j1v"/>
                             <constraint firstItem="KD3-fe-UVU" firstAttribute="bottom" secondItem="pxM-s6-ccw" secondAttribute="bottom" constant="30" id="vOW-IR-GKY"/>
                             <constraint firstItem="pxM-s6-ccw" firstAttribute="top" secondItem="tPc-VH-kp4" secondAttribute="bottom" constant="20" id="yTQ-kJ-9To"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="UPP-tg-Q8t"/>
+                    <navigationItem key="navigationItem" title="일기 작성" id="R6W-5c-LGg">
+                        <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="keA-69-Hxs">
+                            <connections>
+                                <action selector="cancelButton:" destination="XAr-f4-LSl" id="xfZ-QT-Dev"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="저장" id="glt-bd-fxh">
+                            <connections>
+                                <action selector="saveButton:" destination="XAr-f4-LSl" id="cow-OH-AwC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="ContentsTextView" destination="pxM-s6-ccw" id="uFs-iL-lfM"/>
                         <outlet property="imageView" destination="IrO-PA-dBC" id="rlu-jL-B38"/>
@@ -121,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LNp-DH-hPL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="189.85507246376812" y="1483.9285714285713"/>
+            <point key="canvasLocation" x="909" y="1484"/>
         </scene>
         <!--홈-->
         <scene sceneID="796-aV-8Wr">
@@ -142,6 +131,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qmb-Q3-bgE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1300" y="1484"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0XE-Y6-jWv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VRr-ZV-hle" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7hy-dj-n7N">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XAr-f4-LSl" kind="relationship" relationship="rootViewController" id="aCa-ju-xeD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bVQ-v9-MYV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="189.85507246376812" y="1483.9285714285713"/>
         </scene>
     </scenes>
     <resources>

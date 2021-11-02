@@ -23,6 +23,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 150
+        title = LocalizableStrings.search.localized
 
         tasks = localRealm.objects(UserDiary.self)
     }

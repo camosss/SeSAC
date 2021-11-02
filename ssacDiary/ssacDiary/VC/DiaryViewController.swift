@@ -23,7 +23,7 @@ class DiaryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        title = LocalizableStrings.diary.localized
     }
 
     // MARK: - Action

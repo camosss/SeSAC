@@ -8,9 +8,11 @@
 import Foundation
 
 enum LocalizableStrings: String {
-    case welcome_text
-    case data_backup
-    case data_restore
+    case home
+    case search
+    case calendar
+    case setting
+    case diary
     
     var localized: String {
         return self.rawValue.localized() // default - Localizable.strings
