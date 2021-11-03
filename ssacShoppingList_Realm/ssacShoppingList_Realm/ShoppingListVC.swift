@@ -38,7 +38,9 @@ class ShoppingListVC: UITableViewController {
         guard let text = searchTextField.text else { return }
         
         if text.isEmpty {
-            print("empty")
+            let alert = UIAlertController(title: "구매할 목록을 입력해주세요.", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default))
+            present(alert, animated: true)
         } else {
             let task = ShoppingList(list: text)
             try! localRealm.write {
@@ -55,7 +57,7 @@ class ShoppingListVC: UITableViewController {
         
         for order in ShoppingListOptions.allCases {
             alert.addAction(UIAlertAction(title: order.description, style: .default, handler: { _ in
-                print(order)
+                self.handleFilter(order)
             }))
         }
         
@@ -63,6 +65,21 @@ class ShoppingListVC: UITableViewController {
         
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - Helper
+    
+    func handleFilter(_ order: ShoppingListOptions) {
+        if order.description == "할 일순" {
+            self.tasks = self.localRealm.objects(ShoppingList.self).filter("check == false")
+        } else if order.description == "즐겨찾기순" {
+            self.tasks = self.localRealm.objects(ShoppingList.self).filter("star == true")
+        } else if order.description == "제목순" {
+            self.tasks = self.localRealm.objects(ShoppingList.self).sorted(byKeyPath: "list", ascending: true)
+        } else {
+            self.tasks = self.localRealm.objects(ShoppingList.self)
+        }
+        self.tableView.reloadData()
     }
 }
 
