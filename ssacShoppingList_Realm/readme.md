@@ -246,14 +246,16 @@ enum ShoppingListOptions: Int, CaseIterable {
 }
     
 func handleFilter(_ order: ShoppingListOptions) {
+    let load = self.localRealm.objects(ShoppingList.self)
+        
     if order.description == "할 일순" {
-        self.tasks = self.localRealm.objects(ShoppingList.self).filter("check == false")
+        self.tasks = load.filter("check == false")
     } else if order.description == "즐겨찾기순" {
-        self.tasks = self.localRealm.objects(ShoppingList.self).filter("star == true")
+        self.tasks = load.filter("star == true")
     } else if order.description == "제목순" {
-        self.tasks = self.localRealm.objects(ShoppingList.self).sorted(byKeyPath: "list", ascending: true)
+        self.tasks = load.sorted(byKeyPath: "list", ascending: true)
     } else {
-        self.tasks = self.localRealm.objects(ShoppingList.self)
+        self.tasks = load
     }
     self.tableView.reloadData()
 }
