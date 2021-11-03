@@ -14,15 +14,21 @@ class DiaryViewController: UIViewController {
 
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var selectDateButton: UIButton!
+    @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
     
     let localRealm = try! Realm()
+    let imagePicker = UIImagePickerController()
     
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        
+        handleDatePicker()
         textViewPlaceHolder()
         print(localRealm.configuration.fileURL!)
         
@@ -41,19 +47,62 @@ class DiaryViewController: UIViewController {
     }
     
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
-        print("save")
         guard let title = titleTextField.text else { return }
         guard let content = contentTextView.text else { return }
+        guard let postImage = postImageView.image else { return }
+        guard let registerDate = dateTextField.text else { return }
+        print(registerDate)
         
-        let task = UserDiary(diaryTitle: title, content: content, createdDate: Date(), registerDate: Date())
+        let task = UserDiary(diaryTitle: title, content: content, createdDate: Date(), registerDate: registerDate, postImage: "\(postImage)")
         
         try! localRealm.write {
             localRealm.add(task)
             saveImageToDocumentDirectory(imageName: "\(task._id).jpg", image: postImageView.image!)
+            dismiss(animated: true, completion: nil)
         }
     }
     
+    @IBAction func addImageButton(_ sender: UIButton) {
+        present(imagePicker, animated: true)
+    }
+    
+    @objc func datePickerValueChanged(sender: UIDatePicker) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy.MM.dd HH:mm"
+        dateTextField.text = formatter.string(from: sender.date)
+    }
+    
+    @objc func tapDone() {
+        view.endEditing(true)
+    }
+    
+    
     // MARK: - Helper
+    
+    func handleDatePicker() {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy.MM.dd HH:mm"
+        dateTextField.text = formatter.string(from: date)
+        
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .dateAndTime
+        datePicker.addTarget(self, action: #selector(datePickerValueChanged(sender:)), for: UIControl.Event.valueChanged)
+        datePicker.frame.size = CGSize(width: 0, height: 200)
+        dateTextField.inputView = datePicker
+        
+        configureToolBar()
+    }
+    
+    func configureToolBar() {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(tapDone))
+        toolbar.setItems([doneBtn], animated: true)
+        
+        dateTextField.inputAccessoryView = toolbar
+    }
     
     func textViewPlaceHolder() {
         contentTextView.delegate = self
@@ -119,3 +168,22 @@ extension DiaryViewController: UITextViewDelegate {
         return true
     }
 }
+
+// MARK: - UIImagePickerControllerDelegate
+
+extension DiaryViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    // 사진을 촬영하거나, 갤러리에서 사진을 선택한 직후에 실행
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let value = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            postImageView.image = value
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+}
+

@@ -85,7 +85,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         
         let row = tasks[indexPath.row]
         cell.titleLabel.text = row.diaryTitle
-        cell.dateLabel.text = "\(row.createdDate)"
+        cell.dateLabel.text = "\(row.registerDate)"
         cell.contentLabel.text = row.content
         cell.postImageView.image = loadImageFromDocumentDirectory(imageName: "\(row._id).jpg")
         return cell
@@ -94,14 +94,14 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let taskToUpdate = tasks[indexPath.row]
+//        let taskToUpdate = tasks[indexPath.row]
         
         // 1. 수정 - 레코드에 대한 값 수정
-        try! localRealm.write {
-            taskToUpdate.diaryTitle = "제목 수정"
-            taskToUpdate.content = "내용 수정"
-            tableView.reloadData()
-        }
+//        try! localRealm.write {
+//            taskToUpdate.diaryTitle = "제목 수정"
+//            taskToUpdate.content = "내용 수정"
+//            tableView.reloadData()
+//        }
         
         // 2. 일괄 수정
         /*
