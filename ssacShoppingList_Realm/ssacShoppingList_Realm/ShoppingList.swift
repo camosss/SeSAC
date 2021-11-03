@@ -1,6 +1,6 @@
 //
 //  ShoppingList.swift
-//  ssacShoppingList
+//  ssacShoppingList_Realm
 //
 //  Created by 강호성 on 2021/11/03.
 //
