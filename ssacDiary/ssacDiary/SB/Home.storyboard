@@ -105,7 +105,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="contentTextView" destination="pxM-s6-ccw" id="uFs-iL-lfM"/>
-                        <outlet property="imageView" destination="IrO-PA-dBC" id="rlu-jL-B38"/>
+                        <outlet property="postImageView" destination="IrO-PA-dBC" id="rlu-jL-B38"/>
                         <outlet property="selectDateButton" destination="tPc-VH-kp4" id="ONu-Ib-b68"/>
                         <outlet property="titleTextField" destination="NPd-Ej-ihi" id="gdt-64-5yr"/>
                     </connections>
