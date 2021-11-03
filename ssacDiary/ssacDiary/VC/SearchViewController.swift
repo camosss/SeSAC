@@ -92,7 +92,12 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sb = UIStoryboard(name: "Detail", bundle: Bundle.main)
+        let vc = sb.instantiateViewController(withIdentifier: "Detail") as! DetailViewController
+        
+        navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
+
         
 //        let taskToUpdate = tasks[indexPath.row]
         
