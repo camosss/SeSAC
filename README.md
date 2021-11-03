@@ -14,3 +14,6 @@
 | [날씨](https://github.com/camosss/SSAC/tree/main/ssacWeather) | API, Alamofire, SwiftyJSON, CoreLocation |
 | [비전](https://github.com/camosss/SSAC/tree/main/ssacVision) | API, JGProgressHUD, UIImagePickerController |
 | [일기장](https://github.com/camosss/SSAC/tree/main/ssacDiary) | Localizing, Realm |
+| [쇼핑 리스트(Realm)](https://github.com/camosss/SSAC/tree/main/ssacShoppingList_Realm) | Realm |
+
+
