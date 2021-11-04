@@ -18,6 +18,9 @@
 		B439AB19273267FE00FA4DDE /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B439AB18273267FE00FA4DDE /* RealmSwift */; };
 		B439AB1B2732688100FA4DDE /* ShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B439AB1A2732688100FA4DDE /* ShoppingList.swift */; };
 		B439AB1D2732808A00FA4DDE /* ShoppingListOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B439AB1C2732808A00FA4DDE /* ShoppingListOptions.swift */; };
+		B439AB3A2733D4AF00FA4DDE /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B439AB392733D4AF00FA4DDE /* SettingVC.swift */; };
+		B439AB3F2733D90F00FA4DDE /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B439AB3E2733D90F00FA4DDE /* SettingCell.swift */; };
+		B439AB412733DA9C00FA4DDE /* SettingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B439AB402733DA9C00FA4DDE /* SettingOption.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		B439AB132732674800FA4DDE /* ShoppingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCell.swift; sourceTree = "<group>"; };
 		B439AB1A2732688100FA4DDE /* ShoppingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingList.swift; sourceTree = "<group>"; };
 		B439AB1C2732808A00FA4DDE /* ShoppingListOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListOptions.swift; sourceTree = "<group>"; };
+		B439AB392733D4AF00FA4DDE /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		B439AB3E2733D90F00FA4DDE /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		B439AB402733DA9C00FA4DDE /* SettingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOption.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +72,9 @@
 		B439AAFC2732617400FA4DDE /* ssacShoppingList_Realm */ = {
 			isa = PBXGroup;
 			children = (
-				B439AB1A2732688100FA4DDE /* ShoppingList.swift */,
-				B439AB1C2732808A00FA4DDE /* ShoppingListOptions.swift */,
-				B439AB132732674800FA4DDE /* ShoppingCell.swift */,
-				B439AB11273261C400FA4DDE /* ShoppingListVC.swift */,
+				B439AB3B2733D8ED00FA4DDE /* Model */,
+				B439AB3C2733D8F200FA4DDE /* View */,
+				B439AB3D2733D8F600FA4DDE /* VC */,
 				B439AB202732956F00FA4DDE /* App+SceneDelegate */,
 				B439AB032732617400FA4DDE /* Main.storyboard */,
 				B439AB062732617600FA4DDE /* Assets.xcassets */,
@@ -86,6 +91,34 @@
 				B439AAFF2732617400FA4DDE /* SceneDelegate.swift */,
 			);
 			path = "App+SceneDelegate";
+			sourceTree = "<group>";
+		};
+		B439AB3B2733D8ED00FA4DDE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B439AB1A2732688100FA4DDE /* ShoppingList.swift */,
+				B439AB1C2732808A00FA4DDE /* ShoppingListOptions.swift */,
+				B439AB402733DA9C00FA4DDE /* SettingOption.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B439AB3C2733D8F200FA4DDE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B439AB132732674800FA4DDE /* ShoppingCell.swift */,
+				B439AB3E2733D90F00FA4DDE /* SettingCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B439AB3D2733D8F600FA4DDE /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				B439AB11273261C400FA4DDE /* ShoppingListVC.swift */,
+				B439AB392733D4AF00FA4DDE /* SettingVC.swift */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,9 +201,12 @@
 			files = (
 				B439AB1D2732808A00FA4DDE /* ShoppingListOptions.swift in Sources */,
 				B439AB12273261C400FA4DDE /* ShoppingListVC.swift in Sources */,
+				B439AB412733DA9C00FA4DDE /* SettingOption.swift in Sources */,
+				B439AB3F2733D90F00FA4DDE /* SettingCell.swift in Sources */,
 				B439AB142732674800FA4DDE /* ShoppingCell.swift in Sources */,
 				B439AB1B2732688100FA4DDE /* ShoppingList.swift in Sources */,
 				B439AAFE2732617400FA4DDE /* AppDelegate.swift in Sources */,
+				B439AB3A2733D4AF00FA4DDE /* SettingVC.swift in Sources */,
 				B439AB002732617400FA4DDE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
