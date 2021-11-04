@@ -7,10 +7,11 @@
 
 import UIKit
 import Zip
+import MobileCoreServices
 
 /*
  백업하기
- - 사용자이 저장 공간 확인
+ - 사용자의 아이폰 저장 공간 확인
     - 부족: 백업 불가
  - 백업 진행
     - 어떤 데이터도 없는 경우라면 백업할 데이터가 없다고 안내
@@ -20,6 +21,22 @@ import Zip
     - 백업 완료 시점에
     - Progress + UI 인터렉션 허용
  - 공유화면
+ */
+
+/*
+ 복구하기
+ - 사용자의 아이폰 저장 공간 확인
+ - 파일 앱
+    - zip
+    - zip 선택
+ - zip -> unzip
+    - 백업 파일 이름 확인
+    - 압축 해제
+        - 백업 파일 확인: 폴더, 파일 이름
+        - 정상적인 파일 확인
+ - 백업 당시 데이터랑 현재 앱에서 사용중인 데이터를 어떻게 합칠건지 고려
+    - 백업 데이터 선택
+ 
  */
 
 class SettingViewController: UIViewController {
@@ -51,6 +68,7 @@ class SettingViewController: UIViewController {
         }
     }
     
+    // 7. 공유
     func presentActivityViewController() {
         
         // 압축파일 경로 가져오기
@@ -62,11 +80,6 @@ class SettingViewController: UIViewController {
     }
     
     // MARK: - Action
-    
-    @IBAction func testActivity(_ sender: UIButton) {
-        presentActivityViewController()
-    }
-    
     
     @IBAction func tapBackupButton(_ sender: UIButton) {
         
@@ -97,5 +110,79 @@ class SettingViewController: UIViewController {
           print("Something went wrong")
         }
     }
+ 
+    @IBAction func tapRestoreButton(_ sender: UIButton) {
+        
+        // 복구 1. 파일앱 열기 + 확장자 (import MobileCoreServices)
+        let documentPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeArchive as String], in: .import)
+        documentPicker.delegate = self
+        documentPicker.allowsMultipleSelection = false
+        self.present(documentPicker, animated: true, completion: nil)
+    }
     
+}
+
+// MARK: - UIDocumentPickerDelegate
+
+extension SettingViewController: UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        print(#function)
+        
+        // 복구 2. 선택한 파일에 대한 경로 가져와야 함
+        guard let selectedFileURL = urls.first else { return }
+        
+        let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let sandboxFileURL = directory.appendingPathComponent(selectedFileURL.lastPathComponent)
+        
+        // 복구 3. 압축 해제
+        if FileManager.default.fileExists(atPath: sandboxFileURL.path) {
+            
+            // 기존에 복구하고자 하는 zip파일을 document에 가지고 있을 경우, document에 위치한 zip을 압축 해제하면 된다.
+            do {
+                let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+                let fileURL = documentDirectory.appendingPathComponent("archive.zip")
+                
+                // destination: 위치, overwrite: 덮어쓰기, progress: 진행상황
+                try Zip.unzipFile(fileURL, destination: documentDirectory, overwrite: true, password: nil, progress: { progress in
+                    print("progress: \(progress)")
+                    
+                    // 복구가 완료됨을 알림
+                    
+                }, fileOutputHandler: { unzippedFile in
+                    print("unzippedFile \(unzippedFile)")
+                })
+                
+            } catch {
+                print("unzip Error")
+            }
+            
+        } else {
+            
+            // 파일앱의 zip -> document 폴더에 복사 (옮겨주기)
+            do {
+                try FileManager.default.copyItem(at: selectedFileURL, to: sandboxFileURL)
+                
+                let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+                let fileURL = documentDirectory.appendingPathComponent("archive.zip")
+                
+                // destination: 위치, overwrite: 덮어쓰기, progress: 진행상황
+                try Zip.unzipFile(fileURL, destination: documentDirectory, overwrite: true, password: nil, progress: { progress in
+                    print("progress: \(progress)")
+                    
+                    // 복구가 완료됨을 알림
+                    
+                }, fileOutputHandler: { unzippedFile in
+                    print("unzippedFile \(unzippedFile)")
+                })
+                
+            } catch {
+                print("copy folder, unzip Error")
+            }
+        }
+        
+    }
+
+    func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+        print(#function)
+    }
 }

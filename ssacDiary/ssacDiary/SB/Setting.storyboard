@@ -24,13 +24,13 @@
                                     <action selector="tapBackupButton:" destination="0dC-gj-nkM" eventType="touchUpInside" id="abC-Mx-tv5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2I-jq-8gi">
-                                <rect key="frame" x="171" y="414" width="73" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCL-2g-0n5">
+                                <rect key="frame" x="192" y="343" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="액티비티"/>
+                                <buttonConfiguration key="configuration" style="plain" title="복구"/>
                                 <connections>
-                                    <action selector="testActivity:" destination="0dC-gj-nkM" eventType="touchUpInside" id="YHe-GQ-jSn"/>
+                                    <action selector="tapRestoreButton:" destination="0dC-gj-nkM" eventType="touchUpInside" id="Rzs-HO-Vae"/>
                                 </connections>
                             </button>
                         </subviews>
