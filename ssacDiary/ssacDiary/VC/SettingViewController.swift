@@ -147,6 +147,9 @@ extension SettingViewController: UIDocumentPickerDelegate {
                     print("progress: \(progress)")
                     
                     // 복구가 완료됨을 알림
+                    let alert = UIAlertController(title: "복구가 완료되었습니다!", message: nil, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "확인", style: .default))
+                    self.present(alert, animated: true)
                     
                 }, fileOutputHandler: { unzippedFile in
                     print("unzippedFile \(unzippedFile)")
