@@ -69,54 +69,40 @@ navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Ke
 
 
 ---
+## **2️⃣ Image**
 
-## 2️⃣ Image
-
-### 이미지 저장
+### **이미지 저장**
 
 1. 이미지 저장할 경로 설정: document 폴더
-2. 이미지 파일 이름 설정, 최종 경로 설정 ex) Desktop/.../222.png
-3. 이미지 압축
-4. 이미지 저장: 동일한 경로에 이미지를 저장하게 될 경우 -> 덮어쓰기
-    - 이미지 경로 여부 확인
-    - 기존 경로에 있는 이미지 삭제
-5. 이미지를 document 폴더에 저장
 
 ```swift
-func saveImageToDocumentDirectory(imageName: String, image: UIImage) {    
-    // 1.
-    guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-
-    // 2.
-    let imageURL = documentDirectory.appendingPathComponent(imageName)
-        
-    // 3.
-    guard let data = image.jpegData(compressionQuality: 0.2) else { return }
-        
-    // 4.
-        // 4-1.
-    if FileManager.default.fileExists(atPath: imageURL.path) {
-            
-        // 4-2.
-        do {
-            try FileManager.default.removeItem(at: imageURL)
-            print("이미지 삭제 완료!")
-        } catch {
-            print("이미지 삭제 실패..")
-        }
-    }
-        
-    // 5.
-    do {
-        try data.write(to: imageURL)
-        print("이미지 저장 완료!")
-    } catch {
-        print("이미지 저장 실패,,")
-    }
-}
+guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
 ```
 
-### 이미지 불러오기
+2. 이미지 파일 이름 설정, 최종 경로 설정 
+
+`Users/camosss/Library/Developer/ ... /Documents/default.realm`
+
+```swift
+let imageURL = documentDirectory.appendingPathComponent(task의 pk값)
+```
+
+3. 이미지 압축
+
+`jpg` 나 `png` 파일로 압축한다.
+
+![스크린샷 2021-11-04 오후 9 35 06](https://user-images.githubusercontent.com/74236080/140314866-163d8adc-d877-43a1-9211-08c915a7dfd4.png)
+
+
+4. 이미지 저장
+- 파일 존재 여부를 확인
+- 기존 경로에 있는 이미지 삭제
+- 동일한 경로에 이미지를 저장하게 될 경우 -> 덮어쓰기
+
+5. 이미지를 document 폴더에 저장
+
+
+### **이미지 불러오기**
 
 ***document 폴더 경로 -> 이미지 찾기 -> UIImage -> UIImageView***
 
@@ -139,52 +125,21 @@ func loadImageFromDocumentDirectory(imageName: String) -> UIImage? {
 cell.postImageView.image = loadImageFromDocumentDirectory(imageName: "\(row._id).jpg")
 ```
 
-### 이미지 삭제
+### **이미지 삭제**
 
-1. 이미지 저장할 경로 설정: document 폴더
-2. 이미지 파일 이름 설정, 최종 경로 설정 ex) Desktop/.../222.png
-3. 이미지 경로 여부 확인
-4. 기존 경로에 있는 이미지 삭제
-
-```swift
-func deleteImageFromDocumentDirectory(imageName: String) {
-        
-    // 1.
-    guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-
-    // 2.
-    let imageURL = documentDirectory.appendingPathComponent(imageName)
-        
-    // 3.
-    if FileManager.default.fileExists(atPath: imageURL.path) {
-        // 4.
-        do {
-            try FileManager.default.removeItem(at: imageURL)
-            print("이미지 삭제 완료!")
-        } catch {
-            print("이미지 삭제 실패..")
-        }
-    }
-}
-```
+- 이미지를 저장할 때의 과정에서 이미지를 삭제할때까지와 코드는 같다.
 
 ***스와이프로 해당 Cell을 삭제할 때, 이미지를 저장한 폴더에서 먼저 삭제하고 Realm에서 데이터를 삭제한다.***
 
-‼️ 반대로하면 Index 꼬임
+‼️ 반대로하면 Index 꼬임‼️ 
 
 ```swift
-func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-    let row = tasks[indexPath.row]
-
-    try! localRealm.write {
-     1. deleteImageFromDocumentDirectory(imageName: "\(row._id).jpg")
-     2. localRealm.delete(row)
-        tableView.reloadData()
-    }
-}
+try! localRealm.write {
+  1. deleteImageFromDocumentDirectory(imageName: "\(row._id).jpg")
+  2. localRealm.delete(row)
+     tableView.reloadData()
+ }
 ```
-
 
 
 ---
