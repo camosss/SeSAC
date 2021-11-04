@@ -1,5 +1,5 @@
 
-## ShoppingList Realm Database 구현하기
+## #1 ShoppingList Realm Database 구현하기
 
 
 - ShoppingList 데이터(즐겨찾기, 할 일 완료 여부, 할 일 목록 등)를 Realm Database에 저장
@@ -269,7 +269,7 @@ https://user-images.githubusercontent.com/74236080/140303544-c4f3e55f-fcc5-44a4-
 
 ---
 
-## 5️⃣  백업, 복구
+## #2 백업, 복구
 
 ### ✔️ 백업
 
