@@ -13,7 +13,7 @@
 | [당첨 번호](https://github.com/camosss/SSAC/tree/main/ssacLottery) | API, Alamofire, SwiftyJSON |
 | [날씨](https://github.com/camosss/SSAC/tree/main/ssacWeather) | API, Alamofire, SwiftyJSON, CoreLocation |
 | [비전](https://github.com/camosss/SSAC/tree/main/ssacVision) | API, JGProgressHUD, UIImagePickerController |
-| [일기장](https://github.com/camosss/SSAC/tree/main/ssacDiary) | Localizing, Realm, UIDatePicker, UIImagePicker |
-| [쇼핑 리스트(Realm)](https://github.com/camosss/SSAC/tree/main/ssacShoppingList_Realm) | Realm |
+| [일기장](https://github.com/camosss/SSAC/tree/main/ssacDiary) | Localizing, Realm, UIDatePicker, UIImagePicker, Backup&Restore, Zip, UIActivityViewController |
+| [쇼핑 리스트(Realm)](https://github.com/camosss/SSAC/tree/main/ssacShoppingList_Realm) | Realm, Backup&Restore, Zip, UIActivityViewController |
 
 
