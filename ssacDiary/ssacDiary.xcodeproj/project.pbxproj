@@ -25,6 +25,7 @@
 		B439AB2C2732C45A00FA4DDE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B439AB2B2732C45A00FA4DDE /* DetailViewController.swift */; };
 		B439AB2F2732C5DC00FA4DDE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B439AB2E2732C5DC00FA4DDE /* Kingfisher */; };
 		B439AB312732C60300FA4DDE /* KF+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B439AB302732C60300FA4DDE /* KF+Extension.swift */; };
+		B439AB3627336DBB00FA4DDE /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = B439AB3527336DBB00FA4DDE /* Zip */; };
 		B49699F3272FDB3900D83090 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B49699F5272FDB3900D83090 /* Localizable.strings */; };
 		B49699FC272FDB6F00D83090 /* Setting.strings in Resources */ = {isa = PBXBuildFile; fileRef = B49699FE272FDB6F00D83090 /* Setting.strings */; };
 		B4969A03272FDB9700D83090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B4969A05272FDB9700D83090 /* InfoPlist.strings */; };
@@ -90,6 +91,7 @@
 			files = (
 				B439AB2F2732C5DC00FA4DDE /* Kingfisher in Frameworks */,
 				B439AADC2730E6F500FA4DDE /* RealmSwift in Frameworks */,
+				B439AB3627336DBB00FA4DDE /* Zip in Frameworks */,
 				B439AADA2730E6F500FA4DDE /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,6 +235,7 @@
 				B439AAD92730E6F500FA4DDE /* Realm */,
 				B439AADB2730E6F500FA4DDE /* RealmSwift */,
 				B439AB2E2732C5DC00FA4DDE /* Kingfisher */,
+				B439AB3527336DBB00FA4DDE /* Zip */,
 			);
 			productName = ssacDiary;
 			productReference = B41CD8AE272FD6E600B8EF08 /* ssacDiary.app */;
@@ -267,6 +270,7 @@
 			packageReferences = (
 				B439AAD82730E6F500FA4DDE /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				B439AB2D2732C5DC00FA4DDE /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				B439AB3427336DBB00FA4DDE /* XCRemoteSwiftPackageReference "Zip" */,
 			);
 			productRefGroup = B41CD8AF272FD6E600B8EF08 /* Products */;
 			projectDirPath = "";
@@ -593,6 +597,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		B439AB3427336DBB00FA4DDE /* XCRemoteSwiftPackageReference "Zip" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/Zip";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -610,6 +622,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B439AB2D2732C5DC00FA4DDE /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		B439AB3527336DBB00FA4DDE /* Zip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B439AB3427336DBB00FA4DDE /* XCRemoteSwiftPackageReference "Zip" */;
+			productName = Zip;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
