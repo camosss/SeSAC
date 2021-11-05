@@ -75,7 +75,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CzM-vo-5vA">
-                                <rect key="frame" x="79.5" y="498" width="304.5" height="40"/>
+                                <rect key="frame" x="109" y="498" width="275" height="40"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Q7H-s0-4Kz"/>
@@ -85,7 +85,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehe-3o-ama">
-                                <rect key="frame" x="79.5" y="548" width="304.5" height="40"/>
+                                <rect key="frame" x="109" y="548" width="275" height="40"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="5BX-FW-nlg"/>
@@ -96,8 +96,8 @@
                                     <action selector="handleDateButton:" destination="XAr-f4-LSl" eventType="touchUpInside" id="Dpa-lM-74Z"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="등록" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAm-qL-SyS">
-                                <rect key="frame" x="30" y="498" width="29.5" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="생성날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAm-qL-SyS">
+                                <rect key="frame" x="30" y="498" width="59" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="9BV-eU-5I2"/>
                                 </constraints>
@@ -105,8 +105,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="생성" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rh5-cT-bBb">
-                                <rect key="frame" x="30" y="548" width="29.5" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="등록날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rh5-cT-bBb">
+                                <rect key="frame" x="30" y="548" width="59" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="i8x-mU-PLd"/>
                                 </constraints>

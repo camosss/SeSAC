@@ -52,8 +52,8 @@ class DiaryViewController: UIViewController {
         guard let content = contentTextView.text else { return }
         guard let postImage = postImageView.image else { return }
         
-        guard let registerDate = dateTextField.text, let register = DateFormatter.customFormat.date(from: registerDate) else { return }
-        guard let customDate = dateButton.currentTitle, let custom = DateFormatter.customFormat.date(from: customDate) else { return }
+        guard let registerDate = dateButton.currentTitle, let register = DateFormatter.customFormat.date(from: registerDate) else { return }
+        guard let customDate = dateTextField.text, let custom = DateFormatter.customFormat.date(from: customDate) else { return }
 
         let task = UserDiary(diaryTitle: title, content: content, createdDate: register, registerDate: custom, postImage: "\(postImage)")
         
