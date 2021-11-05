@@ -241,6 +241,77 @@ cf. **SandBox**
 
 또한, 앱 자체가 운영 체제의 코드에 영향을 줄 수 있음을 의미하기에, 운영 체제에서 보안 데이터를 가져오기 위해악성 앱을 작성할 수 없다. 예를 들어, 테이블쪽으로 폰을 놓으면 방해금지모드로 전환되는 앱, iOS에서는 이것을 구현할 방법이 없다.
 
+---
+
+## 5️⃣ DatePicker ToolBar/Alert_ContentView 
+
+- 생성날짜 -> TextField에 ToolBar로 구현
+
+```swift
+func handleDatePicker() {
+    let date = Date()
+    dateTextField.text = DateFormatter.customFormat.string(from: date)
+        
+    let datePicker = UIDatePicker()
+    datePicker.datePickerMode = .date
+    datePicker.addTarget(self, action: #selector(datePickerValueChanged(sender:)), for: UIControl.Event.valueChanged)
+    datePicker.frame.size = CGSize(width: 0, height: 200)
+    dateTextField.inputView = datePicker
+        
+    configureToolBar()
+}
+    
+func configureToolBar() {
+    let toolbar = UIToolbar()
+    toolbar.sizeToFit()
+        
+    let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(tapDone))
+    toolbar.setItems([doneBtn], animated: true)
+        
+    dateTextField.inputAccessoryView = toolbar
+}
+```
+
+- 등록날짜 -> Button에 Alert형식에 ContentView를 삽입하여 구현
+
+```swift
+ let alert = UIAlertController(title: "날짜 선택", message: "날짜를 선택해주세요", preferredStyle: .alert)
+        
+ guard let contentView = self.storyboard?.instantiateViewController(withIdentifier: "DatePickerViewController") as? DatePickerViewController else { return }
+contentView.view.backgroundColor = .white
+contentView.preferredContentSize.height = 200
+        
+alert.setValue(contentView, forKey: "contentViewController")
+        
+let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+let ok = UIAlertAction(title: "확인", style: .default) { _ in
+    let value = DateFormatter.customFormat.string(from: contentView.datePicker.date)
+    self.dateButton.setTitle(value, for: .normal)
+}
+        
+   ...
+
+```
+
+https://user-images.githubusercontent.com/74236080/140486668-999e0df2-98c2-4d33-9944-53d043992de3.mov
+
+
+
+ 
+---
+
+## 6️⃣ 상세페이지로 전환
+
+
+
+https://user-images.githubusercontent.com/74236080/140486649-4e8af315-d364-448a-8c1b-025742096d01.mov
+
+
+
+
+
+
+
 
 
 
