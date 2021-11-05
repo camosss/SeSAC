@@ -107,7 +107,7 @@ class DiaryViewController: UIViewController {
         dateTextField.text = DateFormatter.customFormat.string(from: date)
         
         let datePicker = UIDatePicker()
-        datePicker.datePickerMode = .dateAndTime
+        datePicker.datePickerMode = .date
         datePicker.addTarget(self, action: #selector(datePickerValueChanged(sender:)), for: UIControl.Event.valueChanged)
         datePicker.frame.size = CGSize(width: 0, height: 200)
         dateTextField.inputView = datePicker

@@ -41,6 +41,7 @@ class CalendarViewController: UIViewController {
 //        let favorite = localRealm.objects(UserDiary.self).filter("favorite = false")
         
     }
+    
 }
 
 // MARK: - FSCalendarDataSource, FSCalendarDelegate
