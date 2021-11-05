@@ -22,6 +22,7 @@
 		B439AB3F2733D90F00FA4DDE /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B439AB3E2733D90F00FA4DDE /* SettingCell.swift */; };
 		B439AB412733DA9C00FA4DDE /* SettingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = B439AB402733DA9C00FA4DDE /* SettingOption.swift */; };
 		B439AB442733DFE200FA4DDE /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = B439AB432733DFE200FA4DDE /* Zip */; };
+		B439AB472734222300FA4DDE /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = B439AB462734222300FA4DDE /* JGProgressHUD */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B439AB472734222300FA4DDE /* JGProgressHUD in Frameworks */,
 				B439AB442733DFE200FA4DDE /* Zip in Frameworks */,
 				B439AB19273267FE00FA4DDE /* RealmSwift in Frameworks */,
 				B439AB17273267FE00FA4DDE /* Realm in Frameworks */,
@@ -143,6 +145,7 @@
 				B439AB16273267FE00FA4DDE /* Realm */,
 				B439AB18273267FE00FA4DDE /* RealmSwift */,
 				B439AB432733DFE200FA4DDE /* Zip */,
+				B439AB462734222300FA4DDE /* JGProgressHUD */,
 			);
 			productName = ssacShoppingList_Realm;
 			productReference = B439AAFA2732617400FA4DDE /* ssacShoppingList_Realm.app */;
@@ -175,6 +178,7 @@
 			packageReferences = (
 				B439AB15273267FE00FA4DDE /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				B439AB422733DFE200FA4DDE /* XCRemoteSwiftPackageReference "Zip" */,
+				B439AB452734222300FA4DDE /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = B439AAFB2732617400FA4DDE /* Products */;
 			projectDirPath = "";
@@ -449,6 +453,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		B439AB452734222300FA4DDE /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -466,6 +478,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B439AB422733DFE200FA4DDE /* XCRemoteSwiftPackageReference "Zip" */;
 			productName = Zip;
+		};
+		B439AB462734222300FA4DDE /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B439AB452734222300FA4DDE /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

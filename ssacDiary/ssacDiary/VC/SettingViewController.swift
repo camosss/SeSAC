@@ -50,7 +50,6 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
         title = LocalizableStrings.setting.localized
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont().mainDemiBold]
-
     }
     
     // MARK: - Helper
@@ -77,6 +76,25 @@ class SettingViewController: UIViewController {
         
         let vc = UIActivityViewController(activityItems: [fileURL], applicationActivities: nil)
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    func handleUnzipFile() throws {
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileURL = documentDirectory.appendingPathComponent("archive.zip")
+        
+        // destination: 위치, overwrite: 덮어쓰기, progress: 진행상황
+        try Zip.unzipFile(fileURL, destination: documentDirectory, overwrite: true, password: nil, progress: { progress in
+            print("progress: \(progress)")
+            
+            // 복구가 완료됨을 알림
+            let alert = UIAlertController(title: "복구가 완료되었습니다!", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default))
+            self.present(alert, animated: true)
+            
+            
+        }, fileOutputHandler: { unzippedFile in
+            print("unzippedFile \(unzippedFile)")
+        })
     }
     
     // MARK: - Action
@@ -115,6 +133,7 @@ class SettingViewController: UIViewController {
         
         // 복구 1. 파일앱 열기 + 확장자 (import MobileCoreServices)
         let documentPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeArchive as String], in: .import)
+        
         documentPicker.delegate = self
         documentPicker.allowsMultipleSelection = false
         self.present(documentPicker, animated: true, completion: nil)
@@ -139,45 +158,17 @@ extension SettingViewController: UIDocumentPickerDelegate {
             
             // 기존에 복구하고자 하는 zip파일을 document에 가지고 있을 경우, document에 위치한 zip을 압축 해제하면 된다.
             do {
-                let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                let fileURL = documentDirectory.appendingPathComponent("archive.zip")
-                
-                // destination: 위치, overwrite: 덮어쓰기, progress: 진행상황
-                try Zip.unzipFile(fileURL, destination: documentDirectory, overwrite: true, password: nil, progress: { progress in
-                    print("progress: \(progress)")
-                    
-                    // 복구가 완료됨을 알림
-                    let alert = UIAlertController(title: "복구가 완료되었습니다!", message: nil, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "확인", style: .default))
-                    self.present(alert, animated: true)
-                    
-                }, fileOutputHandler: { unzippedFile in
-                    print("unzippedFile \(unzippedFile)")
-                })
-                
+                try handleUnzipFile()
             } catch {
                 print("unzip Error")
             }
             
         } else {
-            
+
             // 파일앱의 zip -> document 폴더에 복사 (옮겨주기)
             do {
                 try FileManager.default.copyItem(at: selectedFileURL, to: sandboxFileURL)
-                
-                let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                let fileURL = documentDirectory.appendingPathComponent("archive.zip")
-                
-                // destination: 위치, overwrite: 덮어쓰기, progress: 진행상황
-                try Zip.unzipFile(fileURL, destination: documentDirectory, overwrite: true, password: nil, progress: { progress in
-                    print("progress: \(progress)")
-                    
-                    // 복구가 완료됨을 알림
-                    
-                }, fileOutputHandler: { unzippedFile in
-                    print("unzippedFile \(unzippedFile)")
-                })
-                
+                try handleUnzipFile()
             } catch {
                 print("copy folder, unzip Error")
             }

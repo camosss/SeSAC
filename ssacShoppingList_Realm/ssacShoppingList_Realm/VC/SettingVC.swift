@@ -8,12 +8,15 @@
 import UIKit
 import Zip
 import MobileCoreServices
+import JGProgressHUD
 
 class SettingVC: UIViewController {
     
     // MARK: - Properties
 
     @IBOutlet weak var tableView: UITableView!
+    
+    let hud = JGProgressHUD()
         
     // MARK: - Lifecycle
     
@@ -104,6 +107,7 @@ class SettingVC: UIViewController {
             let alert = UIAlertController(title: "복구가 완료되었습니다!", message: nil, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "확인", style: .default))
             self.present(alert, animated: true)
+            
             
         }, fileOutputHandler: { unzippedFile in
             print("unzippedFile \(unzippedFile)")

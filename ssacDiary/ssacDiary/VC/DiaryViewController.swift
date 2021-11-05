@@ -15,6 +15,7 @@ class DiaryViewController: UIViewController {
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var contentTextView: UITextView!
     
     let localRealm = try! Realm()
@@ -50,10 +51,11 @@ class DiaryViewController: UIViewController {
         guard let title = titleTextField.text else { return }
         guard let content = contentTextView.text else { return }
         guard let postImage = postImageView.image else { return }
-        guard let registerDate = dateTextField.text else { return }
-        print(registerDate)
         
-        let task = UserDiary(diaryTitle: title, content: content, createdDate: Date(), registerDate: registerDate, postImage: "\(postImage)")
+        guard let registerDate = dateTextField.text, let register = DateFormatter.customFormat.date(from: registerDate) else { return }
+        guard let customDate = dateButton.currentTitle, let custom = DateFormatter.customFormat.date(from: customDate) else { return }
+
+        let task = UserDiary(diaryTitle: title, content: content, createdDate: register, registerDate: custom, postImage: "\(postImage)")
         
         try! localRealm.write {
             localRealm.add(task)
@@ -66,10 +68,31 @@ class DiaryViewController: UIViewController {
         present(imagePicker, animated: true)
     }
     
+    // datePicker - alert custom
+    @IBAction func handleDateButton(_ sender: UIButton) {
+        
+        let alert = UIAlertController(title: "날짜 선택", message: "날짜를 선택해주세요", preferredStyle: .alert)
+        
+        guard let contentView = self.storyboard?.instantiateViewController(withIdentifier: "DatePickerViewController") as? DatePickerViewController else { return }
+        contentView.view.backgroundColor = .white
+        contentView.preferredContentSize.height = 200
+        
+        alert.setValue(contentView, forKey: "contentViewController")
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let ok = UIAlertAction(title: "확인", style: .default) { _ in
+            let value = DateFormatter.customFormat.string(from: contentView.datePicker.date)
+            self.dateButton.setTitle(value, for: .normal)
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
     @objc func datePickerValueChanged(sender: UIDatePicker) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM.dd HH:mm"
-        dateTextField.text = formatter.string(from: sender.date)
+        dateTextField.text = DateFormatter.customFormat.string(from: sender.date)
     }
     
     @objc func tapDone() {
@@ -81,9 +104,7 @@ class DiaryViewController: UIViewController {
     
     func handleDatePicker() {
         let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM.dd HH:mm"
-        dateTextField.text = formatter.string(from: date)
+        dateTextField.text = DateFormatter.customFormat.string(from: date)
         
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .dateAndTime
@@ -178,7 +199,6 @@ extension DiaryViewController: UIImagePickerControllerDelegate, UINavigationCont
         if let value = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             postImageView.image = value
         }
-        
         picker.dismiss(animated: true, completion: nil)
     }
     

@@ -85,9 +85,9 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         
         let row = tasks[indexPath.row]
         cell.titleLabel.text = row.diaryTitle
-        cell.dateLabel.text = "\(row.registerDate)"
         cell.contentLabel.text = row.content
         cell.postImageView.image = loadImageFromDocumentDirectory(imageName: "\(row._id).jpg")
+        cell.dateLabel.text = DateFormatter.customFormat.string(from: row.registerDate)
         return cell
     }
     
@@ -100,7 +100,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
 
         
 //        let taskToUpdate = tasks[indexPath.row]
-        
         // 1. 수정 - 레코드에 대한 값 수정
 //        try! localRealm.write {
 //            taskToUpdate.diaryTitle = "제목 수정"

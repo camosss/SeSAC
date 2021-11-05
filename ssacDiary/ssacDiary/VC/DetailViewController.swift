@@ -13,14 +13,20 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var registerdDateLabel: UILabel!
+    @IBOutlet weak var createdDateLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
-    
-    
+        
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
+    
+    // MARK: - Helper
+    
+    func configureUIData() {
         
     }
 }
