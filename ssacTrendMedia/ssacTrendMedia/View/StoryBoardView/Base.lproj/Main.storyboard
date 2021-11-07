@@ -305,7 +305,7 @@
                                             <rect key="frame" x="70" y="10" width="274" height="24"/>
                                             <color key="backgroundColor" systemColor="systemGray6Color"/>
                                             <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain" title="날짜를 검색해보세요"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="날짜를 선택해보세요"/>
                                             <connections>
                                                 <action selector="tapDateButton:" destination="Mc1-mI-rkd" eventType="touchUpInside" id="Inb-WM-CRb"/>
                                             </connections>

@@ -130,6 +130,7 @@
 		B44BE5D327195D79005F1C75 /* ssacTrendMedia */ = {
 			isa = PBXGroup;
 			children = (
+				B4EBB6222737E8E0008C5EA6 /* RealmModel */,
 				B44BE5EC27195E8B005F1C75 /* Model */,
 				B44BE5ED27195E97005F1C75 /* View */,
 				B44BE5EE27195EA6005F1C75 /* VC */,
@@ -150,7 +151,6 @@
 				B44682502720094600FD031E /* Map.swift */,
 				B446825727206DB500FD031E /* TheaterOptions.swift */,
 				B42AFF142729B59000E7E826 /* BoxOffice.swift */,
-				B4EBB6202737CA80008C5EA6 /* RealmBoxOffice.swift */,
 				B462F20B272A83EA004A12BF /* Media.swift */,
 			);
 			path = Model;
@@ -201,6 +201,14 @@
 				B44BE5D627195D79005F1C75 /* SceneDelegate.swift */,
 			);
 			path = "App+SceneDelegate";
+			sourceTree = "<group>";
+		};
+		B4EBB6222737E8E0008C5EA6 /* RealmModel */ = {
+			isa = PBXGroup;
+			children = (
+				B4EBB6202737CA80008C5EA6 /* RealmBoxOffice.swift */,
+			);
+			path = RealmModel;
 			sourceTree = "<group>";
 		};
 		E06DF1246CFAF4BD3E73F88C /* Frameworks */ = {

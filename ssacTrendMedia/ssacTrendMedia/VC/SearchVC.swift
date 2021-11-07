@@ -23,21 +23,25 @@ class SearchVC: UIViewController {
         didSet { tableView.reloadData() }
     }
     
+    let localRealm = try! Realm()
+
+    var tasks: Results<RealmBoxOffice>!
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "박스오피스 순위"
-//        configureSearchBar()
         
         tableView.dataSource = self
         tableView.delegate = self
         
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "yyyyMMdd"
-//        let dateString = formatter.string(from: Date(timeIntervalSinceNow: -86400))
-//        print(dateString)
-//        fetchData(date: dateString)
+        //        configureSearchBar()
+        print(localRealm.configuration.fileURL!)
+        
+        let dateString = DateFormatter.customFormat.string(from: Date(timeIntervalSinceNow: -86400))
+        print(dateString)
+        fetchData(date: dateString)
     }
     
     // MARK: - Action
@@ -57,7 +61,8 @@ class SearchVC: UIViewController {
         
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let ok = UIAlertAction(title: "확인", style: .default) { _ in
-            let value = DateFormatter.customFormat.string(from: contentView.datePicker.date)
+            
+            let value = DateFormatter.customTextFormat.string(from: contentView.datePicker.date)
             self.selectedDateButton.setTitle(value, for: .normal)
             
             let beforeDate = DateFormatter.customFormat.string(from: contentView.datePicker.date)
@@ -96,11 +101,11 @@ class SearchVC: UIViewController {
                     let rank = item["rank"].stringValue
                     let title = item["movieNm"].stringValue
                     let openDt = item["openDt"].stringValue
-                    
+
                     let boxOffice = BoxOffice(rank: rank, title: title, openDt: openDt)
                     tmp.append(boxOffice)
                 }
-                
+
                 DispatchQueue.main.async {
                     self.boxOffice = tmp
                 }
