@@ -8,14 +8,16 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import RealmSwift
 
 class SearchVC: UIViewController {
     
     // MARK: - Properties
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var selectedDateButton: UIButton!
     
-    let searchController = UISearchController(searchResultsController: nil)
+//    let searchController = UISearchController(searchResultsController: nil)
     
     private var boxOffice = [BoxOffice]() {
         didSet { tableView.reloadData() }
@@ -26,15 +28,16 @@ class SearchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "박스오피스 순위"
-        configureSearchBar()
+//        configureSearchBar()
         
         tableView.dataSource = self
         tableView.delegate = self
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyyMMdd"
-        let dateString = formatter.string(from: Date(timeIntervalSinceNow: -86400))
-        fetchData(date: dateString)
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyyMMdd"
+//        let dateString = formatter.string(from: Date(timeIntervalSinceNow: -86400))
+//        print(dateString)
+//        fetchData(date: dateString)
     }
     
     // MARK: - Action
@@ -43,16 +46,40 @@ class SearchVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func tapDateButton(_ sender: UIButton) {
+        let alert = UIAlertController(title: "날짜 선택", message: "날짜를 선택해주세요", preferredStyle: .alert)
+        
+        guard let contentView = self.storyboard?.instantiateViewController(withIdentifier: "DatePickerVC") as? DatePickerVC else { return }
+        contentView.view.backgroundColor = .white
+        contentView.preferredContentSize.height = 200
+        
+        alert.setValue(contentView, forKey: "contentViewController")
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let ok = UIAlertAction(title: "확인", style: .default) { _ in
+            let value = DateFormatter.customFormat.string(from: contentView.datePicker.date)
+            self.selectedDateButton.setTitle(value, for: .normal)
+            
+            let beforeDate = DateFormatter.customFormat.string(from: contentView.datePicker.date)
+            self.fetchData(date: beforeDate)
+        }
+        
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
     // MARK: - Helper
     
     // search bar
-    func configureSearchBar() {
-        navigationItem.searchController = searchController
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.hidesNavigationBarDuringPresentation = true
-        searchController.searchBar.placeholder = "ex) 20210101"
-    }
+//    func configureSearchBar() {
+//        navigationItem.searchController = searchController
+//        searchController.searchResultsUpdater = self
+//        searchController.obscuresBackgroundDuringPresentation = false
+//        searchController.hidesNavigationBarDuringPresentation = true
+//        searchController.searchBar.placeholder = "ex) 20210101"
+//    }
     
     // MARK: - Fetch Data
     
@@ -113,10 +140,10 @@ extension SearchVC: UITableViewDataSource, UITableViewDelegate {
 }
 
 // MARK: - UISearchResultsUpdating
-
-extension SearchVC: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        let searchText = searchController.searchBar.text ?? ""
-        fetchData(date: searchText)
-    }
-}
+//
+//extension SearchVC: UISearchResultsUpdating {
+//    func updateSearchResults(for searchController: UISearchController) {
+//        let searchText = searchController.searchBar.text ?? ""
+//        fetchData(date: searchText)
+//    }
+//}

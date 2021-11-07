@@ -237,14 +237,7 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
         let vc = sb.instantiateViewController(withIdentifier: "DetailVC") as! DetailVC
         
         // 프로퍼티에 직접 접근해서 Data 전달
-        let media = media[indexPath.row]
-        vc.backDropImageString = media.backDropImage
-        vc.posterImageString = media.posterImage
-        vc.titleString = media.title
-        vc.overViewString = media.overView
-        vc.id = media.id
-        vc.mediaType = media.mediaType
-        
+        vc.media = media[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }

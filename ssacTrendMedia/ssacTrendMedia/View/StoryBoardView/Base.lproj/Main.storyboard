@@ -284,7 +284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GRE-mX-HtL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="989.85507246376824" y="130.58035714285714"/>
+            <point key="canvasLocation" x="839" y="131"/>
         </scene>
         <!--Title-->
         <scene sceneID="Mfc-z6-SH2">
@@ -297,9 +297,31 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="CiF-zh-faF">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="KNv-Eh-N54">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q4f-TE-14v">
+                                            <rect key="frame" x="70" y="10" width="274" height="24"/>
+                                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="날짜를 검색해보세요"/>
+                                            <connections>
+                                                <action selector="tapDateButton:" destination="Mc1-mI-rkd" eventType="touchUpInside" id="Inb-WM-CRb"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="q4f-TE-14v" secondAttribute="trailing" constant="70" id="LZS-AG-cSX"/>
+                                        <constraint firstItem="q4f-TE-14v" firstAttribute="leading" secondItem="KNv-Eh-N54" secondAttribute="leading" constant="70" id="OI5-w7-MwW"/>
+                                        <constraint firstAttribute="bottom" secondItem="q4f-TE-14v" secondAttribute="bottom" constant="10" id="fzF-nO-cBD"/>
+                                        <constraint firstItem="q4f-TE-14v" firstAttribute="top" secondItem="KNv-Eh-N54" secondAttribute="top" constant="10" id="nq5-Nm-q42"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchCell" rowHeight="100" id="XPC-6P-SFd" customClass="SearchCell" customModule="ssacTrendMedia" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="100"/>
+                                        <rect key="frame" x="0.0" y="88.5" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XPC-6P-SFd" id="ohk-SB-UGR">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -373,12 +395,42 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="selectedDateButton" destination="q4f-TE-14v" id="7kG-U7-vv0"/>
                         <outlet property="tableView" destination="CiF-zh-faF" id="6Er-LM-dlv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bN-ND-mV4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2718.840579710145" y="130.58035714285714"/>
+            <point key="canvasLocation" x="2388" y="131"/>
+        </scene>
+        <!--Date PickerVC-->
+        <scene sceneID="aWn-oc-Cuo">
+            <objects>
+                <viewController storyboardIdentifier="DatePickerVC" id="1fU-rh-cYe" customClass="DatePickerVC" customModule="ssacTrendMedia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="C8Z-PJ-hSr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Uan-xO-GVh">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </datePicker>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="btp-qi-WjG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="btp-qi-WjG" firstAttribute="bottom" secondItem="Uan-xO-GVh" secondAttribute="bottom" id="BRP-an-8Vu"/>
+                            <constraint firstItem="Uan-xO-GVh" firstAttribute="leading" secondItem="btp-qi-WjG" secondAttribute="leading" id="Z9U-gH-2Le"/>
+                            <constraint firstAttribute="trailing" secondItem="Uan-xO-GVh" secondAttribute="trailing" id="fns-xk-bCY"/>
+                            <constraint firstItem="Uan-xO-GVh" firstAttribute="top" secondItem="btp-qi-WjG" secondAttribute="top" id="gpJ-P8-iwp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="datePicker" destination="Uan-xO-GVh" id="cLj-oK-3Zd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="69n-ee-xD7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3130" y="131"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QMv-yW-n47">
@@ -414,7 +466,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7s-xr-EVp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1808.6956521739132" y="130.58035714285714"/>
+            <point key="canvasLocation" x="1620" y="131"/>
         </scene>
     </scenes>
     <resources>
@@ -427,6 +479,9 @@
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

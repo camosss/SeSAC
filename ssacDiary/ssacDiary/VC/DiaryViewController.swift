@@ -59,7 +59,9 @@ class DiaryViewController: UIViewController {
         
         try! localRealm.write {
             localRealm.add(task)
-            saveImageToDocumentDirectory(imageName: "\(task._id).jpg", image: postImageView.image!)
+            
+            guard let postImage = postImageView.image else { return }
+            saveImageToDocumentDirectory(imageName: "\(task._id).jpg", image: postImage)
             dismiss(animated: true, completion: nil)
         }
     }

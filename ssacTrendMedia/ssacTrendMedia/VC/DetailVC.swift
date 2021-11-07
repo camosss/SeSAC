@@ -28,15 +28,7 @@ class DetailVC: UIViewController {
         didSet { tableView.reloadData() }
     }
     
-    // MARK: - Received data
-
-    var backDropImageString = ""
-    var titleString = ""
-    var overViewString = ""
-    var posterImageString = ""
-    var mediaType = ""
-    var id = 0
-    
+    var media: Media!
     
     // MARK: - Lifecycle
     
@@ -53,12 +45,12 @@ class DetailVC: UIViewController {
     // MARK: - Helper
     
     func configureHeaderView() {
-        titleLabel.text = titleString
+        titleLabel.text = media.title
         
-        let backDropImageUrl = "https://image.tmdb.org/t/p/original/\(backDropImageString)"
+        let backDropImageUrl = "https://image.tmdb.org/t/p/original/\(media.backDropImage)"
         backDropImageView.setImage(imageUrl: backDropImageUrl)
         
-        let posterImageUrl = "https://image.tmdb.org/t/p/original/\(posterImageString)"
+        let posterImageUrl = "https://image.tmdb.org/t/p/original/\(media.posterImage)"
         posterImageView.setImage(imageUrl: posterImageUrl)
     }
     
@@ -67,7 +59,7 @@ class DetailVC: UIViewController {
     func fetchData() {
         let appid = Bundle.main.tmDBApiKey
         var url = ""
-        url = mediaType == "movie" ? "https://api.themoviedb.org/3/movie/\(id)/credits?api_key=\(appid)&language=en-US" : "https://api.themoviedb.org/3/tv/\(id)/credits?api_key=\(appid)&language=en-US"
+        url = media.mediaType == "movie" ? "https://api.themoviedb.org/3/movie/\(media.id)/credits?api_key=\(appid)&language=en-US" : "https://api.themoviedb.org/3/tv/\(media.id)/credits?api_key=\(appid)&language=en-US"
              
         AF.request(url, method: .get).validate().responseJSON { response in
             switch response.result {
@@ -124,7 +116,7 @@ extension DetailVC: UITableViewDataSource, UITableViewDelegate {
         
         if indexPath.section == 0 {
             let summaryCell = tableView.dequeueReusableCell(withIdentifier: "SummaryCell", for: indexPath) as! SummaryCell
-            summaryCell.summaryLabel.text = overViewString
+            summaryCell.summaryLabel.text = media.overView
             summaryCell.summaryLabel.numberOfLines = expand ? 0 : 2
             
             let img = expand ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down")
