@@ -17,19 +17,39 @@ https://user-images.githubusercontent.com/74236080/137635789-57feeb91-b8ac-4813-
 
 1. 2번(DetailVC)에서 데이터를 전달받을 프로퍼티를 생성한다.
 
-***DetailVC***
-![스크린샷 2021-10-18 오후 7 14 02](https://user-images.githubusercontent.com/74236080/137712368-5d14e20d-f3d9-4ff0-b13e-c670194e2bd4.png)
+```swift
+var media: Media!
+```
 
 2. 1번(MainVC)에서 "DetailVC" identifier을 가지고 있는 ViewController(DetailVC)를 선언하고, 2번(DetailVC)에 있는 전달받을 프로퍼티에 접근해서 전달할 데이터를 넣어준다.
 
-***MainVC***
-![스크린샷 2021-10-18 오후 7 14 31](https://user-images.githubusercontent.com/74236080/137712570-dc75c54b-e254-4c4d-9423-e2d345ce51e0.png)
-
+```swift
+func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let sb = UIStoryboard(name: "Detail", bundle: nil)
+    let vc = sb.instantiateViewController(withIdentifier: "DetailVC") as! DetailVC
+        
+    // 프로퍼티에 직접 접근해서 Data 전달
+    vc.media = media[indexPath.row]
+    
+    navigationController?.pushViewController(vc, animated: true)
+    tableView.deselectRow(at: indexPath, animated: true)
+}
+```
 
 3. 데이터를 전달받은 2번(DetailVC)으로 와서 데이터를 대입한다.
 
-***DetailVC***
-![스크린샷 2021-10-18 오후 7 14 50](https://user-images.githubusercontent.com/74236080/137712594-99684b2d-4170-43d4-9186-6db946e6120b.png)
+
+```swift
+func configureHeaderView() {
+    titleLabel.text = media.title
+        
+    let backDropImageUrl = "https://image.tmdb.org/t/p/original/\(media.backDropImage)"
+    backDropImageView.setImage(imageUrl: backDropImageUrl)
+        
+    let posterImageUrl = "https://image.tmdb.org/t/p/original/\(media.posterImage)"
+    posterImageView.setImage(imageUrl: posterImageUrl)
+}
+```
 
 
 
