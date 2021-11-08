@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="e2Z-ba-fdV">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add Memo View Controller-->
+        <scene sceneID="oxs-xH-bvw">
+            <objects>
+                <viewController storyboardIdentifier="AddMemoViewController" id="teI-Ei-g07" customClass="AddMemoViewController" customModule="ssacMemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fxJ-ys-Vt1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5DB-gM-PyM">
+                                <rect key="frame" x="10" y="88" width="394" height="764"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="s2W-mY-iR5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="s2W-mY-iR5" firstAttribute="trailing" secondItem="5DB-gM-PyM" secondAttribute="trailing" constant="10" id="Wwr-cv-aXc"/>
+                            <constraint firstItem="s2W-mY-iR5" firstAttribute="bottom" secondItem="5DB-gM-PyM" secondAttribute="bottom" constant="10" id="YYZ-8h-9dX"/>
+                            <constraint firstItem="5DB-gM-PyM" firstAttribute="top" secondItem="s2W-mY-iR5" secondAttribute="top" id="ddD-j6-xdL"/>
+                            <constraint firstItem="5DB-gM-PyM" firstAttribute="leading" secondItem="s2W-mY-iR5" secondAttribute="leading" constant="10" id="pfu-lq-7bh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="HaJ-I2-LXf">
+                        <rightBarButtonItems>
+                            <barButtonItem title="완료" id="QE3-ox-ggU">
+                                <connections>
+                                    <action selector="handleDoneButton:" destination="teI-Ei-g07" id="gmF-kX-e6A"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="square.and.arrow.up" catalog="system" id="I10-rk-aZd">
+                                <connections>
+                                    <action selector="handleShareButton:" destination="teI-Ei-g07" id="bAK-qU-hwu"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="contentView" destination="5DB-gM-PyM" id="HAu-GI-ND1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ICf-l4-yeO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2468" y="71"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZvG-mC-7es">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e2Z-ba-fdV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="5MB-sU-Xpr"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4cM-Ie-0ZN">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="teI-Ei-g07" kind="relationship" relationship="rootViewController" id="cxW-d6-oHp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GtV-ug-kLC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1757.9710144927537" y="70.982142857142847"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

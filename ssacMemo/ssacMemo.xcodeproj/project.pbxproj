@@ -1,0 +1,448 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B426200A2738F2DA000F279D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42620092738F2DA000F279D /* AppDelegate.swift */; };
+		B426200C2738F2DA000F279D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B426200B2738F2DA000F279D /* SceneDelegate.swift */; };
+		B42620112738F2DA000F279D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B426200F2738F2DA000F279D /* Main.storyboard */; };
+		B42620132738F2DC000F279D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B42620122738F2DC000F279D /* Assets.xcassets */; };
+		B42620162738F2DC000F279D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B42620142738F2DC000F279D /* LaunchScreen.storyboard */; };
+		B426201F2738F846000F279D /* MemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B426201E2738F846000F279D /* MemoTableViewController.swift */; };
+		B42620212738FC33000F279D /* MemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42620202738FC33000F279D /* MemoTableViewCell.swift */; };
+		B426202727391169000F279D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = B426202627391169000F279D /* Realm */; };
+		B426202927391169000F279D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B426202827391169000F279D /* RealmSwift */; };
+		B426202B273911A2000F279D /* MemoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B426202A273911A2000F279D /* MemoList.swift */; };
+		B426202F2739279D000F279D /* AddMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B426202E2739279C000F279D /* AddMemoViewController.swift */; };
+		B426203427392858000F279D /* Add.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B426203327392858000F279D /* Add.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B42620062738F2DA000F279D /* ssacMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ssacMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B42620092738F2DA000F279D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B426200B2738F2DA000F279D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B42620102738F2DA000F279D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B42620122738F2DC000F279D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B42620152738F2DC000F279D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B42620172738F2DC000F279D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B426201E2738F846000F279D /* MemoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTableViewController.swift; sourceTree = "<group>"; };
+		B42620202738FC33000F279D /* MemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTableViewCell.swift; sourceTree = "<group>"; };
+		B426202A273911A2000F279D /* MemoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoList.swift; sourceTree = "<group>"; };
+		B426202E2739279C000F279D /* AddMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoViewController.swift; sourceTree = "<group>"; };
+		B426203327392858000F279D /* Add.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Add.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B42620032738F2DA000F279D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B426202927391169000F279D /* RealmSwift in Frameworks */,
+				B426202727391169000F279D /* Realm in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B4261FFD2738F2DA000F279D = {
+			isa = PBXGroup;
+			children = (
+				B42620082738F2DA000F279D /* ssacMemo */,
+				B42620072738F2DA000F279D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B42620072738F2DA000F279D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B42620062738F2DA000F279D /* ssacMemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B42620082738F2DA000F279D /* ssacMemo */ = {
+			isa = PBXGroup;
+			children = (
+				B4262032273927AB000F279D /* Model */,
+				B4262031273927A7000F279D /* View */,
+				B42620302739279F000F279D /* VC */,
+				B426201D2738F54C000F279D /* App+SceneDelegate */,
+				B42620122738F2DC000F279D /* Assets.xcassets */,
+				B42620142738F2DC000F279D /* LaunchScreen.storyboard */,
+				B42620172738F2DC000F279D /* Info.plist */,
+			);
+			path = ssacMemo;
+			sourceTree = "<group>";
+		};
+		B426201D2738F54C000F279D /* App+SceneDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				B42620092738F2DA000F279D /* AppDelegate.swift */,
+				B426200B2738F2DA000F279D /* SceneDelegate.swift */,
+			);
+			path = "App+SceneDelegate";
+			sourceTree = "<group>";
+		};
+		B42620302739279F000F279D /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				B426201E2738F846000F279D /* MemoTableViewController.swift */,
+				B426202E2739279C000F279D /* AddMemoViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		B4262031273927A7000F279D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B426200F2738F2DA000F279D /* Main.storyboard */,
+				B426203327392858000F279D /* Add.storyboard */,
+				B42620202738FC33000F279D /* MemoTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B4262032273927AB000F279D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B426202A273911A2000F279D /* MemoList.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B42620052738F2DA000F279D /* ssacMemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B426201A2738F2DC000F279D /* Build configuration list for PBXNativeTarget "ssacMemo" */;
+			buildPhases = (
+				B42620022738F2DA000F279D /* Sources */,
+				B42620032738F2DA000F279D /* Frameworks */,
+				B42620042738F2DA000F279D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ssacMemo;
+			packageProductDependencies = (
+				B426202627391169000F279D /* Realm */,
+				B426202827391169000F279D /* RealmSwift */,
+			);
+			productName = ssacMemo;
+			productReference = B42620062738F2DA000F279D /* ssacMemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B4261FFE2738F2DA000F279D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					B42620052738F2DA000F279D = {
+						CreatedOnToolsVersion = 13.0;
+					};
+				};
+			};
+			buildConfigurationList = B42620012738F2DA000F279D /* Build configuration list for PBXProject "ssacMemo" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B4261FFD2738F2DA000F279D;
+			packageReferences = (
+				B426202527391169000F279D /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+			);
+			productRefGroup = B42620072738F2DA000F279D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B42620052738F2DA000F279D /* ssacMemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B42620042738F2DA000F279D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B42620162738F2DC000F279D /* LaunchScreen.storyboard in Resources */,
+				B42620132738F2DC000F279D /* Assets.xcassets in Resources */,
+				B426203427392858000F279D /* Add.storyboard in Resources */,
+				B42620112738F2DA000F279D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B42620022738F2DA000F279D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B426201F2738F846000F279D /* MemoTableViewController.swift in Sources */,
+				B426200A2738F2DA000F279D /* AppDelegate.swift in Sources */,
+				B426202F2739279D000F279D /* AddMemoViewController.swift in Sources */,
+				B426200C2738F2DA000F279D /* SceneDelegate.swift in Sources */,
+				B426202B273911A2000F279D /* MemoList.swift in Sources */,
+				B42620212738FC33000F279D /* MemoTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B426200F2738F2DA000F279D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B42620102738F2DA000F279D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B42620142738F2DC000F279D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B42620152738F2DC000F279D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B42620182738F2DC000F279D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B42620192738F2DC000F279D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B426201B2738F2DC000F279D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7MS89TXQ5T;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ssacMemo/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = camosss.ssacMemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B426201C2738F2DC000F279D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7MS89TXQ5T;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ssacMemo/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = camosss.ssacMemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B42620012738F2DA000F279D /* Build configuration list for PBXProject "ssacMemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B42620182738F2DC000F279D /* Debug */,
+				B42620192738F2DC000F279D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B426201A2738F2DC000F279D /* Build configuration list for PBXNativeTarget "ssacMemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B426201B2738F2DC000F279D /* Debug */,
+				B426201C2738F2DC000F279D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B426202527391169000F279D /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.18.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B426202627391169000F279D /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B426202527391169000F279D /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		B426202827391169000F279D /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B426202527391169000F279D /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = B4261FFE2738F2DA000F279D /* Project object */;
+}
