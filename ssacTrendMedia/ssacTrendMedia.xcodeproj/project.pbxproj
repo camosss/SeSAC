@@ -40,7 +40,6 @@
 		B462F20C272A83EA004A12BF /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = B462F20B272A83EA004A12BF /* Media.swift */; };
 		B4EBB61D2737C32F008C5EA6 /* DatePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EBB61C2737C32F008C5EA6 /* DatePickerVC.swift */; };
 		B4EBB61F2737C3CB008C5EA6 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EBB61E2737C3CB008C5EA6 /* DateFormatter.swift */; };
-		B4EBB6212737CA80008C5EA6 /* RealmBoxOffice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EBB6202737CA80008C5EA6 /* RealmBoxOffice.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,7 +79,6 @@
 		B462F20B272A83EA004A12BF /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		B4EBB61C2737C32F008C5EA6 /* DatePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerVC.swift; sourceTree = "<group>"; };
 		B4EBB61E2737C3CB008C5EA6 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
-		B4EBB6202737CA80008C5EA6 /* RealmBoxOffice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmBoxOffice.swift; sourceTree = "<group>"; };
 		CF42429FD2A903FB90C6853F /* Pods-ssacTrendMedia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ssacTrendMedia.release.xcconfig"; path = "Target Support Files/Pods-ssacTrendMedia/Pods-ssacTrendMedia.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,7 +128,6 @@
 		B44BE5D327195D79005F1C75 /* ssacTrendMedia */ = {
 			isa = PBXGroup;
 			children = (
-				B4EBB6222737E8E0008C5EA6 /* RealmModel */,
 				B44BE5EC27195E8B005F1C75 /* Model */,
 				B44BE5ED27195E97005F1C75 /* View */,
 				B44BE5EE27195EA6005F1C75 /* VC */,
@@ -201,14 +198,6 @@
 				B44BE5D627195D79005F1C75 /* SceneDelegate.swift */,
 			);
 			path = "App+SceneDelegate";
-			sourceTree = "<group>";
-		};
-		B4EBB6222737E8E0008C5EA6 /* RealmModel */ = {
-			isa = PBXGroup;
-			children = (
-				B4EBB6202737CA80008C5EA6 /* RealmBoxOffice.swift */,
-			);
-			path = RealmModel;
 			sourceTree = "<group>";
 		};
 		E06DF1246CFAF4BD3E73F88C /* Frameworks */ = {
@@ -358,7 +347,6 @@
 				B42AFF152729B59000E7E826 /* BoxOffice.swift in Sources */,
 				B44BE5F027195F64005F1C75 /* MainVC.swift in Sources */,
 				B44BE5D527195D79005F1C75 /* AppDelegate.swift in Sources */,
-				B4EBB6212737CA80008C5EA6 /* RealmBoxOffice.swift in Sources */,
 				B462F20C272A83EA004A12BF /* Media.swift in Sources */,
 				B4EBB61D2737C32F008C5EA6 /* DatePickerVC.swift in Sources */,
 				B4EBB61F2737C3CB008C5EA6 /* DateFormatter.swift in Sources */,

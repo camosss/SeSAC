@@ -12,7 +12,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 5.4)
   - Kingfisher
-  - RealmSwift (~> 10)
+  - RealmSwift
   - SwiftyJSON (~> 4.0)
   - Toast-Swift (~> 5.0.1)
 
@@ -33,6 +33,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: b120be37a51df9f1f7c50fd317afea16ab37437a
+PODFILE CHECKSUM: 55713dc637e1c0f55336856ff14b9ba18f7e81a5
 
 COCOAPODS: 1.11.2

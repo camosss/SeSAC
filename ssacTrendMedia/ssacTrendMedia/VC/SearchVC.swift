@@ -8,7 +8,6 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-import RealmSwift
 
 class SearchVC: UIViewController {
     
@@ -17,15 +16,11 @@ class SearchVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var selectedDateButton: UIButton!
     
-//    let searchController = UISearchController(searchResultsController: nil)
+    let searchController = UISearchController(searchResultsController: nil)
     
     private var boxOffice = [BoxOffice]() {
         didSet { tableView.reloadData() }
     }
-    
-    let localRealm = try! Realm()
-
-    var tasks: Results<RealmBoxOffice>!
     
     // MARK: - Lifecycle
     
@@ -36,8 +31,7 @@ class SearchVC: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        //        configureSearchBar()
-        print(localRealm.configuration.fileURL!)
+        configureSearchBar()
         
         let dateString = DateFormatter.customFormat.string(from: Date(timeIntervalSinceNow: -86400))
         print(dateString)
@@ -77,14 +71,14 @@ class SearchVC: UIViewController {
     
     // MARK: - Helper
     
-    // search bar
-//    func configureSearchBar() {
-//        navigationItem.searchController = searchController
-//        searchController.searchResultsUpdater = self
-//        searchController.obscuresBackgroundDuringPresentation = false
-//        searchController.hidesNavigationBarDuringPresentation = true
-//        searchController.searchBar.placeholder = "ex) 20210101"
-//    }
+    //search bar
+    func configureSearchBar() {
+        navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.searchBar.placeholder = "ex) 20210101"
+    }
     
     // MARK: - Fetch Data
     
@@ -144,11 +138,11 @@ extension SearchVC: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-// MARK: - UISearchResultsUpdating
-//
-//extension SearchVC: UISearchResultsUpdating {
-//    func updateSearchResults(for searchController: UISearchController) {
-//        let searchText = searchController.searchBar.text ?? ""
-//        fetchData(date: searchText)
-//    }
-//}
+ // MARK: - UISearchResultsUpdating
+
+extension SearchVC: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchText = searchController.searchBar.text ?? ""
+        fetchData(date: searchText)
+    }
+}
