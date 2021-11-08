@@ -18,6 +18,8 @@
 		B41CD8D0272FD7AC00B8EF08 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41CD8CF272FD7AC00B8EF08 /* UIFont+Extension.swift */; };
 		B41CD8D2272FD7B300B8EF08 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41CD8D1272FD7B300B8EF08 /* String+Extension.swift */; };
 		B41CD8D4272FD80E00B8EF08 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41CD8D3272FD80E00B8EF08 /* LocalizableStrings.swift */; };
+		B4261FFA2738A9F2000F279D /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4261FF92738A9F2000F279D /* HomeTableViewCell.swift */; };
+		B4261FFC2738B181000F279D /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4261FFB2738B181000F279D /* HomeCollectionViewCell.swift */; };
 		B439AADA2730E6F500FA4DDE /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = B439AAD92730E6F500FA4DDE /* Realm */; };
 		B439AADC2730E6F500FA4DDE /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B439AADB2730E6F500FA4DDE /* RealmSwift */; };
 		B439AADF2730E73900FA4DDE /* UserDiary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B439AADE2730E73900FA4DDE /* UserDiary.swift */; };
@@ -61,6 +63,8 @@
 		B41CD8D3272FD80E00B8EF08 /* LocalizableStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
 		B41CD8D5272FD82B00B8EF08 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		B41CD8D6272FD82B00B8EF08 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		B4261FF92738A9F2000F279D /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		B4261FFB2738B181000F279D /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		B439AADE2730E73900FA4DDE /* UserDiary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDiary.swift; sourceTree = "<group>"; };
 		B439AB252732C3B600FA4DDE /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		B439AB2B2732C45A00FA4DDE /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +213,8 @@
 			isa = PBXGroup;
 			children = (
 				B4969A23272FFAEF00D83090 /* SearchCell.swift */,
+				B4261FF92738A9F2000F279D /* HomeTableViewCell.swift */,
+				B4261FFB2738B181000F279D /* HomeCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -326,6 +332,7 @@
 				B439AB2C2732C45A00FA4DDE /* DetailViewController.swift in Sources */,
 				B4969A10272FDF1300D83090 /* CalendarViewController.swift in Sources */,
 				B439AB4E2734CE7300FA4DDE /* RealmQuery.swift in Sources */,
+				B4261FFC2738B181000F279D /* HomeCollectionViewCell.swift in Sources */,
 				B439AB312732C60300FA4DDE /* KF+Extension.swift in Sources */,
 				B4969A25272FFAEF00D83090 /* SearchCell.swift in Sources */,
 				B4969A12272FDF1A00D83090 /* SettingViewController.swift in Sources */,
@@ -339,6 +346,7 @@
 				B439AB4C2734B52F00FA4DDE /* DatePickerViewController.swift in Sources */,
 				B41CD8D0272FD7AC00B8EF08 /* UIFont+Extension.swift in Sources */,
 				B41CD8D2272FD7B300B8EF08 /* String+Extension.swift in Sources */,
+				B4261FFA2738A9F2000F279D /* HomeTableViewCell.swift in Sources */,
 				B41CD8B4272FD6E600B8EF08 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
