@@ -20,6 +20,7 @@
 		B426202F2739279D000F279D /* AddMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B426202E2739279C000F279D /* AddMemoViewController.swift */; };
 		B426203427392858000F279D /* Add.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B426203327392858000F279D /* Add.storyboard */; };
 		B4A3B11627396759006BF7D3 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A3B11527396759006BF7D3 /* Date+Extension.swift */; };
+		B4A3B119273A6315006BF7D3 /* UIAlert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A3B118273A6315006BF7D3 /* UIAlert+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		B426202E2739279C000F279D /* AddMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoViewController.swift; sourceTree = "<group>"; };
 		B426203327392858000F279D /* Add.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Add.storyboard; sourceTree = "<group>"; };
 		B4A3B11527396759006BF7D3 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		B4A3B118273A6315006BF7D3 /* UIAlert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlert+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				B4A3B11527396759006BF7D3 /* Date+Extension.swift */,
+				B4A3B118273A6315006BF7D3 /* UIAlert+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4A3B119273A6315006BF7D3 /* UIAlert+Extension.swift in Sources */,
 				B426201F2738F846000F279D /* MemoTableViewController.swift in Sources */,
 				B426200A2738F2DA000F279D /* AppDelegate.swift in Sources */,
 				B426202F2739279D000F279D /* AddMemoViewController.swift in Sources */,

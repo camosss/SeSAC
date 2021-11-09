@@ -29,4 +29,11 @@ extension DateFormatter {
         format.locale = Locale(identifier: "Ko_kr")
         return format
     }
+    
+    static var comparisonFormatter: DateFormatter {
+        let format = DateFormatter()
+        format.dateFormat = "yyyyMMdd"
+        format.locale = Locale(identifier: "Ko_kr")
+        return format
+    }
 }

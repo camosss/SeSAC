@@ -16,11 +16,11 @@ class MemoList: Object {
     
     @Persisted(primaryKey: true) var _id: ObjectId
     
-    convenience init(title: String, subTitle: String, date: Date, fix: Bool) {
+    convenience init(title: String, subTitle: String, date: Date) {
         self.init()
         self.title = title
         self.subTitle = subTitle
         self.date = date
-        self.fix = fix
+        self.fix = false
     }
 }

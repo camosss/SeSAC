@@ -34,6 +34,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HaJ-I2-LXf">
+                        <barButtonItem key="leftBarButtonItem" title="메모" image="chevron.left" catalog="system" id="6bb-kG-HVL">
+                            <connections>
+                                <action selector="handleBackButton:" destination="teI-Ei-g07" id="TL0-YD-qvP"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="완료" id="QE3-ox-ggU">
                                 <connections>
@@ -76,6 +81,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

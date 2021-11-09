@@ -14,8 +14,9 @@ class MemoTableViewController: UITableViewController {
     
     private let searchController = UISearchController(searchResultsController: nil)
 
-//    let localRealm = try! Realm()
-//    var tasks: Results<MemoList>!
+    let localRealm = try! Realm()
+    var tasks: Results<MemoList>!
+    var fixTasks: Results<MemoList>!
     
     // MARK: - Lifecycle
     
@@ -24,15 +25,25 @@ class MemoTableViewController: UITableViewController {
         tableView.rowHeight = 60
         configureSearchController()
         navigationController?.navigationBar.tintColor = .systemOrange
-//        tasks = localRealm.objects(MemoList.self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        configureTitle()
         tableView.reloadData()
     }
 
     // MARK: - Hepler
+    
+    func configureTitle() {
+        tasks = localRealm.objects(MemoList.self).sorted(byKeyPath: "date", ascending: false)
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        
+        let count = numberFormatter.string(from: NSNumber(value: tasks.count))!
+        title = "\(count)개의 메모"
+    }
     
     func configureSearchController() {
         searchController.searchResultsUpdater = self
@@ -78,22 +89,43 @@ extension MemoTableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // 고정된 메모는 fix == true 일 떄 필터로해서 갯수
-        return section == 0 ? 2 : 5
+        return section == 0 ? tasks.count : tasks.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MemoTableViewCell.identifier, for: indexPath) as! MemoTableViewCell
         
-        let date = Date()
-//        cell.dateLabel.text = DateFormatter.totalFormatter.string(from: date)
-//        cell.dateLabel.text = DateFormatter.weekendFormatter.string(from: date)
-        cell.dateLabel.text = DateFormatter.todayFormatter.string(from: date)
+        let row = tasks[indexPath.row]
+        cell.titleLabel.text = row.title
+        cell.subTitleLabel.text = row.subTitle
+                
+        let rowDate = DateFormatter.comparisonFormatter.string(from: row.date)
+        let today = DateFormatter.comparisonFormatter.string(from: Date())
+        
+        // 이번주 날짜 표시해야함
+        let weekday = Calendar.current.component(.weekday, from: row.date)
+        
+        
+        if rowDate == today {
+            cell.dateLabel.text = DateFormatter.todayFormatter.string(from: row.date)
+        }
+//        else if {
+//            cell.dateLabel.text = DateFormatter.weekendFormatter.string(from: row.date)
+//        }
+        else {
+            cell.dateLabel.text = DateFormatter.totalFormatter.string(from: row.date)
+        }
+        
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let sb = UIStoryboard(name: "Add", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "AddMemoViewController") as! AddMemoViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -107,8 +139,18 @@ extension MemoTableViewController {
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, nil) in
-            print("delete")
+            
+            AlertHelper.okHandlerAlert(title: "삭제", message: "메모를 삭제하시겠습니까?", onConfirm: {
+                let row = self.tasks[indexPath.row]
+
+                try! self.localRealm.write {
+                    self.localRealm.delete(row)
+                    tableView.reloadData()
+                    self.configureTitle()
+                }
+            }, over: self)
         }
+        
         delete.backgroundColor = .red
         delete.image = UIImage(systemName: "trash.fill")
         return UISwipeActionsConfiguration(actions: [delete])

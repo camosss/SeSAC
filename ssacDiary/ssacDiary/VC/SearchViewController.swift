@@ -27,6 +27,7 @@ class SearchViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont().mainDemiBold]
 
         tasks = localRealm.objects(UserDiary.self)
+        print(tasks.count)
     }
     
     override func viewWillAppear(_ animated: Bool) {
