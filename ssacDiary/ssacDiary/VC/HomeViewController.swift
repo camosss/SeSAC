@@ -13,6 +13,14 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    let array = [
+        Array(repeating: "a", count: 5),
+        Array(repeating: "b", count: 10),
+        Array(repeating: "c", count: 10),
+        Array(repeating: "d", count: 5),
+        Array(repeating: "e", count: 15)
+    ]
+    
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -35,33 +43,14 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return array.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as! HomeTableViewCell
-        cell.categoryLabel.backgroundColor = .lightGray
-        cell.collectionView.backgroundColor = .lightGray
-        cell.collectionView.dataSource = self
-        cell.collectionView.delegate = self
         
+        cell.data = array[indexPath.row]
         cell.collectionView.tag = indexPath.row
-        cell.collectionView.isPagingEnabled = true
-        return cell
-    }
-}
-
-// MARK: - UICollectionViewDataSource, UICollectionViewDelegate
-
-extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as! HomeCollectionViewCell
-        
-        cell.imageView.backgroundColor = .systemGreen
         return cell
     }
     
@@ -70,26 +59,4 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
 
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        if collectionView.tag == 0 {
-            return CGSize(width: UIScreen.main.bounds.width, height: 100)
-        }
-        return CGSize(width: 150, height: 100)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        
-        if collectionView.tag == 0 {
-            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        }
-        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return collectionView.tag == 0 ? 0 : 10
-    }
-}

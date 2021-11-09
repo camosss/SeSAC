@@ -21,10 +21,9 @@ class MemoTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = 80
+        tableView.rowHeight = 60
         configureSearchController()
         navigationController?.navigationBar.tintColor = .systemOrange
-//        print(localRealm.configuration.fileURL!)
 //        tasks = localRealm.objects(MemoList.self)
     }
     
@@ -57,12 +56,39 @@ class MemoTableViewController: UITableViewController {
 // MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension MemoTableViewController {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return section == 0 ? "고정된 메모" : "메모"
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let header = view as? UITableViewHeaderFooterView else { return }
+        header.textLabel?.textColor = .label
+        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        header.textLabel?.frame = header.bounds
+        // UIVIew xib
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        // 고정된 메모는 fix == true 일 떄 필터로해서 갯수
+        return section == 0 ? 2 : 5
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MemoTableViewCell.identifier, for: indexPath) as! MemoTableViewCell
+        
+        let date = Date()
+//        cell.dateLabel.text = DateFormatter.totalFormatter.string(from: date)
+//        cell.dateLabel.text = DateFormatter.weekendFormatter.string(from: date)
+        cell.dateLabel.text = DateFormatter.todayFormatter.string(from: date)
+        
         return cell
     }
     
@@ -71,7 +97,7 @@ extension MemoTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let fix = UIContextualAction(style: .normal, title: "FIX") { (action, view, nil) in
+        let fix = UIContextualAction(style: .normal, title: "Fix") { (action, view, nil) in
             print("fix")
         }
         fix.backgroundColor = .systemOrange

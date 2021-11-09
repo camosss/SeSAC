@@ -19,6 +19,7 @@
 		B426202B273911A2000F279D /* MemoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B426202A273911A2000F279D /* MemoList.swift */; };
 		B426202F2739279D000F279D /* AddMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B426202E2739279C000F279D /* AddMemoViewController.swift */; };
 		B426203427392858000F279D /* Add.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B426203327392858000F279D /* Add.storyboard */; };
+		B4A3B11627396759006BF7D3 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A3B11527396759006BF7D3 /* Date+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		B426202A273911A2000F279D /* MemoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoList.swift; sourceTree = "<group>"; };
 		B426202E2739279C000F279D /* AddMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoViewController.swift; sourceTree = "<group>"; };
 		B426203327392858000F279D /* Add.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Add.storyboard; sourceTree = "<group>"; };
+		B4A3B11527396759006BF7D3 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				B4262031273927A7000F279D /* View */,
 				B42620302739279F000F279D /* VC */,
 				B426201D2738F54C000F279D /* App+SceneDelegate */,
+				B4A3B117273967E5006BF7D3 /* Extension */,
 				B42620122738F2DC000F279D /* Assets.xcassets */,
 				B42620142738F2DC000F279D /* LaunchScreen.storyboard */,
 				B42620172738F2DC000F279D /* Info.plist */,
@@ -113,6 +116,14 @@
 				B426202A273911A2000F279D /* MemoList.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B4A3B117273967E5006BF7D3 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B4A3B11527396759006BF7D3 /* Date+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +209,7 @@
 				B426200A2738F2DA000F279D /* AppDelegate.swift in Sources */,
 				B426202F2739279D000F279D /* AddMemoViewController.swift in Sources */,
 				B426200C2738F2DA000F279D /* SceneDelegate.swift in Sources */,
+				B4A3B11627396759006BF7D3 /* Date+Extension.swift in Sources */,
 				B426202B273911A2000F279D /* MemoList.swift in Sources */,
 				B42620212738FC33000F279D /* MemoTableViewCell.swift in Sources */,
 			);
@@ -426,7 +438,7 @@
 			repositoryURL = "https://github.com/realm/realm-cocoa.git";
 			requirement = {
 				kind = exactVersion;
-				version = 10.18.0;
+				version = 10.19.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
