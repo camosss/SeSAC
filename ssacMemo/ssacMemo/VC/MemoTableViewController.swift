@@ -103,6 +103,7 @@ extension MemoTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MemoTableViewCell.identifier, for: indexPath) as! MemoTableViewCell
         
+//        print(indexPath.section)
         let row = inSearchMode ? filterTasks[indexPath.row] : tasks[indexPath.row]
         cell.titleLabel.text = row.title
         cell.subTitleLabel.text = row.subTitle
@@ -134,9 +135,23 @@ extension MemoTableViewController {
     // MARK: - SwipeActionsConfiguration
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let fixStatus = tasks[indexPath.row].fix
+        
         let fix = UIContextualAction(style: .normal, title: "Fix") { (action, view, nil) in
-            print("fix")
+            
+            if fixStatus == true {
+                try! self.localRealm.write {
+                    self.tasks[indexPath.row].fix.toggle()
+                    tableView.reloadData()
+                }
+            } else {
+                try! self.localRealm.write {
+                    self.tasks[indexPath.row].fix.toggle()
+                    tableView.reloadData()
+                }
+            }
         }
+        
         fix.backgroundColor = .systemOrange
         fix.image = UIImage(systemName: "pin.fill")
         return UISwipeActionsConfiguration(actions: [fix])
@@ -168,8 +183,8 @@ extension MemoTableViewController {
 extension MemoTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchText = searchController.searchBar.text?.lowercased() ?? ""
-     
-        filterTasks = localRealm.objects(MemoList.self).filter("title CONTAINS '\(searchText.lowercased())' OR subTitle CONTAINS '\(searchText.lowercased())'")
+
+        filterTasks = localRealm.objects(MemoList.self).filter("title CONTAINS[c] '\(searchText)' OR subTitle CONTAINS[c] '\(searchText)'")
     }
 }
 

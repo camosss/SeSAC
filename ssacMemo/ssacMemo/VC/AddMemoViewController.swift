@@ -37,7 +37,6 @@ class AddMemoViewController: UIViewController {
        if contentView.text.isEmpty {
            navigationController?.popViewController(animated: true)
        } else {
-           
            let dateString = DateFormatter.totalFormatter.string(from: Date())
            guard let todayDate = DateFormatter.totalFormatter.date(from: dateString) else { return }
            
