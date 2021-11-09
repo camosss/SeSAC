@@ -12,11 +12,20 @@ class MemoTableViewController: UITableViewController {
 
     // MARK: - Properties
     
-    private let searchController = UISearchController(searchResultsController: nil)
-
     let localRealm = try! Realm()
-    var tasks: Results<MemoList>!
-    var fixTasks: Results<MemoList>!
+    
+    var tasks: Results<MemoList>! {
+        didSet { tableView.reloadData() }
+    }
+    
+    var filterTasks: Results<MemoList>! {
+        didSet { tableView.reloadData() }
+    }
+    
+    private let searchController = UISearchController(searchResultsController: nil)
+    private var inSearchMode: Bool {
+        return searchController.isActive && !searchController.searchBar.text!.isEmpty
+    }
     
     // MARK: - Lifecycle
     
@@ -68,11 +77,11 @@ class MemoTableViewController: UITableViewController {
 
 extension MemoTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return inSearchMode ? 1 : 2
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "고정된 메모" : "메모"
+        return inSearchMode ? "\(filterTasks.count)개 찾음" : section == 0 ? "고정된 메모" : "메모"
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -88,14 +97,13 @@ extension MemoTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // 고정된 메모는 fix == true 일 떄 필터로해서 갯수
-        return section == 0 ? tasks.count : tasks.count
+        return inSearchMode ? filterTasks.count : section == 0 ? tasks.count : tasks.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MemoTableViewCell.identifier, for: indexPath) as! MemoTableViewCell
         
-        let row = tasks[indexPath.row]
+        let row = inSearchMode ? filterTasks[indexPath.row] : tasks[indexPath.row]
         cell.titleLabel.text = row.title
         cell.subTitleLabel.text = row.subTitle
                 
@@ -103,9 +111,6 @@ extension MemoTableViewController {
         let today = DateFormatter.comparisonFormatter.string(from: Date())
         
         // 이번주 날짜 표시해야함
-        let weekday = Calendar.current.component(.weekday, from: row.date)
-        
-        
         if rowDate == today {
             cell.dateLabel.text = DateFormatter.todayFormatter.string(from: row.date)
         }
@@ -116,17 +121,17 @@ extension MemoTableViewController {
             cell.dateLabel.text = DateFormatter.totalFormatter.string(from: row.date)
         }
         
-        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
         let sb = UIStoryboard(name: "Add", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "AddMemoViewController") as! AddMemoViewController
         self.navigationController?.pushViewController(vc, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    // MARK: - SwipeActionsConfiguration
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let fix = UIContextualAction(style: .normal, title: "Fix") { (action, view, nil) in
@@ -163,6 +168,8 @@ extension MemoTableViewController {
 extension MemoTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchText = searchController.searchBar.text?.lowercased() ?? ""
-        print(searchText)
+     
+        filterTasks = localRealm.objects(MemoList.self).filter("title CONTAINS '\(searchText.lowercased())' OR subTitle CONTAINS '\(searchText.lowercased())'")
     }
 }
+
