@@ -18,14 +18,15 @@ class AddMemoViewController: UIViewController {
     let localRealm = try! Realm()
     var tasks: Results<MemoList>!
     
-    var recevied: MemoList!
+    var memolist: MemoList!
         
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(localRealm.configuration.fileURL!)
+        editMemo()
+//        print(localRealm.configuration.fileURL!)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,7 +37,9 @@ class AddMemoViewController: UIViewController {
     // MARK: - Helper
     
     func editMemo() {
-        
+        if memolist != nil {
+            print("수정")
+        }
     }
     
     func saveMemo() {
@@ -84,7 +87,6 @@ class AddMemoViewController: UIViewController {
     }
     
     func presentActivityViewController() {
-        
         let fileName = (documentDirectoryPath()! as NSString).appendingPathComponent("Memo.zip")
         let fileURL = URL(fileURLWithPath: fileName)
         

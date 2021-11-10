@@ -27,7 +27,17 @@ class MemoTableViewController: UITableViewController {
         return searchController.isActive && !searchController.searchBar.text!.isEmpty
     }
     
+    let welcomeMessage =    """
+                            처음 오셨군요!
+                            환영합니다:)
+                                
+                            당신만의 메모를 작성하고
+                            관리해보세요!
+                            """
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
+
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -45,13 +55,24 @@ class MemoTableViewController: UITableViewController {
         configureTitle()
         tableView.reloadData()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !appDelegate.hasAlreadyLaunched {
+            appDelegate.sethasAlreadyLaunched()
+            displayLicenAgreement(message: self.welcomeMessage)
+        }
+    }
 
     // MARK: - Hepler
     
+    func displayLicenAgreement(message:String){
+        AlertHelper.setAlert(title: nil, message: message, okMessage: "확인", over: self)
+    }
+    
     func configureTitle() {
         tasks = localRealm.objects(MemoList.self).sorted(byKeyPath: "date", ascending: false)
-//        tasks = localRealm.objects(MemoList.self).filter("fix == true")
-//        print(localRealm.objects(MemoList.self).filter("fix == true"))
 
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
@@ -135,7 +156,7 @@ extension MemoTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "Add", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "AddMemoViewController") as! AddMemoViewController
-        vc.recevied = tasks[indexPath.row]
+        vc.memolist = tasks[indexPath.row]
         
         self.navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
