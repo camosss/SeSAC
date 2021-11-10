@@ -27,13 +27,17 @@ class MemoTableViewController: UITableViewController {
         return searchController.isActive && !searchController.searchBar.text!.isEmpty
     }
     
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = 60
-        configureSearchController()
         navigationController?.navigationBar.tintColor = .systemOrange
+        
+        tableView.rowHeight = 60
+        tableView.keyboardDismissMode = .onDrag
+        
+        configureSearchController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +50,9 @@ class MemoTableViewController: UITableViewController {
     
     func configureTitle() {
         tasks = localRealm.objects(MemoList.self).sorted(byKeyPath: "date", ascending: false)
-        
+//        tasks = localRealm.objects(MemoList.self).filter("fix == true")
+//        print(localRealm.objects(MemoList.self).filter("fix == true"))
+
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         
@@ -58,6 +64,7 @@ class MemoTableViewController: UITableViewController {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = true
+        searchController.searchBar.becomeFirstResponder()
         searchController.searchBar.placeholder = "검색"
         navigationItem.searchController = searchController
         definesPresentationContext = false
@@ -70,7 +77,6 @@ class MemoTableViewController: UITableViewController {
         let vc = sb.instantiateViewController(withIdentifier: "AddMemoViewController") as! AddMemoViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -97,17 +103,17 @@ extension MemoTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return inSearchMode ? filterTasks.count : section == 0 ? tasks.count : tasks.count
+        return inSearchMode ? filterTasks.count : section == 0 ? tasks.filter("fix == true").count : tasks.filter("fix == false").count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MemoTableViewCell.identifier, for: indexPath) as! MemoTableViewCell
         
-//        print(indexPath.section)
-        let row = inSearchMode ? filterTasks[indexPath.row] : tasks[indexPath.row]
+        let row = inSearchMode ? filterTasks[indexPath.row] : indexPath.section == 0 ? tasks.filter("fix == true")[indexPath.row] : tasks.filter("fix == false")[indexPath.row]
+
         cell.titleLabel.text = row.title
         cell.subTitleLabel.text = row.subTitle
-                
+        
         let rowDate = DateFormatter.comparisonFormatter.string(from: row.date)
         let today = DateFormatter.comparisonFormatter.string(from: Date())
         
@@ -115,19 +121,22 @@ extension MemoTableViewController {
         if rowDate == today {
             cell.dateLabel.text = DateFormatter.todayFormatter.string(from: row.date)
         }
-//        else if {
-//            cell.dateLabel.text = DateFormatter.weekendFormatter.string(from: row.date)
-//        }
+        //        else if {
+        //            cell.dateLabel.text = DateFormatter.weekendFormatter.string(from: row.date)
+        //        }
         else {
             cell.dateLabel.text = DateFormatter.totalFormatter.string(from: row.date)
         }
         
         return cell
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "Add", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "AddMemoViewController") as! AddMemoViewController
+        vc.recevied = tasks[indexPath.row]
+        
         self.navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -136,7 +145,7 @@ extension MemoTableViewController {
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let fixStatus = tasks[indexPath.row].fix
-        
+
         let fix = UIContextualAction(style: .normal, title: "Fix") { (action, view, nil) in
             
             if fixStatus == true {
@@ -187,4 +196,5 @@ extension MemoTableViewController: UISearchResultsUpdating {
         filterTasks = localRealm.objects(MemoList.self).filter("title CONTAINS[c] '\(searchText)' OR subTitle CONTAINS[c] '\(searchText)'")
     }
 }
+
 
