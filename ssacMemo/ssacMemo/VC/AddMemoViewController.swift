@@ -14,6 +14,8 @@ class AddMemoViewController: UIViewController {
     // MARK: - Properties
     
     @IBOutlet weak var contentView: UITextView!
+    @IBOutlet weak var doneBarButton: UIBarButtonItem!
+    @IBOutlet weak var shareBarButton: UIBarButtonItem!
     
     let localRealm = try! Realm()
     var tasks: Results<MemoList>!
@@ -24,14 +26,18 @@ class AddMemoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        contentView.delegate = self
+        BarButton.hideBarButton(shareBarButton, doneBarButton)
         editMemo()
 //        print(localRealm.configuration.fileURL!)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        contentView.becomeFirstResponder()
+        if memolist == nil {
+            contentView.becomeFirstResponder()
+        }
     }
     
     // MARK: - Helper
@@ -127,5 +133,13 @@ class AddMemoViewController: UIViewController {
         } catch {
           print("Something went wrong")
         }
+    }
+}
+
+// MARK: - UITextViewDelegate
+
+extension AddMemoViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        BarButton.showBarButton(shareBarButton, doneBarButton)
     }
 }
