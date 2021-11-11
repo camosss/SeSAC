@@ -102,7 +102,7 @@ extension MemoTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return inSearchMode ? "\(filterTasks.count)개 찾음" : section == 0 ? "고정된 메모" : "메모"
+        return inSearchMode ? "\(filterTasks.count)개 찾음" : section == 0 ? tasks.filter("fix == true").count == 0 ? "" : "고정된 메모" : "메모"
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -176,8 +176,8 @@ extension MemoTableViewController {
             }
         }
         
+        fix.image = fixStatus == true ? UIImage(systemName: "pin.slash.fill") : UIImage(systemName: "pin.fill")
         fix.backgroundColor = .systemOrange
-        fix.image = UIImage(systemName: "pin.fill")
         return UISwipeActionsConfiguration(actions: [fix])
     }
     

@@ -7,7 +7,6 @@
 
 import UIKit
 import RealmSwift
-import Zip
 
 class AddMemoViewController: UIViewController {
     
@@ -30,7 +29,7 @@ class AddMemoViewController: UIViewController {
         contentView.delegate = self
         BarButton.hideBarButton(shareBarButton, doneBarButton)
         editMemo()
-//        print(localRealm.configuration.fileURL!)
+        print(localRealm.configuration.fileURL!)
     }
     
     override func viewDidAppear(_ animated: Bool) {

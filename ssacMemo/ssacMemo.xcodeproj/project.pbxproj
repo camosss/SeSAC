@@ -21,11 +21,11 @@
 		B426203427392858000F279D /* Add.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B426203327392858000F279D /* Add.storyboard */; };
 		B4A3B11627396759006BF7D3 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A3B11527396759006BF7D3 /* Date+Extension.swift */; };
 		B4A3B119273A6315006BF7D3 /* UIAlert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A3B118273A6315006BF7D3 /* UIAlert+Extension.swift */; };
-		B4A3B122273BF202006BF7D3 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = B4A3B121273BF202006BF7D3 /* Zip */; };
 		B4A3B124273D38FA006BF7D3 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A3B123273D38FA006BF7D3 /* PopUpViewController.swift */; };
 		B4A3B12E273D39FB006BF7D3 /* PopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4A3B12D273D39FB006BF7D3 /* PopUp.storyboard */; };
 		B4A3B17C273D560F006BF7D3 /* PopUpService+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A3B17B273D560F006BF7D3 /* PopUpService+Extension.swift */; };
 		B4A3B17E273D63B9006BF7D3 /* BarButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A3B17D273D63B9006BF7D3 /* BarButton+Extension.swift */; };
+		B4A3B181273D73BE006BF7D3 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = B4A3B180273D73BE006BF7D3 /* Toast */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4A3B122273BF202006BF7D3 /* Zip in Frameworks */,
+				B4A3B181273D73BE006BF7D3 /* Toast in Frameworks */,
 				B426202927391169000F279D /* RealmSwift in Frameworks */,
 				B426202727391169000F279D /* Realm in Frameworks */,
 			);
@@ -162,7 +162,7 @@
 			packageProductDependencies = (
 				B426202627391169000F279D /* Realm */,
 				B426202827391169000F279D /* RealmSwift */,
-				B4A3B121273BF202006BF7D3 /* Zip */,
+				B4A3B180273D73BE006BF7D3 /* Toast */,
 			);
 			productName = ssacMemo;
 			productReference = B42620062738F2DA000F279D /* ssacMemo.app */;
@@ -194,7 +194,7 @@
 			mainGroup = B4261FFD2738F2DA000F279D;
 			packageReferences = (
 				B426202527391169000F279D /* XCRemoteSwiftPackageReference "realm-cocoa" */,
-				B4A3B120273BF202006BF7D3 /* XCRemoteSwiftPackageReference "Zip" */,
+				B4A3B17F273D73BE006BF7D3 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = B42620072738F2DA000F279D /* Products */;
 			projectDirPath = "";
@@ -465,12 +465,12 @@
 				version = 10.19.0;
 			};
 		};
-		B4A3B120273BF202006BF7D3 /* XCRemoteSwiftPackageReference "Zip" */ = {
+		B4A3B17F273D73BE006BF7D3 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/marmelroy/Zip";
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				minimumVersion = 5.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -486,10 +486,10 @@
 			package = B426202527391169000F279D /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
 		};
-		B4A3B121273BF202006BF7D3 /* Zip */ = {
+		B4A3B180273D73BE006BF7D3 /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B4A3B120273BF202006BF7D3 /* XCRemoteSwiftPackageReference "Zip" */;
-			productName = Zip;
+			package = B4A3B17F273D73BE006BF7D3 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
