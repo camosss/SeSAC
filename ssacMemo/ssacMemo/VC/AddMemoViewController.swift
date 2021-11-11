@@ -80,27 +80,6 @@ class AddMemoViewController: UIViewController {
        }
    }
     
-    func documentDirectoryPath() -> String? {
-        let documentDirectory = FileManager.SearchPathDirectory.documentDirectory
-        let userDomainMask = FileManager.SearchPathDomainMask.userDomainMask
-        let path = NSSearchPathForDirectoriesInDomains(documentDirectory, userDomainMask, true)
-        
-        if let directoryPath = path.first {
-            return directoryPath
-        } else {
-            return nil
-        }
-    }
-    
-    func presentActivityViewController() {
-        let fileName = (documentDirectoryPath()! as NSString).appendingPathComponent("Memo.zip")
-        let fileURL = URL(fileURLWithPath: fileName)
-        
-        let vc = UIActivityViewController(activityItems: [fileURL], applicationActivities: nil)
-        self.present(vc, animated: true, completion: nil)
-    }
-    
-    
     // MARK: - Action
     
     @IBAction func handleDoneButton(_ sender: UIBarButtonItem) {
@@ -112,27 +91,8 @@ class AddMemoViewController: UIViewController {
     }
  
     @IBAction func handleShareButton(_ sender: UIBarButtonItem) {
-
-        var urlPaths = [URL]()
-        
-        if let path = documentDirectoryPath() {
-            
-            let realm = (path as NSString).appendingPathComponent("default.realm")
-            
-            if FileManager.default.fileExists(atPath: realm) {
-                urlPaths.append(URL(string: realm)!)
-            } else {
-                print("백업할 파일이 없습니다")
-            }
-        }
-        
-        do {
-            let zipFilePath = try Zip.quickZipFiles(urlPaths, fileName: "Memo")
-            print("압축 경로: \(zipFilePath)")
-            presentActivityViewController()
-        } catch {
-          print("Something went wrong")
-        }
+        let activityController = UIActivityViewController(activityItems: [contentView.text ?? ""], applicationActivities: nil)
+        present(activityController, animated: true, completion: nil)
     }
 }
 
