@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         hasAlreadyLaunched = UserDefaults.standard.bool(forKey: "hasAlreadyLaunched")
-        
+
         hasAlreadyLaunched ? hasAlreadyLaunched = true : UserDefaults.standard.set(true, forKey: "hasAlreadyLaunched")
         
         return true

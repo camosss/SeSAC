@@ -22,6 +22,9 @@
 		B4A3B11627396759006BF7D3 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A3B11527396759006BF7D3 /* Date+Extension.swift */; };
 		B4A3B119273A6315006BF7D3 /* UIAlert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A3B118273A6315006BF7D3 /* UIAlert+Extension.swift */; };
 		B4A3B122273BF202006BF7D3 /* Zip in Frameworks */ = {isa = PBXBuildFile; productRef = B4A3B121273BF202006BF7D3 /* Zip */; };
+		B4A3B124273D38FA006BF7D3 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A3B123273D38FA006BF7D3 /* PopUpViewController.swift */; };
+		B4A3B12E273D39FB006BF7D3 /* PopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4A3B12D273D39FB006BF7D3 /* PopUp.storyboard */; };
+		B4A3B17C273D560F006BF7D3 /* PopUpService+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A3B17B273D560F006BF7D3 /* PopUpService+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +42,9 @@
 		B426203327392858000F279D /* Add.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Add.storyboard; sourceTree = "<group>"; };
 		B4A3B11527396759006BF7D3 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		B4A3B118273A6315006BF7D3 /* UIAlert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlert+Extension.swift"; sourceTree = "<group>"; };
+		B4A3B123273D38FA006BF7D3 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		B4A3B12D273D39FB006BF7D3 /* PopUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopUp.storyboard; sourceTree = "<group>"; };
+		B4A3B17B273D560F006BF7D3 /* PopUpService+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PopUpService+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +106,7 @@
 			children = (
 				B426201E2738F846000F279D /* MemoTableViewController.swift */,
 				B426202E2739279C000F279D /* AddMemoViewController.swift */,
+				B4A3B123273D38FA006BF7D3 /* PopUpViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -109,6 +116,7 @@
 			children = (
 				B426200F2738F2DA000F279D /* Main.storyboard */,
 				B426203327392858000F279D /* Add.storyboard */,
+				B4A3B12D273D39FB006BF7D3 /* PopUp.storyboard */,
 				B42620202738FC33000F279D /* MemoTableViewCell.swift */,
 			);
 			path = View;
@@ -127,6 +135,7 @@
 			children = (
 				B4A3B11527396759006BF7D3 /* Date+Extension.swift */,
 				B4A3B118273A6315006BF7D3 /* UIAlert+Extension.swift */,
+				B4A3B17B273D560F006BF7D3 /* PopUpService+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -198,6 +207,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4A3B12E273D39FB006BF7D3 /* PopUp.storyboard in Resources */,
 				B42620162738F2DC000F279D /* LaunchScreen.storyboard in Resources */,
 				B42620132738F2DC000F279D /* Assets.xcassets in Resources */,
 				B426203427392858000F279D /* Add.storyboard in Resources */,
@@ -219,6 +229,8 @@
 				B426200C2738F2DA000F279D /* SceneDelegate.swift in Sources */,
 				B4A3B11627396759006BF7D3 /* Date+Extension.swift in Sources */,
 				B426202B273911A2000F279D /* MemoList.swift in Sources */,
+				B4A3B124273D38FA006BF7D3 /* PopUpViewController.swift in Sources */,
+				B4A3B17C273D560F006BF7D3 /* PopUpService+Extension.swift in Sources */,
 				B42620212738FC33000F279D /* MemoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

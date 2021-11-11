@@ -27,16 +27,9 @@ class MemoTableViewController: UITableViewController {
         return searchController.isActive && !searchController.searchBar.text!.isEmpty
     }
     
-    let welcomeMessage =    """
-                            처음 오셨군요!
-                            환영합니다:)
-                                
-                            당신만의 메모를 작성하고
-                            관리해보세요!
-                            """
+    let popUpService = PopUpService()
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
 
     // MARK: - Lifecycle
     
@@ -61,14 +54,15 @@ class MemoTableViewController: UITableViewController {
         
         if !appDelegate.hasAlreadyLaunched {
             appDelegate.sethasAlreadyLaunched()
-            displayLicenAgreement(message: self.welcomeMessage)
+            displayPopUpView()
         }
     }
 
     // MARK: - Hepler
     
-    func displayLicenAgreement(message:String){
-        AlertHelper.setAlert(title: nil, message: message, okMessage: "확인", over: self)
+    func displayPopUpView(){
+        let popUpVC = popUpService.popup()
+        present(popUpVC, animated: true)
     }
     
     func configureTitle() {
