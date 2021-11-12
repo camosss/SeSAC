@@ -28,8 +28,8 @@ class AddMemoViewController: UIViewController {
         
         contentView.delegate = self
         BarButton.hideBarButton(shareBarButton, doneBarButton)
-        editMemo()
-        //        print(localRealm.configuration.fileURL!)
+        setText()
+//                print(localRealm.configuration.fileURL!)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -41,14 +41,14 @@ class AddMemoViewController: UIViewController {
     
     // MARK: - Helper
     
-    func editMemo() {
+    func setText() {
         if memolist != nil {
+            // 수정
             if memolist.subTitle == "추가 텍스트 없음" {
                 contentView.text = memolist.title
             } else {
                 contentView.text = "\(memolist.title)\n\(memolist.subTitle)"
             }
-            
         }
     }
     

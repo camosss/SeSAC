@@ -7,7 +7,6 @@
 
 import UIKit
 import RealmSwift
-import Toast
 
 class MemoTableViewController: UITableViewController {
 
@@ -178,24 +177,26 @@ extension MemoTableViewController {
     // MARK: - SwipeActionsConfiguration
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let fixStatus = tasks[indexPath.row].fix
-
+        
         let fix = UIContextualAction(style: .normal, title: "Fix") { (action, view, nil) in
-            
             if indexPath.section == 0 {
                 try! self.localRealm.write {
                     self.tasks.filter("fix == true")[indexPath.row].fix.toggle()
-                    tableView.reloadData()
                 }
             } else {
-                try! self.localRealm.write {
-                    self.tasks.filter("fix == false")[indexPath.row].fix.toggle()
-                    tableView.reloadData()
+                if self.tasks.filter("fix == true").count == 5 {
+                    AlertHelper.setAlert(title: nil, message: "고정된 메모는 5개까지 등록할 수 있습니다.", okMessage: "확인", over: self)
+                } else {
+                    try! self.localRealm.write {
+                        self.tasks.filter("fix == false")[indexPath.row].fix.toggle()
+                    }
                 }
             }
+            self.tableView.reloadData()
+
         }
         
-        fix.image = fixStatus == true ? UIImage(systemName: "pin.slash.fill") : UIImage(systemName: "pin.fill")
+        fix.image = indexPath.section == 0 ? UIImage(systemName: "pin.slash.fill") : UIImage(systemName: "pin.fill")
         fix.backgroundColor = .systemOrange
         return UISwipeActionsConfiguration(actions: [fix])
     }
