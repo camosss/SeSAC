@@ -29,7 +29,8 @@ class AddMemoViewController: UIViewController {
         contentView.delegate = self
         BarButton.hideBarButton(shareBarButton, doneBarButton)
         setText()
-//                print(localRealm.configuration.fileURL!)
+        
+//        print(localRealm.configuration.fileURL!)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,12 +55,10 @@ class AddMemoViewController: UIViewController {
     
     func handleSaveAndEdit(title: String, context: String) {
         if memolist != nil {
-            
             try! localRealm.write {
                 memolist.title = title
                 memolist.subTitle = context
             }
-            
         } else {
             let task = MemoList(title: title, subTitle: context, date: Date())
             try! localRealm.write {

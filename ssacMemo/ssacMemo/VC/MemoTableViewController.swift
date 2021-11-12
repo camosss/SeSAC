@@ -111,7 +111,6 @@ extension MemoTableViewController {
         header.textLabel?.textColor = .label
         header.textLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         header.textLabel?.frame = header.bounds
-        // UIVIew xib
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
