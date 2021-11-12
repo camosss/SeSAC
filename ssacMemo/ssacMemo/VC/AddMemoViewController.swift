@@ -52,6 +52,22 @@ class AddMemoViewController: UIViewController {
         }
     }
     
+    func handleSaveAndEdit(title: String, context: String) {
+        if memolist != nil {
+            
+            try! localRealm.write {
+                memolist.title = title
+                memolist.subTitle = context
+            }
+            
+        } else {
+            let task = MemoList(title: title, subTitle: context, date: Date())
+            try! localRealm.write {
+                localRealm.add(task)
+            }
+        }
+    }
+    
     func saveMemo() {
         if contentView.text.isEmpty {
             navigationController?.popViewController(animated: true)
@@ -63,19 +79,13 @@ class AddMemoViewController: UIViewController {
                 split.removeFirst()
                 let context = split.joined(separator: "")
                 
-                let task = MemoList(title: title, subTitle: context, date: Date())
-                try! localRealm.write {
-                    localRealm.add(task)
-                }
+                handleSaveAndEdit(title: title, context: context)
                 
             } else {
                 guard let title = contentView.text else { return }
                 let context = "추가 텍스트 없음"
                 
-                let task = MemoList(title: title, subTitle: context, date: Date())
-                try! localRealm.write {
-                    localRealm.add(task)
-                }
+                handleSaveAndEdit(title: title, context: context)
             }
             navigationController?.popViewController(animated: true)
         }
