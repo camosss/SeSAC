@@ -29,7 +29,7 @@ class AddMemoViewController: UIViewController {
         contentView.delegate = self
         BarButton.hideBarButton(shareBarButton, doneBarButton)
         editMemo()
-        print(localRealm.configuration.fileURL!)
+//        print(localRealm.configuration.fileURL!)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -44,6 +44,29 @@ class AddMemoViewController: UIViewController {
     func editMemo() {
         if memolist != nil {
             print("수정")
+            
+            
+            if contentView.text.contains("\n") {
+                var split = contentView.text.split(separator: "\n")
+                let title = "\(split[0])"
+
+                split.removeFirst()
+                let context = split.joined(separator: "")
+
+                try! localRealm.write {
+                    localRealm.create(MemoList.self, value: ["_id": memolist._id, "title": title, "subTitle": context], update: .modified)
+                }
+
+
+            } else {
+                guard let title = contentView.text else { return }
+                let context = "추가 텍스트 없음"
+
+                try! localRealm.write {
+                    localRealm.create(MemoList.self, value: ["_id": memolist._id, "title": title, "subTitle": context], update: .modified)
+            }
+            
+            
         }
     }
     

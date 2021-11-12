@@ -102,7 +102,7 @@ extension MemoTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return inSearchMode ? "\(filterTasks.count)개 찾음" : section == 0 ? tasks.filter("fix == true").count == 0 ? "" : "고정된 메모" : "메모"
+        return inSearchMode ? "\(filterTasks.count)개 찾음" : section == 0 ? (tasks.filter("fix == true").count == 0 ? "" : "고정된 메모") : (tasks.count == 0 ? "" : "메모")
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -132,13 +132,27 @@ extension MemoTableViewController {
         let rowDate = DateFormatter.comparisonFormatter.string(from: row.date)
         let today = DateFormatter.comparisonFormatter.string(from: Date())
         
-        // 이번주 날짜 표시해야함
+        var calendar = Calendar.autoupdatingCurrent
+        calendar.firstWeekday = 1
+        
+        let startDate = calendar.startOfDay(for: row.date)
+        var week = [String]()
+        
+        if let weekInterval = calendar.dateInterval(of: .weekOfYear, for: startDate) {
+            for i in 0...6 {
+                if let day = calendar.date(byAdding: .day, value: i, to: weekInterval.start) {
+                    week += [DateFormatter.comparisonFormatter.string(from: day)]
+                }
+            }
+        }
+        
+        
         if rowDate == today {
             cell.dateLabel.text = DateFormatter.todayFormatter.string(from: row.date)
         }
-        //        else if {
-        //            cell.dateLabel.text = DateFormatter.weekendFormatter.string(from: row.date)
-        //        }
+        else if week.contains(rowDate) {
+            cell.dateLabel.text = DateFormatter.weekendFormatter.string(from: row.date)
+        }
         else {
             cell.dateLabel.text = DateFormatter.totalFormatter.string(from: row.date)
         }
@@ -211,5 +225,3 @@ extension MemoTableViewController: UISearchResultsUpdating {
         filterTasks = localRealm.objects(MemoList.self).filter("title CONTAINS[c] '\(searchText)' OR subTitle CONTAINS[c] '\(searchText)'")
     }
 }
-
-
