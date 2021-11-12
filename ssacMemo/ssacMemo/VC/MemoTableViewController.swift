@@ -7,7 +7,8 @@
 
 import UIKit
 import RealmSwift
- 
+import Toast
+
 class MemoTableViewController: UITableViewController {
 
     // MARK: - Properties
@@ -152,7 +153,6 @@ extension MemoTableViewController {
             }
         }
         
-        
         if rowDate == today {
             cell.dateLabel.text = DateFormatter.todayFormatter.string(from: row.date)
         }
@@ -162,15 +162,14 @@ extension MemoTableViewController {
         else {
             cell.dateLabel.text = DateFormatter.totalFormatter.string(from: row.date)
         }
-        
         return cell
-        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "Add", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "AddMemoViewController") as! AddMemoViewController
-        vc.memolist = tasks[indexPath.row]
+        let row = inSearchMode ? filterTasks[indexPath.row] : indexPath.section == 0 ? tasks.filter("fix == true")[indexPath.row] : tasks.filter("fix == false")[indexPath.row]
+        vc.memolist = row
         
         self.navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
@@ -205,13 +204,22 @@ extension MemoTableViewController {
         let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, nil) in
             
             AlertHelper.okHandlerAlert(title: "삭제", message: "메모를 삭제하시겠습니까?", onConfirm: {
-                let row = self.tasks[indexPath.row]
+                let row = self.inSearchMode ? self.filterTasks[indexPath.row] : indexPath.section == 0 ? self.tasks.filter("fix == true")[indexPath.row] : self.tasks.filter("fix == false")[indexPath.row]
 
-                try! self.localRealm.write {
-                    self.localRealm.delete(row)
-                    tableView.reloadData()
-                    self.configureTitle()
+                if indexPath.section == 0 {
+                    try! self.localRealm.write {
+                        self.localRealm.delete(row)
+                        tableView.reloadData()
+                        self.configureTitle()
+                    }
+                } else {
+                    try! self.localRealm.write {
+                        self.localRealm.delete(row)
+                        tableView.reloadData()
+                        self.configureTitle()
+                    }
                 }
+                
             }, over: self)
         }
         
