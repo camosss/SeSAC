@@ -22,6 +22,7 @@ class MemoTableViewController: UITableViewController {
         didSet { tableView.reloadData() }
     }
     
+    var searchStringText: String?
     private let searchController = UISearchController(searchResultsController: nil)
     private var inSearchMode: Bool {
         return searchController.isActive && !searchController.searchBar.text!.isEmpty
@@ -135,6 +136,19 @@ extension MemoTableViewController {
         cell.titleLabel.text = row.title
         cell.subTitleLabel.text = row.subTitle
         
+        if inSearchMode {
+            cell.titleLabel.highlight(searchText: searchStringText ?? "")
+            if cell.subTitleLabel.text != "추가 텍스트 없음" {
+                cell.subTitleLabel.highlight(searchText: searchStringText ?? "")
+            } else {
+                cell.subTitleLabel.textColor = .lightGray
+            }
+        } else {
+            cell.titleLabel.textColor = .label
+            cell.subTitleLabel.textColor = .lightGray
+        }
+        
+        
         let rowDate = DateFormatter.comparisonFormatter.string(from: row.date)
         let today = DateFormatter.comparisonFormatter.string(from: Date())
         
@@ -238,5 +252,6 @@ extension MemoTableViewController: UISearchResultsUpdating {
         let searchText = searchController.searchBar.text?.lowercased() ?? ""
 
         filterTasks = localRealm.objects(MemoList.self).filter("title CONTAINS[c] '\(searchText)' OR subTitle CONTAINS[c] '\(searchText)'")
+        searchStringText = searchText
     }
 }
