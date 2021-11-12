@@ -102,7 +102,7 @@ extension MemoTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return inSearchMode ? "\(filterTasks.count)개 찾음" : section == 0 ? (tasks.filter("fix == true").count == 0 ? "" : "고정된 메모") : (tasks.count == 0 ? "" : "메모")
+        return inSearchMode ? "\(filterTasks.count)개 찾음" : section == 0 ? "고정된 메모" : (tasks.count == 0 ? "" : "메모")
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -114,6 +114,12 @@ extension MemoTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        if tasks.filter("fix == true").count == 0 {
+            if section == 0 {
+                return 0
+            }
+        }
         return 50
     }
     
@@ -177,14 +183,14 @@ extension MemoTableViewController {
 
         let fix = UIContextualAction(style: .normal, title: "Fix") { (action, view, nil) in
             
-            if fixStatus == true {
+            if indexPath.section == 0 {
                 try! self.localRealm.write {
-                    self.tasks[indexPath.row].fix.toggle()
+                    self.tasks.filter("fix == true")[indexPath.row].fix.toggle()
                     tableView.reloadData()
                 }
             } else {
                 try! self.localRealm.write {
-                    self.tasks[indexPath.row].fix.toggle()
+                    self.tasks.filter("fix == false")[indexPath.row].fix.toggle()
                     tableView.reloadData()
                 }
             }

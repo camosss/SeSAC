@@ -20,16 +20,16 @@ class AddMemoViewController: UIViewController {
     var tasks: Results<MemoList>!
     
     var memolist: MemoList!
-        
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         contentView.delegate = self
         BarButton.hideBarButton(shareBarButton, doneBarButton)
         editMemo()
-//        print(localRealm.configuration.fileURL!)
+        //        print(localRealm.configuration.fileURL!)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,64 +43,44 @@ class AddMemoViewController: UIViewController {
     
     func editMemo() {
         if memolist != nil {
-            print("수정")
-            
-            
-            if contentView.text.contains("\n") {
-                var split = contentView.text.split(separator: "\n")
-                let title = "\(split[0])"
-
-                split.removeFirst()
-                let context = split.joined(separator: "")
-
-                try! localRealm.write {
-                    localRealm.create(MemoList.self, value: ["_id": memolist._id, "title": title, "subTitle": context], update: .modified)
-                }
-
-
+            if memolist.subTitle == "추가 텍스트 없음" {
+                contentView.text = memolist.title
             } else {
-                guard let title = contentView.text else { return }
-                let context = "추가 텍스트 없음"
-
-                try! localRealm.write {
-                    localRealm.create(MemoList.self, value: ["_id": memolist._id, "title": title, "subTitle": context], update: .modified)
+                contentView.text = "\(memolist.title)\n\(memolist.subTitle)"
             }
-            
             
         }
     }
     
     func saveMemo() {
-       if contentView.text.isEmpty {
-           navigationController?.popViewController(animated: true)
-       } else {
-           let dateString = DateFormatter.totalFormatter.string(from: Date())
-           guard let todayDate = DateFormatter.totalFormatter.date(from: dateString) else { return }
-           
-           if contentView.text.contains("\n") {
-               var split = contentView.text.split(separator: "\n")
-               let title = "\(split[0])"
-               
-               split.removeFirst()
-               let context = split.joined(separator: "")
-               
-               let task = MemoList(title: title, subTitle: context, date: todayDate)
-               try! localRealm.write {
-                   localRealm.add(task)
-               }
-               
-           } else {
-               guard let title = contentView.text else { return }
-               let context = "추가 텍스트 없음"
-               
-               let task = MemoList(title: title, subTitle: context, date: todayDate)
-               try! localRealm.write {
-                   localRealm.add(task)
-               }
-           }
-           navigationController?.popViewController(animated: true)
-       }
-   }
+        if contentView.text.isEmpty {
+            navigationController?.popViewController(animated: true)
+        } else {
+            if contentView.text.contains("\n") {
+                var split = contentView.text.split(separator: "\n")
+                let title = "\(split[0])"
+                
+                split.removeFirst()
+                let context = split.joined(separator: "")
+                
+                let task = MemoList(title: title, subTitle: context, date: Date())
+                try! localRealm.write {
+                    localRealm.add(task)
+                }
+                
+            } else {
+                guard let title = contentView.text else { return }
+                let context = "추가 텍스트 없음"
+                
+                let task = MemoList(title: title, subTitle: context, date: Date())
+                try! localRealm.write {
+                    localRealm.add(task)
+                }
+            }
+            navigationController?.popViewController(animated: true)
+        }
+    }
+    
     
     // MARK: - Action
     
@@ -111,12 +91,14 @@ class AddMemoViewController: UIViewController {
     @IBAction func handleBackButton(_ sender: UIBarButtonItem) {
         saveMemo()
     }
- 
+    
     @IBAction func handleShareButton(_ sender: UIBarButtonItem) {
         let activityController = UIActivityViewController(activityItems: [contentView.text ?? ""], applicationActivities: nil)
         present(activityController, animated: true, completion: nil)
     }
 }
+
+
 
 // MARK: - UITextViewDelegate
 
