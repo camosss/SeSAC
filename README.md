@@ -1,4 +1,4 @@
-# SSAC
+# SSAC <img src = "https://user-images.githubusercontent.com/93528918/145744691-32ae73ac-94de-429c-b5d5-5267ddd75bac.jpeg" width = 100  align = right> 
 
 | Project | Topic |
 | ------ | ------ |
