@@ -1,5 +1,7 @@
 # SSAC <img src = "https://user-images.githubusercontent.com/93528918/145744691-32ae73ac-94de-429c-b5d5-5267ddd75bac.jpeg" width = 100  align = right> 
 
+## Curriculum
+
 | Project | Topic |
 | ------ | ------ |
 | [넷플릭스 MainView, SignUpView](https://github.com/camosss/SSAC/tree/main/ssacMovie) | StoryBoard, Auto Layout, Entry Point |
