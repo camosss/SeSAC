@@ -91,12 +91,13 @@ Interface builder는 코드가 아니기 때문에 앱을 컴파일 하는 시�
 
 Interface builder는 코드가 아니기 때문에 앱을 컴파일 하는 시점에서 컴파일러가 인식할 수 없고, 이를 코드로 변환해주는 unarchiving 과정이 필요하다.
 
-> **xib: XML Interface Builder (태그 형태의 마크업 언어)**
-> , XCode가 Interface Builder를 통해 시각적으로 제어 가능하도록 제공
-> 
-> **nib: NeXT Interface Builder**
-> , 뷰의 layout, display등의 요소들을 object graph로 만들어서 직렬화한 파일
+```swift
+xib: XML Interface Builder (태그 형태의 마크업 언어)
+XCode가 Interface Builder를 통해 시각적으로 제어 가능하도록 제공
 
+nib: NeXT Interface Builder
+뷰의 layout, display등의 요소들을 object graph로 만들어서 직렬화한 파일
+```
 
 - UINib
 
