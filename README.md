@@ -4,6 +4,8 @@
 
 * **Section I**
 
+21.09.27 ~ 21.11.12
+
   > | Project | Topic |
   > | ------ | ------ |
   > | [넷플릭스 MainView, SignUpView](https://github.com/camosss/SSAC/tree/main/ssacMovie) | StoryBoard, Auto Layout, Entry Point |
@@ -23,11 +25,16 @@
 
 * **출시 프로젝트**
 
+21.11.15 ~ 21.12.03
+
   > | Project |  |
   > | ------ | ------ |
   > | [해외뉴우스](https://github.com/camosss/Overseas-News) | [AppStore](https://apps.apple.com/kr/app/%ED%95%B4%EC%99%B8%EB%89%B4%EC%9A%B0%EC%8A%A4/id1596846397) |
 
 * **Section II**
+
+21.12.13 ~
+
   > | Project | Topic |
   > | ------ | ------ |
   > | [Firebase](https://github.com/camosss/SSAC/tree/main/ssacFirebase) | Analytics, Crashlytics, Messaging |
