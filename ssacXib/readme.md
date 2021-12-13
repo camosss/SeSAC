@@ -40,7 +40,7 @@ File Owner에는 여러개의 View를 가질 수 있기 때문에, 이 중에서
 
 ---
 
-### 이니셜라이저
+## 이니셜라이저
 
 UIView는 **NSCoding 프로토콜**을 상속 받고 있다.
 
@@ -52,28 +52,28 @@ UIView는 **NSCoding 프로토콜**을 상속 받고 있다.
 ***👉 두 initializer의 차이는 Interface Builder로 불러올 때와 코드로 생성할 때, 각각 불린다는 차이가 있다.***
 
 
-- **required init?(coder: NSCoder)**
+### **required init?(coder: NSCoder)**
 
 > *Returns an object initialized from data in a given unarchiver (공식문서)*
 > 
 
 ***unarchive***
 
-스토리보드나 xib를 활용하면 코드를 작성하지 않고 앱의 속성을 수정할 수 있는데, 이것을 가능하게 해주는 과정
+- 스토리보드나 xib를 활용하면 코드를 작성하지 않고 앱의 속성을 수정할 수 있는데, 이것을 가능하게 해주는 과정
 
-Interface builder는 코드가 아니기 때문에 앱을 컴파일 하는 시점에서 컴파일러가 인식할 수 없고, 이를 코드로 변환해주는 unarchiving 과정이 필요하다는 것이다.
+- Interface builder는 코드가 아니기 때문에 앱을 컴파일 하는 시점에서 컴파일러가 인식할 수 없고, 이를 코드로 변환해주는 unarchiving 과정이 필요하다는 것이다.
 
-이 과정에서 init?(coder:)가 사용된다.
+- 이 과정에서 init?(coder:)가 사용된다.
 
-파라미터인 `coder`를 통해 NSCoder 타입의 object가 전달되는 것이다. 전달된 NSCoder 타입의 object가 decoding 되어 초기화된 후 컴파일 할 수 있게 decoding 된 자기자신(self)를 반환하는 작업이라고 볼 수 있다. 
+- 파라미터인 `coder`를 통해 NSCoder 타입의 object가 전달되는 것이다. 전달된 NSCoder 타입의 object가 decoding 되어 초기화된 후 컴파일 할 수 있게 decoding 된 자기자신(self)를 반환하는 작업이라고 볼 수 있다. 
 
-- **override init(frame: CGRect)**
+### **override init(frame: CGRect)**
 
-스토리보드, xib, nib과 같은 interface builder를 사용하지 않고, 코드로 UIView class의 View object를 만들기 위해 지정된 이니셜라이저
+- 스토리보드, xib, nib과 같은 interface builder를 사용하지 않고, 코드로 UIView class의 View object를 만들기 위해 지정된 이니셜라이저
 
-그래서 코드로 작성하려는 label, button, view 등 frame을 가진 모든 view 객체는 해당 이니셜라이저 안에서 초기화가 되어야한다.
+- 그래서 코드로 작성하려는 label, button, view 등 frame을 가진 모든 view 객체는 해당 이니셜라이저 안에서 초기화가 되어야한다.
 
-우리가 일반적으로 UIView를 생성하고 Nib으로 생성자를 생성하면 매번 이런 오류가 나오는데,
+- 우리가 일반적으로 UIView를 생성하고 Nib으로 생성자를 생성하면 매번 이런 오류가 나오는데,
 
 ![Untitled (1)](https://user-images.githubusercontent.com/93528918/145776422-b0b316f0-9b5d-43e9-b309-3bdd55734746.png)
 
@@ -84,7 +84,7 @@ Interface builder는 코드가 아니기 때문에 앱을 컴파일 하는 시�
 
 ---
 
-### nib 로드(코드에서 .xib 파일들을 생성하여 참조)
+## nib 로드(코드에서 .xib 파일들을 생성하여 참조)
 
 > 컴파일을 하기 위해 nib으로 변환한 뒤 (시스템에서 nib파일을 unarchive), nib파일을 로드
 > 
@@ -99,20 +99,20 @@ nib: NeXT Interface Builder
 뷰의 layout, display등의 요소들을 object graph로 만들어서 직렬화한 파일
 ```
 
-- UINib
+### UINib
 
-UINib Class는 nib 파일의 컨텐츠를 래핑하는 객체
+- UINib Class는 nib 파일의 컨텐츠를 래핑하는 객체
 
-UINib 객체는 nib 파일의 컨텐츠(View)를 메모리에 캐시하고 있다가, `instantiate`할 때 unarchiving한다.
+- UINib 객체는 nib 파일의 컨텐츠(View)를 메모리에 캐시하고 있다가, `instantiate`할 때 unarchiving한다.
 
 ```swift
 let view = UINib(nibName: "SquareBoxView", bundle: nil)
 		.instantiate(withOwner: self, options: nil).first as! UIView
 ```
 
-- Bundle.main.loadNibNamed
+### Bundle.main.loadNibNamed
 
-nib 파일을 이름으로 찾아서 메모리에 로드하여, nib파일 내의 top-level 객체들을 [Any]? 타입으로 반환
+- nib 파일을 이름으로 찾아서 메모리에 로드하여, nib파일 내의 top-level 객체들을 [Any]? 타입으로 반환
 
 ```swift
 let view = Bundle.main.loadNibNamed("SquareBoxView", owner: self, options: nil)
@@ -120,13 +120,13 @@ let view = Bundle.main.loadNibNamed("SquareBoxView", owner: self, options: nil)
 
 ---
 
-### @IBInspectable, @IBDesignable
+## @IBInspectable, @IBDesignable
 
-- **@IBInspectable**
+### **@IBInspectable**
 
-스토리보드에 inspector에서 해당 인터페이스 요소의 속성을 변경할 수 있게 하는 것
+- 스토리보드에 inspector에서 해당 인터페이스 요소의 속성을 변경할 수 있게 하는 것
 
-여기서 값을 변경하는 것이 바로 `set 연산`
+- 여기서 값을 변경하는 것이 바로 `set 연산`
 
 ![스크린샷 2021-12-13 오전 11 26 27](https://user-images.githubusercontent.com/93528918/145776715-b751ae6c-0f15-4d6b-b3c7-925044929665.png)
 
@@ -160,11 +160,11 @@ let view = Bundle.main.loadNibNamed("SquareBoxView", owner: self, options: nil)
 }
 ```
 
-- **@IBDesignable**
+### **@IBDesignable**
 
-@IBInspectable만 지정하면 "런타임"에 속성이 적용된 것을 볼 수 있지만,
+- @IBInspectable만 지정하면 "런타임"에 속성이 적용된 것을 볼 수 있지만,
 
-@IBDesignable는 "**컴파일타임**"으로 실시간으로 보는 것을 가능하게 해준다.
+- @IBDesignable는 "**컴파일타임**"으로 실시간으로 보는 것을 가능하게 해준다.
 
 ![스크린샷 2021-12-13 오전 11 28 22](https://user-images.githubusercontent.com/93528918/145776752-f2f33cc2-b7a2-459e-b6ee-fc39e44aedff.png)
 
@@ -181,6 +181,6 @@ class MainActivateButton: UIButton {
 > 참고
 > 
 
-[inwoodev.log](https://velog.io/@inwoodev/iOS-initframe-initcoder)
+- [inwoodev.log](https://velog.io/@inwoodev/iOS-initframe-initcoder)
 
-[김종권의 iOS 앱 개발 알아가기](https://ios-development.tistory.com/311)
+- [김종권의 iOS 앱 개발 알아가기](https://ios-development.tistory.com/311)
