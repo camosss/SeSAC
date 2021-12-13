@@ -38,5 +38,5 @@
   > | Project | Topic |
   > | ------ | ------ |
   > | [Firebase](https://github.com/camosss/SSAC/tree/main/ssacFirebase) | Analytics, Crashlytics, Messaging |
-  > | [XIB](https://github.com/camosss/SSAC/tree/main/ssacXib) |  |
+  > | [XIB](https://github.com/camosss/SSAC/tree/main/ssacXib) | initializer, xib, nib, @IBInspectable, @IBDesignable |
 
