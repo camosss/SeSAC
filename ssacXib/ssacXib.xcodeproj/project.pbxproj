@@ -16,8 +16,8 @@
 		B47A901A2766CCA100C05428 /* SquareBoxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B47A90192766CCA100C05428 /* SquareBoxView.xib */; };
 		B47A901D2766CCEB00C05428 /* SquareBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A901C2766CCEB00C05428 /* SquareBoxView.swift */; };
 		B47A90202766DD7200C05428 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A901F2766DD7200C05428 /* BannerView.swift */; };
-		B47A90222766E05F00C05428 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A90212766E05F00C05428 /* DetailViewController.swift */; };
 		B47A90242766E4A400C05428 /* MainActivateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A90232766E4A400C05428 /* MainActivateButton.swift */; };
+		B47A90262766F20600C05428 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A90252766F20600C05428 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +32,8 @@
 		B47A90192766CCA100C05428 /* SquareBoxView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SquareBoxView.xib; sourceTree = "<group>"; };
 		B47A901C2766CCEB00C05428 /* SquareBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareBoxView.swift; sourceTree = "<group>"; };
 		B47A901F2766DD7200C05428 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
-		B47A90212766E05F00C05428 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B47A90232766E4A400C05428 /* MainActivateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainActivateButton.swift; sourceTree = "<group>"; };
+		B47A90252766F20600C05428 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,11 +70,11 @@
 				B47A90052766CB5000C05428 /* AppDelegate.swift */,
 				B47A90072766CB5000C05428 /* SceneDelegate.swift */,
 				B47A90092766CB5000C05428 /* ViewController.swift */,
-				B47A90212766E05F00C05428 /* DetailViewController.swift */,
 				B47A900B2766CB5000C05428 /* Main.storyboard */,
 				B47A900E2766CB5200C05428 /* Assets.xcassets */,
 				B47A90102766CB5200C05428 /* LaunchScreen.storyboard */,
 				B47A90132766CB5200C05428 /* Info.plist */,
+				B47A90252766F20600C05428 /* DetailViewController.swift */,
 			);
 			path = ssacXib;
 			sourceTree = "<group>";
@@ -165,10 +165,10 @@
 				B47A90202766DD7200C05428 /* BannerView.swift in Sources */,
 				B47A900A2766CB5000C05428 /* ViewController.swift in Sources */,
 				B47A90062766CB5000C05428 /* AppDelegate.swift in Sources */,
-				B47A90222766E05F00C05428 /* DetailViewController.swift in Sources */,
 				B47A90082766CB5000C05428 /* SceneDelegate.swift in Sources */,
 				B47A901D2766CCEB00C05428 /* SquareBoxView.swift in Sources */,
 				B47A90242766E4A400C05428 /* MainActivateButton.swift in Sources */,
+				B47A90262766F20600C05428 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
