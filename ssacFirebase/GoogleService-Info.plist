@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>311966600108-mogl18ng3o14nn7no4fhqcmhggfbj0u7.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.311966600108-mogl18ng3o14nn7no4fhqcmhggfbj0u7</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCys8ibkFKGFnxjtaCfQLuafrDeq3e5mTo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>311966600108</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>camosss.ssacFirebase</string>
+	<key>PROJECT_ID</key>
+	<string>ssacfirebase</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ssacfirebase.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:311966600108:ios:345924a9ffbfbf61d74809</string>
+</dict>
+</plist>

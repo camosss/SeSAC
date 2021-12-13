@@ -99,7 +99,7 @@ class SearchVC: UIViewController {
                     let boxOffice = BoxOffice(rank: rank, title: title, openDt: openDt)
                     tmp.append(boxOffice)
                 }
-
+                
                 DispatchQueue.main.async {
                     self.boxOffice = tmp
                 }
