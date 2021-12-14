@@ -25,9 +25,6 @@ class SquareBoxView: UIView {
     // MARK: - Helper
     
     func loadView() {
-//        let view2 = Bundle.main.loadNibNamed("SquareBoxView", owner: self, options: nil)
-        
-        // Xib 등록
         let view = UINib(nibName: "SquareBoxView", bundle: nil).instantiate(withOwner: self, options: nil).first as! UIView
         view.frame = bounds
         view.backgroundColor = .lightGray

@@ -17,13 +17,11 @@ class BannerView: UIView {
     
     // MARK: - Lifecycle
     
-    // xib로 한다면 필요없음 (코드 기반)
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadLayout()
     }
     
-    // 실패 가능한 이니셜라이저
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
