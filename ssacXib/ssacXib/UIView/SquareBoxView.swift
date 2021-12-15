@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SquareBoxView: UIView {
+class SquareBoxView: TabAninationView {
     
     // MARK: - Properties
     
@@ -44,5 +44,39 @@ class SquareBoxView: UIView {
         label.text = "마이페이지"
         imageView.image = UIImage(systemName: "star.fill")
         imageView.tintColor = .systemOrange
+    }
+}
+
+// MARK: - UIButton 클릭 시, 애니메이션
+
+class TabAninationView: UIView {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print(#function)
+        DispatchQueue.main.async {
+            self.alpha = 1.0
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear) {
+                self.alpha = 0.5
+            }
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print(#function)
+        DispatchQueue.main.async {
+            self.alpha = 0.5
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear) {
+                self.alpha = 1.0
+            }
+        }
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print(#function)
+        DispatchQueue.main.async {
+            self.alpha = 0.5
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear) {
+                self.alpha = 1.0
+            }
+        }
     }
 }
