@@ -176,6 +176,138 @@ class MainActivateButton: UIButton {
 }
 ```
 
+
+---
+---
+
+## AppDelegate, SceneDelegate
+
+> **iOS13 이하의 버전까지는 App하나가 오로지 각각 하나의 Process와 UI를 유지했다.**
+> 
+
+AppDelegate에서 모두 관여하며 앱의 생명주기(앱의 실행과 종료 등) 및 UI 라이프사이클(백그라운드 상태 로직 등)을 모두 처리
+
+- **Process Lifecycle**: Process 상태
+- **UI Lifecycle**: active, inactive, background, foreground 상태 관여
+
+## iOS13 이상 버전
+
+
+### 📌  **iPadOS가 등장하면서 여러 UI 인스턴스가 존재 가능**
+
+UI Lifecycle이 다양해지면서 **SceneDelegate**가 이를 관리하기 위해 도입되었다.
+
+iOS12까지는 대부분 하나의 앱에 하나의 `window`였지만, iOS13부터는 window의 개념이 `scene`으로 대체되고 아래의 사진처럼 하나의 앱에서 여러개의 scene을 가질 수 있다.
+
+
+> **Scene**
+> 
+> UIKit는 UIWindowScene 객체를 사용하는 앱 UI의 각 인스턴스를 관리합니다.
+> **Scene에는 UI의 하나의 인스턴스를 나타내는 windows와 view controllers가 들어있습니다.**
+> 또한 각 **scene에 해당하는 UIWindowSceneDelegate 객체**를 가지고 있고, 이 객체는 **UIKit와 앱 간의 상호 작용을 조정**하는 데 사용합니다. 
+> 
+> Scene들은 같은 메모리와 앱 프로세스 공간을 공유하면서 서로 동시에 실행됩니다. **결과적으로 하나의 앱은 여러 scene과 scene delegate 객체를 동시에 활성화**할 수 있습니다.
+> 
+> *(Scenes - Apple Developer Document 참고)*
+> 
+
+![Untitled](https://user-images.githubusercontent.com/93528918/146193899-7efe4aab-4788-4607-b254-b547cca9cdec.png)
+
+
+### 📌  **AppDelegate에 있는 메소드들이 SceneDelegate로 마이그레이션**
+
+AppDelegate의 역할 중 UI의 상태를 알 수 있는 `UILifecycle`에 대한 부분을 **SceneDelegate**가 처리
+
+
+![Untitled (1)](https://user-images.githubusercontent.com/93528918/146193938-ab9c79b8-2b17-4574-a1cf-0b9c152429ce.png)
+
+
+### 📌  **AppDelegate에 `Session Lifecycle`에 대한 역할 추가**
+
+> Scene Session은 앱에서 생성한 모든 scene의 정보를 관리한다.
+> 
+> Scene Session이 생성되거나 삭제될 때, **AppDelegate**에 알리는 두 메소드가 추가되었다.
+> 
+
+- **Called when a new scene session is being created.**
+
+새로운 Scene이 필요할 때마다 `configurationForConnecting` 메서드가 호출되고, Scene이 추가되면 SceneDelegate에서 `willConnectTo`가 호출된다.
+
+- **Called when the user discards a scene session.**
+
+Scene을 영구적으로 삭제할 때 호출된다.
+
+
+```swift
+// MARK: UISceneSession Lifecycle
+
+func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+    // Called when a new scene session is being created.
+    // Use this method to select a configuration to create the new scene with.
+    return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+}
+
+func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
+    // Called when the user discards a scene session.
+    // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
+    // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+}
+```
+
+---
+
+### 📌  App을 눌렀을 때 호출 순서
+
+
+> **앱 클릭**
+> 
+1. **application(_:didFinishLaunchingWithOptions:)**
+
+Delegate에게 실행 프로세스가 거의 끝나고 앱이 실행될 준비가 거의 되었음을 알림
+
+`화면에는 앱이 뜨지 않은 상태`
+
+2. **scene(_:willConnectTo:options:)** 
+
+scene이 앱에 추가될 때 호출
+
+`화면에 앱 등장`
+
+3. **sceneWillEnterForeground(_:)** 
+
+scene이 foreground로 진입할 때 호출
+
+4. **sceneDidBecomeActive(_:)**
+
+app switcher에서 선택되는 등 scene과의 상호작용이 시작될때 호출
+
+`app switcher` 화면을 위로 스와이프했을 때, 현재 실행 중인 앱들이 보이는 화면
+
+---
+
+> **앱 스와이프로 홈화면으로 갈 때**
+> 
+
+1. **sceneWillResignActive(_:)**
+
+사용자가 scene과의 상호작용을 중지할 때 호출 (다른 화면으로의 전환과 같은 경우)
+
+2. **sceneDidEnterBackground(_:)**
+
+백그라운드 상태로 전환된 직후 호출
+
+
+> **앱 스와이프로 종료**
+> 
+
+1. **sceneWillResignActive(_:)**
+
+2. **sceneDidDisconnect(_:)**
+
+scene의 연결이 해제될 때 호출
+
+
+
 ---
 
 > 참고
