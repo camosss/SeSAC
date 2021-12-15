@@ -22,9 +22,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
-        
-        favoriteMenuView.label.text = "즐겨찾기"
-        favoriteMenuView.imageView.image = UIImage(systemName: "star")
+        view.backgroundColor = .white
+//        favoriteMenuView.label.text = "즐겨찾기"
+//        favoriteMenuView.imageView.image = UIImage(systemName: "star")
     }
 
     // MARK: - Helper

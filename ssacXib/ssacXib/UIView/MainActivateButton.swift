@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable
+//@IBDesignable
 class MainActivateButton: UIButton {
     
     @IBInspectable var cornerRadius: CGFloat {

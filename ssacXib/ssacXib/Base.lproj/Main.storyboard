@@ -37,18 +37,8 @@
                                     <constraint firstAttribute="width" secondItem="sZI-eU-k63" secondAttribute="height" multiplier="5:3" id="3n3-Bb-7Ph"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5N-tX-2Ez">
-                                <rect key="frame" x="20" y="176" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <action selector="presentButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LYK-Ha-ilx"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Z8-wI-cGH" customClass="MainActivateButton" customModule="ssacXib" customModuleProvider="target">
-                                <rect key="frame" x="89" y="378" width="246" height="87"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Z8-wI-cGH" customClass="MainActivateButton" customModule="ssacXib" customModuleProvider="target">
+                                <rect key="frame" x="173.5" y="432.5" width="67" height="31"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
@@ -70,12 +60,14 @@
                         <constraints>
                             <constraint firstItem="1pO-ni-ZwZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="1yf-3x-Qpz"/>
                             <constraint firstItem="Sau-1S-egM" firstAttribute="width" secondItem="1pO-ni-ZwZ" secondAttribute="width" id="68Z-4N-PWn"/>
+                            <constraint firstItem="8Z8-wI-cGH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EmQ-Lq-C1q"/>
                             <constraint firstItem="sZI-eU-k63" firstAttribute="width" secondItem="1pO-ni-ZwZ" secondAttribute="width" id="JWl-4z-ZmM"/>
                             <constraint firstItem="1pO-ni-ZwZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="P0S-rf-TFs"/>
                             <constraint firstItem="Sau-1S-egM" firstAttribute="leading" secondItem="1pO-ni-ZwZ" secondAttribute="trailing" constant="16" id="XLV-dC-DtZ"/>
                             <constraint firstItem="sZI-eU-k63" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="aej-rQ-lZw"/>
                             <constraint firstItem="sZI-eU-k63" firstAttribute="leading" secondItem="Sau-1S-egM" secondAttribute="trailing" constant="16" id="gqX-i7-dl1"/>
                             <constraint firstItem="Sau-1S-egM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="uWX-sd-F7Z"/>
+                            <constraint firstItem="8Z8-wI-cGH" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="vL2-j5-C5F"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sZI-eU-k63" secondAttribute="trailing" constant="16" id="zeg-aH-Lde"/>
                         </constraints>
                     </view>
@@ -88,11 +80,6 @@
             <point key="canvasLocation" x="-26.086956521739133" y="93.75"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="8Z8-wI-cGH">
-            <size key="intrinsicContentSize" width="67" height="31"/>
-        </designable>
-    </designables>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

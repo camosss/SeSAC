@@ -35,6 +35,7 @@ class DetailViewController: UIViewController {
     let activateButton: MainActivateButton = {
         let button = MainActivateButton()
         button.setTitle("선택", for: .normal)
+        button.addTarget(self, action: #selector(activateButtonClicked), for: .touchUpInside)
         return button
     }()
     
@@ -44,6 +45,14 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemOrange
         configureUI()
+    }
+    
+    // MARK: - Action
+    
+    @objc func activateButtonClicked() {
+        let vc = SettingViewController(nibName: "SettingViewController", bundle: nil)
+        vc.name = "값 전달"
+        present(vc, animated: true, completion: nil)
     }
     
     // MARK: - Helper

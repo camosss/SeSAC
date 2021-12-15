@@ -16,6 +16,12 @@ class SquareBoxView: UIView {
 
     // MARK: - Lifecycle
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        loadView()
+        loadUI()
+    }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         loadView()
