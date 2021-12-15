@@ -211,7 +211,8 @@ iOS12까지는 대부분 하나의 앱에 하나의 `window`였지만, iOS13부
 > *(Scenes - Apple Developer Document 참고)*
 > 
 
-![Untitled](https://user-images.githubusercontent.com/93528918/146193899-7efe4aab-4788-4607-b254-b547cca9cdec.png)
+<img src = "https://user-images.githubusercontent.com/93528918/146193899-7efe4aab-4788-4607-b254-b547cca9cdec.png" width="50%" height="50%">
+
 
 
 ### 📌  **AppDelegate에 있는 메소드들이 SceneDelegate로 마이그레이션**
