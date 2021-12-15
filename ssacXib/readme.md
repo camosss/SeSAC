@@ -314,6 +314,15 @@ scene의 연결이 해제될 때 호출
 > 참고
 > 
 
-- [inwoodev.log](https://velog.io/@inwoodev/iOS-initframe-initcoder)
+- https://velog.io/@inwoodev/iOS-initframe-initcoder
 
-- [김종권의 iOS 앱 개발 알아가기](https://ios-development.tistory.com/311)
+- https://ios-development.tistory.com/311
+
+- https://user-images.githubusercontent.com/93528918/146193899-7efe4aab-4788-4607-b254-b547cca9cdec.png
+
+- https://velog.io/@dev-lena/iOS-AppDelegate%EC%99%80-SceneDelegate
+
+
+
+
+
