@@ -12,17 +12,17 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .purple
     }
 
     // Analytics 구현해보기
-    override func viewWillAppear(_ animated: Bool) {
+//    override func viewWillAppear(_ animated: Bool) {
 //        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
 //          AnalyticsParameterItemID: "id-\(title!)",
 //          AnalyticsParameterItemName: title!,
 //          AnalyticsParameterContentType: "cont",
 //        ])
-    }
+//    }
 
 }
 
