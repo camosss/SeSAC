@@ -12,17 +12,26 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .purple
+        title = "First"
+        view.backgroundColor = .systemTeal
     }
 
-    // Analytics 구현해보기
-//    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        // Analytics 구현해보기
 //        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
 //          AnalyticsParameterItemID: "id-\(title!)",
 //          AnalyticsParameterItemName: title!,
 //          AnalyticsParameterContentType: "cont",
 //        ])
-//    }
+        
+        Installations.installations().delete { error in
+            if let error = error {
+                print("Error deleting installation: \(error)")
+                return
+            }
+            print("Installation deleted")
+        }
+    }
 
 }
 

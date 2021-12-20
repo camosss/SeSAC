@@ -10,5 +10,6 @@ target 'ssacFirebase' do
 pod 'Firebase/Analytics'
 pod 'Firebase/Crashlytics'
 pod 'Firebase/Messaging'
+pod 'Firebase/Installations'
 
 end

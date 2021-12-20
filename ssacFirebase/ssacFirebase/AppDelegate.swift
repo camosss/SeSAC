@@ -68,9 +68,16 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         Messaging.messaging().apnsToken = deviceToken
     }
     
-    // foreground 수신
+    // foreground 수신: willPresent(로컬/푸시 동일)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler([.list, .banner, .badge, .sound])
+        
+        guard let rootViewController = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController?.topViewController else { return }
+        
+        if rootViewController is ViewController {
+            completionHandler([])
+        } else {
+            completionHandler([.list, .banner, .badge, .sound])
+        }
     }
     
     // push를 클릭했을 때의 이벤트 (기본으로는 앱이꺼져있을 때, 앱을 켜주는 정도)
@@ -82,12 +89,47 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         print(response.notification.request.content.body)
         
         let userInfo = response.notification.request.content.userInfo
+        
         if userInfo[AnyHashable("key")] as? Int == 1 {
             print("광고 푸시입니다.")
         } else {
             print("다른 푸시입니다.")
         }
         
+        // SceneDelegate의 Window 객체 가져오기
+        guard let rootViewController = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController?.topViewController else { return }
+        print(rootViewController) // TabBarController
+        
+        if rootViewController is SecondViewController {
+            rootViewController.navigationController?.pushViewController(SecondViewController(), animated: true)
+        }
+        
+        completionHandler()
+    }
+}
+
+// MARK: - 최상단 ViewController를 판단해주는 UIViewController Extension
+
+extension UIViewController {
+    var topViewController: UIViewController? {
+        return self.topViewController(currentViewController: self)
+    }
+    // currentViewController: TabBarController
+    func topViewController(currentViewController: UIViewController) -> UIViewController {
+        if let tabBarController = currentViewController as? UITabBarController,
+           let selectedViewController = tabBarController.selectedViewController {
+            return self.topViewController(currentViewController: selectedViewController)
+            
+        } else if let navigationController = currentViewController as? UINavigationController,
+                  let visibleViewController = navigationController.visibleViewController {
+            return self.topViewController(currentViewController: visibleViewController)
+            
+        } else if let presentViewController = currentViewController.presentedViewController {
+            return self.topViewController(currentViewController: presentViewController)
+            
+        } else {
+            return currentViewController
+        }
     }
 }
 
@@ -107,5 +149,4 @@ extension AppDelegate: MessagingDelegate {
         // TODO: If necessary send token to application server.
         // Note: This callback is fired at each app startup and whenever a new token is generated.
     }
-    
 }
