@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ViewController: UIViewController {
 
@@ -27,10 +28,29 @@ class ViewController: UIViewController {
         return imageView
     }()
     
-    private let descriptionView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemTeal
-        return view
+    private let bottomView = UIView()
+    
+    private let refreshButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "arrow.clockwise")!, for: .normal)
+        button.tintColor = .systemMint
+        button.backgroundColor = .white
+        button.layer.borderColor = UIColor.systemMint.cgColor
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(didTaprefreshButton), for: .touchUpInside)
+        return button
+    }()
+    
+    private let shareButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Share BEER", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 23)
+        button.tintColor = .black
+        button.backgroundColor = .systemMint.withAlphaComponent(0.5)
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(didTapshareButton), for: .touchUpInside)
+        return button
     }()
     
     // MARK: - Lifecycle
@@ -38,8 +58,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
-        configureUI()
-        
+        configureBottomUI()
+        view.addSubview(imageView)
+    }
+    
+    // MARK: - Action
+    
+    @objc func didTaprefreshButton() {
+        print("didTaprefreshButton")
+    }
+    
+    @objc func didTapshareButton() {
+        print("didTapshareButton")
     }
 
     // MARK: - Helper
@@ -53,9 +83,27 @@ class ViewController: UIViewController {
         tableView.contentInset = UIEdgeInsets(top: 300, left: 0, bottom: 0, right: 0)
     }
     
-    private func configureUI() {
-        view.addSubview(imageView)
+    private func configureBottomUI() {
+        view.addSubview(bottomView)
+        bottomView.backgroundColor = .white
+        bottomView.snp.makeConstraints { make in
+            make.bottom.leading.trailing.equalToSuperview()
+            make.height.equalTo(150)
+        }
         
+        bottomView.addSubview(refreshButton)
+        refreshButton.snp.makeConstraints { make in
+            make.top.leading.equalTo(20)
+            make.width.height.equalTo(70)
+        }
+        
+        bottomView.addSubview(shareButton)
+        shareButton.snp.makeConstraints { make in
+            make.top.equalTo(20)
+            make.leading.equalTo(refreshButton.snp.trailing).offset(10)
+            make.trailing.equalTo(-20)
+            make.height.equalTo(70)
+        }
     }
     
 }
