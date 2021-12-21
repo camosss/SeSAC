@@ -80,7 +80,7 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.frame = view.bounds
-        tableView.contentInset = UIEdgeInsets(top: 300, left: 0, bottom: 0, right: 0)
+        tableView.contentInset.top = 300
     }
     
     private func configureBottomUI() {
