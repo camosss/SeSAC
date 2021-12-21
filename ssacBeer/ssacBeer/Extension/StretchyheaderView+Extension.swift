@@ -13,15 +13,11 @@ final class StretchyTableHeaderView: UIView {
     
     public let imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = UIImage(named: "shoes")
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .clear
         return imageView
-    }()
-    
-    public let descriptionView: UIView = {
-        let view = UIView()
-        return view
     }()
     
     private var imageViewHeight = NSLayoutConstraint()

@@ -14,6 +14,10 @@ class FoodParingTableViewCell: UITableViewCell {
     
     static var identifier = "FoodParingTableViewCell"
     
+    var beer: Beer? {
+        didSet { configure() }
+    }
+    
     var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Food"
@@ -34,6 +38,16 @@ class FoodParingTableViewCell: UITableViewCell {
 
     required init?(coder: NSCoder) {
         fatalError()
+    }
+    
+    // MARK: - Helper
+    
+    func configure() {
+        guard let beer = beer else { return }
+        
+//        print(beer.foodPairing.count, beer.foodPairing)
+        
+        
     }
 
 }

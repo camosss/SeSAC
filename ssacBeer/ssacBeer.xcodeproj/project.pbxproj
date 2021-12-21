@@ -9,7 +9,10 @@
 /* Begin PBXBuildFile section */
 		B42E0AC82772101900536531 /* SectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0AC72772101900536531 /* SectionFooterView.swift */; };
 		B42E0ACA2772122200536531 /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0AC92772122200536531 /* DescriptionTableViewCell.swift */; };
-		B42E0ACC2772136100536531 /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0ACB2772136100536531 /* DescriptionView.swift */; };
+		B42E0ACE277217B100536531 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0ACD277217B100536531 /* URL+Extension.swift */; };
+		B42E0AD12772199500536531 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B42E0AD02772199500536531 /* Alamofire */; };
+		B42E0AD62772249700536531 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B42E0AD52772249700536531 /* Kingfisher */; };
+		B42E0AD8277224BA00536531 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0AD7277224BA00536531 /* UIImage+Extension.swift */; };
 		B44A0D8227707CD10084AA50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44A0D8127707CD10084AA50 /* AppDelegate.swift */; };
 		B44A0D8427707CD10084AA50 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44A0D8327707CD10084AA50 /* SceneDelegate.swift */; };
 		B44A0D8627707CD10084AA50 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44A0D8527707CD10084AA50 /* ViewController.swift */; };
@@ -25,7 +28,8 @@
 /* Begin PBXFileReference section */
 		B42E0AC72772101900536531 /* SectionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionFooterView.swift; sourceTree = "<group>"; };
 		B42E0AC92772122200536531 /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
-		B42E0ACB2772136100536531 /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
+		B42E0ACD277217B100536531 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		B42E0AD7277224BA00536531 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		B44A0D7E27707CD10084AA50 /* ssacBeer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ssacBeer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B44A0D8127707CD10084AA50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B44A0D8327707CD10084AA50 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,7 +49,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B42E0AD62772249700536531 /* Kingfisher in Frameworks */,
 				B44A0D982770B1B70084AA50 /* SnapKit in Frameworks */,
+				B42E0AD12772199500536531 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,9 +104,8 @@
 			children = (
 				B44A0DDB2771B1B60084AA50 /* SectionHeaderView.swift */,
 				B42E0AC72772101900536531 /* SectionFooterView.swift */,
-				B4A48FB12771D2DC0028B2C0 /* FoodParingTableViewCell.swift */,
 				B42E0AC92772122200536531 /* DescriptionTableViewCell.swift */,
-				B42E0ACB2772136100536531 /* DescriptionView.swift */,
+				B4A48FB12771D2DC0028B2C0 /* FoodParingTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -117,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				B44A0DD82771A7220084AA50 /* StretchyheaderView+Extension.swift */,
+				B42E0ACD277217B100536531 /* URL+Extension.swift */,
+				B42E0AD7277224BA00536531 /* UIImage+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -139,6 +146,8 @@
 			name = ssacBeer;
 			packageProductDependencies = (
 				B44A0D972770B1B70084AA50 /* SnapKit */,
+				B42E0AD02772199500536531 /* Alamofire */,
+				B42E0AD52772249700536531 /* Kingfisher */,
 			);
 			productName = ssacBeer;
 			productReference = B44A0D7E27707CD10084AA50 /* ssacBeer.app */;
@@ -170,6 +179,8 @@
 			mainGroup = B44A0D7527707CD10084AA50;
 			packageReferences = (
 				B44A0D962770B1B70084AA50 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				B42E0ACF2772199500536531 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				B42E0AD42772249700536531 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = B44A0D7F27707CD10084AA50 /* Products */;
 			projectDirPath = "";
@@ -200,13 +211,14 @@
 				B44A0DD92771A7220084AA50 /* StretchyheaderView+Extension.swift in Sources */,
 				B4A48FB22771D2DC0028B2C0 /* FoodParingTableViewCell.swift in Sources */,
 				B44A0DDC2771B1B60084AA50 /* SectionHeaderView.swift in Sources */,
+				B42E0ACE277217B100536531 /* URL+Extension.swift in Sources */,
 				B44A0D8627707CD10084AA50 /* ViewController.swift in Sources */,
 				B42E0AC82772101900536531 /* SectionFooterView.swift in Sources */,
 				B42E0ACA2772122200536531 /* DescriptionTableViewCell.swift in Sources */,
 				B44A0D8227707CD10084AA50 /* AppDelegate.swift in Sources */,
 				B44A0D8427707CD10084AA50 /* SceneDelegate.swift in Sources */,
+				B42E0AD8277224BA00536531 /* UIImage+Extension.swift in Sources */,
 				B44A0DD727719D400084AA50 /* Beer.swift in Sources */,
-				B42E0ACC2772136100536531 /* DescriptionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +430,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B42E0ACF2772199500536531 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		B42E0AD42772249700536531 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		B44A0D962770B1B70084AA50 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -429,6 +457,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B42E0AD02772199500536531 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B42E0ACF2772199500536531 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		B42E0AD52772249700536531 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B42E0AD42772249700536531 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		B44A0D972770B1B70084AA50 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B44A0D962770B1B70084AA50 /* XCRemoteSwiftPackageReference "SnapKit" */;

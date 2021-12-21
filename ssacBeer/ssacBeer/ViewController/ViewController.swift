@@ -7,10 +7,15 @@
 
 import UIKit
 import SnapKit
+import Alamofire
 
 class ViewController: UIViewController {
 
     // MARK: - Properties
+    
+    private var beer = [Beer]()
+    
+    var isExpend = false
     
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -18,8 +23,6 @@ class ViewController: UIViewController {
         tableView.register(FoodParingTableViewCell.self, forCellReuseIdentifier: FoodParingTableViewCell.identifier)
         return tableView
     }()
-    
-    // MARK: Header
     
     let header = StretchyTableHeaderView()
     let sectionHeader = SectionHeaderView()
@@ -56,6 +59,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        populateData()
+        
         configureTableView()
         configureBottomUI()
         configureHeaderFooterView()
@@ -71,6 +76,15 @@ class ViewController: UIViewController {
         print("didTapshareButton")
     }
     
+    // MARK: - API
+    
+    private func populateData() {
+        AF.request(URL.randomURL(), method: .get).validate().responseDecodable(of: [Beer].self) { response in
+//            print(response)
+            self.beer = response.value ?? []
+            self.tableView.reloadData()
+        }
+    }
 
     // MARK: - Helper
 
@@ -81,12 +95,14 @@ class ViewController: UIViewController {
         tableView.frame = view.bounds
         tableView.contentInset.bottom = 100
         tableView.separatorStyle = .none
+        tableView.allowsSelection = false
     }
     
     private func configureHeaderFooterView() {
-        header.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.width-100)
+        header.frame = CGRect(x: 0, y: 0,
+                              width: view.frame.size.width,
+                              height: view.frame.size.width-200)
         header.imageView.image = UIImage(named: "shoes")
-        header.descriptionView.backgroundColor = .orange
         tableView.tableHeaderView = header
         
         sectionFooter.frame = CGRect(x: 0, y: 100, width: view.frame.size.width, height: 200)
@@ -125,31 +141,26 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int { 2 }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1 : 3
+        return section == 0 ? beer.count : beer.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: DescriptionTableViewCell.identifier, for: indexPath) as! DescriptionTableViewCell
-            cell.backgroundColor = .lightGray
+            cell.backgroundColor = .orange
+            cell.delegate = self
+            cell.beer = beer[indexPath.row]
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: FoodParingTableViewCell.identifier, for: indexPath) as! FoodParingTableViewCell
+            cell.beer = beer[indexPath.row]
             return cell
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        if indexPath.section == 0 {
-            print("more")
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 300 : 50
+        return indexPath.section == 0 ? 200 : 50
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -175,5 +186,14 @@ extension ViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) { // 스크롤 할때마다 계속 호출
         guard let header = tableView.tableHeaderView as? StretchyTableHeaderView else { return }
         header.scrollViewDidScroll(scrollView: tableView)
+    }
+}
+
+// MARK: - DescriptionTableViewCellDelegate
+
+extension ViewController: DescriptionTableViewCellDelegate {
+    func cell(_ cell: DescriptionTableViewCell) {
+        isExpend.toggle()
+//        cell.descriptionLabel.numberOfLines = isExpend ? 0 : 3
     }
 }
