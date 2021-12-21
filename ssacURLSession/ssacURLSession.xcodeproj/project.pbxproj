@@ -16,6 +16,9 @@
 		B44A0DC5277164D00084AA50 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44A0DC4277164D00084AA50 /* APIService.swift */; };
 		B44A0DC7277167410084AA50 /* Cast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44A0DC6277167410084AA50 /* Cast.swift */; };
 		B44A0DC92771749F0084AA50 /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44A0DC82771749F0084AA50 /* UITableViewCell+Extension.swift */; };
+		B44A0DCE277176430084AA50 /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44A0DCD277176430084AA50 /* DummyViewController.swift */; };
+		B44A0DD0277177250084AA50 /* DummyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44A0DCF277177250084AA50 /* DummyViewModel.swift */; };
+		B44A0DD2277178BC0084AA50 /* TableViewCellRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44A0DD1277178BC0084AA50 /* TableViewCellRepresentable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,9 @@
 		B44A0DC4277164D00084AA50 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		B44A0DC6277167410084AA50 /* Cast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cast.swift; sourceTree = "<group>"; };
 		B44A0DC82771749F0084AA50 /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		B44A0DCD277176430084AA50 /* DummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
+		B44A0DCF277177250084AA50 /* DummyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewModel.swift; sourceTree = "<group>"; };
+		B44A0DD1277178BC0084AA50 /* TableViewCellRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellRepresentable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +68,9 @@
 		B44A0DAC277164620084AA50 /* ssacURLSession */ = {
 			isa = PBXGroup;
 			children = (
-				B44A0DC6277167410084AA50 /* Cast.swift */,
-				B44A0DB1277164620084AA50 /* ViewController.swift */,
+				B44A0DCB277176290084AA50 /* Model */,
+				B44A0DD327717A8F0084AA50 /* ViewModel */,
+				B44A0DCC2771762F0084AA50 /* ViewController */,
 				B44A0DCA277175270084AA50 /* Extension */,
 				B44A0DAD277164620084AA50 /* AppDelegate.swift */,
 				B44A0DAF277164620084AA50 /* SceneDelegate.swift */,
@@ -79,8 +86,34 @@
 			children = (
 				B44A0DC4277164D00084AA50 /* APIService.swift */,
 				B44A0DC82771749F0084AA50 /* UITableViewCell+Extension.swift */,
+				B44A0DD1277178BC0084AA50 /* TableViewCellRepresentable.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		B44A0DCB277176290084AA50 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B44A0DC6277167410084AA50 /* Cast.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B44A0DCC2771762F0084AA50 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B44A0DB1277164620084AA50 /* ViewController.swift */,
+				B44A0DCD277176430084AA50 /* DummyViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		B44A0DD327717A8F0084AA50 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B44A0DCF277177250084AA50 /* DummyViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,6 +192,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B44A0DD2277178BC0084AA50 /* TableViewCellRepresentable.swift in Sources */,
+				B44A0DD0277177250084AA50 /* DummyViewModel.swift in Sources */,
+				B44A0DCE277176430084AA50 /* DummyViewController.swift in Sources */,
 				B44A0DB2277164620084AA50 /* ViewController.swift in Sources */,
 				B44A0DC92771749F0084AA50 /* UITableViewCell+Extension.swift in Sources */,
 				B44A0DAE277164620084AA50 /* AppDelegate.swift in Sources */,
