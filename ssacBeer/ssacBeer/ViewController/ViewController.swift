@@ -12,21 +12,19 @@ class ViewController: UIViewController {
 
     // MARK: - Properties
     
-    private let widthSize = UIScreen.main.bounds.width
-    
     private let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(DescriptionTableViewCell.self, forCellReuseIdentifier: UITableViewCell.reuseIdentifier)
+        tableView.register(FoodParingTableViewCell.self, forCellReuseIdentifier: UITableViewCell.reuseIdentifier)
         return tableView
     }()
     
-    private let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "shoes")
-        imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
+    // MARK: Header
+    
+    let header = StretchyTableHeaderView()
+    let sectionHeader = SectionHeaderView()
+    
+    // MARK: Bottom
     
     private let bottomView = UIView()
     
@@ -38,7 +36,7 @@ class ViewController: UIViewController {
         button.layer.borderColor = UIColor.systemMint.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(didTaprefreshButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapRefreshButton), for: .touchUpInside)
         return button
     }()
     
@@ -49,7 +47,7 @@ class ViewController: UIViewController {
         button.tintColor = .black
         button.backgroundColor = .systemMint.withAlphaComponent(0.5)
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(didTapshareButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapShareButton), for: .touchUpInside)
         return button
     }()
     
@@ -59,28 +57,34 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         configureTableView()
         configureBottomUI()
-        view.addSubview(imageView)
+        configureHeaderView()
     }
     
     // MARK: - Action
     
-    @objc func didTaprefreshButton() {
+    @objc func didTapRefreshButton() {
         print("didTaprefreshButton")
     }
     
-    @objc func didTapshareButton() {
+    @objc func didTapShareButton() {
         print("didTapshareButton")
     }
+    
 
     // MARK: - Helper
 
     private func configureTableView() {
         view.addSubview(tableView)
-        tableView.backgroundColor = .magenta
         tableView.delegate = self
         tableView.dataSource = self
         tableView.frame = view.bounds
-        tableView.contentInset.top = 300
+        tableView.contentInset.bottom = 100
+    }
+    
+    private func configureHeaderView() {
+        header.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.width-100)
+        header.imageView.image = UIImage(named: "shoes")
+        tableView.tableHeaderView = header
     }
     
     private func configureBottomUI() {
@@ -111,23 +115,58 @@ class ViewController: UIViewController {
 // MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int { 2 }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return section == 0 ? 1 : 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        return cell
+        
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as! DescriptionTableViewCell
+            cell.backgroundColor = .lightGray
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as! FoodParingTableViewCell
+            return cell
+        }
     }
+    
+    func tableView(_ tableView: UITableView, selectionFollowsFocusForRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.section == 0 ? 200 : 50
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? 0 : 44
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        if section == 0 {
+            return UIView(frame: .zero)
+        } else {
+            sectionHeader.backgroundColor = .green
+            return sectionHeader
+        }
+      
+    }
+    
 }
 
 // MARK: - UIScrollViewDelegate
 
 extension ViewController: UIScrollViewDelegate {
-    // 스크롤 할때마다 계속 호출
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let y = 300 - (scrollView.contentOffset.y + 300)
-        let height = min(max(y, 60), 500)
-        imageView.frame = CGRect(x: 0, y: 0, width: widthSize, height: height)
+    func scrollViewDidScroll(_ scrollView: UIScrollView) { // 스크롤 할때마다 계속 호출
+        guard let header = tableView.tableHeaderView as? StretchyTableHeaderView else { return }
+        header.scrollViewDidScroll(scrollView: tableView)
     }
 }

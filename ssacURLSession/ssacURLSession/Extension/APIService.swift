@@ -28,7 +28,8 @@ class APIService {
     func requestCast(completion: @escaping (Cast?) -> Void) {
         URLSession.shared.dataTask(with: sourceURL) { data, response, error in
             if let error = error {
-                self.showAlert(.unknownError); return
+                self.showAlert(.unknownError)
+                print(error); return
             }
             
             guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
