@@ -10,19 +10,26 @@ import SnapKit
 
 class DescriptionTableViewCell: UITableViewCell {
     
+    // MARK: - Properties
+    
+    static var identifier = "DescriptionTableViewCell"
+    
     let descriptionView: DescriptionView = {
         let view = DescriptionView()
-        view.backgroundColor = .magenta
+        view.layer.cornerRadius = 10
         return view
     }()
+    
+    // MARK: - Lifecycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         addSubview(descriptionView)
         descriptionView.snp.makeConstraints { make in
-            make.top.leading.equalTo(20)
-            make.trailing.bottom.equalTo(-20)
+            make.top.trailing.equalTo(-20)
+            make.leading.equalTo(20)
+            make.bottom.equalToSuperview()
         }
     }
     

@@ -14,8 +14,8 @@ class ViewController: UIViewController {
     
     private let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(DescriptionTableViewCell.self, forCellReuseIdentifier: UITableViewCell.reuseIdentifier)
-        tableView.register(FoodParingTableViewCell.self, forCellReuseIdentifier: UITableViewCell.reuseIdentifier)
+        tableView.register(DescriptionTableViewCell.self, forCellReuseIdentifier: DescriptionTableViewCell.identifier)
+        tableView.register(FoodParingTableViewCell.self, forCellReuseIdentifier: FoodParingTableViewCell.identifier)
         return tableView
     }()
     
@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     
     let header = StretchyTableHeaderView()
     let sectionHeader = SectionHeaderView()
+    let sectionFooter = SectionFooterView()
     
     // MARK: Bottom
     
@@ -57,7 +58,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         configureTableView()
         configureBottomUI()
-        configureHeaderView()
+        configureHeaderFooterView()
     }
     
     // MARK: - Action
@@ -79,12 +80,18 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         tableView.frame = view.bounds
         tableView.contentInset.bottom = 100
+        tableView.separatorStyle = .none
     }
     
-    private func configureHeaderView() {
+    private func configureHeaderFooterView() {
         header.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.width-100)
         header.imageView.image = UIImage(named: "shoes")
+        header.descriptionView.backgroundColor = .orange
         tableView.tableHeaderView = header
+        
+        sectionFooter.frame = CGRect(x: 0, y: 100, width: view.frame.size.width, height: 200)
+        sectionFooter.backgroundColor = .systemBlue
+        tableView.tableFooterView = sectionFooter
     }
     
     private func configureBottomUI() {
@@ -116,33 +123,33 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int { 2 }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1 : 10
+        return section == 0 ? 1 : 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as! DescriptionTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: DescriptionTableViewCell.identifier, for: indexPath) as! DescriptionTableViewCell
             cell.backgroundColor = .lightGray
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as! FoodParingTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: FoodParingTableViewCell.identifier, for: indexPath) as! FoodParingTableViewCell
             return cell
         }
     }
     
-    func tableView(_ tableView: UITableView, selectionFollowsFocusForRowAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.section == 0 {
+            print("more")
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 200 : 50
+        return indexPath.section == 0 ? 300 : 50
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -157,7 +164,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             sectionHeader.backgroundColor = .green
             return sectionHeader
         }
-      
+        
     }
     
 }

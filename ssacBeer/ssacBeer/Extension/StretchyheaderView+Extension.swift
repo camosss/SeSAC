@@ -19,6 +19,11 @@ final class StretchyTableHeaderView: UIView {
         return imageView
     }()
     
+    public let descriptionView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
     private var imageViewHeight = NSLayoutConstraint()
     private var imageViewBottom = NSLayoutConstraint()
     private var containerView = UIView()
@@ -53,7 +58,7 @@ final class StretchyTableHeaderView: UIView {
         
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.widthAnchor.constraint(equalTo: imageView.widthAnchor).isActive = true
-        containerViewHeight = containerView.heightAnchor.constraint(equalTo: self.heightAnchor )
+        containerViewHeight = containerView.heightAnchor.constraint(equalTo: self.heightAnchor)
         containerViewHeight.isActive = true
         
         imageView.translatesAutoresizingMaskIntoConstraints = false

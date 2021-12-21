@@ -1,5 +1,5 @@
 //
-//  SectionHeaderView.swift
+//  SectionFooterView.swift
 //  ssacBeer
 //
 //  Created by 강호성 on 2021/12/21.
@@ -8,14 +8,14 @@
 import UIKit
 import SnapKit
 
-class SectionHeaderView: UIView {
+class SectionFooterView: UIView {
     
     // MARK: - Properties
     
     private var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Food - Paring"
-        label.font = .boldSystemFont(ofSize: 25)
+        label.text = "footerView"
+        label.font = .boldSystemFont(ofSize: 17)
         return label
     }()
     
