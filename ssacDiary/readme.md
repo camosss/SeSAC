@@ -57,6 +57,7 @@ title = LocalizableStrings.home.localized
 navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont().mainDemiBold]
 
 SearchViewController
+
 title = LocalizableStrings.search.localized
 navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont().mainDemiBold]
 
@@ -118,6 +119,8 @@ let imageURL = documentDirectory.appendingPathComponent(task의 pk값)
 - 파일 존재 여부를 확인
 - 기존 경로에 있는 이미지 삭제
 - 동일한 경로에 이미지를 저장하게 될 경우 -> 덮어쓰기
+
+<br />
 
 5. 이미지를 document 폴더에 저장
 
