@@ -11,6 +11,7 @@
 		B42E0ADD2772A76E00536531 /* NASAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0ADC2772A76E00536531 /* NASAViewController.swift */; };
 		B42E0ADF2772A92100536531 /* SignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0ADE2772A92100536531 /* SignViewController.swift */; };
 		B42E0AE22772A99E00536531 /* SignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0AE12772A99E00536531 /* SignView.swift */; };
+		B42E0AE92772C6DE00536531 /* SignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0AE82772C6DE00536531 /* SignViewModel.swift */; };
 		B44A0DAE277164620084AA50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44A0DAD277164620084AA50 /* AppDelegate.swift */; };
 		B44A0DB0277164620084AA50 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44A0DAF277164620084AA50 /* SceneDelegate.swift */; };
 		B44A0DB2277164620084AA50 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44A0DB1277164620084AA50 /* ViewController.swift */; };
@@ -30,6 +31,7 @@
 		B42E0ADC2772A76E00536531 /* NASAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAViewController.swift; sourceTree = "<group>"; };
 		B42E0ADE2772A92100536531 /* SignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; };
 		B42E0AE12772A99E00536531 /* SignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignView.swift; sourceTree = "<group>"; };
+		B42E0AE82772C6DE00536531 /* SignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewModel.swift; sourceTree = "<group>"; };
 		B44A0DAA277164620084AA50 /* ssacURLSession.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ssacURLSession.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B44A0DAD277164620084AA50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B44A0DAF277164620084AA50 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				B44A0DCF277177250084AA50 /* DummyViewModel.swift */,
+				B42E0AE82772C6DE00536531 /* SignViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B44A0DD2277178BC0084AA50 /* TableViewCellRepresentable.swift in Sources */,
+				B42E0AE92772C6DE00536531 /* SignViewModel.swift in Sources */,
 				B44A0DD0277177250084AA50 /* DummyViewModel.swift in Sources */,
 				B44A0DCE277176430084AA50 /* DummyViewController.swift in Sources */,
 				B44A0DB2277164620084AA50 /* ViewController.swift in Sources */,

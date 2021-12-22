@@ -12,6 +12,7 @@ class SignViewController: BaseViewController {
     // MARK: - Properties
     
     var mainView = SignView()
+    var viewModel = SignViewModel()
     
     // MARK: - Lifecycle
     
@@ -23,21 +24,35 @@ class SignViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         
+        // 데이터와 View 객체 연결
+        viewModel.bind { text, color in
+            self.mainView.passwordTextField.text = text
+            self.mainView.passwordTextField.textColor = color
+        }
     }
     
     override func configureUI() {
+        title = viewModel.navigationTitle
+        
         mainView.emailTextField.placeholder = "이메일을 작성해주세요"
+        mainView.emailTextField.text = viewModel.text
+        
         mainView.signButton.addTarget(self, action: #selector(signButtonClicked), for: .touchUpInside)
+        mainView.signButton.setTitle(viewModel.buttonTitle, for: .normal)
     }
     
-//    override func setupConstraints() {
-//        
-//    }
+    override func setupConstraints() {
+        
+    }
     
     // MARK: - Action
     
     @objc func signButtonClicked() {
         print("signButtonClicked")
+        
+        guard let text = mainView.emailTextField.text else { return }
+        viewModel.text = text
     }
 }
