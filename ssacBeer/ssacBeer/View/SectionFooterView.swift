@@ -12,9 +12,12 @@ class SectionFooterView: UIView {
     
     // MARK: - Properties
     
-    private var titleLabel: UILabel = {
+    var beer: Beer? {
+        didSet { configure() }
+    }
+    
+    var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "footerView"
         label.font = .boldSystemFont(ofSize: 17)
         return label
     }()
@@ -33,5 +36,13 @@ class SectionFooterView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError()
+    }
+    
+    // MARK: - Helper
+    
+    func configure() {
+        guard let beer = beer else { return }
+
+        titleLabel.text = beer.brewersTips
     }
 }

@@ -80,7 +80,6 @@ class ViewController: UIViewController {
     
     private func populateData() {
         AF.request(URL.randomURL(), method: .get).validate().responseDecodable(of: [Beer].self) { response in
-//            print(response)
             self.beer = response.value ?? []
             self.tableView.reloadData()
         }
@@ -106,6 +105,7 @@ class ViewController: UIViewController {
         tableView.tableHeaderView = header
         
         sectionFooter.frame = CGRect(x: 0, y: 100, width: view.frame.size.width, height: 200)
+        sectionFooter.titleLabel.text = "sectionFooter"
         sectionFooter.backgroundColor = .systemBlue
         tableView.tableFooterView = sectionFooter
     }
@@ -148,7 +148,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: DescriptionTableViewCell.identifier, for: indexPath) as! DescriptionTableViewCell
-            cell.backgroundColor = .orange
             cell.delegate = self
             cell.beer = beer[indexPath.row]
             return cell
@@ -160,7 +159,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 200 : 50
+        return indexPath.section == 0 ? isExpend ? 300 : 200 : 50
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -177,7 +176,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
     }
-    
 }
 
 // MARK: - UIScrollViewDelegate
@@ -194,6 +192,7 @@ extension ViewController: UIScrollViewDelegate {
 extension ViewController: DescriptionTableViewCellDelegate {
     func cell(_ cell: DescriptionTableViewCell) {
         isExpend.toggle()
-//        cell.descriptionLabel.numberOfLines = isExpend ? 0 : 3
+        cell.descriptionLabel.numberOfLines = isExpend ? 0 : 3
+        self.tableView.reloadData()
     }
 }

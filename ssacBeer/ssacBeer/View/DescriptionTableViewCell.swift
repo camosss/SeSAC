@@ -52,7 +52,7 @@ class DescriptionTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription"
         label.textAlignment = .center
-        label.numberOfLines = 3
+        label.numberOfLines = 2
         return label
     }()
     
@@ -106,7 +106,7 @@ class DescriptionTableViewCell: UITableViewCell {
             make.bottom.equalToSuperview()
         }
         
-        let firstStack = UIStackView(arrangedSubviews: [nameLabel, taglineLabel])
+        let firstStack = UIStackView(arrangedSubviews: [nameLabel, taglineLabel, descriptionLabel])
         firstStack.axis = .vertical
         firstStack.spacing = 20
         
@@ -118,12 +118,8 @@ class DescriptionTableViewCell: UITableViewCell {
             make.centerX.equalToSuperview()
         }
         
-        let secondStack = UIStackView(arrangedSubviews: [descriptionLabel, moreButton])
-        secondStack.axis = .vertical
-        secondStack.spacing = 10
-        
-        descriptionView.addSubview(secondStack)
-        secondStack.snp.makeConstraints { make in
+        descriptionView.addSubview(moreButton)
+        moreButton.snp.makeConstraints { make in
             make.top.equalTo(firstStack.snp.bottom).offset(20)
             make.leading.equalTo(10)
             make.trailing.equalTo(-10)
