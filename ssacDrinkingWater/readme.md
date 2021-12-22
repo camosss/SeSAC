@@ -1,3 +1,8 @@
+
+## 물 마신 양을 기록하는 앱
+
+<br />
+
 ## 프로필 정보 저장
 
 `이름`, `키`, `몸무게` 의 데이터를 저장 (set) 하고, 해당 text에 값을 넣어준다.
@@ -38,6 +43,8 @@
     }
 ```
 
+<br />
+
 ## Unwind Segue 로 데이터 전달
 
 **ProfileVC** 에서 User 의 `이름`, `키`, `몸무게` 의 데이터를 **MainVC** 로 전달
@@ -71,7 +78,8 @@ if let vc = sender.source as? ProfileVC {
 
 https://user-images.githubusercontent.com/74236080/136707683-92b6f176-db75-47a4-9164-e06cadc68112.mov
 
----
+<br />
+
 
 ## 마신 물의 양 추가
 
@@ -114,7 +122,8 @@ if let addValue = addValueTextField.text {
 
 https://user-images.githubusercontent.com/74236080/136707696-8963d99f-876f-484f-b788-c9bf93af7fc3.mov
 
----
+<br />
+
 
 ## 새로고침
 
@@ -146,9 +155,9 @@ https://user-images.githubusercontent.com/74236080/136707696-8963d99f-876f-484f-
 
 https://user-images.githubusercontent.com/74236080/136707703-5a17a996-e80c-47e4-8c91-6ae7953f9f71.mov
 
----
+<br />
 
-```swift
-데이터 전달을 통해 간단하게 끝날 줄 알았는데, 코드가 지저분해지고 메서드 마다 데이터를 가져다 쓰기 위해 각 키값의 데이터를 가져와야해서 복잡해졌다.
+
+- 데이터 전달을 통해 간단하게 끝날 줄 알았는데, 코드가 지저분해지고 메서드 마다 데이터를 가져다 쓰기 위해 각 키값의 데이터를 가져와야해서 복잡해졌다.
 구조체로 모델을 구성해서, 구조체에 데이터를 저장하고, 가져와서 계산하는 것이 더 간결할 거 같다.
-```
+
