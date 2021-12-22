@@ -1,7 +1,9 @@
 
+<br />
 
 **📌   Apple이 지원하는 XIB 연결뿐만 아닌, 이니셜라이저와 nib호출을 통해 UIView를 확장해 XIB 사용이 가능하다.**
 
+<br />
 
 ## XIB를 이용해서 Custom View 제작
 
@@ -12,6 +14,7 @@
 ![스크린샷 2021-12-13 오후 3 57 25](https://user-images.githubusercontent.com/93528918/145775968-b207845e-f922-430a-898d-906861db4c7e.png)![스크린샷 2021-12-13 오후 3 59 41](https://user-images.githubusercontent.com/93528918/145775977-e00f3342-ab1a-4f6e-a16e-7e596a9b1d23.png)
 
 
+<br />
 
 2. XIB를 View로 불러오기
 
@@ -36,11 +39,14 @@ func loadView() {
 }
 ```
 
+<br />
+
 ***.first***
 
 File Owner에는 여러개의 View를 가질 수 있기 때문에, 이 중에서 Interface Builder로 Custom한 Class를 가져와 현재 View에 계층을 한 단계 더 쌓은 구조
 
----
+<br />
+
 
 ## 이니셜라이저
 
@@ -50,9 +56,11 @@ UIView는 **NSCoding 프로토콜**을 상속 받고 있다.
 
 ![Untitled](https://user-images.githubusercontent.com/93528918/145776289-8dc7248e-0a8e-4d40-8e6d-5b7c1012a608.png)
 
+<br />
 
 ***👉 두 initializer의 차이는 Interface Builder로 불러올 때와 코드로 생성할 때, 각각 불린다는 차이가 있다.***
 
+<br />
 
 ### **required init?(coder: NSCoder)**
 
@@ -69,6 +77,8 @@ UIView는 **NSCoding 프로토콜**을 상속 받고 있다.
 
 - 파라미터인 `coder`를 통해 NSCoder 타입의 object가 전달되는 것이다. 전달된 NSCoder 타입의 object가 decoding 되어 초기화된 후 컴파일 할 수 있게 decoding 된 자기자신(self)를 반환하는 작업이라고 볼 수 있다. 
 
+<br />
+
 ### **override init(frame: CGRect)**
 
 - 스토리보드, xib, nib과 같은 interface builder를 사용하지 않고, 코드로 UIView class의 View object를 만들기 위해 지정된 이니셜라이저
@@ -84,7 +94,8 @@ UIView는 **NSCoding 프로토콜**을 상속 받고 있다.
 
 코드로 UI작성을 할 때는 해당 이니셜라이저를 사용하지 않음에도 불구하고, View를 구현할 때 선언해주어야한다.
 
----
+<br />
+
 
 ## nib 로드(코드에서 .xib 파일들을 생성하여 참조)
 
@@ -101,6 +112,8 @@ nib: NeXT Interface Builder
 뷰의 layout, display등의 요소들을 object graph로 만들어서 직렬화한 파일
 ```
 
+<br />
+
 ### UINib
 
 - UINib Class는 nib 파일의 컨텐츠를 래핑하는 객체
@@ -112,6 +125,8 @@ let view = UINib(nibName: "SquareBoxView", bundle: nil)
 		.instantiate(withOwner: self, options: nil).first as! UIView
 ```
 
+<br />
+
 ### Bundle.main.loadNibNamed
 
 - nib 파일을 이름으로 찾아서 메모리에 로드하여, nib파일 내의 top-level 객체들을 [Any]? 타입으로 반환
@@ -120,7 +135,8 @@ let view = UINib(nibName: "SquareBoxView", bundle: nil)
 let view = Bundle.main.loadNibNamed("SquareBoxView", owner: self, options: nil)
 ```
 
----
+<br />
+
 
 ## @IBInspectable, @IBDesignable
 
@@ -162,6 +178,8 @@ let view = Bundle.main.loadNibNamed("SquareBoxView", owner: self, options: nil)
 }
 ```
 
+<br />
+
 ### **@IBDesignable**
 
 - @IBInspectable만 지정하면 "런타임"에 속성이 적용된 것을 볼 수 있지만,
@@ -178,9 +196,12 @@ class MainActivateButton: UIButton {
 }
 ```
 
+<br />
 
 ---
----
+
+<br />
+
 
 ## AppDelegate, SceneDelegate
 
@@ -192,6 +213,8 @@ AppDelegate에서 모두 관여하며 앱의 생명주기(앱의 실행과 종�
 - **Process Lifecycle**: Process 상태
 - **UI Lifecycle**: active, inactive, background, foreground 상태 관여
 
+<br />
+
 ## iOS13 이상 버전
 
 
@@ -201,6 +224,7 @@ UI Lifecycle이 다양해지면서 **SceneDelegate**가 이를 관리하기 위�
 
 iOS12까지는 대부분 하나의 앱에 하나의 `window`였지만, iOS13부터는 window의 개념이 `scene`으로 대체되고 아래의 사진처럼 하나의 앱에서 여러개의 scene을 가질 수 있다.
 
+<br />
 
 > **Scene**
 > 
@@ -211,11 +235,14 @@ iOS12까지는 대부분 하나의 앱에 하나의 `window`였지만, iOS13부
 > Scene들은 같은 메모리와 앱 프로세스 공간을 공유하면서 서로 동시에 실행됩니다. **결과적으로 하나의 앱은 여러 scene과 scene delegate 객체를 동시에 활성화**할 수 있습니다.
 > 
 > *(Scenes - Apple Developer Document 참고)*
-> 
+>
+
+<br />
 
 <img src = "https://user-images.githubusercontent.com/93528918/146193899-7efe4aab-4788-4607-b254-b547cca9cdec.png" width="50%" height="50%">
 
 
+<br />
 
 ### 📌  **AppDelegate에 있는 메소드들이 SceneDelegate로 마이그레이션**
 
@@ -224,6 +251,7 @@ AppDelegate의 역할 중 UI의 상태를 알 수 있는 `UILifecycle`에 대한
 
 ![Untitled (1)](https://user-images.githubusercontent.com/93528918/146193938-ab9c79b8-2b17-4574-a1cf-0b9c152429ce.png)
 
+<br />
 
 ### 📌  **AppDelegate에 `Session Lifecycle`에 대한 역할 추가**
 
@@ -232,14 +260,20 @@ AppDelegate의 역할 중 UI의 상태를 알 수 있는 `UILifecycle`에 대한
 > Scene Session이 생성되거나 삭제될 때, **AppDelegate**에 알리는 두 메소드가 추가되었다.
 > 
 
+<br />
+
 - **Called when a new scene session is being created.**
 
 새로운 Scene이 필요할 때마다 `configurationForConnecting` 메서드가 호출되고, Scene이 추가되면 SceneDelegate에서 `willConnectTo`가 호출된다.
+
+<br />
 
 - **Called when the user discards a scene session.**
 
 Scene을 영구적으로 삭제할 때 호출된다.
 
+
+<br />
 
 ```swift
 // MARK: UISceneSession Lifecycle
@@ -257,7 +291,8 @@ func application(_ application: UIApplication, didDiscardSceneSessions sceneSess
 }
 ```
 
----
+<br />
+
 
 ### 📌  App을 눌렀을 때 호출 순서
 
@@ -270,15 +305,21 @@ Delegate에게 실행 프로세스가 거의 끝나고 앱이 실행될 준비�
 
 `화면에는 앱이 뜨지 않은 상태`
 
+<br />
+
 2. **scene(_:willConnectTo:options:)** 
 
 scene이 앱에 추가될 때 호출
 
 `화면에 앱 등장`
 
+<br />
+
 3. **sceneWillEnterForeground(_:)** 
 
 scene이 foreground로 진입할 때 호출
+
+<br />
 
 4. **sceneDidBecomeActive(_:)**
 
@@ -286,7 +327,9 @@ app switcher에서 선택되는 등 scene과의 상호작용이 시작될때 �
 
 `app switcher` 화면을 위로 스와이프했을 때, 현재 실행 중인 앱들이 보이는 화면
 
----
+
+<br />
+
 
 > **앱 스와이프로 홈화면으로 갈 때**
 > 
@@ -295,10 +338,14 @@ app switcher에서 선택되는 등 scene과의 상호작용이 시작될때 �
 
 사용자가 scene과의 상호작용을 중지할 때 호출 (다른 화면으로의 전환과 같은 경우)
 
+<br />
+
 2. **sceneDidEnterBackground(_:)**
 
 백그라운드 상태로 전환된 직후 호출
 
+
+<br />
 
 > **앱 스와이프로 종료**
 > 
