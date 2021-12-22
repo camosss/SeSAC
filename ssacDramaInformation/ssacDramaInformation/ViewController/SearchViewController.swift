@@ -12,6 +12,9 @@ class SearchViewController: UIViewController {
     
     // MARK: - Properties
     
+    var apiService = APIService()
+    var tvshows: TvShows?
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -31,6 +34,7 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         configureCollectionView()
         configureCustomSearchBar()
+        populateData()
     }
     
     // MARK: - Helper
@@ -57,17 +61,32 @@ class SearchViewController: UIViewController {
         searchBar.searchTextField.leftView?.tintColor = .lightGray
         searchBar.searchTextField.rightView?.tintColor = .white
     }
+    
+    private func populateData() {
+        apiService.requestCast { tvshows in
+            self.tvshows = tvshows
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
 }
 
 // MARK: - UICollectionViewDataSource
 
 extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 27
+        return tvshows?.results.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionViewCell.reuseIdentifier, for: indexPath) as! SearchCollectionViewCell
+        
+        let tvShow = tvshows?.results[indexPath.row]
+        let imageUrl = "https://image.tmdb.org/t/p/original/\(tvShow?.backdropPath ?? "")"
+        cell.postImageView.setImage(imageUrl: imageUrl)
+        cell.titleLabel.text = tvShow?.name
         return cell
     }
     
