@@ -12,7 +12,7 @@
   > | [LED Board](https://github.com/camosss/SSAC/tree/main/ssacLEDBoard) | Tap Recognizer, Auto Layout |
   > | [신조어 검색](https://github.com/camosss/SSAC/tree/main/ssacNewlyWord) | StackView, Tap Recognizer, TextField ReturnKey, Alert |
   > | [TabBarController, NavigationController](https://github.com/camosss/SSAC/tree/main/ssacTabBar-Navigation) | TabBarController, NavigationController |
-  > | [물 마시기](https://github.com/camosss/SSAC/tree/main/ssacDrinkingWater) | UserDefaults, Pass data between view controllers, Alert |
+  > | [물 마시기](https://github.com/camosss/SSAC/tree/main/ssacDrinkingWater) | Pass data between view controllers, UserDefaults, Alert |
   > | [TableViewController](https://github.com/camosss/SSAC/tree/main/ssacTableView) | TableViewController |
   > | [쇼핑 리스트](https://github.com/camosss/SSAC/tree/main/ssacShoppingList) | UserDefaults, Struct |
   > | [트렌드 미디어](https://github.com/camosss/SSAC/tree/main/ssacTrendMedia) | Pass data between view controllers, WebViewController, KingFisher, CollectionView, Resizing TableView Cell, CoreLocation, Map, Annotation, API, Pagenation, NWPathMonitor, Toast_Swift |
