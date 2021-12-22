@@ -1,8 +1,14 @@
+# 일기
+
+<br />
 
 ## 1️⃣ 다국어 지원 
 
 ![스크린샷 2021-11-02 오후 6 22 46](https://user-images.githubusercontent.com/93528918/139820369-038475c9-a2e9-4e7b-aebf-e200c96f89e0.png)
 
+<br />
+
+- 다국어 처리할 case
 
 ```swift
 enum LocalizableStrings: String {
@@ -22,7 +28,9 @@ enum LocalizableStrings: String {
 }
 ```
 
-- TabBar **처음 로딩되는 ViewController**인 HomeViewController에서 구현 
+<br />
+
+- TabBar **처음 로딩되는 ViewController**인 `HomeViewController`에서 구현 
 
 ```swift
 HomeViewController
@@ -37,11 +45,14 @@ override func viewDidLoad() {
 }
 ```
 
+<br />
+
 - Navigation Title 
 개별 ViewController에서 구현 (+ 폰트) 
 
 ```swift
 HomeViewController
+
 title = LocalizableStrings.home.localized
 navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont().mainDemiBold]
 
@@ -52,24 +63,28 @@ navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Ke
 ...
 ```
 
+<br />
 
 ***한국어***
 
 <img src = "https://user-images.githubusercontent.com/93528918/139818762-b4f65961-0f21-482f-bd59-e774faf1d459.png" width="25%" height="25%"><img src = "https://user-images.githubusercontent.com/93528918/139818770-c5c6cc11-2d11-44f8-bb3b-1ed9fd9c0292.png" width="25%" height="25%">
 
+<br />
 
 ***일본어***
 
 <img src = "https://user-images.githubusercontent.com/93528918/139818786-1c76e721-5ebf-454c-9734-b57eaaba4f9f.png" width="25%" height="25%"><img src = "https://user-images.githubusercontent.com/93528918/139818795-cb334076-8687-47ed-bc8a-412bf71e1541.png" width="25%" height="25%">
 
+<br />
 
 ***영어***
 
 <img src = "https://user-images.githubusercontent.com/93528918/139818800-9187c76e-6e2b-4a3e-832f-d2903f7ec908.png" width="25%" height="25%"><img src = "https://user-images.githubusercontent.com/93528918/139818811-c038ce80-a7e0-4410-9646-cc551ce1a19b.png" width="25%" height="25%">
 
 
----
-## **2️⃣ Image**
+<br />
+
+## 2️⃣ Image
 
 ### **이미지 저장**
 
@@ -79,6 +94,8 @@ navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Ke
 guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
 ```
 
+<br />
+
 2. 이미지 파일 이름 설정, 최종 경로 설정 
 
 `Users/camosss/Library/Developer/ ... /Documents/default.realm`
@@ -87,12 +104,15 @@ guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, 
 let imageURL = documentDirectory.appendingPathComponent(task의 pk값)
 ```
 
+<br />
+
 3. 이미지 압축
 
 `jpg` 나 `png` 파일로 압축한다.
 
 ![스크린샷 2021-11-04 오후 9 35 06](https://user-images.githubusercontent.com/74236080/140314866-163d8adc-d877-43a1-9211-08c915a7dfd4.png)
 
+<br />
 
 4. 이미지 저장
 - 파일 존재 여부를 확인
@@ -101,6 +121,7 @@ let imageURL = documentDirectory.appendingPathComponent(task의 pk값)
 
 5. 이미지를 document 폴더에 저장
 
+<br />
 
 ### **이미지 불러오기**
 
@@ -125,6 +146,8 @@ func loadImageFromDocumentDirectory(imageName: String) -> UIImage? {
 cell.postImageView.image = loadImageFromDocumentDirectory(imageName: "\(row._id).jpg")
 ```
 
+<br />
+
 ### **이미지 삭제**
 
 - 이미지를 저장할 때의 과정에서 이미지를 삭제할때까지와 코드는 같다.
@@ -142,7 +165,8 @@ try! localRealm.write {
 ```
 
 
----
+<br />
+
 
 ## 3️⃣ UIDatePicker, UIImagePicker
 
@@ -150,7 +174,8 @@ try! localRealm.write {
 https://user-images.githubusercontent.com/74236080/140070505-2bc01416-c36d-4a90-bb97-9fe89f67552c.mov
 
 
----
+<br />
+
 
 ## 4️⃣  백업, 복구
 
@@ -172,11 +197,15 @@ func documentDirectoryPath() -> String? {
 }
 ```
 
+<br />
+
 2. 백업할 파일 주소(**/default.realm**)를 추가하고, 파일 존재 여부를 확인한 뒤에 URL배열 (백업할 파일에 대한 URL배열) 에 추가한다.
 
 ```swift
 Users/camosss/Library/Developer/ ... /Documents/default.realm
 ```
+
+<br />
 
 3. 압축 진행
 - `Zip` 프레임워크를 사용해서 백업할 파일 압축을 진행한다.
@@ -192,11 +221,14 @@ do {
 }
 ```
 
+<br />
+
 ![스크린샷 2021-11-04 오후 7 29 45](https://user-images.githubusercontent.com/93528918/140302351-101359ac-b60f-4fd4-b03b-12f1980fd61d.png)
 
 
 
----
+<br />
+
 
 ### ✔️ 복구
 
@@ -204,6 +236,8 @@ do {
 - `UIDocumentPickerViewController`를 delegate로 연결한다.
 - 선택한 파일의 경로를 가져와서 압축 해제 (이 과정 또한 파일의 존재 여부를 확인한다.)
 - `Zip` 프레임워크의 압축해제 코드
+
+<br />
 
 **destination: 위치, overwrite: 덮어쓰기, progress: 진행상황**
 
@@ -215,6 +249,8 @@ try Zip.unzipFile(fileURL, destination: documentDirectory, overwrite: true, pass
         print("unzippedFile \(unzippedFile)")
     })
 ```
+
+<br />
 
 - 파일이 해당 document에 저장되어있지 않다면, document 폴더에 옮겨준다.
 
@@ -241,7 +277,8 @@ cf. **SandBox**
 
 또한, 앱 자체가 운영 체제의 코드에 영향을 줄 수 있음을 의미하기에, 운영 체제에서 보안 데이터를 가져오기 위해악성 앱을 작성할 수 없다. 예를 들어, 테이블쪽으로 폰을 놓으면 방해금지모드로 전환되는 앱, iOS에서는 이것을 구현할 방법이 없다.
 
----
+<br />
+
 
 ## 5️⃣ DatePicker ToolBar/Alert_ContentView 
 
@@ -272,6 +309,8 @@ func configureToolBar() {
 }
 ```
 
+<br />
+
 - 등록날짜 -> Button에 Alert형식에 ContentView를 삽입하여 구현
 
 ```swift
@@ -298,7 +337,8 @@ https://user-images.githubusercontent.com/74236080/140486668-999e0df2-98c2-4d33-
 
 
  
----
+<br />
+
 
 ## 6️⃣ 상세페이지로 전환
 
