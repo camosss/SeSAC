@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B42E0ADA2772A5A100536531 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0AD92772A5A100536531 /* BaseViewController.swift */; };
+		B42E0ADD2772A76E00536531 /* NASAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0ADC2772A76E00536531 /* NASAViewController.swift */; };
+		B42E0ADF2772A92100536531 /* SignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0ADE2772A92100536531 /* SignViewController.swift */; };
+		B42E0AE22772A99E00536531 /* SignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0AE12772A99E00536531 /* SignView.swift */; };
 		B44A0DAE277164620084AA50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44A0DAD277164620084AA50 /* AppDelegate.swift */; };
 		B44A0DB0277164620084AA50 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44A0DAF277164620084AA50 /* SceneDelegate.swift */; };
 		B44A0DB2277164620084AA50 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44A0DB1277164620084AA50 /* ViewController.swift */; };
@@ -22,6 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B42E0AD92772A5A100536531 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		B42E0ADC2772A76E00536531 /* NASAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAViewController.swift; sourceTree = "<group>"; };
+		B42E0ADE2772A92100536531 /* SignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; };
+		B42E0AE12772A99E00536531 /* SignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignView.swift; sourceTree = "<group>"; };
 		B44A0DAA277164620084AA50 /* ssacURLSession.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ssacURLSession.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B44A0DAD277164620084AA50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B44A0DAF277164620084AA50 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B42E0AE02772A99200536531 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B42E0AE12772A99E00536531 /* SignView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B44A0DA1277164620084AA50 = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				B44A0DCB277176290084AA50 /* Model */,
+				B42E0AE02772A99200536531 /* View */,
 				B44A0DD327717A8F0084AA50 /* ViewModel */,
 				B44A0DCC2771762F0084AA50 /* ViewController */,
 				B44A0DCA277175270084AA50 /* Extension */,
@@ -104,6 +121,9 @@
 			children = (
 				B44A0DB1277164620084AA50 /* ViewController.swift */,
 				B44A0DCD277176430084AA50 /* DummyViewController.swift */,
+				B42E0AD92772A5A100536531 /* BaseViewController.swift */,
+				B42E0ADC2772A76E00536531 /* NASAViewController.swift */,
+				B42E0ADE2772A92100536531 /* SignViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -197,8 +217,12 @@
 				B44A0DCE277176430084AA50 /* DummyViewController.swift in Sources */,
 				B44A0DB2277164620084AA50 /* ViewController.swift in Sources */,
 				B44A0DC92771749F0084AA50 /* UITableViewCell+Extension.swift in Sources */,
+				B42E0ADA2772A5A100536531 /* BaseViewController.swift in Sources */,
 				B44A0DAE277164620084AA50 /* AppDelegate.swift in Sources */,
+				B42E0ADF2772A92100536531 /* SignViewController.swift in Sources */,
 				B44A0DC7277167410084AA50 /* Cast.swift in Sources */,
+				B42E0AE22772A99E00536531 /* SignView.swift in Sources */,
+				B42E0ADD2772A76E00536531 /* NASAViewController.swift in Sources */,
 				B44A0DC5277164D00084AA50 /* APIService.swift in Sources */,
 				B44A0DB0277164620084AA50 /* SceneDelegate.swift in Sources */,
 			);
