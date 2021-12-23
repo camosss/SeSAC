@@ -37,6 +37,8 @@ class SearchCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Helper
+    
     func configureImage(tvShow: TvShow) {
         let imageUrl = "https://image.tmdb.org/t/p/original/\(tvShow.backdropPath ?? "")"
         postImageView.setImage(imageUrl: imageUrl)
