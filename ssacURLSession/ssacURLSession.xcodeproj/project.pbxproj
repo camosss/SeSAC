@@ -12,6 +12,10 @@
 		B42E0ADF2772A92100536531 /* SignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0ADE2772A92100536531 /* SignViewController.swift */; };
 		B42E0AE22772A99E00536531 /* SignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0AE12772A99E00536531 /* SignView.swift */; };
 		B42E0AE92772C6DE00536531 /* SignViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0AE82772C6DE00536531 /* SignViewModel.swift */; };
+		B42E0B932773FE2900536531 /* ssacFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B42E0B8F2773FDF500536531 /* ssacFramework.framework */; };
+		B42E0B942773FE2900536531 /* ssacFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B42E0B8F2773FDF500536531 /* ssacFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B42E0B972773FE4200536531 /* FrameworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0B962773FE4200536531 /* FrameworkViewController.swift */; };
+		B42E0B982774007B00536531 /* ssacFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B42E0B8F2773FDF500536531 /* ssacFramework.framework */; };
 		B44A0DAE277164620084AA50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44A0DAD277164620084AA50 /* AppDelegate.swift */; };
 		B44A0DB0277164620084AA50 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44A0DAF277164620084AA50 /* SceneDelegate.swift */; };
 		B44A0DB2277164620084AA50 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44A0DB1277164620084AA50 /* ViewController.swift */; };
@@ -26,12 +30,46 @@
 		B44A0DD2277178BC0084AA50 /* TableViewCellRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44A0DD1277178BC0084AA50 /* TableViewCellRepresentable.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B42E0B8E2773FDF500536531 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B42E0B892773FDF500536531 /* ssacFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B42E0B6D2773FD6B00536531;
+			remoteInfo = ssacFramework;
+		};
+		B42E0B902773FDF500536531 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B42E0B892773FDF500536531 /* ssacFramework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B42E0B772773FD6B00536531;
+			remoteInfo = ssacFrameworkTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B42E0B952773FE2900536531 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B42E0B942773FE2900536531 /* ssacFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		B42E0AD92772A5A100536531 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		B42E0ADC2772A76E00536531 /* NASAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASAViewController.swift; sourceTree = "<group>"; };
 		B42E0ADE2772A92100536531 /* SignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; };
 		B42E0AE12772A99E00536531 /* SignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignView.swift; sourceTree = "<group>"; };
 		B42E0AE82772C6DE00536531 /* SignViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewModel.swift; sourceTree = "<group>"; };
+		B42E0B892773FDF500536531 /* ssacFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ssacFramework.xcodeproj; path = ../ssacFramework/ssacFramework.xcodeproj; sourceTree = "<group>"; };
+		B42E0B962773FE4200536531 /* FrameworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameworkViewController.swift; sourceTree = "<group>"; };
+		B42E0B9D2774089E00536531 /* Generic.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Generic.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B44A0DAA277164620084AA50 /* ssacURLSession.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ssacURLSession.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B44A0DAD277164620084AA50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B44A0DAF277164620084AA50 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,7 +90,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B42E0B982774007B00536531 /* ssacFramework.framework in Frameworks */,
 				B44A0DC3277164CA0084AA50 /* SnapKit in Frameworks */,
+				B42E0B932773FE2900536531 /* ssacFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,11 +107,30 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		B42E0B8A2773FDF500536531 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B42E0B8F2773FDF500536531 /* ssacFramework.framework */,
+				B42E0B912773FDF500536531 /* ssacFrameworkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B42E0B922773FE2900536531 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B44A0DA1277164620084AA50 = {
 			isa = PBXGroup;
 			children = (
+				B42E0B9D2774089E00536531 /* Generic.playground */,
+				B42E0B892773FDF500536531 /* ssacFramework.xcodeproj */,
 				B44A0DAC277164620084AA50 /* ssacURLSession */,
 				B44A0DAB277164620084AA50 /* Products */,
+				B42E0B922773FE2900536531 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,6 +185,7 @@
 				B42E0AD92772A5A100536531 /* BaseViewController.swift */,
 				B42E0ADC2772A76E00536531 /* NASAViewController.swift */,
 				B42E0ADE2772A92100536531 /* SignViewController.swift */,
+				B42E0B962773FE4200536531 /* FrameworkViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -149,6 +209,7 @@
 				B44A0DA6277164620084AA50 /* Sources */,
 				B44A0DA7277164620084AA50 /* Frameworks */,
 				B44A0DA8277164620084AA50 /* Resources */,
+				B42E0B952773FE2900536531 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -191,12 +252,35 @@
 			);
 			productRefGroup = B44A0DAB277164620084AA50 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B42E0B8A2773FDF500536531 /* Products */;
+					ProjectRef = B42E0B892773FDF500536531 /* ssacFramework.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				B44A0DA9277164620084AA50 /* ssacURLSession */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B42E0B8F2773FDF500536531 /* ssacFramework.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ssacFramework.framework;
+			remoteRef = B42E0B8E2773FDF500536531 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B42E0B912773FDF500536531 /* ssacFrameworkTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ssacFrameworkTests.xctest;
+			remoteRef = B42E0B902773FDF500536531 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B44A0DA8277164620084AA50 /* Resources */ = {
@@ -225,6 +309,7 @@
 				B44A0DAE277164620084AA50 /* AppDelegate.swift in Sources */,
 				B42E0ADF2772A92100536531 /* SignViewController.swift in Sources */,
 				B44A0DC7277167410084AA50 /* Cast.swift in Sources */,
+				B42E0B972773FE4200536531 /* FrameworkViewController.swift in Sources */,
 				B42E0AE22772A99E00536531 /* SignView.swift in Sources */,
 				B42E0ADD2772A76E00536531 /* NASAViewController.swift in Sources */,
 				B44A0DC5277164D00084AA50 /* APIService.swift in Sources */,

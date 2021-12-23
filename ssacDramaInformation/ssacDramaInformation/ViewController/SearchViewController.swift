@@ -63,7 +63,7 @@ class SearchViewController: UIViewController {
     }
     
     private func populateData() {
-        apiService.requestCast { tvshows in
+        apiService.requestData { tvshows in
             self.tvshows = tvshows
             
             DispatchQueue.main.async {

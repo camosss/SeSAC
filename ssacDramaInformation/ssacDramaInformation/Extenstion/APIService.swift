@@ -23,7 +23,7 @@ extension APIError: LocalizedError {
 // MARK: - APIService
 
 class APIService {
-    func requestCast(completion: @escaping (TvShows?) -> Void) {
+    func requestData(completion: @escaping (TvShows?) -> Void) {
         URLSession.shared.dataTask(with: URL.searchTvShowsURL()) { data, response, error in
             if let error = error {
                 self.showAlert(.unknownError)
