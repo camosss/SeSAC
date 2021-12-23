@@ -10,8 +10,8 @@ import Foundation
 // MARK: - APIError
 
 enum APIError: String, Error {
-    case unknownError = "alert_error_unknown"
-    case serverError = "alert_error_server"
+    case unknownError = "error_unknown"
+    case serverError = "error_server"
 }
 
 extension APIError: LocalizedError {
@@ -23,27 +23,24 @@ extension APIError: LocalizedError {
 // MARK: - APIService
 
 class APIService {
-    func requestData(completion: @escaping (TvShows?) -> Void) {
-        URLSession.shared.dataTask(with: URL.searchTvShowsURL()) { data, response, error in
+    func requestData<T: Codable>(url: URL?, completion: @escaping (Result<T, APIError>) -> Void) {
+        guard let url = url else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
-                self.showAlert(.unknownError)
-                print(error); return
+                print(error)
+                completion(.failure(.unknownError))
+                return
             }
             
             guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-                self.showAlert(.serverError); return
+                completion(.failure(.serverError)); return
             }
-
-            if let data = data, let TvData = try? JSONDecoder().decode(TvShows.self, from: data) {
-                completion(TvData)
+            
+            if let data = data, let result = try? JSONDecoder().decode(T.self, from: data) {
+                completion(.success(result))
                 return
             }
-            completion(nil)
-            
         }.resume()
-    }
-    
-    func showAlert(_ msg: APIError) {
-        // error 알림
     }
 }

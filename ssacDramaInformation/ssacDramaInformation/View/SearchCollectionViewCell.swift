@@ -11,15 +11,6 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "제목"
-        label.textColor = .white
-        label.numberOfLines = 0
-        label.font = UIFont.boldSystemFont(ofSize: 16)
-        return label
-    }()
-    
     let postImageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
@@ -40,17 +31,15 @@ class SearchCollectionViewCell: UICollectionViewCell {
         postImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
-        addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { make in
-            make.leading.equalTo(10)
-            make.trailing.bottom.equalTo(-10)
-        }
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configureImage(tvShow: TvShow) {
+        let imageUrl = "https://image.tmdb.org/t/p/original/\(tvShow.backdropPath ?? "")"
+        postImageView.setImage(imageUrl: imageUrl)
     }
     
 }

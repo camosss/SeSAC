@@ -12,8 +12,7 @@ class SearchViewController: UIViewController {
     
     // MARK: - Properties
     
-    var apiService = APIService()
-    var tvshows: TvShows?
+    var tvshows = [TvShow]()
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -34,7 +33,6 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         configureCollectionView()
         configureCustomSearchBar()
-        populateData()
     }
     
     // MARK: - Helper
@@ -62,12 +60,18 @@ class SearchViewController: UIViewController {
         searchBar.searchTextField.rightView?.tintColor = .white
     }
     
-    private func populateData() {
-        apiService.requestData { tvshows in
-            self.tvshows = tvshows
-            
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
+    private func populateData(text: String?) {
+        guard let text = text else { return }
+        
+        APIService().requestData(url: URL.searchTvShowsURL(text: text)) { (result: Result<TvShows, APIError>) in
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    self.tvshows = response.results.filter { $0.backdropPath != nil }
+                    self.collectionView.reloadData()
+                }
+            case .failure(let error):
+                print(error.rawValue)
             }
         }
     }
@@ -77,16 +81,14 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tvshows?.results.count ?? 0
+        return tvshows.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionViewCell.reuseIdentifier, for: indexPath) as! SearchCollectionViewCell
         
-        let tvShow = tvshows?.results[indexPath.row]
-        let imageUrl = "https://image.tmdb.org/t/p/original/\(tvShow?.backdropPath ?? "")"
-        cell.postImageView.setImage(imageUrl: imageUrl)
-        cell.titleLabel.text = tvShow?.name
+        let tvShow = tvshows[indexPath.row]
+        cell.configureImage(tvShow: tvShow)
         return cell
     }
     
@@ -130,6 +132,6 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+        populateData(text: searchText)
     }
 }
