@@ -11,6 +11,10 @@ class DetailViewController: UIViewController {
     
     // MARK: - Properties
     
+    var id = 0
+    var name = ""
+    var season = [Season]()
+    
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .black
@@ -24,6 +28,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         configureNavigationBar()
         configureTableView()
+        populateData(id: id)
     }
     
     // MARK: - Action
@@ -49,22 +54,41 @@ class DetailViewController: UIViewController {
         tableView.delegate = self
         tableView.frame = view.bounds
     }
+    
+    private func populateData(id: Int) {
+        APIService().requestData(url: URL.detailURL(id: id)) { (result: Result<Seasons, APIError>)  in
+            switch result {
+            case .success(let response):
+                print(response)
+                DispatchQueue.main.async {
+                    self.season = response.seasons ?? []
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error.rawValue)
+            }
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 
 extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return season.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.reuseIdentifier, for: indexPath) as! DetailTableViewCell
         cell.backgroundColor = .black
+        cell.titleLabel.text = name
+        
+        let season = season[indexPath.row]
+        cell.configureUI(season: season)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("didSelectRowAt")
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
