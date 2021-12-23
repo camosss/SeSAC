@@ -40,8 +40,8 @@
   > | [Firebase](https://github.com/camosss/SSAC/tree/main/ssacFirebase) | Analytics, Crashlytics, Messaging |
   > | [XIB](https://github.com/camosss/SSAC/tree/main/ssacXib) | initializer, xib, nib, @IBInspectable, @IBDesignable, AppDelegate, SceneDelegate |
   > | [맥주 추천앱](https://github.com/camosss/SSAC/tree/main/ssacBeer) | Stretchy TableView Header, Snapkit, Codable |
-  > | [URLSession](https://github.com/camosss/SSAC/tree/main/ssacURLSession) | URLSession, ViewModel |
-  > | [드라마 정보 조회 앱](https://github.com/camosss/SSAC/tree/main/ssacDramaInformation) | |
+  > | [URLSession](https://github.com/camosss/SSAC/tree/main/ssacURLSession) | URLSession, ViewModel, Access Control, Generic |
+  > | [드라마 정보 조회 앱](https://github.com/camosss/SSAC/tree/main/ssacDramaInformation) | Networking with NSURLSession/Codable |
 
 
 
