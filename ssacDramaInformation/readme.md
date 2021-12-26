@@ -6,7 +6,8 @@
 
 <br>
 
-- 상단에 SearchBar를 구현하기 위해 Custom해서 
+**#1**
+- 상단에 SearchBar를 구현하기 위해 Custom해서 구현
 - 검색 URL quary에 한글이 들어가면 오류가 난다.
 
 
