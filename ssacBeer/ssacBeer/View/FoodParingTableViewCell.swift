@@ -45,7 +45,7 @@ class FoodParingTableViewCell: UITableViewCell {
     func configure() {
         guard let beer = beer else { return }
         
-//        print(beer.foodPairing.count, beer.foodPairing)
+        print(beer.foodPairing.count, beer.foodPairing)
         
         
     }

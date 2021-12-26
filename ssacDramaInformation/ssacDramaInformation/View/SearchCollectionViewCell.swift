@@ -15,7 +15,6 @@ class SearchCollectionViewCell: UICollectionViewCell {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
-        image.backgroundColor = .lightGray
         image.layer.cornerRadius = 10
         image.layer.borderColor = UIColor.black.cgColor
         image.layer.borderWidth = 3

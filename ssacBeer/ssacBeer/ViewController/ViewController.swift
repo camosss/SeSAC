@@ -69,7 +69,7 @@ class ViewController: UIViewController {
     // MARK: - Action
     
     @objc func didTapRefreshButton() {
-        print("didTaprefreshButton")
+        populateData()
     }
     
     @objc func didTapShareButton() {
@@ -154,12 +154,19 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: FoodParingTableViewCell.identifier, for: indexPath) as! FoodParingTableViewCell
             cell.beer = beer[indexPath.row]
+            
+            var foodPairing = ""
+            cell.beer?.foodPairing.forEach({
+                foodPairing.append($0)
+            })
+            
+            cell.titleLabel.text = foodPairing
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? isExpend ? 300 : 200 : 50
+        return indexPath.section == 0 ? (isExpend ? 300 : 200) : 50
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
