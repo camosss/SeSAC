@@ -6,6 +6,8 @@
 > 
 > Error 프로토콜을 활용해 API Error에 대해 대응
 
+<br>
+
 - 검색 URL quary에 한글이 들어가면 오류
 
 
