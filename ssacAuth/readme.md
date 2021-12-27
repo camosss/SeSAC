@@ -194,7 +194,8 @@ class SignInViewController: UIViewController {
 
 로그인 기능 **MVVM** 패턴 적용
 
-![다운로드](https://user-images.githubusercontent.com/93528918/147460946-dc4f1c7d-aac5-42a1-bac8-699ecb2c90fc.png)
+<img src = "https://user-images.githubusercontent.com/93528918/147460946-dc4f1c7d-aac5-42a1-bac8-699ecb2c90fc.png" width="50%" height="50%">
+
 
 <br>
 
