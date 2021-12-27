@@ -12,6 +12,7 @@ class SignInViewController: UIViewController {
     // MARK: - Properties
     
     let signInView = SignInView()
+    let viewModel = SignInViewModel()
     
     // MARK: - Lifecycle
     
@@ -21,33 +22,48 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setAddTarget()
+        bindingViewModel()
+    }
+    
+    // MARK: - Helper
+    
+    func bindingViewModel() {
+        viewModel.username.bind { text in
+            self.signInView.usernameTextField.text = text
+        }
         
+        viewModel.password.bind { text in
+            self.signInView.passwordTextField.text = text
+        }
+    }
+    
+    func setAddTarget() {
+        signInView.usernameTextField.addTarget(self, action: #selector(usernameTextFieldDidChange(_:)), for: .editingChanged)
+        
+        signInView.passwordTextField.addTarget(self, action: #selector(passwordTextFieldDidChange(_:)), for: .editingChanged)
+
         signInView.signInButton.addTarget(self, action: #selector(signInButtonClicked), for: .touchUpInside)
     }
 
     // MARK: - Action
     
+    @objc func usernameTextFieldDidChange(_ textfield: UITextField) {
+        viewModel.username.value = textfield.text ?? ""
+    }
+    
+    @objc func passwordTextFieldDidChange(_ textfield: UITextField) {
+        viewModel.password.value = textfield.text ?? ""
+    }
+    
     @objc func signInButtonClicked() {
-        guard let username = signInView.usernameTextField.text else { return }
-        guard let password = signInView.passwordTextField.text else { return }
-
-        APIService.login(identifier: username, password: password) { userData, error in
-            guard let userData = userData else { return }
-            print(username, password, userData)
-            
-            UserDefaults.standard.set(userData.jwt, forKey: "token")
-            UserDefaults.standard.set(userData.user.username, forKey: "name")
-            UserDefaults.standard.set(userData.user.id, forKey: "id")
-            UserDefaults.standard.set(userData.user.email, forKey: "email")
-            
+        viewModel.postUserLogin {
             DispatchQueue.main.async {
                 guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
                 windowScene.windows.first?.rootViewController = UINavigationController(rootViewController: MainViewController())
                 windowScene.windows.first?.makeKeyAndVisible()
             }
-            
         }
-        
     }
 }
 

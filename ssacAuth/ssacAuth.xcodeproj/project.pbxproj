@@ -17,6 +17,8 @@
 		B42E0BE72779507D00536531 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0BE62779507D00536531 /* APIService.swift */; };
 		B42E0BEA2779573E00536531 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0BE92779573E00536531 /* User.swift */; };
 		B42E0BEC27795B1C00536531 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0BEB27795B1C00536531 /* MainViewController.swift */; };
+		B42E0BEF27795EED00536531 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0BEE27795EED00536531 /* SignInViewModel.swift */; };
+		B42E0BF127795FA900536531 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0BF027795FA900536531 /* Observable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		B42E0BE62779507D00536531 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		B42E0BE92779573E00536531 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B42E0BEB27795B1C00536531 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B42E0BEE27795EED00536531 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		B42E0BF027795FA900536531 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 			children = (
 				B42E0BDF27794BB600536531 /* Model */,
 				B42E0BDE27794BB000536531 /* View */,
+				B42E0BED27795EDA00536531 /* ViewModel */,
 				B42E0BDD27794BAA00536531 /* ViewController */,
 				B42E0BE52779506C00536531 /* Extension */,
 				B42E0BDC2779483C00536531 /* Resource */,
@@ -114,8 +119,17 @@
 			isa = PBXGroup;
 			children = (
 				B42E0BE62779507D00536531 /* APIService.swift */,
+				B42E0BF027795FA900536531 /* Observable.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		B42E0BED27795EDA00536531 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B42E0BEE27795EED00536531 /* SignInViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +212,8 @@
 				B42E0BCD2779480800536531 /* SignInViewController.swift in Sources */,
 				B42E0BE72779507D00536531 /* APIService.swift in Sources */,
 				B42E0BEA2779573E00536531 /* User.swift in Sources */,
+				B42E0BF127795FA900536531 /* Observable.swift in Sources */,
+				B42E0BEF27795EED00536531 /* SignInViewModel.swift in Sources */,
 				B42E0BC92779480800536531 /* AppDelegate.swift in Sources */,
 				B42E0BE127794BC100536531 /* SignInView.swift in Sources */,
 				B42E0BCB2779480800536531 /* SceneDelegate.swift in Sources */,
