@@ -10,6 +10,7 @@ import Foundation
 class Observable<T> {
     private var listener: ((T) -> Void)?
     
+    // value가 변경될때마다 클로저 구문 실행
     var value: T {
         didSet {
             listener?(value)
