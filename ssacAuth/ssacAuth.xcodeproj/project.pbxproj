@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B42A9597277BEF5900D0288F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42A9596277BEF5900D0288F /* Endpoint.swift */; };
 		B42E0BC92779480800536531 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0BC82779480800536531 /* AppDelegate.swift */; };
 		B42E0BCB2779480800536531 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0BCA2779480800536531 /* SceneDelegate.swift */; };
 		B42E0BCD2779480800536531 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0BCC2779480800536531 /* SignInViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B42A9596277BEF5900D0288F /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		B42E0BC52779480800536531 /* ssacAuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ssacAuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B42E0BC82779480800536531 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B42E0BCA2779480800536531 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			children = (
 				B42E0BE62779507D00536531 /* APIService.swift */,
 				B42E0BF027795FA900536531 /* Observable.swift */,
+				B42A9596277BEF5900D0288F /* Endpoint.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				B42E0C05277A914B00536531 /* LottoViewController.swift in Sources */,
 				B42E0BEF27795EED00536531 /* SignInViewModel.swift in Sources */,
 				B42E0C07277A94CB00536531 /* Lotto.swift in Sources */,
+				B42A9597277BEF5900D0288F /* Endpoint.swift in Sources */,
 				B42E0BC92779480800536531 /* AppDelegate.swift in Sources */,
 				B42E0C0F277AAB7800536531 /* PersonViewController.swift in Sources */,
 				B42E0C0B277AA60A00536531 /* Person.swift in Sources */,
