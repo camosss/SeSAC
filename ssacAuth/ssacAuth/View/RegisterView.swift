@@ -1,37 +1,25 @@
 //
-//  SignInView.swift
+//  RegisterView.swift
 //  ssacAuth
 //
-//  Created by 강호성 on 2021/12/27.
+//  Created by 강호성 on 2021/12/29.
 //
 
 import UIKit
 import SnapKit
 
-protocol ViewRepresentable {
-    func setupView()
-    func setupConstraints()
-}
-
-class SignInView: UIView, ViewRepresentable {
+class RegisterView: UIView, ViewRepresentable {
     
     // MARK: - Properties
     
     let usernameTextField = UITextField()
+    let emailTextField = UITextField()
     let passwordTextField = UITextField()
     
-    let signInButton: UIButton = {
+    let registerButton: UIButton = {
         let button = UIButton()
-        button.setTitle("로그인", for: .normal)
+        button.setTitle("회원가입", for: .normal)
         button.backgroundColor = .orange
-        return button
-    }()
-    
-    let dontHaveAccountButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("회원가입 하러가기", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .boldSystemFont(ofSize: 16)
         return button
     }()
     
@@ -52,11 +40,12 @@ class SignInView: UIView, ViewRepresentable {
     
     func setupView() {
         addSubview(usernameTextField)
+        addSubview(emailTextField)
         addSubview(passwordTextField)
-        addSubview(signInButton)
-        addSubview(dontHaveAccountButton)
+        addSubview(registerButton)
         
         usernameTextField.backgroundColor = .white
+        emailTextField.backgroundColor = .white
         passwordTextField.backgroundColor = .white
     }
     
@@ -67,20 +56,20 @@ class SignInView: UIView, ViewRepresentable {
             make.height.equalTo(50)
         }
         
-        passwordTextField.snp.makeConstraints { make in
+        emailTextField.snp.makeConstraints { make in
             make.top.equalTo(usernameTextField.snp.bottom).offset(20)
             make.width.height.equalTo(usernameTextField)
             make.centerX.equalToSuperview()
         }
         
-        signInButton.snp.makeConstraints { make in
-            make.top.equalTo(passwordTextField.snp.bottom).offset(20)
+        passwordTextField.snp.makeConstraints { make in
+            make.top.equalTo(emailTextField.snp.bottom).offset(20)
             make.width.height.equalTo(usernameTextField)
             make.centerX.equalToSuperview()
         }
         
-        dontHaveAccountButton.snp.makeConstraints { make in
-            make.top.equalTo(signInButton.snp.bottom).offset(20)
+        registerButton.snp.makeConstraints { make in
+            make.top.equalTo(passwordTextField.snp.bottom).offset(20)
             make.width.height.equalTo(usernameTextField)
             make.centerX.equalToSuperview()
         }

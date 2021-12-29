@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B42A9597277BEF5900D0288F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42A9596277BEF5900D0288F /* Endpoint.swift */; };
+		B42A9599277C534300D0288F /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42A9598277C534300D0288F /* RegisterViewController.swift */; };
+		B42A959B277C540500D0288F /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42A959A277C540500D0288F /* RegisterView.swift */; };
+		B42A959E277C570B00D0288F /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42A959D277C570B00D0288F /* RegisterViewModel.swift */; };
 		B42E0BC92779480800536531 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0BC82779480800536531 /* AppDelegate.swift */; };
 		B42E0BCB2779480800536531 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0BCA2779480800536531 /* SceneDelegate.swift */; };
 		B42E0BCD2779480800536531 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42E0BCC2779480800536531 /* SignInViewController.swift */; };
@@ -30,6 +33,9 @@
 
 /* Begin PBXFileReference section */
 		B42A9596277BEF5900D0288F /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		B42A9598277C534300D0288F /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		B42A959A277C540500D0288F /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		B42A959D277C570B00D0288F /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		B42E0BC52779480800536531 /* ssacAuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ssacAuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B42E0BC82779480800536531 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B42E0BCA2779480800536531 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +69,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B42A959C277C568300D0288F /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				B42E0BCC2779480800536531 /* SignInViewController.swift */,
+				B42A9598277C534300D0288F /* RegisterViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		B42A959F277C570E00D0288F /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				B42E0BEE27795EED00536531 /* SignInViewModel.swift */,
+				B42A959D277C570B00D0288F /* RegisterViewModel.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		B42E0BBC2779480800536531 = {
 			isa = PBXGroup;
 			children = (
@@ -107,7 +131,7 @@
 		B42E0BDD27794BAA00536531 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				B42E0BCC2779480800536531 /* SignInViewController.swift */,
+				B42A959C277C568300D0288F /* Auth */,
 				B42E0BEB27795B1C00536531 /* MainViewController.swift */,
 				B42E0C04277A914B00536531 /* LottoViewController.swift */,
 				B42E0C0E277AAB7800536531 /* PersonViewController.swift */,
@@ -119,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				B42E0BE027794BC100536531 /* SignInView.swift */,
+				B42A959A277C540500D0288F /* RegisterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -146,7 +171,7 @@
 		B42E0BED27795EDA00536531 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				B42E0BEE27795EED00536531 /* SignInViewModel.swift */,
+				B42A959F277C570E00D0288F /* Auth */,
 				B42E0C08277A961200536531 /* LottoViewModel.swift */,
 				B42E0C0C277AAA7600536531 /* PersonViewModel.swift */,
 			);
@@ -237,11 +262,14 @@
 				B42E0C09277A961200536531 /* LottoViewModel.swift in Sources */,
 				B42E0C05277A914B00536531 /* LottoViewController.swift in Sources */,
 				B42E0BEF27795EED00536531 /* SignInViewModel.swift in Sources */,
+				B42A959E277C570B00D0288F /* RegisterViewModel.swift in Sources */,
 				B42E0C07277A94CB00536531 /* Lotto.swift in Sources */,
+				B42A959B277C540500D0288F /* RegisterView.swift in Sources */,
 				B42A9597277BEF5900D0288F /* Endpoint.swift in Sources */,
 				B42E0BC92779480800536531 /* AppDelegate.swift in Sources */,
 				B42E0C0F277AAB7800536531 /* PersonViewController.swift in Sources */,
 				B42E0C0B277AA60A00536531 /* Person.swift in Sources */,
+				B42A9599277C534300D0288F /* RegisterViewController.swift in Sources */,
 				B42E0BE127794BC100536531 /* SignInView.swift in Sources */,
 				B42E0BCB2779480800536531 /* SceneDelegate.swift in Sources */,
 				B42E0C0D277AAA7600536531 /* PersonViewModel.swift in Sources */,

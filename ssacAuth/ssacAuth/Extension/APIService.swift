@@ -16,7 +16,7 @@ enum APIError: Error {
 
 class APIService {
     
-    // MARK: - Login
+    // MARK: - Auth
     
     static func login(identifier: String, password: String, completion: @escaping (User?, APIError?) -> Void) {
         
@@ -27,18 +27,27 @@ class APIService {
         URLSession.request(endpoint: request, completion: completion)
     }
     
+    static func register(username: String, email: String, password: String, completion: @escaping (User?, APIError?) -> Void) {
+        
+        var request = URLRequest(url: Endpoint.signup.url)
+        request.httpMethod = Method.POST.rawValue
+        request.httpBody = "username=\(username)&email=\(email)&password=\(password)".data(using: .utf8, allowLossyConversion: false)
+        
+        URLSession.request(endpoint: request, completion: completion)
+    }
+    
     // MARK: - Lotto
     
     static func lotto(_ number: Int, completion: @escaping (Lotto?, APIError?) -> Void) {
         let url = URL(string: "https://www.dhlottery.co.kr/common.do?method=getLottoNumber&drwNo=\(number)")!
-        
+                
         URLSession.shared.dataTask(with: url) { data, response, error in
             DispatchQueue.main.async {
                 guard error == nil else { completion(nil, .failed); return }
                 guard let data = data else { completion(nil, .noData); return }
                 guard let response = response as? HTTPURLResponse else { completion(nil, .invaildResponse); return }
                 guard response.statusCode == 200 else { completion(nil, .failed); return }
-                
+
                 do {
                     let decoder = JSONDecoder()
                     let lottoData = try decoder.decode(Lotto.self, from: data)
@@ -47,7 +56,7 @@ class APIService {
                     completion(nil, .invaildData)
                 }
             }
-            
+
         }.resume()
     }
     

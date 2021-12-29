@@ -22,6 +22,7 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .purple
         setAddTarget()
         bindingViewModel()
     }
@@ -40,10 +41,9 @@ class SignInViewController: UIViewController {
     
     func setAddTarget() {
         signInView.usernameTextField.addTarget(self, action: #selector(usernameTextFieldDidChange(_:)), for: .editingChanged)
-        
         signInView.passwordTextField.addTarget(self, action: #selector(passwordTextFieldDidChange(_:)), for: .editingChanged)
-
         signInView.signInButton.addTarget(self, action: #selector(signInButtonClicked), for: .touchUpInside)
+        signInView.dontHaveAccountButton.addTarget(self, action: #selector(dontHaveAccountButtonClicked), for: .touchUpInside)
     }
 
     // MARK: - Action
@@ -57,13 +57,26 @@ class SignInViewController: UIViewController {
     }
     
     @objc func signInButtonClicked() {
-        viewModel.postUserLogin {
+        viewModel.postUserLogin { userData, error in
             DispatchQueue.main.async {
-                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-                windowScene.windows.first?.rootViewController = UINavigationController(rootViewController: MainViewController())
-                windowScene.windows.first?.makeKeyAndVisible()
+                if let _ = error {
+                    let alert = UIAlertController(title: "로그인 실패", message: "다시 확인하세요", preferredStyle: .alert)
+                    alert.addAction(.init(title: "확인", style: .default))
+                    self.present(alert, animated: true)
+                }
+                
+                if let _ = userData {
+                    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                    windowScene.windows.first?.rootViewController = UINavigationController(rootViewController: MainViewController())
+                    windowScene.windows.first?.makeKeyAndVisible()
+                }
             }
         }
+    }
+    
+    @objc func dontHaveAccountButtonClicked() {
+        let controller = RegisterViewController()
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
 
