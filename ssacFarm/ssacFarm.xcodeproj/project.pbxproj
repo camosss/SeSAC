@@ -19,6 +19,11 @@
 		B4FEC355277DF0400056CFBB /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC354277DF0400056CFBB /* RegisterViewController.swift */; };
 		B4FEC357277DF1C50056CFBB /* SignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC356277DF1C50056CFBB /* SignView.swift */; };
 		B4FEC35C277DF8E20056CFBB /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B4FEC35B277DF8E20056CFBB /* IQKeyboardManagerSwift */; };
+		B4FEC35E277E00070056CFBB /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC35D277E00070056CFBB /* FeedViewController.swift */; };
+		B4FEC363277E02E80056CFBB /* ReusableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC362277E02E80056CFBB /* ReusableView+Extension.swift */; };
+		B4FEC365277E0AD20056CFBB /* LeftTitle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC364277E0AD20056CFBB /* LeftTitle+Extension.swift */; };
+		B4FEC36B277E212A0056CFBB /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC36A277E212A0056CFBB /* FeedCollectionViewCell.swift */; };
+		B4FEC36D277E23D90056CFBB /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC36C277E23D90056CFBB /* FeedViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +39,11 @@
 		B4FEC352277DF0380056CFBB /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		B4FEC354277DF0400056CFBB /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		B4FEC356277DF1C50056CFBB /* SignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignView.swift; sourceTree = "<group>"; };
+		B4FEC35D277E00070056CFBB /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		B4FEC362277E02E80056CFBB /* ReusableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableView+Extension.swift"; sourceTree = "<group>"; };
+		B4FEC364277E0AD20056CFBB /* LeftTitle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeftTitle+Extension.swift"; sourceTree = "<group>"; };
+		B4FEC36A277E212A0056CFBB /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		B4FEC36C277E23D90056CFBB /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				B4FEC350277DED8A0056CFBB /* Utility+Extension.swift */,
+				B4FEC362277E02E80056CFBB /* ReusableView+Extension.swift */,
+				B4FEC364277E0AD20056CFBB /* LeftTitle+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -101,9 +113,8 @@
 		B4534837277DE6F800DAEE03 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B453483B277DE75D00DAEE03 /* StartViewController.swift */,
-				B4FEC352277DF0380056CFBB /* SignInViewController.swift */,
-				B4FEC354277DF0400056CFBB /* RegisterViewController.swift */,
+				B4FEC366277E19F30056CFBB /* Auth */,
+				B4FEC367277E19FA0056CFBB /* Post */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -113,6 +124,7 @@
 			children = (
 				B4FEC34E277DE8A70056CFBB /* StartPageView.swift */,
 				B4FEC356277DF1C50056CFBB /* SignView.swift */,
+				B4FEC36A277E212A0056CFBB /* FeedCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -120,6 +132,7 @@
 		B4534839277DE70100DAEE03 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				B4FEC36C277E23D90056CFBB /* FeedViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -129,6 +142,24 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B4FEC366277E19F30056CFBB /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				B453483B277DE75D00DAEE03 /* StartViewController.swift */,
+				B4FEC352277DF0380056CFBB /* SignInViewController.swift */,
+				B4FEC354277DF0400056CFBB /* RegisterViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		B4FEC367277E19FA0056CFBB /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				B4FEC35D277E00070056CFBB /* FeedViewController.swift */,
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,13 +241,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4FEC34F277DE8A70056CFBB /* StartPageView.swift in Sources */,
+				B4FEC365277E0AD20056CFBB /* LeftTitle+Extension.swift in Sources */,
+				B4FEC35E277E00070056CFBB /* FeedViewController.swift in Sources */,
 				B4534822277DE6DC00DAEE03 /* AppDelegate.swift in Sources */,
+				B4FEC363277E02E80056CFBB /* ReusableView+Extension.swift in Sources */,
 				B4FEC355277DF0400056CFBB /* RegisterViewController.swift in Sources */,
 				B4FEC353277DF0380056CFBB /* SignInViewController.swift in Sources */,
 				B4534824277DE6DC00DAEE03 /* SceneDelegate.swift in Sources */,
 				B453483C277DE75D00DAEE03 /* StartViewController.swift in Sources */,
 				B4FEC357277DF1C50056CFBB /* SignView.swift in Sources */,
+				B4FEC36B277E212A0056CFBB /* FeedCollectionViewCell.swift in Sources */,
 				B4FEC351277DED8A0056CFBB /* Utility+Extension.swift in Sources */,
+				B4FEC36D277E23D90056CFBB /* FeedViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

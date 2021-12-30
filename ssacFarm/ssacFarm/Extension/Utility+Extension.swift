@@ -45,12 +45,26 @@ class Utility {
     func attributedButton(_ firstPart: String, _ secondPart: String) -> UIButton {
         let button = UIButton(type: .system)
         
-        let attributedTitle = NSMutableAttributedString(string: firstPart,attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        let attributedTitle = NSMutableAttributedString(string: firstPart,
+                                                        attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         
         attributedTitle.append(NSAttributedString(string: secondPart,
                                                   attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.systemGreen]))
         
         button.setAttributedTitle(attributedTitle, for: .normal)
+        return button
+    }
+    
+    func attributedImageButton(_ image: UIImage, _ secondPart: String) -> UIButton {
+        let button = UIButton(type: .system)
+        
+        let attributedString = NSMutableAttributedString(string: "")
+        let imageAttachment = NSTextAttachment()
+        
+        imageAttachment.image = image
+        attributedString.append(NSAttributedString(attachment: imageAttachment))
+        attributedString.append(NSAttributedString(string: secondPart, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.black]))
+        button.setAttributedTitle(attributedString, for: .normal)
         return button
     }
 }
