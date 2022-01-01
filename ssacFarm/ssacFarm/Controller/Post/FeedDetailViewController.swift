@@ -1,0 +1,76 @@
+//
+//  FeedDetailViewController.swift
+//  ssacFarm
+//
+//  Created by 강호성 on 2021/12/31.
+//
+
+import UIKit
+
+class FeedDetailViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.backgroundColor = .white
+        collectionView.register(FeedDetailCollectionViewCell.self, forCellWithReuseIdentifier: UICollectionViewCell.reuseIdentifier)
+        collectionView.register(FeedDetailHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: FeedDetailHeaderView.identifer)
+        return collectionView
+    }()
+    
+    
+    // MARK: - Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(collectionView)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionView.frame = view.bounds
+    }
+    
+    // MARK: - Helper
+    
+    
+}
+
+// MARK: - UICollectionViewDataSource, UICollectionViewDelegate
+
+extension FeedDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionViewCell.reuseIdentifier, for: indexPath) as! FeedDetailCollectionViewCell
+        cell.backgroundColor = .white
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FeedDetailHeaderView.identifer, for: indexPath) as! FeedDetailHeaderView
+        header.backgroundColor = .white
+        return header
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension FeedDetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+//        let viewModel = TweetViewModel(tweet: tweet)
+//        let captionHeight = viewModel.size(forWidth: view.frame.width).height
+        return CGSize(width: view.frame.width, height: 230)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 120)
+    }
+}

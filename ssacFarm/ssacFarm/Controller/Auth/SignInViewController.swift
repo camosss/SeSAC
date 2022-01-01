@@ -27,10 +27,6 @@ class SignInViewController: UIViewController {
         setSignView()
     }
     
-    // MARK: - Action
-    
-    
-    
     // MARK: - Helper
     
     func setSignView() {
@@ -38,5 +34,4 @@ class SignInViewController: UIViewController {
         signView.nameContainerView.isHidden = true
         signView.rePasswordContainerView.isHidden = true
     }
-    
 }

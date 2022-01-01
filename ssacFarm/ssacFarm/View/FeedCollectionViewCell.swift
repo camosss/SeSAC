@@ -45,7 +45,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
     
     private let dividerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .systemGroupedBackground
         view.heightAnchor.constraint(equalToConstant: 0.2).isActive = true
         return view
     }()
@@ -97,8 +97,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
         addSubview(dividerView)
         dividerView.snp.makeConstraints { make in
             make.top.equalTo(textStack.snp.bottom).offset(10)
-            make.leading.equalTo(30)
-            make.trailing.equalTo(-30)
+            make.leading.trailing.equalToSuperview()
         }
         
         addSubview(commentButton)

@@ -9,6 +9,8 @@ import UIKit
 
 class Utility {
     
+    // MARK: - TextField
+    
     func inputContainerView(textField: UITextField) -> UIView {
         let view = UIView()
         view.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -41,6 +43,8 @@ class Utility {
                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         return tf
     }
+    
+    // MARK: - Attributed
     
     func attributedButton(_ firstPart: String, _ secondPart: String) -> UIButton {
         let button = UIButton(type: .system)

@@ -25,12 +25,4 @@ class RegisterViewController: UIViewController {
         self.title = "새싹농장 회원가입"
         signView.loginButton.setTitle("회원가입", for: .normal)
     }
-    
-    // MARK: - Action
-    
-    
-    
-    // MARK: - Helper
-    
-    
 }

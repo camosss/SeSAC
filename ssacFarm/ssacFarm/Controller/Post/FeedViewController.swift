@@ -43,7 +43,10 @@ class FeedViewController: UIViewController {
     // MARK: - Action
     
     @objc func actionButtonTapped() {
-        print("actionButtonTapped")
+        let controller = UploadPostViewController()
+        let nav = UINavigationController(rootViewController: controller)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true)
     }
     
     // MARK: - Helper
@@ -85,6 +88,11 @@ extension FeedViewController: UICollectionViewDataSource, UICollectionViewDelega
         cell.backgroundColor = .white
         cell.delegate = self
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = FeedDetailViewController()
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
 
