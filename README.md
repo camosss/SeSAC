@@ -43,5 +43,7 @@
   > | [맥주 추천앱](https://github.com/camosss/SSAC/tree/main/ssacBeer) | Stretchy TableView Header, Snapkit, Codable |
   > | [드라마 정보 조회 앱](https://github.com/camosss/SSAC/tree/main/ssacDramaInformation) | Networking with NSURLSession/Codable |
   > | [Auth](https://github.com/camosss/SSAC/tree/main/ssacAuth) | MVC, MVVM |
+  > | [커뮤니티앱](https://github.com/camosss/SSAC/tree/main/ssacFarm) | 연말 과제 |
+
 
 
