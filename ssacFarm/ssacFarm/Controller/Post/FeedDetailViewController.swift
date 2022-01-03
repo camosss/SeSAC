@@ -18,11 +18,21 @@ class FeedDetailViewController: UIViewController {
         collectionView.delegate = self
         collectionView.backgroundColor = .white
         collectionView.contentInset.bottom = 100
+        
+        collectionView.alwaysBounceVertical = true
+        collectionView.keyboardDismissMode = .interactive
+        
         collectionView.register(FeedDetailCollectionViewCell.self, forCellWithReuseIdentifier: UICollectionViewCell.reuseIdentifier)
         collectionView.register(FeedDetailHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: FeedDetailHeaderView.identifer)
         return collectionView
     }()
     
+    private lazy var commentInputView: CommentInputAccesoryView = {
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+        let cv = CommentInputAccesoryView(frame: frame)
+        cv.delegate = self
+        return cv
+    }()
     
     // MARK: - Lifecycle
     
@@ -30,6 +40,13 @@ class FeedDetailViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(collectionView)
         configureNavigationBar()
+        
+        view.addSubview(commentInputView)
+        commentInputView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.height.equalTo(80)
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -87,5 +104,13 @@ extension FeedDetailViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: 120)
+    }
+}
+
+// MARK: - CommentInputAccesoryViewDelegate
+
+extension FeedDetailViewController: CommentInputAccesoryViewDelegate {
+    func inputView(_ inputView: CommentInputAccesoryView, wantsToUploadComment comment: String) {
+        print("DEBUG: Comment is \(comment)")
     }
 }

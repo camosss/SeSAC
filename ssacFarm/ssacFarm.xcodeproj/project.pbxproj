@@ -29,6 +29,7 @@
 		B4FEC375277EB26B0056CFBB /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC374277EB26B0056CFBB /* InputTextView.swift */; };
 		B4FEC377277EB5C20056CFBB /* FeedDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC376277EB5C20056CFBB /* FeedDetailCollectionViewCell.swift */; };
 		B4FEC379277EB5C90056CFBB /* FeedDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC378277EB5C90056CFBB /* FeedDetailHeaderView.swift */; };
+		B4FEC3AB2782DE050056CFBB /* CommentInputAccesoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC3AA2782DE050056CFBB /* CommentInputAccesoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		B4FEC374277EB26B0056CFBB /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		B4FEC376277EB5C20056CFBB /* FeedDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		B4FEC378277EB5C90056CFBB /* FeedDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailHeaderView.swift; sourceTree = "<group>"; };
+		B4FEC3AA2782DE050056CFBB /* CommentInputAccesoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputAccesoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 				B4FEC34E277DE8A70056CFBB /* StartPageView.swift */,
 				B4FEC356277DF1C50056CFBB /* SignView.swift */,
 				B4FEC374277EB26B0056CFBB /* InputTextView.swift */,
+				B4FEC3AA2782DE050056CFBB /* CommentInputAccesoryView.swift */,
 				B4FEC3A5278294B30056CFBB /* Post */,
 			);
 			path = View;
@@ -278,6 +281,7 @@
 				B4534824277DE6DC00DAEE03 /* SceneDelegate.swift in Sources */,
 				B453483C277DE75D00DAEE03 /* StartViewController.swift in Sources */,
 				B4FEC357277DF1C50056CFBB /* SignView.swift in Sources */,
+				B4FEC3AB2782DE050056CFBB /* CommentInputAccesoryView.swift in Sources */,
 				B4FEC36B277E212A0056CFBB /* FeedCollectionViewCell.swift in Sources */,
 				B4FEC351277DED8A0056CFBB /* Utility+Extension.swift in Sources */,
 				B4FEC36D277E23D90056CFBB /* FeedViewModel.swift in Sources */,

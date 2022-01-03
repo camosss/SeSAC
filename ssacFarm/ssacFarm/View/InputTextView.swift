@@ -11,11 +11,15 @@ class InputTextView: UITextView {
     
     // MARK: - Properties
     
+    var placeholderText: String? {
+        didSet { placeholderLabel.text = placeholderText }
+    }
+    
     let placeholderLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .darkGray
-        label.text = "새싹농장 관련된 질문이나 이야기를 해보세요 !"
+        label.text = "새싹농장 관련된 질문이나 이야기를 해보세요!"
         return label
     }()
     
@@ -44,8 +48,7 @@ class InputTextView: UITextView {
         
         addSubview(placeholderLabel)
         placeholderLabel.snp.makeConstraints { make in
-            make.top.equalTo(8)
-            make.leading.equalTo(4)
+            make.top.leading.equalTo(8)
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleTextInputChange), name: UITextView.textDidChangeNotification, object: nil)

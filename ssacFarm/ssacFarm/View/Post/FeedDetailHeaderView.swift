@@ -51,6 +51,14 @@ class FeedDetailHeaderView: UICollectionReusableView {
         return button
     }()
     
+    private let countLabel: UILabel = {
+        let label = UILabel()
+        label.text = "5"
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 14)
+        return label
+    }()
+    
     private lazy var stackView: UIView = {
         let view = UIView()
         
@@ -64,9 +72,12 @@ class FeedDetailHeaderView: UICollectionReusableView {
             make.leading.trailing.equalToSuperview()
         }
         
+        let commentStack = UIStackView(arrangedSubviews: [commentButton, countLabel])
+        commentStack.axis = .horizontal
+        commentStack.spacing = 5
         
-        view.addSubview(commentButton)
-        commentButton.snp.makeConstraints { make in
+        view.addSubview(commentStack)
+        commentStack.snp.makeConstraints { make in
             make.top.equalTo(divider1.snp.bottom).offset(5)
             make.leading.equalTo(10)
         }
