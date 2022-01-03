@@ -31,7 +31,30 @@ class RegisterViewController: UIViewController {
     // MARK: - Action
     
     @objc func loginButtonTapped() {
-        print("loginButtonTapped \(viewModel.formIsValid)")
+        guard let email = signView.emailTextField.text else { return }
+        guard let name = signView.nameTextField.text else { return }
+        guard let password = signView.passwordTextField.text else { return }
+        guard let repassword = signView.rePasswordTextField.text else { return }
+
+        if password != repassword {
+            self.view.makeToast("비밀번호가 일치하지 않습니다.")
+            return
+        }
+                
+        APIService.register(username: name, email: email, password: password) { user, error in
+            if let _ = error {
+                DispatchQueue.main.async {
+                    self.view.makeToast("이미 있는 회원 정보입니다. 다시 시도해주세요.")
+                }
+                return
+            }
+            
+            if let _ = user {
+                AlertHelper.confirmAlert(title: "환영합니다!", message: "회원가입을 완료했습니다.", okMessage: "로그인 하러가기", onConfirm: {
+                    self.navigationController?.popViewController(animated: true)
+                }, over: self)
+            }
+        }
     }
     
     @objc func textDidChange(sender: UITextField) {

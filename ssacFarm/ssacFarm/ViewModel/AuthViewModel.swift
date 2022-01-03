@@ -12,6 +12,8 @@ protocol FormViewModel {
 }
 
 struct SignInViewModel {
+    let tk = TokenUtils()
+    
     var email: String?
     var password: String?
     
@@ -21,6 +23,18 @@ struct SignInViewModel {
     
     var buttonBackgroundColor: UIColor {
         return formIsValid ? .systemGreen : .systemGreen.withAlphaComponent(0.5)
+    }
+    
+    func postUserLoginData(email: String, password: String, completion: @escaping (User?, APIError?) -> Void) {
+        APIService.login(identifier: email, password: password) { user, error in
+            if let error = error {
+                completion(nil, error)
+            }
+            
+            guard let user = user else { return }
+            self.tk.create("\(Endpoint.auth_register.url)", account: "token", value: user.jwt)
+            completion(user, error)
+        }
     }
 }
 

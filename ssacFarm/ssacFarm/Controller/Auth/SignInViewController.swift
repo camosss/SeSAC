@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 class SignInViewController: UIViewController {
     
@@ -31,7 +32,23 @@ class SignInViewController: UIViewController {
     // MARK: - Action
     
     @objc func loginButtonTapped() {
-        print("loginButtonTapped \(viewModel.formIsValid)")
+        guard let email = signView.emailTextField.text else { return }
+        guard let password = signView.passwordTextField.text else { return }
+        
+        viewModel.postUserLoginData(email: email, password: password) { user, error in
+            if let _ = error {
+                DispatchQueue.main.async {
+                    self.view.makeToast("로그인에 실패했습니다. 다시 시도해주세요.")
+                }
+                return
+            }
+            
+            if let _ = user {
+                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                windowScene.windows.first?.rootViewController = UINavigationController(rootViewController: FeedViewController())
+                windowScene.windows.first?.makeKeyAndVisible()
+            }
+        }
     }
     
     @objc func textDidChange(sender: UITextField) {

@@ -11,6 +11,8 @@ class FeedViewController: UIViewController {
     
     // MARK: - Properties
     
+    let tk = TokenUtils()
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -37,12 +39,20 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        configureCollectionView()
-        configureActionButton()
-        configureLeftTitle(title: "새싹농장")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(handleLogout))
+
+        checkIfUserIsLoggedIn()
     }
     
     // MARK: - Action
+    
+    @objc func handleLogout() {
+        self.tk.delete("\(Endpoint.auth_register.url)", account: "token")
+        
+        let nav = UINavigationController(rootViewController: StartViewController())
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true, completion: nil)
+    }
     
     @objc func actionButtonTapped() {
         let controller = UploadPostViewController()
@@ -54,6 +64,23 @@ class FeedViewController: UIViewController {
     }
     
     // MARK: - Helper
+
+    func checkIfUserIsLoggedIn() {
+        let token = tk.load("\(Endpoint.auth_register.url)", account: "token")
+        print("load \(token ?? "토큰 없음")")
+        
+        if token == nil {
+            DispatchQueue.main.async {
+                let nav = UINavigationController(rootViewController: StartViewController())
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true, completion: nil)
+            }
+        } else {
+            configureCollectionView()
+            configureActionButton()
+            configureLeftTitle(title: "새싹농장")
+        }
+    }
     
     func configureCollectionView() {
         view.addSubview(collectionView)
