@@ -21,7 +21,7 @@
   > | [비전](https://github.com/camosss/SSAC/tree/main/ssacVision) | API, JGProgressHUD, UIImagePickerController |
   > | [일기장](https://github.com/camosss/SSAC/tree/main/ssacDiary) | Localizing, Realm, UIDatePicker, UIImagePicker, Backup&Restore, Zip, UIActivityViewController, FSCalendar |
   > | [쇼핑 리스트(Realm)](https://github.com/camosss/SSAC/tree/main/ssacShoppingList_Realm) | Realm, Backup&Restore, Zip, UIActivityViewController |
-  > | [메모앱](https://github.com/camosss/SSAC/tree/main/ssacMemo) | 평과 과제 |
+  > | [메모앱](https://github.com/camosss/SSAC/tree/main/ssacMemo) | 평가 과제 |
 
 * **출시 프로젝트**
 
@@ -43,7 +43,7 @@
   > | [맥주 추천](https://github.com/camosss/SSAC/tree/main/ssacBeer) | Stretchy TableView Header, Snapkit, Codable |
   > | [드라마 정보 조회](https://github.com/camosss/SSAC/tree/main/ssacDramaInformation) | Networking with NSURLSession/Codable |
   > | [Auth](https://github.com/camosss/SSAC/tree/main/ssacAuth) | MVC, MVVM |
-  > | [커뮤니티](https://github.com/camosss/SSAC/tree/main/ssacFarm) | 연말 과제 |
+  > | [새싹농장 커뮤니티](https://github.com/camosss/SSAC/tree/main/ssacFarm) | 평가 과제 |
 
 
 
