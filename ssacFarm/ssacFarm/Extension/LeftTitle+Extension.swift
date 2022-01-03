@@ -10,7 +10,7 @@ import UIKit
 extension UIViewController {
     func configureLeftTitle(title: String) {
         let label = UILabel()
-        label.textColor = UIColor.label
+        label.textColor = UIColor.black
         label.text = title
         label.font = UIFont.boldSystemFont(ofSize: 24)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)

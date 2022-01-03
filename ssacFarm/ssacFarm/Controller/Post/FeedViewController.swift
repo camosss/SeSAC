@@ -16,6 +16,8 @@ class FeedViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.backgroundColor = .systemGray6
+        collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         collectionView.register(FeedCollectionViewCell.self, forCellWithReuseIdentifier: UICollectionViewCell.reuseIdentifier)
         return collectionView
     }()
@@ -44,6 +46,8 @@ class FeedViewController: UIViewController {
     
     @objc func actionButtonTapped() {
         let controller = UploadPostViewController()
+        controller.navigationTitle = "새싹농장 글쓰기"
+        
         let nav = UINavigationController(rootViewController: controller)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true)
@@ -57,8 +61,6 @@ class FeedViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.bottom.equalToSuperview()
         }
-        collectionView.backgroundColor = .systemGray6
-        collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     }
     
     func configureActionButton() {

@@ -23,6 +23,7 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         self.title = "새싹농장 회원가입"
+        
         signView.loginButton.setTitle("회원가입", for: .normal)
     }
 }

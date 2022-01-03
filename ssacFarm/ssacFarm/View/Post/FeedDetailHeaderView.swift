@@ -16,7 +16,8 @@ class FeedDetailHeaderView: UICollectionReusableView {
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "이름"
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 15)
         return label
     }()
     
@@ -24,7 +25,7 @@ class FeedDetailHeaderView: UICollectionReusableView {
         let label = UILabel()
         label.text = "12/09"
         label.textColor = .lightGray
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = UIFont.systemFont(ofSize: 13)
         return label
     }()
     
@@ -38,7 +39,8 @@ class FeedDetailHeaderView: UICollectionReusableView {
     private let captionLabel: UILabel = {
         let label = UILabel()
         label.text = "내용"
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 15)
         label.numberOfLines = 0
         return label
     }()

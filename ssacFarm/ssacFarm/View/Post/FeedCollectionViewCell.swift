@@ -20,9 +20,8 @@ class FeedCollectionViewCell: UICollectionViewCell {
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "이름"
-        label.textColor = .systemGreen
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 14)
+        label.textColor = .black
+        label.font = .boldSystemFont(ofSize: 15)
         return label
     }()
     
@@ -31,7 +30,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
         label.text = "내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용"
         label.textColor = .black
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 16)
+        label.font = .systemFont(ofSize: 15)
         return label
     }()
     
@@ -45,7 +44,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
     
     private let dividerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGroupedBackground
+        view.backgroundColor = .lightGray
         view.heightAnchor.constraint(equalToConstant: 0.2).isActive = true
         return view
     }()
@@ -97,7 +96,8 @@ class FeedCollectionViewCell: UICollectionViewCell {
         addSubview(dividerView)
         dividerView.snp.makeConstraints { make in
             make.top.equalTo(textStack.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview()
+            make.leading.equalTo(20)
+            make.trailing.equalTo(-20)
         }
         
         addSubview(commentButton)

@@ -135,9 +135,7 @@
 				B4FEC34E277DE8A70056CFBB /* StartPageView.swift */,
 				B4FEC356277DF1C50056CFBB /* SignView.swift */,
 				B4FEC374277EB26B0056CFBB /* InputTextView.swift */,
-				B4FEC36A277E212A0056CFBB /* FeedCollectionViewCell.swift */,
-				B4FEC376277EB5C20056CFBB /* FeedDetailCollectionViewCell.swift */,
-				B4FEC378277EB5C90056CFBB /* FeedDetailHeaderView.swift */,
+				B4FEC3A5278294B30056CFBB /* Post */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -173,6 +171,16 @@
 				B4FEC35D277E00070056CFBB /* FeedViewController.swift */,
 				B4FEC370277EAFA20056CFBB /* FeedDetailViewController.swift */,
 				B4FEC372277EB0A10056CFBB /* UploadPostViewController.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		B4FEC3A5278294B30056CFBB /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				B4FEC36A277E212A0056CFBB /* FeedCollectionViewCell.swift */,
+				B4FEC376277EB5C20056CFBB /* FeedDetailCollectionViewCell.swift */,
+				B4FEC378277EB5C90056CFBB /* FeedDetailHeaderView.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";

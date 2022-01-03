@@ -1,25 +1,19 @@
 //
 //  AppDelegate.swift
-//  ssacFarm
+//  ssacRxSwift
 //
-//  Created by 강호성 on 2021/12/30.
+//  Created by 강호성 on 2022/01/03.
 //
 
 import UIKit
-import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        UINavigationBar.appearance().backgroundColor = UIColor.white
-        UINavigationBar.appearance().tintColor = .black
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
-        
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.enableAutoToolbar = false
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        // Override point for customization after application launch.
         return true
     }
 

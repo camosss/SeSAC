@@ -17,6 +17,7 @@ class FeedDetailViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .white
+        collectionView.contentInset.bottom = 100
         collectionView.register(FeedDetailCollectionViewCell.self, forCellWithReuseIdentifier: UICollectionViewCell.reuseIdentifier)
         collectionView.register(FeedDetailHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: FeedDetailHeaderView.identifer)
         return collectionView
@@ -28,6 +29,7 @@ class FeedDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionView)
+        configureNavigationBar()
     }
     
     override func viewDidLayoutSubviews() {
@@ -35,8 +37,17 @@ class FeedDetailViewController: UIViewController {
         collectionView.frame = view.bounds
     }
     
+    // MARK: - Action
+    
+    @objc func editButtonTapped() {
+        print("edit")
+    }
+    
     // MARK: - Helper
     
+    func configureNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(editButtonTapped))
+    }
     
 }
 
@@ -57,6 +68,10 @@ extension FeedDetailViewController: UICollectionViewDataSource, UICollectionView
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FeedDetailHeaderView.identifer, for: indexPath) as! FeedDetailHeaderView
         header.backgroundColor = .white
         return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("didSelectItemAt")
     }
 }
 

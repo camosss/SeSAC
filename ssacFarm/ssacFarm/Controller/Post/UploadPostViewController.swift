@@ -11,6 +11,8 @@ class UploadPostViewController: UIViewController {
     
     // MARK: - Properties
     
+    var navigationTitle = ""
+    
     private let captionTextView = InputTextView()
     
     private lazy var doneButton: UIButton = {
@@ -33,6 +35,8 @@ class UploadPostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = navigationTitle
+        
         configureNavigationBar()
         configureUI()
     }
@@ -50,9 +54,6 @@ class UploadPostViewController: UIViewController {
     // MARK: - Helper
     
     func configureNavigationBar() {
-        navigationController?.navigationBar.barTintColor = .white
-        navigationController?.navigationBar.tintColor = .black
-        
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: doneButton)
     }

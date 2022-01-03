@@ -15,7 +15,7 @@ class FeedDetailCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "이름"
         label.textColor = .black
-        label.font = .systemFont(ofSize: 14)
+        label.font = .boldSystemFont(ofSize: 15)
         return label
     }()
     
