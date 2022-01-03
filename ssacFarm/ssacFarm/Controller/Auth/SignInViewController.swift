@@ -12,6 +12,7 @@ class SignInViewController: UIViewController {
     // MARK: - Properties
     
     let signView = SignView()
+    var viewModel = SignInViewModel()
     
     // MARK: - Lifecycle
     
@@ -27,11 +28,40 @@ class SignInViewController: UIViewController {
         setSignView()
     }
     
+    // MARK: - Action
+    
+    @objc func loginButtonTapped() {
+        print("loginButtonTapped \(viewModel.formIsValid)")
+    }
+    
+    @objc func textDidChange(sender: UITextField) {
+        if sender == signView.emailTextField {
+            viewModel.email = sender.text
+        } else {
+            viewModel.password = sender.text
+        }
+        updateForm()
+    }
+    
     // MARK: - Helper
     
     func setSignView() {
         signView.loginButton.setTitle("로그인", for: .normal)
+        signView.loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        
         signView.nameContainerView.isHidden = true
         signView.rePasswordContainerView.isHidden = true
+        
+        signView.emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        signView.passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
+}
+
+// MARK: - FormViewModel
+
+extension SignInViewController: FormViewModel {
+    func updateForm() {
+        signView.loginButton.isEnabled = viewModel.formIsValid
+        signView.loginButton.backgroundColor = viewModel.buttonBackgroundColor
     }
 }

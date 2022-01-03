@@ -103,7 +103,7 @@ extension FeedViewController: UICollectionViewDataSource, UICollectionViewDelega
 extension FeedViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-//        let viewModel = FeedViewModel()
+//        let viewModel = PostViewModel()
 //        let height = viewModel.size(forWidth: view.frame.width).height
         return CGSize(width: view.frame.width, height: 200)
     }

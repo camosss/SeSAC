@@ -11,20 +11,20 @@ class SignView: UIView {
     
     // MARK: - Properties
     
-    private var emailTextField: UITextField = {
+    var emailTextField: UITextField = {
         let tf = Utility().textField(withPlaceholder: "이메일을 입력해주세요. 예) SeSAC@gmail.com")
         return tf
     }()
-    private var nameTextField: UITextField = {
+    var nameTextField: UITextField = {
         let tf = Utility().textField(withPlaceholder: "이름을 입력해주세요. 예) SeSAC")
         return tf
     }()
-    private var passwordTextField: UITextField = {
+    var passwordTextField: UITextField = {
         let tf = Utility().textField(withPlaceholder: "비밀번호를 입력해주세요.")
         tf.isSecureTextEntry = true
         return tf
     }()
-    private var rePasswordTextField: UITextField = {
+    var rePasswordTextField: UITextField = {
         let tf = Utility().textField(withPlaceholder: "다시 한번 비밀번호를 입력해주세요.")
         tf.isSecureTextEntry = true
         return tf
@@ -51,9 +51,10 @@ class SignView: UIView {
         let button = UIButton(type: .system)
         button.setTitleColor(.white, for: .normal)
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        button.backgroundColor = .systemGreen
+        button.backgroundColor = .systemGreen.withAlphaComponent(0.5)
         button.layer.cornerRadius = 10
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        button.isEnabled = false
         return button
     }()
     

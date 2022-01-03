@@ -10,6 +10,8 @@ import UIKit
 class InputTextView: UITextView {
     
     // MARK: - Properties
+        
+    var viewModel = PostViewModel()
     
     var placeholderText: String? {
         didSet { placeholderLabel.text = placeholderText }
@@ -48,7 +50,8 @@ class InputTextView: UITextView {
         
         addSubview(placeholderLabel)
         placeholderLabel.snp.makeConstraints { make in
-            make.top.leading.equalTo(8)
+            make.top.equalTo(8)
+            make.leading.equalTo(4)
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleTextInputChange), name: UITextView.textDidChangeNotification, object: nil)

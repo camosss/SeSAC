@@ -23,7 +23,7 @@
 		B4FEC363277E02E80056CFBB /* ReusableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC362277E02E80056CFBB /* ReusableView+Extension.swift */; };
 		B4FEC365277E0AD20056CFBB /* LeftTitle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC364277E0AD20056CFBB /* LeftTitle+Extension.swift */; };
 		B4FEC36B277E212A0056CFBB /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC36A277E212A0056CFBB /* FeedCollectionViewCell.swift */; };
-		B4FEC36D277E23D90056CFBB /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC36C277E23D90056CFBB /* FeedViewModel.swift */; };
+		B4FEC36D277E23D90056CFBB /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC36C277E23D90056CFBB /* PostViewModel.swift */; };
 		B4FEC371277EAFA20056CFBB /* FeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC370277EAFA20056CFBB /* FeedDetailViewController.swift */; };
 		B4FEC373277EB0A10056CFBB /* UploadPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC372277EB0A10056CFBB /* UploadPostViewController.swift */; };
 		B4FEC375277EB26B0056CFBB /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC374277EB26B0056CFBB /* InputTextView.swift */; };
@@ -31,6 +31,7 @@
 		B4FEC379277EB5C90056CFBB /* FeedDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC378277EB5C90056CFBB /* FeedDetailHeaderView.swift */; };
 		B4FEC3AB2782DE050056CFBB /* CommentInputAccesoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC3AA2782DE050056CFBB /* CommentInputAccesoryView.swift */; };
 		B4FEC3AD2782F12D0056CFBB /* UIAlert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC3AC2782F12D0056CFBB /* UIAlert+Extension.swift */; };
+		B4FEC3AF2782FC300056CFBB /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC3AE2782FC300056CFBB /* AuthViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,7 +51,7 @@
 		B4FEC362277E02E80056CFBB /* ReusableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableView+Extension.swift"; sourceTree = "<group>"; };
 		B4FEC364277E0AD20056CFBB /* LeftTitle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LeftTitle+Extension.swift"; sourceTree = "<group>"; };
 		B4FEC36A277E212A0056CFBB /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
-		B4FEC36C277E23D90056CFBB /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		B4FEC36C277E23D90056CFBB /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		B4FEC370277EAFA20056CFBB /* FeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailViewController.swift; sourceTree = "<group>"; };
 		B4FEC372277EB0A10056CFBB /* UploadPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostViewController.swift; sourceTree = "<group>"; };
 		B4FEC374277EB26B0056CFBB /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
@@ -58,6 +59,7 @@
 		B4FEC378277EB5C90056CFBB /* FeedDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailHeaderView.swift; sourceTree = "<group>"; };
 		B4FEC3AA2782DE050056CFBB /* CommentInputAccesoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputAccesoryView.swift; sourceTree = "<group>"; };
 		B4FEC3AC2782F12D0056CFBB /* UIAlert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlert+Extension.swift"; sourceTree = "<group>"; };
+		B4FEC3AE2782FC300056CFBB /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +151,8 @@
 		B4534839277DE70100DAEE03 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				B4FEC36C277E23D90056CFBB /* FeedViewModel.swift */,
+				B4FEC3AE2782FC300056CFBB /* AuthViewModel.swift */,
+				B4FEC36C277E23D90056CFBB /* PostViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -286,9 +289,10 @@
 				B453483C277DE75D00DAEE03 /* StartViewController.swift in Sources */,
 				B4FEC357277DF1C50056CFBB /* SignView.swift in Sources */,
 				B4FEC3AB2782DE050056CFBB /* CommentInputAccesoryView.swift in Sources */,
+				B4FEC3AF2782FC300056CFBB /* AuthViewModel.swift in Sources */,
 				B4FEC36B277E212A0056CFBB /* FeedCollectionViewCell.swift in Sources */,
 				B4FEC351277DED8A0056CFBB /* Utility+Extension.swift in Sources */,
-				B4FEC36D277E23D90056CFBB /* FeedViewModel.swift in Sources */,
+				B4FEC36D277E23D90056CFBB /* PostViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

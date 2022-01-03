@@ -17,7 +17,7 @@ class CommentInputAccesoryView: UIView {
     
     weak var delegate: CommentInputAccesoryViewDelegate?
     
-    private let commentTextView: InputTextView = {
+    let commentTextView: InputTextView = {
        let tv = InputTextView()
         tv.placeholderText = "댓글을 입력해주세요.."
         tv.font = UIFont.systemFont(ofSize: 14)
@@ -27,11 +27,12 @@ class CommentInputAccesoryView: UIView {
         return tv
     }()
     
-    private let postButton: UIButton = {
+    let postButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("게시", for: .normal)
-        button.setTitleColor(.systemGreen, for: .normal)
+        button.setTitleColor(.systemGray6, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.isEnabled = false
         button.addTarget(self, action: #selector(handlePostTapped), for: .touchUpInside)
         return button
     }()

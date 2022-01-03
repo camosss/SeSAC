@@ -14,10 +14,11 @@ class UploadPostViewController: UIViewController {
     var navigationTitle = ""
     
     private let captionTextView = InputTextView()
+    var viewModel = PostViewModel()
     
     private lazy var doneButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = .systemGreen
+        button.backgroundColor = .white
         button.setTitle("완료", for: .normal)
         button.titleLabel?.textAlignment = .center
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
@@ -26,10 +27,10 @@ class UploadPostViewController: UIViewController {
         button.frame = CGRect(x: 0, y: 0, width: 64, height: 32)
         button.layer.cornerRadius = 32 / 2
         
+        button.isEnabled = false
         button.addTarget(self, action: #selector(handleUploadPost), for: .touchUpInside)
         return button
     }()
-    
     
     // MARK: - Lifecycle
     
@@ -48,7 +49,7 @@ class UploadPostViewController: UIViewController {
     }
     
     @objc func handleUploadPost() {
-        print("upload")
+        print("upload \(viewModel.formIsValid)")
     }
     
     // MARK: - Helper
@@ -60,13 +61,35 @@ class UploadPostViewController: UIViewController {
     
     func configureUI() {
         view.backgroundColor = .white
+        
         view.addSubview(captionTextView)
+        captionTextView.delegate = self
         captionTextView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.leading.equalTo(16)
             make.trailing.equalTo(-16)
         }
+        
     }
+}
 
+// MARK: - FormViewModel
+
+extension UploadPostViewController: FormViewModel {
+    func updateForm() {
+        doneButton.isEnabled = viewModel.formIsValid
+        doneButton.backgroundColor = viewModel.buttonBackgroundColor
+    }
+}
+
+// MARK: - UITextViewDelegate
+
+extension UploadPostViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        if textView == captionTextView {
+            viewModel.content = textView.text
+        }
+        updateForm()
+    }
 }

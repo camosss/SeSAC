@@ -11,6 +11,8 @@ class FeedDetailViewController: UIViewController {
     
     // MARK: - Properties
     
+    var viewModel = PostViewModel()
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -47,6 +49,8 @@ class FeedDetailViewController: UIViewController {
             make.bottom.equalToSuperview()
             make.height.equalTo(80)
         }
+        
+        commentInputView.commentTextView.delegate = self
     }
     
     override func viewDidLayoutSubviews() {
@@ -103,7 +107,7 @@ extension FeedDetailViewController: UICollectionViewDataSource, UICollectionView
 extension FeedDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
-//        let viewModel = TweetViewModel(tweet: tweet)
+//        let viewModel = PostViewModel(tweet: tweet)
 //        let captionHeight = viewModel.size(forWidth: view.frame.width).height
         return CGSize(width: view.frame.width, height: 230)
     }
@@ -118,5 +122,25 @@ extension FeedDetailViewController: UICollectionViewDelegateFlowLayout {
 extension FeedDetailViewController: CommentInputAccesoryViewDelegate {
     func inputView(_ inputView: CommentInputAccesoryView, wantsToUploadComment comment: String) {
         print("DEBUG: Comment is \(comment)")
+    }
+}
+
+// MARK: - FormViewModel
+
+extension FeedDetailViewController: FormViewModel {
+    func updateForm() {
+        commentInputView.postButton.isEnabled = viewModel.formIsValid
+        commentInputView.postButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+    }
+}
+
+// MARK: - UITextViewDelegate
+
+extension FeedDetailViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        if textView == commentInputView.commentTextView {
+            viewModel.content = textView.text
+        }
+        updateForm()
     }
 }
