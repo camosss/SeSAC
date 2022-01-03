@@ -57,7 +57,13 @@ class FeedDetailViewController: UIViewController {
     // MARK: - Action
     
     @objc func editButtonTapped() {
-        print("edit")
+        AlertHelper.actionSheetAlert(onEdit: {
+            print("edit")
+        }, onDelete: {
+            AlertHelper.confirmAlert(title: "게시물을 삭제하시겠어요?", message: "", okMessage: "삭제", onConfirm: {
+                print("삭제")
+            }, over: self)
+        }, over: self)
     }
     
     // MARK: - Helper

@@ -30,6 +30,7 @@
 		B4FEC377277EB5C20056CFBB /* FeedDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC376277EB5C20056CFBB /* FeedDetailCollectionViewCell.swift */; };
 		B4FEC379277EB5C90056CFBB /* FeedDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC378277EB5C90056CFBB /* FeedDetailHeaderView.swift */; };
 		B4FEC3AB2782DE050056CFBB /* CommentInputAccesoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC3AA2782DE050056CFBB /* CommentInputAccesoryView.swift */; };
+		B4FEC3AD2782F12D0056CFBB /* UIAlert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC3AC2782F12D0056CFBB /* UIAlert+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		B4FEC376277EB5C20056CFBB /* FeedDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		B4FEC378277EB5C90056CFBB /* FeedDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailHeaderView.swift; sourceTree = "<group>"; };
 		B4FEC3AA2782DE050056CFBB /* CommentInputAccesoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputAccesoryView.swift; sourceTree = "<group>"; };
+		B4FEC3AC2782F12D0056CFBB /* UIAlert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlert+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				B4FEC350277DED8A0056CFBB /* Utility+Extension.swift */,
 				B4FEC362277E02E80056CFBB /* ReusableView+Extension.swift */,
 				B4FEC364277E0AD20056CFBB /* LeftTitle+Extension.swift */,
+				B4FEC3AC2782F12D0056CFBB /* UIAlert+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				B4FEC355277DF0400056CFBB /* RegisterViewController.swift in Sources */,
 				B4FEC379277EB5C90056CFBB /* FeedDetailHeaderView.swift in Sources */,
 				B4FEC353277DF0380056CFBB /* SignInViewController.swift in Sources */,
+				B4FEC3AD2782F12D0056CFBB /* UIAlert+Extension.swift in Sources */,
 				B4534824277DE6DC00DAEE03 /* SceneDelegate.swift in Sources */,
 				B453483C277DE75D00DAEE03 /* StartViewController.swift in Sources */,
 				B4FEC357277DF1C50056CFBB /* SignView.swift in Sources */,
