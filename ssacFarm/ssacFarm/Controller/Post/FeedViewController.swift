@@ -13,6 +13,10 @@ class FeedViewController: UIViewController {
     
     let tk = TokenUtils()
     
+    private var posts = [Post]() {
+        didSet { self.collectionView.reloadData() }
+    }
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -86,29 +90,37 @@ class FeedViewController: UIViewController {
         actionButton.layer.shadowColor = UIColor.lightGray.cgColor
     }
     
-    // MARK: - Helper(Network)
-
-    func checkIfUserIsLoggedIn() {
-        let token = tk.load("\(Endpoint.auth_register.url)", account: "token")
-        print("load \(token ?? "토큰 없음")")
-        
-        if token == nil {
-            DispatchQueue.main.async {
-                let nav = UINavigationController(rootViewController: StartViewController())
-                nav.modalPresentationStyle = .fullScreen
-                self.present(nav, animated: true, completion: nil)
-            }
-        } else {
-            configureCollectionView()
-            configureActionButton()
-            configureLeftTitle(title: "새싹농장")
-            populatePostData(token: token ?? "")
+    func returnStartPage() {
+        DispatchQueue.main.async {
+            let nav = UINavigationController(rootViewController: StartViewController())
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
         }
     }
     
-    func populatePostData(token: String) {
+    // MARK: - Helper(Network)
 
-
+    func checkIfUserIsLoggedIn() {
+        configureCollectionView()
+        configureActionButton()
+        configureLeftTitle(title: "새싹농장")
+        populatePostData()
+    }
+    
+    func populatePostData() {
+        let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? ""
+        print("load \(token)")
+        
+        APIService.postInquire(token: token) { posts, error in
+            if let error = error {
+                print("error \(error)")
+                if error == .invaildToken {
+                    self.returnStartPage()
+                }
+                return
+            }
+        }
+        
     }
 }
 
@@ -116,6 +128,7 @@ class FeedViewController: UIViewController {
 
 extension FeedViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(posts.count)
         return 30
     }
     

@@ -51,11 +51,13 @@ class UploadPostViewController: UIViewController {
     }
     
     @objc func handleUploadPost() {
-        let token = tk.load("\(Endpoint.auth_register.url)", account: "token")
-        print("upload token \(token ?? "토큰 없음")")
+        let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? "no token"
+        let text = viewModel.content ?? ""
         
-        APIService.postWrite(token: token ?? "", text: viewModel.content ?? "") { post, error in
-            self.dismiss(animated: true, completion: nil)
+        APIService.postWrite(token: token, text: text) { post, _ in
+            if let _ = post {
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
     

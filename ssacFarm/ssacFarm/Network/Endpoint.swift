@@ -78,7 +78,7 @@ extension URLSession {
                 guard error == nil else { completion(nil, .failed); return }
                 guard let data = data else { completion(nil, .noData); return }
                 guard let response = response as? HTTPURLResponse else { completion(nil, .invaildResponse); return }
-                guard response.statusCode == 200 else { completion(nil, .failed); return }
+                guard response.statusCode == 200 else { completion(nil, .invaildToken); return }
                 
                 do {
                     let decoder = JSONDecoder()

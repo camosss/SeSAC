@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Post: Codable {
-    let post: [PostElement]
+struct Posts: Codable {
+    var posts: [Post]
 }
 
-struct PostElement: Codable {
+struct Post: Codable {
     let id: Int
     let text: String
     let user: User

@@ -10,6 +10,7 @@ import Foundation
 enum APIError: Error {
     case invaildResponse
     case invaildData
+    case invaildToken
     case noData
     case failed
 }
@@ -42,7 +43,7 @@ class APIService {
     // MARK: - Post
     
     /// 조회
-    static func postInquire(token: String, completion: @escaping (Post?, APIError?) -> Void) {
+    static func postInquire(token: String, completion: @escaping ([Post]?, APIError?) -> Void) {
         
         var request = URLRequest(url: Endpoint.post_inquire.url)
         request.httpMethod = Method.GET.rawValue
@@ -52,7 +53,7 @@ class APIService {
     }
     
     /// 작성
-    static func postWrite(token: String, text: String, completion: @escaping (PostElement?, APIError?) -> Void) {
+    static func postWrite(token: String, text: String, completion: @escaping (Post?, APIError?) -> Void) {
         
         var request = URLRequest(url: Endpoint.post_write.url)
         request.httpMethod = Method.POST.rawValue
