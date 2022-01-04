@@ -52,10 +52,7 @@ class FeedViewController: UIViewController {
     
     @objc func handleLogout() {
         self.tk.delete("\(Endpoint.auth_register.url)", account: "token")
-        
-        let nav = UINavigationController(rootViewController: StartViewController())
-        nav.modalPresentationStyle = .fullScreen
-        self.present(nav, animated: true, completion: nil)
+        returnStartPage()
     }
     
     @objc func actionButtonTapped() {
@@ -91,11 +88,9 @@ class FeedViewController: UIViewController {
     }
     
     func returnStartPage() {
-        DispatchQueue.main.async {
-            let nav = UINavigationController(rootViewController: StartViewController())
-            nav.modalPresentationStyle = .fullScreen
-            self.present(nav, animated: true, completion: nil)
-        }
+        let nav = UINavigationController(rootViewController: StartViewController())
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true, completion: nil)
     }
     
     // MARK: - Helper(Network)
@@ -111,6 +106,8 @@ class FeedViewController: UIViewController {
         let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? ""
         print("load \(token)")
         
+        var tmp = [Post]()
+        
         APIService.postInquire(token: token) { posts, error in
             if let error = error {
                 print("error \(error)")
@@ -118,6 +115,15 @@ class FeedViewController: UIViewController {
                     self.returnStartPage()
                 }
                 return
+            }
+
+            if let posts = posts {
+                DispatchQueue.main.async {
+                    tmp.append(posts)
+                    self.collectionView.reloadData()
+                    
+                    self.posts = tmp
+                }
             }
         }
         
