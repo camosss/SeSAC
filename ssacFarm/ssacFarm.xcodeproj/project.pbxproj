@@ -12,6 +12,7 @@
 		B453482B277DE6DE00DAEE03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B453482A277DE6DE00DAEE03 /* Assets.xcassets */; };
 		B453482E277DE6DE00DAEE03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B453482C277DE6DE00DAEE03 /* LaunchScreen.storyboard */; };
 		B453483C277DE75D00DAEE03 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B453483B277DE75D00DAEE03 /* StartViewController.swift */; };
+		B49A6DDA2784348300A63309 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49A6DD92784348300A63309 /* Post.swift */; };
 		B4FEC34D277DE86B0056CFBB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B4FEC34C277DE86B0056CFBB /* SnapKit */; };
 		B4FEC34F277DE8A70056CFBB /* StartPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC34E277DE8A70056CFBB /* StartPageView.swift */; };
 		B4FEC351277DED8A0056CFBB /* Utility+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC350277DED8A0056CFBB /* Utility+Extension.swift */; };
@@ -47,6 +48,7 @@
 		B453482D277DE6DE00DAEE03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B453482F277DE6DE00DAEE03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B453483B277DE75D00DAEE03 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		B49A6DD92784348300A63309 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		B4FEC34E277DE8A70056CFBB /* StartPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageView.swift; sourceTree = "<group>"; };
 		B4FEC350277DED8A0056CFBB /* Utility+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utility+Extension.swift"; sourceTree = "<group>"; };
 		B4FEC352277DF0380056CFBB /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				B4FEC3B5278329300056CFBB /* User.swift */,
+				B49A6DD92784348300A63309 /* Post.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				B4FEC3AD2782F12D0056CFBB /* UIAlert+Extension.swift in Sources */,
 				B4534824277DE6DC00DAEE03 /* SceneDelegate.swift in Sources */,
 				B453483C277DE75D00DAEE03 /* StartViewController.swift in Sources */,
+				B49A6DDA2784348300A63309 /* Post.swift in Sources */,
 				B4FEC357277DF1C50056CFBB /* SignView.swift in Sources */,
 				B4FEC3AB2782DE050056CFBB /* CommentInputAccesoryView.swift in Sources */,
 				B4FEC3B4278328C00056CFBB /* APIService.swift in Sources */,

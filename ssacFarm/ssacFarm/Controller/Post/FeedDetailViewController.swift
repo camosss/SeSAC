@@ -62,7 +62,12 @@ class FeedDetailViewController: UIViewController {
     
     @objc func editButtonTapped() {
         AlertHelper.actionSheetAlert(onEdit: {
-            print("edit")
+            let controller = UploadPostViewController()
+            controller.navigationTitle = "편집하기"
+            
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true)
         }, onDelete: {
             AlertHelper.confirmAlert(title: "게시물을 삭제하시겠어요?", message: "", okMessage: "삭제", onConfirm: {
                 print("삭제")

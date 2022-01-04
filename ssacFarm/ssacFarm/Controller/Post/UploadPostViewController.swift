@@ -16,6 +16,8 @@ class UploadPostViewController: UIViewController {
     private let captionTextView = InputTextView()
     var viewModel = PostViewModel()
     
+    let tk = TokenUtils()
+    
     private lazy var doneButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .white
@@ -49,7 +51,12 @@ class UploadPostViewController: UIViewController {
     }
     
     @objc func handleUploadPost() {
-        print("upload \(viewModel.formIsValid)")
+        let token = tk.load("\(Endpoint.auth_register.url)", account: "token")
+        print("upload token \(token ?? "토큰 없음")")
+        
+        APIService.postWrite(token: token ?? "", text: viewModel.content ?? "") { post, error in
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     // MARK: - Helper

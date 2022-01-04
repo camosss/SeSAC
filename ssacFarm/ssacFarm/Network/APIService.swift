@@ -18,6 +18,7 @@ class APIService {
     
     // MARK: - Auth
     
+    /// 회원가입
     static func register(username: String, email: String, password: String, completion: @escaping (User?, APIError?) -> Void) {
         
         var request = URLRequest(url: Endpoint.auth_register.url)
@@ -27,6 +28,7 @@ class APIService {
         URLSession.request(endpoint: request, completion: completion)
     }
     
+    /// 로그인
     static func login(identifier: String, password: String, completion: @escaping (User?, APIError?) -> Void) {
         
         var request = URLRequest(url: Endpoint.auth_login.url)
@@ -36,4 +38,50 @@ class APIService {
         URLSession.request(endpoint: request, completion: completion)
     }
     
+    
+    // MARK: - Post
+    
+    /// 조회
+    static func postInquire(token: String, completion: @escaping (Post?, APIError?) -> Void) {
+        
+        var request = URLRequest(url: Endpoint.post_inquire.url)
+        request.httpMethod = Method.GET.rawValue
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        URLSession.request(endpoint: request, completion: completion)
+    }
+    
+    /// 작성
+    static func postWrite(token: String, text: String, completion: @escaping (PostElement?, APIError?) -> Void) {
+        
+        var request = URLRequest(url: Endpoint.post_write.url)
+        request.httpMethod = Method.POST.rawValue
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.httpBody = "text=\(text)".data(using: .utf8, allowLossyConversion: false)
+        
+        URLSession.request(endpoint: request, completion: completion)
+    }
+    
+    /// 수정
+    static func postEdit(id: Int, token: String, text: String, completion: @escaping (Post?, APIError?) -> Void) {
+        
+        var request = URLRequest(url: Endpoint.post_edit(id: id).url)
+        request.httpMethod = Method.PUT.rawValue
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.httpBody = "text=\(text)".data(using: .utf8, allowLossyConversion: false)
+        
+        URLSession.request(endpoint: request, completion: completion)
+    }
+    
+    /// 삭제
+    static func postDelete(id: Int, token: String, text: String, completion: @escaping (Post?, APIError?) -> Void) {
+        
+        var request = URLRequest(url: Endpoint.post_delete(id: id).url)
+        request.httpMethod = Method.DELETE.rawValue
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.request(endpoint: request, completion: completion)
+    }
+    
 }
+

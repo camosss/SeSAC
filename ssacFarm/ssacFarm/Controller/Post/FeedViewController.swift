@@ -63,24 +63,7 @@ class FeedViewController: UIViewController {
         present(nav, animated: true)
     }
     
-    // MARK: - Helper
-
-    func checkIfUserIsLoggedIn() {
-        let token = tk.load("\(Endpoint.auth_register.url)", account: "token")
-        print("load \(token ?? "토큰 없음")")
-        
-        if token == nil {
-            DispatchQueue.main.async {
-                let nav = UINavigationController(rootViewController: StartViewController())
-                nav.modalPresentationStyle = .fullScreen
-                self.present(nav, animated: true, completion: nil)
-            }
-        } else {
-            configureCollectionView()
-            configureActionButton()
-            configureLeftTitle(title: "새싹농장")
-        }
-    }
+    // MARK: - Helper(UI)
     
     func configureCollectionView() {
         view.addSubview(collectionView)
@@ -103,6 +86,30 @@ class FeedViewController: UIViewController {
         actionButton.layer.shadowColor = UIColor.lightGray.cgColor
     }
     
+    // MARK: - Helper(Network)
+
+    func checkIfUserIsLoggedIn() {
+        let token = tk.load("\(Endpoint.auth_register.url)", account: "token")
+        print("load \(token ?? "토큰 없음")")
+        
+        if token == nil {
+            DispatchQueue.main.async {
+                let nav = UINavigationController(rootViewController: StartViewController())
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true, completion: nil)
+            }
+        } else {
+            configureCollectionView()
+            configureActionButton()
+            configureLeftTitle(title: "새싹농장")
+            populatePostData(token: token ?? "")
+        }
+    }
+    
+    func populatePostData(token: String) {
+
+
+    }
 }
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
