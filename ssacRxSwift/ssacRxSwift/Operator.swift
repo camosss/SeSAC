@@ -19,6 +19,38 @@ class Operator: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Observable.from(["a", "b", "c"])
+            .subscribe { value in
+                print(value)
+            } onError: { error in
+                print(error)
+            } onCompleted: {
+                print("onCompleted")
+            } onDisposed: {
+                print("onDisposed")
+            }
+            .disposed(by: disposeBag)
+
+        Observable<Int>.interval(.seconds(2), scheduler: MainScheduler.instance)
+            .subscribe { value in
+                print(value)
+            } onError: { error in
+                print(error)
+            } onCompleted: {
+                print("onCompleted")
+            } onDisposed: {
+                print("onDisposed")
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    deinit {
+        print("Operator Deinit")
+    }
+    
+    // MARK: - Helper
+    
+    func basic() {
         let items = [3.3, 4.0, 5.0, 2.0, 3.6, 4.8]
         let items2 = [1.3, 4.4, 5.2, 2.1]
         
@@ -71,7 +103,5 @@ class Operator: UIViewController {
             print("disposed")
         }
         .disposed(by: disposeBag)
-
-        
     }
 }

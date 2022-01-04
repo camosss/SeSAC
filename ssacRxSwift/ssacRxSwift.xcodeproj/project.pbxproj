@@ -18,6 +18,9 @@
 		B4FEC3A327828CAF0056CFBB /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC3A227828CAE0056CFBB /* PickerViewController.swift */; };
 		B4FEC3A7278296540056CFBB /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC3A6278296540056CFBB /* Operator.swift */; };
 		B4FEC3A927829B9C0056CFBB /* GradeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC3A827829B9C0056CFBB /* GradeCalculator.swift */; };
+		B4FEC3BD2783D42B0056CFBB /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC3BC2783D42B0056CFBB /* Subject.swift */; };
+		B4FEC3BF2783E5640056CFBB /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC3BE2783E5630056CFBB /* NetworkViewController.swift */; };
+		B4FEC3C22783E8AF0056CFBB /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B4FEC3C12783E8AF0056CFBB /* RxAlamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,8 @@
 		B4FEC3A227828CAE0056CFBB /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		B4FEC3A6278296540056CFBB /* Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operator.swift; sourceTree = "<group>"; };
 		B4FEC3A827829B9C0056CFBB /* GradeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeCalculator.swift; sourceTree = "<group>"; };
+		B4FEC3BC2783D42B0056CFBB /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
+		B4FEC3BE2783E5630056CFBB /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +44,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4FEC3A12782896A0056CFBB /* SnapKit in Frameworks */,
+				B4FEC3C22783E8AF0056CFBB /* RxAlamofire in Frameworks */,
 				B4FEC39E278287950056CFBB /* RxSwift in Frameworks */,
 				B4FEC39C278287950056CFBB /* RxCocoa in Frameworks */,
 			);
@@ -72,6 +78,8 @@
 				B4FEC3A227828CAE0056CFBB /* PickerViewController.swift */,
 				B4FEC3A6278296540056CFBB /* Operator.swift */,
 				B4FEC3A827829B9C0056CFBB /* GradeCalculator.swift */,
+				B4FEC3BC2783D42B0056CFBB /* Subject.swift */,
+				B4FEC3BE2783E5630056CFBB /* NetworkViewController.swift */,
 				B4FEC38F278287540056CFBB /* Assets.xcassets */,
 				B4FEC391278287540056CFBB /* LaunchScreen.storyboard */,
 				B4FEC394278287540056CFBB /* Info.plist */,
@@ -99,6 +107,7 @@
 				B4FEC39B278287950056CFBB /* RxCocoa */,
 				B4FEC39D278287950056CFBB /* RxSwift */,
 				B4FEC3A02782896A0056CFBB /* SnapKit */,
+				B4FEC3C12783E8AF0056CFBB /* RxAlamofire */,
 			);
 			productName = ssacRxSwift;
 			productReference = B4FEC383278287510056CFBB /* ssacRxSwift.app */;
@@ -131,6 +140,7 @@
 			packageReferences = (
 				B4FEC39A278287950056CFBB /* XCRemoteSwiftPackageReference "RxSwift" */,
 				B4FEC39F2782896A0056CFBB /* XCRemoteSwiftPackageReference "SnapKit" */,
+				B4FEC3C02783E8AF0056CFBB /* XCRemoteSwiftPackageReference "RxAlamofire" */,
 			);
 			productRefGroup = B4FEC384278287510056CFBB /* Products */;
 			projectDirPath = "";
@@ -160,10 +170,12 @@
 			files = (
 				B4FEC38B278287510056CFBB /* TableViewController.swift in Sources */,
 				B4FEC3A927829B9C0056CFBB /* GradeCalculator.swift in Sources */,
+				B4FEC3BD2783D42B0056CFBB /* Subject.swift in Sources */,
 				B4FEC387278287510056CFBB /* AppDelegate.swift in Sources */,
 				B4FEC3A7278296540056CFBB /* Operator.swift in Sources */,
 				B4FEC3A327828CAF0056CFBB /* PickerViewController.swift in Sources */,
 				B4FEC389278287510056CFBB /* SceneDelegate.swift in Sources */,
+				B4FEC3BF2783E5640056CFBB /* NetworkViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +403,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		B4FEC3C02783E8AF0056CFBB /* XCRemoteSwiftPackageReference "RxAlamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxAlamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -408,6 +428,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B4FEC39F2782896A0056CFBB /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		B4FEC3C12783E8AF0056CFBB /* RxAlamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B4FEC3C02783E8AF0056CFBB /* XCRemoteSwiftPackageReference "RxAlamofire" */;
+			productName = RxAlamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
