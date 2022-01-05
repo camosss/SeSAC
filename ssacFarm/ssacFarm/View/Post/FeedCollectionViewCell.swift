@@ -47,6 +47,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
         postView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        postView.dividerView2.isHidden = true
         postView.commentButton.addTarget(self, action: #selector(commentButtonTapped), for: .touchUpInside)
     }
     

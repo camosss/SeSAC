@@ -11,11 +11,23 @@ class FeedDetailCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
 
+    var viewModel: CommentViewModel? {
+        didSet { configureData() }
+    }
+    
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "이름"
         label.textColor = .black
         label.font = .boldSystemFont(ofSize: 15)
+        return label
+    }()
+    
+    let dateLabel: UILabel = {
+        let label = UILabel()
+        label.text = "ddd"
+        label.font = .systemFont(ofSize: 12)
+        label.textColor = .lightGray
         return label
     }()
     
@@ -42,16 +54,30 @@ class FeedDetailCollectionViewCell: UICollectionViewCell {
     // MARK: - Helper
     
     func setupConstraints() {
-        let stack = UIStackView(arrangedSubviews: [nameLabel, commentLabel])
+        let stack = UIStackView(arrangedSubviews: [nameLabel, dateLabel])
         stack.axis = .vertical
         stack.spacing = 5
         
         addSubview(stack)
         stack.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
+            make.top.equalTo(20)
             make.leading.equalTo(30)
             make.trailing.equalTo(-30)
         }
+        
+        addSubview(commentLabel)
+        commentLabel.snp.makeConstraints { make in
+            make.top.equalTo(stack.snp.bottom).offset(16)
+            make.leading.trailing.equalTo(stack)
+        }
+    }
+    
+    func configureData() {
+        guard let viewModel = viewModel else { return }
+
+        nameLabel.text = viewModel.name
+        commentLabel.text = viewModel.text
+        dateLabel.text = Utility.dateFormat(dateString: viewModel.date)
     }
 }
 

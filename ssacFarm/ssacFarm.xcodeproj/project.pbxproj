@@ -166,7 +166,6 @@
 				B4FEC356277DF1C50056CFBB /* SignView.swift */,
 				B4FEC374277EB26B0056CFBB /* InputTextView.swift */,
 				B4FEC3AA2782DE050056CFBB /* CommentInputAccesoryView.swift */,
-				B49A6DF12785C26200A63309 /* PostView.swift */,
 				B4FEC3A5278294B30056CFBB /* Post */,
 			);
 			path = View;
@@ -215,6 +214,7 @@
 		B4FEC3A5278294B30056CFBB /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				B49A6DF12785C26200A63309 /* PostView.swift */,
 				B4FEC36A277E212A0056CFBB /* FeedCollectionViewCell.swift */,
 				B4FEC376277EB5C20056CFBB /* FeedDetailCollectionViewCell.swift */,
 				B4FEC378277EB5C90056CFBB /* FeedDetailHeaderView.swift */,

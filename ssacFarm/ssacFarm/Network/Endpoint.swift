@@ -26,7 +26,7 @@ enum Endpoint {
     case post_write
     case post_edit(id: Int)
     case post_delete(id: Int)
-    case comment_inquire
+    case comment_inquire(postId: Int)
     case comment_write
     case comment_edit(id: Int)
     case comment_delete(id: Int)
@@ -42,7 +42,7 @@ extension Endpoint {
         case .post_write: return .makeEndpoint("posts")
         case .post_edit(id: let id): return .makeEndpoint("posts/\(id)")
         case .post_delete(id: let id): return .makeEndpoint("posts/\(id)")
-        case .comment_inquire: return .makeEndpoint("comments")
+        case .comment_inquire(postId: let postId): return .makeEndpoint("comments?post=\(postId)")
         case .comment_write: return .makeEndpoint("comments")
         case .comment_edit(id: let id): return .makeEndpoint("comments/\(id)")
         case .comment_delete(id: let id): return .makeEndpoint("comments/\(id)")

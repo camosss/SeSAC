@@ -22,7 +22,7 @@ class CommentInputAccesoryView: UIView {
         tv.placeholderText = "댓글을 입력해주세요.."
         tv.font = UIFont.systemFont(ofSize: 14)
         tv.backgroundColor = .systemGray6
-        tv.isScrollEnabled = false
+        tv.isScrollEnabled = true
         tv.layer.cornerRadius = 10
         return tv
     }()
@@ -30,7 +30,7 @@ class CommentInputAccesoryView: UIView {
     let postButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("게시", for: .normal)
-        button.setTitleColor(.systemGray6, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.isEnabled = false
         button.addTarget(self, action: #selector(handlePostTapped), for: .touchUpInside)
@@ -85,8 +85,8 @@ class CommentInputAccesoryView: UIView {
         commentTextView.snp.makeConstraints { make in
             make.top.equalTo(dividerView.snp.bottom).offset(10)
             make.leading.equalTo(15)
-            make.trailing.equalTo(-15)
-            make.bottom.equalTo(-35)
+            make.trailing.equalTo(-65)
+            make.bottom.equalTo(safeAreaLayoutGuide)
         }
         
         addSubview(postButton)

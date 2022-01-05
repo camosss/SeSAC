@@ -48,6 +48,11 @@ class FeedViewController: UIViewController {
         checkIfUserIsLoggedIn()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        populatePostData()
+    }
+    
     // MARK: - Action
     
     @objc func handleLogout() {

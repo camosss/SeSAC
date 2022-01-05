@@ -19,6 +19,10 @@ class FeedDetailViewController: UIViewController {
         didSet { self.collectionView.reloadData() }
     }
     
+    var comments = [CommentElement]() {
+        didSet { self.collectionView.reloadData() }
+    }
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -37,7 +41,7 @@ class FeedDetailViewController: UIViewController {
     
     private lazy var commentInputView: CommentInputAccesoryView = {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
-        let cv = CommentInputAccesoryView(frame: frame)
+        let cv = CommentInputAccesoryView(frame: frame) 
         cv.delegate = self
         return cv
     }()
@@ -46,17 +50,9 @@ class FeedDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(collectionView)
         configureNavigationBar()
-        
-        view.addSubview(commentInputView)
-        commentInputView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
-            make.height.equalTo(80)
-        }
-        
-        commentInputView.commentTextView.delegate = self
+        configureUI()
+        populateCommentData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -83,8 +79,35 @@ class FeedDetailViewController: UIViewController {
     
     // MARK: - Helper
     
+    func configureUI() {
+        view.addSubview(collectionView)
+        view.addSubview(commentInputView)
+        commentInputView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.height.equalTo(80)
+        }
+        
+        commentInputView.commentTextView.delegate = self
+    }
+    
     func configureNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(editButtonTapped))
+    }
+    
+    func populateCommentData() {
+        let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? ""
+
+        APIService.commentInquire(token: token, postId: post?.id ?? 0) { comments, error in
+            if let error = error {
+                print("fetch comment \(error)")
+                return
+            }
+            
+            if let comments = comments {
+                self.comments = comments.sorted(by: { $0.updatedAt > $1.updatedAt })
+            }
+        }
     }
     
 }
@@ -93,12 +116,13 @@ class FeedDetailViewController: UIViewController {
 
 extension FeedDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return post?.comments.count ?? 0
+        return comments.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionViewCell.reuseIdentifier, for: indexPath) as! FeedDetailCollectionViewCell
         cell.backgroundColor = .systemGray6
+        cell.viewModel = CommentViewModel(comment: comments[indexPath.row])
         return cell
     }
     
@@ -110,10 +134,6 @@ extension FeedDetailViewController: UICollectionViewDataSource, UICollectionView
             header.viewModel = PostViewModel(post: post)
         }
         return header
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("didSelectItemAt")
     }
 }
 
@@ -130,7 +150,9 @@ extension FeedDetailViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 120)
+        let viewModel = CommentViewModel(comment: comments[indexPath.row])
+        let height = viewModel.size(forWidth: view.frame.width).height
+        return CGSize(width: view.frame.width, height: height + 80)
     }
 }
 
@@ -141,13 +163,14 @@ extension FeedDetailViewController: CommentInputAccesoryViewDelegate {
         print("DEBUG: Comment is \(comment)")
         let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? ""
         
-        APIService.commentWrite(token: token, postId: post?.id ?? 0, comment: comment) { comment, _ in
-            if let comment = comment {
-                print(comment)
+        APIService.commentWrite(token: token, postId: post?.id ?? 0, comment: comment) { comment, error in
+            if let error = error {
+                print("comment write \(error)")
+                return
             }
         }
-        
         commentInputView.clearCommentTextView()
+        self.populateCommentData()
     }
 }
 

@@ -87,9 +87,9 @@ class APIService {
     // MARK: - Comment
     
     /// 조회
-    static func commentInquire(token: String, completion: @escaping (Posts?, APIError?) -> Void) {
+    static func commentInquire(token: String, postId: Int, completion: @escaping (Comments?, APIError?) -> Void) {
         
-        var request = URLRequest(url: Endpoint.comment_inquire.url)
+        var request = URLRequest(url: Endpoint.comment_inquire(postId: postId).url)
         request.httpMethod = Method.GET.rawValue
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
