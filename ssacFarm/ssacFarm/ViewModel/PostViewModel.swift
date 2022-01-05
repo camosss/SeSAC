@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct PostDataViewModel {
+struct PostViewModel {
     var post: Post
     
     var name: String { return post.user.username }
@@ -30,7 +30,7 @@ struct PostDataViewModel {
     }
 }
 
-struct PostViewModel {
+struct ButtonViewModel {
     var content: String?
     
     var formIsValid: Bool {

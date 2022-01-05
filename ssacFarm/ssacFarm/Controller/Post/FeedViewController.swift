@@ -135,7 +135,7 @@ extension FeedViewController: UICollectionViewDataSource, UICollectionViewDelega
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionViewCell.reuseIdentifier, for: indexPath) as! FeedCollectionViewCell
         cell.backgroundColor = .white
         cell.delegate = self
-        cell.viewModel = PostDataViewModel(post: posts[indexPath.row])
+        cell.viewModel = PostViewModel(post: posts[indexPath.row])
         return cell
     }
     
@@ -151,7 +151,7 @@ extension FeedViewController: UICollectionViewDataSource, UICollectionViewDelega
 extension FeedViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let viewModel = PostDataViewModel(post: posts[indexPath.row])
+        let viewModel = PostViewModel(post: posts[indexPath.row])
         let height = viewModel.size(forWidth: view.frame.width).height
         return CGSize(width: view.frame.width, height: height + 150)
     }

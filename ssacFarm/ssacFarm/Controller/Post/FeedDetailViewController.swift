@@ -10,8 +10,10 @@ import UIKit
 class FeedDetailViewController: UIViewController {
     
     // MARK: - Properties
-    
-    var viewModel = PostViewModel()
+
+    let tk = TokenUtils()
+
+    var viewModel = ButtonViewModel()
     
     var post: Post? {
         didSet { self.collectionView.reloadData() }
@@ -91,12 +93,12 @@ class FeedDetailViewController: UIViewController {
 
 extension FeedDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return post?.comments.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionViewCell.reuseIdentifier, for: indexPath) as! FeedDetailCollectionViewCell
-        cell.backgroundColor = .white
+        cell.backgroundColor = .systemGray6
         return cell
     }
     
@@ -105,7 +107,7 @@ extension FeedDetailViewController: UICollectionViewDataSource, UICollectionView
         header.backgroundColor = .white
         
         if let post = post {
-            header.viewModel = PostDataViewModel(post: post)
+            header.viewModel = PostViewModel(post: post)
         }
         return header
     }
@@ -120,7 +122,7 @@ extension FeedDetailViewController: UICollectionViewDataSource, UICollectionView
 extension FeedDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if let post = post {
-            let viewModel = PostDataViewModel(post: post)
+            let viewModel = PostViewModel(post: post)
             let height = viewModel.size(forWidth: view.frame.width).height
             return CGSize(width: view.frame.width, height: height + 170)
         }
@@ -137,6 +139,15 @@ extension FeedDetailViewController: UICollectionViewDelegateFlowLayout {
 extension FeedDetailViewController: CommentInputAccesoryViewDelegate {
     func inputView(_ inputView: CommentInputAccesoryView, wantsToUploadComment comment: String) {
         print("DEBUG: Comment is \(comment)")
+        let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? ""
+        
+        APIService.commentWrite(token: token, postId: post?.id ?? 0, comment: comment) { comment, _ in
+            if let comment = comment {
+                print(comment)
+            }
+        }
+        
+        commentInputView.clearCommentTextView()
     }
 }
 

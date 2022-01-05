@@ -44,12 +44,13 @@ class FeedDetailCollectionViewCell: UICollectionViewCell {
     func setupConstraints() {
         let stack = UIStackView(arrangedSubviews: [nameLabel, commentLabel])
         stack.axis = .vertical
-        stack.spacing = 10
+        stack.spacing = 5
         
         addSubview(stack)
         stack.snp.makeConstraints { make in
-            make.top.leading.equalTo(20)
-            make.trailing.bottom.equalTo(-20)
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(30)
+            make.trailing.equalTo(-30)
         }
     }
 }

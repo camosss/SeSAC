@@ -12,9 +12,9 @@ class UploadPostViewController: UIViewController {
     // MARK: - Properties
     
     var navigationTitle = ""
-    
+        
     private let captionTextView = InputTextView()
-    var viewModel = PostViewModel()
+    var viewModel = ButtonViewModel()
     
     let tk = TokenUtils()
     

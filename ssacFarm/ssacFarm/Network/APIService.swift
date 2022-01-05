@@ -84,5 +84,48 @@ class APIService {
         URLSession.request(endpoint: request, completion: completion)
     }
     
+    // MARK: - Comment
+    
+    /// 조회
+    static func commentInquire(token: String, completion: @escaping (Posts?, APIError?) -> Void) {
+        
+        var request = URLRequest(url: Endpoint.comment_inquire.url)
+        request.httpMethod = Method.GET.rawValue
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        URLSession.request(endpoint: request, completion: completion)
+    }
+    
+    /// 작성
+    static func commentWrite(token: String, postId: Int, comment: String, completion: @escaping (Comment?, APIError?) -> Void) {
+        
+        var request = URLRequest(url: Endpoint.comment_write.url)
+        request.httpMethod = Method.POST.rawValue
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.httpBody = "comment=\(comment)&post=\(postId)".data(using: .utf8, allowLossyConversion: false)
+        
+        URLSession.request(endpoint: request, completion: completion)
+    }
+    
+    /// 수정
+    static func commentEdit(token: String, id: Int, postId: Int, comment: String, completion: @escaping (Comment?, APIError?) -> Void) {
+        
+        var request = URLRequest(url: Endpoint.comment_edit(id: id).url)
+        request.httpMethod = Method.PUT.rawValue
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.httpBody = "comment=\(comment)&post=\(postId)".data(using: .utf8, allowLossyConversion: false)
+        
+        URLSession.request(endpoint: request, completion: completion)
+    }
+    
+    /// 삭제
+    static func commentDelete(id: Int, token: String, text: String, completion: @escaping (Comment?, APIError?) -> Void) {
+        
+        var request = URLRequest(url: Endpoint.comment_delete(id: id).url)
+        request.httpMethod = Method.DELETE.rawValue
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.request(endpoint: request, completion: completion)
+    }
 }
 
