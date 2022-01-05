@@ -117,8 +117,7 @@ class FeedViewController: UIViewController {
 
             if let posts = posts {
                 DispatchQueue.main.async {
-                    print(posts)
-                    self.posts = posts                    
+                    self.posts = posts.sorted(by: { $0.id > $1.id })
                 }
             }
         }
@@ -129,7 +128,6 @@ class FeedViewController: UIViewController {
 
 extension FeedViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(posts.count)
         return posts.count
     }
     
@@ -137,6 +135,7 @@ extension FeedViewController: UICollectionViewDataSource, UICollectionViewDelega
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionViewCell.reuseIdentifier, for: indexPath) as! FeedCollectionViewCell
         cell.backgroundColor = .white
         cell.delegate = self
+        cell.viewModel = PostDataViewModel(post: posts[indexPath.row])
         return cell
     }
     
@@ -151,9 +150,10 @@ extension FeedViewController: UICollectionViewDataSource, UICollectionViewDelega
 extension FeedViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-//        let viewModel = PostViewModel()
-//        let height = viewModel.size(forWidth: view.frame.width).height
-        return CGSize(width: view.frame.width, height: 200)
+        let viewModel = PostDataViewModel(post: posts[indexPath.row])
+        let height = viewModel.size(forWidth: view.frame.width).height        
+        return CGSize(width: view.frame.width, height: height + 150)
+        
     }
 }
 

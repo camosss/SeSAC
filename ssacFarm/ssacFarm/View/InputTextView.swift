@@ -10,8 +10,6 @@ import UIKit
 class InputTextView: UITextView {
     
     // MARK: - Properties
-        
-    var viewModel = PostViewModel()
     
     var placeholderText: String? {
         didSet { placeholderLabel.text = placeholderText }

@@ -51,7 +51,7 @@ class StartPageView: UIView {
     }()
     
     let alreadyHaveAccountButton: UIButton = {
-        let button = Utility().attributedButton("이미 계정이 있나요?  ", "로그인")
+        let button = Utility.attributedButton("이미 계정이 있나요?  ", "로그인")
         return button
     }()
     

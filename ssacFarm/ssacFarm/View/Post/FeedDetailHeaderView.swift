@@ -46,7 +46,7 @@ class FeedDetailHeaderView: UICollectionReusableView {
     }()
     
     let commentButton: UIButton = {
-        let button = Utility().attributedImageButton(UIImage(systemName: "bubble.right")!, "  댓글")
+        let button = Utility.attributedImageButton(UIImage(systemName: "bubble.right")!, "  댓글")
         button.addTarget(self, action: #selector(commentButtonTapped), for: .touchUpInside)
         return button
     }()

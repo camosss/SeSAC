@@ -15,11 +15,14 @@ class FeedCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     
+    var viewModel: PostDataViewModel? {
+        didSet { configureData() }
+    }
+    
     weak var delegate: FeedCollectionViewCellDelegate?
 
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "이름"
         label.textColor = .black
         label.font = .boldSystemFont(ofSize: 15)
         return label
@@ -27,7 +30,6 @@ class FeedCollectionViewCell: UICollectionViewCell {
     
     private let contentLabel: UILabel = {
         let label = UILabel()
-        label.text = "내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용"
         label.textColor = .black
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 15)
@@ -36,7 +38,6 @@ class FeedCollectionViewCell: UICollectionViewCell {
     
     private let dateLabel: UILabel = {
         let label = UILabel()
-        label.text = "12/09"
         label.font = .systemFont(ofSize: 12)
         label.textColor = .lightGray
         return label
@@ -50,9 +51,17 @@ class FeedCollectionViewCell: UICollectionViewCell {
     }()
     
     private let commentButton: UIButton = {
-        let button = Utility().attributedImageButton(UIImage(systemName: "bubble.right")!, "  댓글쓰기")
+        let button = Utility.attributedImageButton(UIImage(systemName: "bubble.right")!, "  댓글")
         button.addTarget(self, action: #selector(commentButtonTapped), for: .touchUpInside)
         return button
+    }()
+    
+    private let countLabel: UILabel = {
+        let label = UILabel()
+        label.text = "5"
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 14)
+        return label
     }()
     
     // MARK: - Lifecycle
@@ -74,34 +83,48 @@ class FeedCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Helper
     
+    func configureData() {
+        guard let viewModel = viewModel else { return }
+        
+        nameLabel.text = viewModel.name
+        contentLabel.text = viewModel.text
+        dateLabel.text = Utility.dateFormat(dateString: viewModel.date)
+        countLabel.text = "\(viewModel.comment)"
+    }
+    
     func setupConstraints() {
-        
-        addSubview(nameLabel)
-        nameLabel.snp.makeConstraints { make in
+        let labelStack = UIStackView(arrangedSubviews: [nameLabel, dateLabel])
+        labelStack.axis = .vertical
+        labelStack.distribution = .fillProportionally
+        labelStack.spacing = 5
+
+        addSubview(labelStack)
+        labelStack.snp.makeConstraints { make in
             make.top.equalTo(10)
-            make.leading.equalTo(30)
-        }
-        
-        let textStack = UIStackView(arrangedSubviews: [contentLabel, dateLabel])
-        textStack.axis = .vertical
-        textStack.spacing = 20
-        
-        addSubview(textStack)
-        textStack.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(10)
             make.leading.equalTo(30)
             make.trailing.equalTo(-30)
         }
         
+        addSubview(contentLabel)
+        contentLabel.snp.makeConstraints { make in
+            make.top.equalTo(nameLabel.snp.bottom).offset(10)
+            make.leading.equalTo(nameLabel)
+            make.trailing.equalTo(nameLabel)
+        }
+        
         addSubview(dividerView)
         dividerView.snp.makeConstraints { make in
-            make.top.equalTo(textStack.snp.bottom).offset(10)
+            make.top.equalTo(contentLabel.snp.bottom).offset(10)
             make.leading.equalTo(20)
             make.trailing.equalTo(-20)
         }
         
-        addSubview(commentButton)
-        commentButton.snp.makeConstraints { make in
+        let commentStack = UIStackView(arrangedSubviews: [commentButton, countLabel])
+        commentStack.axis = .horizontal
+        commentStack.spacing = 5
+        
+        addSubview(commentStack)
+        commentStack.snp.makeConstraints { make in
             make.top.equalTo(dividerView.snp.bottom).offset(10)
             make.leading.equalTo(30)
             make.bottom.equalTo(-10)

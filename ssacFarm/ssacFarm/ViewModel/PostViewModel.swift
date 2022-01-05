@@ -7,6 +7,29 @@
 
 import UIKit
 
+struct PostDataViewModel {
+    var post: Post
+    
+    var name: String { return post.user.username }
+    var text: String { return post.text }
+    var date: String { return post.updatedAt }
+    var comment: Int { return post.comments.count }
+    
+    func size(forWidth width: CGFloat) -> CGSize {
+        let measurementLabel = UILabel()
+        measurementLabel.text = post.text
+        measurementLabel.numberOfLines = 0
+        measurementLabel.lineBreakMode = .byWordWrapping
+        measurementLabel.translatesAutoresizingMaskIntoConstraints = false
+        measurementLabel.widthAnchor.constraint(equalToConstant: width).isActive = true
+        return measurementLabel.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+    }
+    
+    init(post: Post) {
+        self.post = post
+    }
+}
+
 struct PostViewModel {
     var content: String?
     
@@ -21,15 +44,5 @@ struct PostViewModel {
     var buttonTitleColor: UIColor {
         return formIsValid ? .systemGreen : .systemGray6
     }
-    
-    // dynamic content height
-    func size(forWidth width: CGFloat) -> CGSize {
-        let measurementLabel = UILabel()
-//        measurementLabel.text = tweet.caption
-        measurementLabel.numberOfLines = 0
-        measurementLabel.lineBreakMode = .byWordWrapping
-        measurementLabel.translatesAutoresizingMaskIntoConstraints = false
-        measurementLabel.widthAnchor.constraint(equalToConstant: width).isActive = true
-        return measurementLabel.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-    }
+
 }

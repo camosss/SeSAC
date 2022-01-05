@@ -11,7 +11,7 @@ class Utility {
     
     // MARK: - TextField
     
-    func inputContainerView(textField: UITextField) -> UIView {
+    static func inputContainerView(textField: UITextField) -> UIView {
         let view = UIView()
         view.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
@@ -35,7 +35,7 @@ class Utility {
         return view
     }
     
-    func textField(withPlaceholder placeholder: String) -> UITextField {
+    static func textField(withPlaceholder placeholder: String) -> UITextField {
         let tf = UITextField()
         tf.textColor = .black
         tf.font = UIFont.systemFont(ofSize: 14)
@@ -46,7 +46,7 @@ class Utility {
     
     // MARK: - Attributed
     
-    func attributedButton(_ firstPart: String, _ secondPart: String) -> UIButton {
+    static func attributedButton(_ firstPart: String, _ secondPart: String) -> UIButton {
         let button = UIButton(type: .system)
         
         let attributedTitle = NSMutableAttributedString(string: firstPart,
@@ -59,7 +59,7 @@ class Utility {
         return button
     }
     
-    func attributedImageButton(_ image: UIImage, _ secondPart: String) -> UIButton {
+    static func attributedImageButton(_ image: UIImage, _ secondPart: String) -> UIButton {
         let button = UIButton(type: .system)
         
         let attributedString = NSMutableAttributedString(string: "")
@@ -70,5 +70,15 @@ class Utility {
         attributedString.append(NSAttributedString(string: secondPart, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.black]))
         button.setAttributedTitle(attributedString, for: .normal)
         return button
+    }
+    
+    // MARK: - Date
+    
+    static func dateFormat(dateString: String) -> String {
+        let endIndex: String.Index = dateString.index(dateString.startIndex, offsetBy: 18)
+        let dateText = String(dateString[...endIndex])
+        let date = dateText.toDate(stringValue: dateText) ?? Date()
+        let dateValue = date.toString(dateValue: date)
+        return dateValue
     }
 }
