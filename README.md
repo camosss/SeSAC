@@ -44,7 +44,7 @@
   > | [드라마 정보 조회](https://github.com/camosss/SSAC/tree/main/ssacDramaInformation) | Networking with NSURLSession/Codable |
   > | [Auth](https://github.com/camosss/SSAC/tree/main/ssacAuth) | MVC, MVVM |
   > | [새싹농장 커뮤니티](https://github.com/camosss/SSAC/tree/main/ssacFarm) | 평가 과제 |
-  > | [RxSwift](https://github.com/camosss/SSAC/tree/main/ssacRxSwift) | Observable |
+  > | [RxSwift](https://github.com/camosss/SSAC/tree/main/ssacRxSwift) |  |
 
 
 
