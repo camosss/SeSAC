@@ -11,15 +11,15 @@ typealias Action = () -> ()
 
 class AlertHelper {
     
-    static func actionSheetAlert(onEdit: @escaping (Action), onDelete: @escaping (Action), over viewController: UIViewController) {
+    static func actionSheetAlert(first: String, second: String, onFirst: @escaping (Action), onSecond: @escaping (Action), over viewController: UIViewController) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        let edit = UIAlertAction(title: "편집", style: .default) { _ in
-            onEdit()
+        let edit = UIAlertAction(title: first, style: .default) { _ in
+            onFirst()
         }
         
-        let delete = UIAlertAction(title: "삭제", style: .destructive) { _ in
-            onDelete()
+        let delete = UIAlertAction(title: second, style: .destructive) { _ in
+            onSecond()
         }
         
         let cancel = UIAlertAction(title: "취소", style: .cancel)

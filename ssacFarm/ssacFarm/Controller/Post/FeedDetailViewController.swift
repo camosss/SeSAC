@@ -64,18 +64,19 @@ class FeedDetailViewController: UIViewController {
     // MARK: - Action
     
     @objc func editButtonTapped() {
-        AlertHelper.actionSheetAlert(onEdit: {
+        AlertHelper.actionSheetAlert(first: "편집", second: "삭제", onFirst: {
             let controller = UploadPostViewController()
             
             controller.navigationTitle = "게시물 수정하기"
             controller.content = self.post?.text ?? ""
             controller.postId = self.post?.id ?? 0
+            controller.isUpdated = true
             
             let nav = UINavigationController(rootViewController: controller)
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true)
             
-        }, onDelete: {
+        }, onSecond: {
             self.DeletePost()
         }, over: self)
     }
@@ -85,12 +86,12 @@ class FeedDetailViewController: UIViewController {
     func configureUI() {
         view.addSubview(collectionView)
         view.addSubview(commentInputView)
+        commentInputView.commentTextView.delegate = self
         commentInputView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
             make.height.equalTo(80)
         }
-        commentInputView.commentTextView.delegate = self
     }
     
     func configureNavigationBar() {
@@ -138,7 +139,7 @@ class FeedDetailViewController: UIViewController {
         
         AlertHelper.confirmAlert(title: "댓글을 삭제하시겠어요?", message: "", okMessage: "삭제", onConfirm: {
             APIService.commentDelete(id: id, token: token) { _, _ in
-                self.navigationController?.popViewController(animated: true)
+                print("댓글 삭제 완료")
             }
         }, over: self)
     }
@@ -196,7 +197,7 @@ extension FeedDetailViewController: CommentInputAccesoryViewDelegate {
     func inputView(_ inputView: CommentInputAccesoryView, wantsToUploadComment comment: String) {
         print("DEBUG: Comment is \(comment)")
         let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? ""
-        
+
         APIService.commentWrite(token: token, postId: post?.id ?? 0, comment: comment) { comment, error in
             if let error = error {
                 print("comment write \(error)")
@@ -232,17 +233,19 @@ extension FeedDetailViewController: UITextViewDelegate {
 
 extension FeedDetailViewController: FeedDetailCollectionViewCellDelegate {
     func cell(_ cell: FeedDetailCollectionViewCell) {
-        AlertHelper.actionSheetAlert(onEdit: {
+        print("tap")
+        AlertHelper.actionSheetAlert(first: "편집", second: "삭제", onFirst: {
             let controller = UploadPostViewController()
-            
+
             controller.navigationTitle = "댓글 수정하기"
             controller.content = cell.viewModel?.text ?? ""
-            
+            controller.isUpdated = true
+
             let nav = UINavigationController(rootViewController: controller)
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true)
             
-        }, onDelete: {
+        }, onSecond: {
             self.DeleteComment(id: cell.viewModel?.comment.id ?? 0)
         }, over: self)
     }

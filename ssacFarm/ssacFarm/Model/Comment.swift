@@ -23,7 +23,6 @@ struct CommentElement: Codable {
     }
 }
 
-// MARK: - Post
 struct PostElement: Codable {
     let id: Int
     let text: String

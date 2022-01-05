@@ -14,6 +14,7 @@ class UploadPostViewController: UIViewController {
     var navigationTitle = ""
     var content = ""
     var postId = 0
+    var isUpdated = false
         
     private let captionTextView = InputTextView()
     var viewModel = ButtonViewModel()
@@ -43,7 +44,7 @@ class UploadPostViewController: UIViewController {
         configureNavigationBar()
         configureUI()
         configureContentData()
-        print(postId)
+        print(postId, isUpdated)
     }
     
     // MARK: - Actions
@@ -56,18 +57,21 @@ class UploadPostViewController: UIViewController {
         let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? "no token"
         let text = viewModel.content ?? ""
         
-        APIService.postWrite(token: token, text: text) { post, _ in
-            if let _ = post {
-                self.dismiss(animated: true, completion: nil)
+        if isUpdated {
+            APIService.postEdit(id: postId, token: token, text: text) { post, error in
+                if let _ = post {
+                    print("수정, \(text)")
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        } else {
+            APIService.postWrite(token: token, text: text) { post, _ in
+                if let _ = post {
+                    print("작성, \(text)")
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
         }
-        
-//        APIService.postEdit(id: postId, token: token, text: text) { post, error in
-//            if let _ = post {
-//
-//                self.dismiss(animated: true, completion: nil)
-//            }
-//        }
     }
 
     // MARK: - Helper

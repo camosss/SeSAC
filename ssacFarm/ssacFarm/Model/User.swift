@@ -16,3 +16,10 @@ struct UserModel: Codable {
     let id: Int
     let username, email: String
 }
+
+struct UserElement: Codable {
+    let id: Int
+    let username, email: String
+    let posts: [PostElement]
+    let comments: [Comment]
+}

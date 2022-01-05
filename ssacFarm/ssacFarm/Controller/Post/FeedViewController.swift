@@ -43,7 +43,7 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(handleLogout))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person"), style: .plain, target: self, action: #selector(myProfileSetting))
 
         configureCollectionView()
         configureActionButton()
@@ -57,9 +57,13 @@ class FeedViewController: UIViewController {
     
     // MARK: - Action
     
-    @objc func handleLogout() {
-        self.tk.delete("\(Endpoint.auth_register.url)", account: "token")
-        returnStartPage()
+    @objc func myProfileSetting() {
+        AlertHelper.actionSheetAlert(first: "비밀번호 변경", second: "로그아웃", onFirst: {
+            let controller = ChangePasswordViewController()
+            self.navigationController?.pushViewController(controller, animated: true)
+        }, onSecond: {
+            self.handleLogout()
+        }, over: self)
     }
     
     @objc func actionButtonTapped() {
@@ -71,7 +75,7 @@ class FeedViewController: UIViewController {
         present(nav, animated: true)
     }
     
-    // MARK: - Helper(UI)
+    // MARK: - Helper
     
     func configureCollectionView() {
         view.addSubview(collectionView)
@@ -98,6 +102,11 @@ class FeedViewController: UIViewController {
         let nav = UINavigationController(rootViewController: StartViewController())
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true, completion: nil)
+    }
+    
+    func handleLogout() {
+        self.tk.delete("\(Endpoint.auth_register.url)", account: "token")
+        returnStartPage()
     }
     
     // MARK: - Helper(Network)
