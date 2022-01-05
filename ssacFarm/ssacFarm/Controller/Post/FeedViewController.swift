@@ -126,7 +126,7 @@ class FeedViewController: UIViewController {
 
             if let posts = posts {
                 DispatchQueue.main.async {
-                    self.posts = posts.sorted(by: { $0.id > $1.id })
+                    self.posts = posts
                 }
             }
         }

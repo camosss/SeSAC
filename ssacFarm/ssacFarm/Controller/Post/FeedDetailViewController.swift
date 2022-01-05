@@ -233,7 +233,6 @@ extension FeedDetailViewController: UITextViewDelegate {
 
 extension FeedDetailViewController: FeedDetailCollectionViewCellDelegate {
     func cell(_ cell: FeedDetailCollectionViewCell) {
-        print("tap")
         AlertHelper.actionSheetAlert(first: "편집", second: "삭제", onFirst: {
             let controller = UploadPostViewController()
 
