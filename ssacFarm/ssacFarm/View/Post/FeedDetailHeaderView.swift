@@ -30,12 +30,6 @@ class FeedDetailHeaderView: UICollectionReusableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Action
-    
-    @objc func commentButtonTapped() {
-        print("commentButtonTapped")
-    }
-    
     // MARK: - Helper
     
     func setPostView() {
@@ -43,7 +37,6 @@ class FeedDetailHeaderView: UICollectionReusableView {
         postView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        postView.commentButton.addTarget(self, action: #selector(commentButtonTapped), for: .touchUpInside)
     }
     
     func configureData() {

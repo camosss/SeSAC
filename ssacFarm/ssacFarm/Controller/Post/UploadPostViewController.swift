@@ -12,6 +12,8 @@ class UploadPostViewController: UIViewController {
     // MARK: - Properties
     
     var navigationTitle = ""
+    var content = ""
+    var postId = 0
         
     private let captionTextView = InputTextView()
     var viewModel = ButtonViewModel()
@@ -38,10 +40,10 @@ class UploadPostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = navigationTitle
-        
         configureNavigationBar()
         configureUI()
+        configureContentData()
+        print(postId)
     }
     
     // MARK: - Actions
@@ -59,8 +61,15 @@ class UploadPostViewController: UIViewController {
                 self.dismiss(animated: true, completion: nil)
             }
         }
+        
+//        APIService.postEdit(id: postId, token: token, text: text) { post, error in
+//            if let _ = post {
+//
+//                self.dismiss(animated: true, completion: nil)
+//            }
+//        }
     }
-    
+
     // MARK: - Helper
     
     func configureNavigationBar() {
@@ -69,6 +78,7 @@ class UploadPostViewController: UIViewController {
     }
     
     func configureUI() {
+        self.title = navigationTitle
         view.backgroundColor = .white
         
         view.addSubview(captionTextView)
@@ -79,7 +89,13 @@ class UploadPostViewController: UIViewController {
             make.leading.equalTo(16)
             make.trailing.equalTo(-16)
         }
-        
+    }
+    
+    func configureContentData() {
+        if content != "" {
+            captionTextView.placeholderText = nil
+            captionTextView.text = content
+        }
     }
 }
 

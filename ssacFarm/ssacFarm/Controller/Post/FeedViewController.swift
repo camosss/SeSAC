@@ -45,7 +45,9 @@ class FeedViewController: UIViewController {
         view.backgroundColor = .white
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(handleLogout))
 
-        checkIfUserIsLoggedIn()
+        configureCollectionView()
+        configureActionButton()
+        configureLeftTitle(title: "새싹농장")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,13 +102,6 @@ class FeedViewController: UIViewController {
     
     // MARK: - Helper(Network)
 
-    func checkIfUserIsLoggedIn() {
-        configureCollectionView()
-        configureActionButton()
-        configureLeftTitle(title: "새싹농장")
-        populatePostData()
-    }
-    
     func populatePostData() {
         let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? ""
         print("load \(token)")

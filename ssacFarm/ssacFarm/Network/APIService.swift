@@ -75,7 +75,7 @@ class APIService {
     }
     
     /// 삭제
-    static func postDelete(id: Int, token: String, text: String, completion: @escaping (Post?, APIError?) -> Void) {
+    static func postDelete(id: Int, token: String, completion: @escaping (Post?, APIError?) -> Void) {
         
         var request = URLRequest(url: Endpoint.post_delete(id: id).url)
         request.httpMethod = Method.DELETE.rawValue
@@ -119,7 +119,7 @@ class APIService {
     }
     
     /// 삭제
-    static func commentDelete(id: Int, token: String, text: String, completion: @escaping (Comment?, APIError?) -> Void) {
+    static func commentDelete(id: Int, token: String, completion: @escaping (Comment?, APIError?) -> Void) {
         
         var request = URLRequest(url: Endpoint.comment_delete(id: id).url)
         request.httpMethod = Method.DELETE.rawValue

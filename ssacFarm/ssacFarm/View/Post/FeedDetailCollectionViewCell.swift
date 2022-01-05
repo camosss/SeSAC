@@ -7,9 +7,17 @@
 
 import UIKit
 
+protocol FeedDetailCollectionViewCellDelegate: AnyObject {
+    func cell(_ cell: FeedDetailCollectionViewCell)
+}
+
 class FeedDetailCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
+    
+    let tk = TokenUtils()
+    
+    weak var delegate: FeedDetailCollectionViewCellDelegate?
 
     var viewModel: CommentViewModel? {
         didSet { configureData() }
@@ -19,6 +27,7 @@ class FeedDetailCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "이름"
         label.textColor = .black
+        label.numberOfLines = 0
         label.font = .boldSystemFont(ofSize: 15)
         return label
     }()
@@ -40,6 +49,14 @@ class FeedDetailCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    let editButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+        button.tintColor = .black
+        button.addTarget(self, action: #selector(cellEditButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
     // MARK: - Lifecycle
     
     override init(frame: CGRect) {
@@ -49,6 +66,12 @@ class FeedDetailCollectionViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Action
+    
+    @objc func cellEditButtonTapped() {
+        delegate?.cell(self)
     }
     
     // MARK: - Helper
@@ -62,13 +85,22 @@ class FeedDetailCollectionViewCell: UICollectionViewCell {
         stack.snp.makeConstraints { make in
             make.top.equalTo(20)
             make.leading.equalTo(30)
-            make.trailing.equalTo(-30)
+            make.trailing.equalTo(-80)
         }
         
         addSubview(commentLabel)
         commentLabel.snp.makeConstraints { make in
             make.top.equalTo(stack.snp.bottom).offset(16)
-            make.leading.trailing.equalTo(stack)
+            make.leading.equalTo(stack)
+            make.trailing.equalTo(-30)
+        }
+        
+        addSubview(editButton)
+        editButton.snp.makeConstraints { make in
+            make.top.equalTo(stack)
+            make.trailing.equalTo(-20)
+            make.width.equalTo(50)
+            make.height.equalTo(20)
         }
     }
     
@@ -78,6 +110,11 @@ class FeedDetailCollectionViewCell: UICollectionViewCell {
         nameLabel.text = viewModel.name
         commentLabel.text = viewModel.text
         dateLabel.text = Utility.dateFormat(dateString: viewModel.date)
+        
+        let id = self.tk.load("\(Endpoint.auth_register.url)", account: "id") ?? ""
+        if id != "\(viewModel.comment.user.id)" {
+            editButton.isHidden = true
+        }
     }
 }
 

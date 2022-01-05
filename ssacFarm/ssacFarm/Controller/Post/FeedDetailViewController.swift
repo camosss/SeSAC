@@ -14,7 +14,7 @@ class FeedDetailViewController: UIViewController {
     let tk = TokenUtils()
 
     var viewModel = ButtonViewModel()
-    
+        
     var post: Post? {
         didSet { self.collectionView.reloadData() }
     }
@@ -53,6 +53,7 @@ class FeedDetailViewController: UIViewController {
         configureNavigationBar()
         configureUI()
         populateCommentData()
+        checkPostOwner()
     }
     
     override func viewDidLayoutSubviews() {
@@ -65,15 +66,17 @@ class FeedDetailViewController: UIViewController {
     @objc func editButtonTapped() {
         AlertHelper.actionSheetAlert(onEdit: {
             let controller = UploadPostViewController()
-            controller.navigationTitle = "편집하기"
+            
+            controller.navigationTitle = "게시물 수정하기"
+            controller.content = self.post?.text ?? ""
+            controller.postId = self.post?.id ?? 0
             
             let nav = UINavigationController(rootViewController: controller)
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true)
+            
         }, onDelete: {
-            AlertHelper.confirmAlert(title: "게시물을 삭제하시겠어요?", message: "", okMessage: "삭제", onConfirm: {
-                print("삭제")
-            }, over: self)
+            self.DeletePost()
         }, over: self)
     }
     
@@ -87,13 +90,23 @@ class FeedDetailViewController: UIViewController {
             make.bottom.equalToSuperview()
             make.height.equalTo(80)
         }
-        
         commentInputView.commentTextView.delegate = self
     }
     
     func configureNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(editButtonTapped))
     }
+    
+    func checkPostOwner() {
+        let id = self.tk.load("\(Endpoint.auth_register.url)", account: "id") ?? ""
+        let postOwnerId = "\(self.post?.user.id ?? 0)"
+        
+        if id != postOwnerId {
+            self.navigationItem.rightBarButtonItem = nil
+        }
+    }
+    
+    // MARK: - Helper(Network)
     
     func populateCommentData() {
         let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? ""
@@ -110,6 +123,26 @@ class FeedDetailViewController: UIViewController {
         }
     }
     
+    func DeletePost() {
+        let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? "no token"
+        
+        AlertHelper.confirmAlert(title: "게시물을 삭제하시겠어요?", message: "", okMessage: "삭제", onConfirm: {
+            APIService.postDelete(id: self.post?.id ?? 0, token: token) { _, _ in
+                self.navigationController?.popViewController(animated: true)
+            }
+        }, over: self)
+    }
+    
+    func DeleteComment(id: Int) {
+        let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? "no token"
+        
+        AlertHelper.confirmAlert(title: "댓글을 삭제하시겠어요?", message: "", okMessage: "삭제", onConfirm: {
+            APIService.commentDelete(id: id, token: token) { _, _ in
+                self.navigationController?.popViewController(animated: true)
+            }
+        }, over: self)
+    }
+    
 }
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
@@ -121,7 +154,8 @@ extension FeedDetailViewController: UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UICollectionViewCell.reuseIdentifier, for: indexPath) as! FeedDetailCollectionViewCell
-        cell.backgroundColor = .systemGray6
+        cell.backgroundColor = .white
+        cell.delegate = self
         cell.viewModel = CommentViewModel(comment: comments[indexPath.row])
         return cell
     }
@@ -193,3 +227,24 @@ extension FeedDetailViewController: UITextViewDelegate {
         updateForm()
     }
 }
+
+// MARK: - FeedDetailCollectionViewCellDelegate
+
+extension FeedDetailViewController: FeedDetailCollectionViewCellDelegate {
+    func cell(_ cell: FeedDetailCollectionViewCell) {
+        AlertHelper.actionSheetAlert(onEdit: {
+            let controller = UploadPostViewController()
+            
+            controller.navigationTitle = "댓글 수정하기"
+            controller.content = cell.viewModel?.text ?? ""
+            
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true)
+            
+        }, onDelete: {
+            self.DeleteComment(id: cell.viewModel?.comment.id ?? 0)
+        }, over: self)
+    }
+}
+

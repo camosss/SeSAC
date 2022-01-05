@@ -33,6 +33,7 @@ struct SignInViewModel {
             
             guard let user = user else { return }
             self.tk.create("\(Endpoint.auth_register.url)", account: "token", value: user.jwt)
+            self.tk.create("\(Endpoint.auth_register.url)", account: "id", value:"\(user.user.id)")
             completion(user, error)
         }
     }
