@@ -141,6 +141,7 @@ extension FeedViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = FeedDetailViewController()
+        controller.post = posts[indexPath.row]
         self.navigationController?.pushViewController(controller, animated: true)
     }
 }
@@ -151,9 +152,8 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let viewModel = PostDataViewModel(post: posts[indexPath.row])
-        let height = viewModel.size(forWidth: view.frame.width).height        
+        let height = viewModel.size(forWidth: view.frame.width).height
         return CGSize(width: view.frame.width, height: height + 150)
-        
     }
 }
 

@@ -125,7 +125,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
         
         addSubview(commentStack)
         commentStack.snp.makeConstraints { make in
-            make.top.equalTo(dividerView.snp.bottom).offset(10)
+            make.top.equalTo(dividerView.snp.bottom).offset(5)
             make.leading.equalTo(30)
             make.bottom.equalTo(-10)
         }

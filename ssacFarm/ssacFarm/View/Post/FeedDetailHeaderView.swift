@@ -13,6 +13,10 @@ class FeedDetailHeaderView: UICollectionReusableView {
     
     static let identifer = "FeedDetailHeaderView"
     
+    var viewModel: PostDataViewModel? {
+        didSet { configureData() }
+    }
+    
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "이름"
@@ -113,6 +117,15 @@ class FeedDetailHeaderView: UICollectionReusableView {
     
     // MARK: - Helper
     
+    func configureData() {
+        guard let viewModel = viewModel else { return }
+        
+        nameLabel.text = viewModel.name
+        captionLabel.text = viewModel.text
+        dateLabel.text = Utility.dateFormat(dateString: viewModel.date)
+        countLabel.text = "\(viewModel.comment)"
+    }
+    
     func setupConstraints() {
         
         let stack = UIStackView(arrangedSubviews: [nameLabel, dateLabel, dividerView])
@@ -129,12 +142,12 @@ class FeedDetailHeaderView: UICollectionReusableView {
         captionLabel.snp.makeConstraints { make in
             make.top.equalTo(stack.snp.bottom).offset(20)
             make.leading.equalTo(stack)
-            make.trailing.equalTo(-10)
+            make.trailing.equalTo(-30)
         }
         
         addSubview(stackView)
         stackView.snp.makeConstraints { make in
-            make.top.equalTo(captionLabel.snp.bottom).offset(40)
+            make.top.equalTo(captionLabel.snp.bottom).offset(20)
             make.leading.equalTo(15)
             make.trailing.equalToSuperview()
         }

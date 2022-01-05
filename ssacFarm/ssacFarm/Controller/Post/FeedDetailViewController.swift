@@ -13,6 +13,10 @@ class FeedDetailViewController: UIViewController {
     
     var viewModel = PostViewModel()
     
+    var post: Post? {
+        didSet { self.collectionView.reloadData() }
+    }
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -99,6 +103,10 @@ extension FeedDetailViewController: UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FeedDetailHeaderView.identifer, for: indexPath) as! FeedDetailHeaderView
         header.backgroundColor = .white
+        
+        if let post = post {
+            header.viewModel = PostDataViewModel(post: post)
+        }
         return header
     }
     
@@ -111,10 +119,12 @@ extension FeedDetailViewController: UICollectionViewDataSource, UICollectionView
 
 extension FeedDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        
-//        let viewModel = PostViewModel(tweet: tweet)
-//        let captionHeight = viewModel.size(forWidth: view.frame.width).height
-        return CGSize(width: view.frame.width, height: 230)
+        if let post = post {
+            let viewModel = PostDataViewModel(post: post)
+            let height = viewModel.size(forWidth: view.frame.width).height
+            return CGSize(width: view.frame.width, height: height + 170)
+        }
+        return CGSize(width: 0, height: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
