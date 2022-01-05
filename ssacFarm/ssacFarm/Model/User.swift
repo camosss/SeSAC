@@ -9,10 +9,10 @@ import Foundation
 
 struct User: Codable {
     let jwt: String
-    let user: UserClass
+    let user: UserModel
 }
 
-struct UserClass: Codable {
+struct UserModel: Codable {
     let id: Int
     let username, email: String
 }

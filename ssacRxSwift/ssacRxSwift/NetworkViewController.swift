@@ -9,6 +9,14 @@ import UIKit
 import RxSwift
 import RxAlamofire
 
+struct Lotto: Codable {
+    let totSellamnt: Int
+    let returnValue, drwNoDate: String
+    let firstWinamnt, drwtNo6, drwtNo4, firstPrzwnerCo: Int
+    let drwtNo5, bnusNo, firstAccumamnt, drwNo: Int
+    let drwtNo2, drwtNo3, drwtNo1: Int
+}
+
 class NetworkViewController: UIViewController {
     
     // MARK: - Properties
@@ -34,7 +42,33 @@ class NetworkViewController: UIViewController {
             make.center.equalToSuperview()
         }
         
-        useRxAlamofire()
+//        useRxAlamofire()
+        
+        number
+            .bind(to: label.rx.text)
+        
+        // 위와 동일 (bind)
+//            .observe(on: MainScheduler.instance) // observeon vs subscribeon
+//            .subscribe { value in
+//                self.label.text = value
+//            }
+            .disposed(by: disposeBag)
+        
+        
+        let request = useURLSession()
+            .share() // 여러번의 요청 (dataTask가 한번)
+            .decode(type: Lotto.self, decoder: JSONDecoder())
+        
+        request
+            .subscribe { value in
+                print("value1")
+            }.disposed(by: disposeBag)
+        
+        request
+            .subscribe { value in
+                print("value2")
+            }.disposed(by: disposeBag)
+        
     }
     
     // MARK: - Helper
@@ -64,7 +98,7 @@ class NetworkViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    func useURLSession(url: String) -> Observable<String> {
+    func useURLSession() -> Observable<Data> {
         return Observable.create { value in
             
             let url = URL(string: self.lottoURL)!
@@ -75,11 +109,10 @@ class NetworkViewController: UIViewController {
                     return
                 }
                 
-                // response 생략
-                if let data = data, let json = String(data: data, encoding: .utf8) {
-                    return value.onNext("\(data), \(json)")
+                if let data = data {
+                    print("dataTask")
+                    value.onNext(data)
                 }
-                
                 value.onCompleted()
             }
             task.resume()

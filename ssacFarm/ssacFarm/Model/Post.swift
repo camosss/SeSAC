@@ -7,14 +7,12 @@
 
 import Foundation
 
-struct Posts: Codable {
-    var posts: [Post]
-}
+typealias Posts = [Post]
 
 struct Post: Codable {
     let id: Int
     let text: String
-    let user: User
+    let user: UserModel
     let createdAt, updatedAt: String
     let comments: [Comment]
 

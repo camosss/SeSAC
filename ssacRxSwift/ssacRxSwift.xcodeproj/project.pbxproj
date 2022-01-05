@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B49A6DE927851F9400A63309 /* ReactiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49A6DE827851F9400A63309 /* ReactiveViewController.swift */; };
+		B49A6DEC27853CED00A63309 /* VaildationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49A6DEB27853CED00A63309 /* VaildationViewController.swift */; };
 		B4FEC387278287510056CFBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC386278287510056CFBB /* AppDelegate.swift */; };
 		B4FEC389278287510056CFBB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC388278287510056CFBB /* SceneDelegate.swift */; };
 		B4FEC38B278287510056CFBB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC38A278287510056CFBB /* TableViewController.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B49A6DE827851F9400A63309 /* ReactiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveViewController.swift; sourceTree = "<group>"; };
+		B49A6DEB27853CED00A63309 /* VaildationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaildationViewController.swift; sourceTree = "<group>"; };
 		B4FEC383278287510056CFBB /* ssacRxSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ssacRxSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4FEC386278287510056CFBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4FEC388278287510056CFBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +57,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B49A6DEA278535D700A63309 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				B4FEC386278287510056CFBB /* AppDelegate.swift */,
+				B4FEC388278287510056CFBB /* SceneDelegate.swift */,
+				B4FEC38F278287540056CFBB /* Assets.xcassets */,
+				B4FEC391278287540056CFBB /* LaunchScreen.storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		B4FEC37A278287510056CFBB = {
 			isa = PBXGroup;
 			children = (
@@ -72,16 +87,15 @@
 		B4FEC385278287510056CFBB /* ssacRxSwift */ = {
 			isa = PBXGroup;
 			children = (
-				B4FEC386278287510056CFBB /* AppDelegate.swift */,
-				B4FEC388278287510056CFBB /* SceneDelegate.swift */,
 				B4FEC38A278287510056CFBB /* TableViewController.swift */,
 				B4FEC3A227828CAE0056CFBB /* PickerViewController.swift */,
 				B4FEC3A6278296540056CFBB /* Operator.swift */,
 				B4FEC3A827829B9C0056CFBB /* GradeCalculator.swift */,
 				B4FEC3BC2783D42B0056CFBB /* Subject.swift */,
 				B4FEC3BE2783E5630056CFBB /* NetworkViewController.swift */,
-				B4FEC38F278287540056CFBB /* Assets.xcassets */,
-				B4FEC391278287540056CFBB /* LaunchScreen.storyboard */,
+				B49A6DE827851F9400A63309 /* ReactiveViewController.swift */,
+				B49A6DEB27853CED00A63309 /* VaildationViewController.swift */,
+				B49A6DEA278535D700A63309 /* Resource */,
 				B4FEC394278287540056CFBB /* Info.plist */,
 			);
 			path = ssacRxSwift;
@@ -170,10 +184,12 @@
 			files = (
 				B4FEC38B278287510056CFBB /* TableViewController.swift in Sources */,
 				B4FEC3A927829B9C0056CFBB /* GradeCalculator.swift in Sources */,
+				B49A6DE927851F9400A63309 /* ReactiveViewController.swift in Sources */,
 				B4FEC3BD2783D42B0056CFBB /* Subject.swift in Sources */,
 				B4FEC387278287510056CFBB /* AppDelegate.swift in Sources */,
 				B4FEC3A7278296540056CFBB /* Operator.swift in Sources */,
 				B4FEC3A327828CAF0056CFBB /* PickerViewController.swift in Sources */,
+				B49A6DEC27853CED00A63309 /* VaildationViewController.swift in Sources */,
 				B4FEC389278287510056CFBB /* SceneDelegate.swift in Sources */,
 				B4FEC3BF2783E5640056CFBB /* NetworkViewController.swift in Sources */,
 			);

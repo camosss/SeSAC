@@ -106,8 +106,6 @@ class FeedViewController: UIViewController {
         let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? ""
         print("load \(token)")
         
-        var tmp = [Post]()
-        
         APIService.postInquire(token: token) { posts, error in
             if let error = error {
                 print("error \(error)")
@@ -119,14 +117,11 @@ class FeedViewController: UIViewController {
 
             if let posts = posts {
                 DispatchQueue.main.async {
-                    tmp.append(posts)
-                    self.collectionView.reloadData()
-                    
-                    self.posts = tmp
+                    print(posts)
+                    self.posts = posts                    
                 }
             }
         }
-        
     }
 }
 
@@ -135,7 +130,7 @@ class FeedViewController: UIViewController {
 extension FeedViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print(posts.count)
-        return 30
+        return posts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
