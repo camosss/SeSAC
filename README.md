@@ -43,8 +43,7 @@
   > | [맥주 추천](https://github.com/camosss/SSAC/tree/main/ssacBeer) | Stretchy TableView Header, Snapkit, Codable |
   > | [드라마 정보 조회](https://github.com/camosss/SSAC/tree/main/ssacDramaInformation) | Networking with NSURLSession/Codable |
   > | [Auth](https://github.com/camosss/SSAC/tree/main/ssacAuth) | MVC, MVVM |
-  > | [새싹농장 커뮤니티](https://github.com/camosss/SSAC/tree/main/ssacFarm) | 평가 과제, [시연 영상 및 일정별 기록](https://www.notion.so/Community-App-7967d96e14c447109cf853ef3495654f)
- |
+  > | [새싹농장 커뮤니티](https://github.com/camosss/SSAC/tree/main/ssacFarm) | 평가 과제, [시연 영상 및 일정별 기록](https://www.notion.so/Community-App-7967d96e14c447109cf853ef3495654f) |
   > | [RxSwift](https://github.com/camosss/SSAC/tree/main/ssacRxSwift) |  |
 
 
