@@ -19,6 +19,7 @@ class Utility {
         textField.snp.makeConstraints { make in
             make.centerY.equalTo(view.snp.centerY)
             make.leading.equalTo(view.snp.leading).offset(8)
+            make.trailing.equalTo(view.snp.trailing).inset(8)
         }
         
         let dividerView = UIView()

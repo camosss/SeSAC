@@ -12,6 +12,7 @@ class FeedViewController: UIViewController {
     // MARK: - Properties
     
     let tk = TokenUtils()
+    let refreshControl = UIRefreshControl()
     
     private var posts = [Post]() {
         didSet { self.collectionView.reloadData() }
@@ -48,6 +49,7 @@ class FeedViewController: UIViewController {
         configureCollectionView()
         configureActionButton()
         configureLeftTitle(title: "새싹농장 🌱")
+        initRefresh()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,6 +75,16 @@ class FeedViewController: UIViewController {
         let nav = UINavigationController(rootViewController: controller)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true)
+    }
+    
+    @objc func handleRefreshControl() {
+        print("새로고침 시작")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.populatePostData()
+            self.collectionView.reloadData()
+            self.refreshControl.endRefreshing()
+        }
     }
     
     // MARK: - Helper
@@ -107,6 +119,16 @@ class FeedViewController: UIViewController {
     func handleLogout() {
         self.tk.delete("\(Endpoint.auth_register.url)", account: "token")
         returnStartPage()
+    }
+    
+    func initRefresh() {
+        refreshControl.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+        
+        refreshControl.backgroundColor = .white
+        refreshControl.tintColor = .systemGreen
+        refreshControl.attributedTitle = NSAttributedString(string: "당겨서 새로고침 🌱")
+        
+        collectionView.refreshControl = refreshControl
     }
     
     // MARK: - Helper(Network)

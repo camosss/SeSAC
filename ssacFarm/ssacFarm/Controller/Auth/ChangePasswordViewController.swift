@@ -50,7 +50,7 @@ class ChangePasswordViewController: UIViewController {
             }
             
             if let _ = user {
-                self.view.makeToast("비밀번호를 변경하였습니다!")
+                self.view.makeToast("비밀번호를 변경하였습니다. 🌱", duration: 1.0, position: .center)
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.navigationController?.popViewController(animated: true)
