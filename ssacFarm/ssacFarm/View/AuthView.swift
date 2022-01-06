@@ -1,16 +1,34 @@
 //
-//  PasswordView.swift
+//  SignView.swift
 //  ssacFarm
 //
-//  Created by 강호성 on 2022/01/06.
+//  Created by 강호성 on 2021/12/30.
 //
 
 import UIKit
 
-class PasswordView: UIView {
+class AuthView: UIView {
     
     // MARK: - Properties
     
+    var emailTextField: UITextField = {
+        let tf = Utility.textField(withPlaceholder: "이메일을 입력해주세요. 예) SeSAC@gmail.com")
+        return tf
+    }()
+    var nameTextField: UITextField = {
+        let tf = Utility.textField(withPlaceholder: "이름을 입력해주세요. 예) SeSAC")
+        return tf
+    }()
+    var passwordTextField: UITextField = {
+        let tf = Utility.textField(withPlaceholder: "비밀번호를 입력해주세요.")
+        tf.isSecureTextEntry = true
+        return tf
+    }()
+    var rePasswordTextField: UITextField = {
+        let tf = Utility.textField(withPlaceholder: "다시 한번 비밀번호를 입력해주세요.")
+        tf.isSecureTextEntry = true
+        return tf
+    }()
     var currentPasswordTextField: UITextField = {
         let tf = Utility.textField(withPlaceholder: "현재 비밀번호를 입력해주세요.")
         tf.isSecureTextEntry = true
@@ -27,22 +45,38 @@ class PasswordView: UIView {
         return tf
     }()
     
-    private lazy var currentPasswordTextFieldContainerView: UIView = {
+    
+    lazy var emailContainerView: UIView = {
+        let view = Utility.inputContainerView(textField: emailTextField)
+        return view
+    }()
+    lazy var nameContainerView: UIView = {
+        let view = Utility.inputContainerView(textField: nameTextField)
+        return view
+    }()
+    lazy var passwordContainerView: UIView = {
+        let view = Utility.inputContainerView(textField: passwordTextField)
+        return view
+    }()
+    lazy var rePasswordContainerView: UIView = {
+        let view = Utility.inputContainerView(textField: rePasswordTextField)
+        return view
+    }()
+    lazy var currentPasswordTextFieldContainerView: UIView = {
         let view = Utility.inputContainerView(textField: currentPasswordTextField)
         return view
     }()
-    private lazy var newPasswordContainerView: UIView = {
+    lazy var newPasswordContainerView: UIView = {
         let view = Utility.inputContainerView(textField: newPasswordTextField)
         return view
     }()
-    private lazy var confirmPasswordTextFieldContainerView: UIView = {
+    lazy var confirmPasswordTextFieldContainerView: UIView = {
         let view = Utility.inputContainerView(textField: confirmPasswordTextField)
         return view
     }()
     
-    let changeButton: UIButton = {
+    let authButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("변경하기", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         button.backgroundColor = .systemGreen.withAlphaComponent(0.5)
@@ -66,7 +100,7 @@ class PasswordView: UIView {
     // MARK: - Helper
     
     func setupConstraints() {
-        let textFieldStack = UIStackView(arrangedSubviews: [currentPasswordTextFieldContainerView, newPasswordContainerView, confirmPasswordTextFieldContainerView])
+        let textFieldStack = UIStackView(arrangedSubviews: [emailContainerView, nameContainerView, passwordContainerView, rePasswordContainerView, currentPasswordTextFieldContainerView, newPasswordContainerView, confirmPasswordTextFieldContainerView])
         textFieldStack.axis = .vertical
         textFieldStack.spacing = 10
         
@@ -77,8 +111,8 @@ class PasswordView: UIView {
             make.trailing.equalTo(-20)
         }
         
-        addSubview(changeButton)
-        changeButton.snp.makeConstraints { make in
+        addSubview(authButton)
+        authButton.snp.makeConstraints { make in
             make.top.equalTo(textFieldStack.snp.bottom).offset(50)
             make.leading.trailing.equalTo(textFieldStack)
         }

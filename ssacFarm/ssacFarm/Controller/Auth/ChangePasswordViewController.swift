@@ -11,13 +11,13 @@ class ChangePasswordViewController: UIViewController {
     
     // MARK: - Properties
     
-    let passwordView = PasswordView()
+    let authView = AuthView()
     var viewModel = PasswordViewModel()
 
     // MARK: - Lifecycle
     
     override func loadView() {
-        self.view = passwordView
+        self.view = authView
     }
     
     override func viewDidLoad() {
@@ -25,14 +25,15 @@ class ChangePasswordViewController: UIViewController {
         self.title = "비밀번호 변경"
         view.backgroundColor = .white
         setSignView()
+        hideContainerView()
     }
     
     // MARK: - Action
     
     @objc func loginButtonTapped() {
-        guard let currentPassword = passwordView.currentPasswordTextField.text else { return }
-        guard let newPassword = passwordView.newPasswordTextField.text else { return }
-        guard let confirmPassword = passwordView.confirmPasswordTextField.text else { return }
+        guard let currentPassword = authView.currentPasswordTextField.text else { return }
+        guard let newPassword = authView.newPasswordTextField.text else { return }
+        guard let confirmPassword = authView.confirmPasswordTextField.text else { return }
 
         viewModel.changeUserPassword(currentPassword: currentPassword, newPassword: newPassword, confirmNewPassword: confirmPassword) { user, error in
             if let error = error {
@@ -52,9 +53,9 @@ class ChangePasswordViewController: UIViewController {
     }
     
     @objc func textDidChange(sender: UITextField) {
-        if sender == passwordView.currentPasswordTextField {
+        if sender == authView.currentPasswordTextField {
             viewModel.currentPassword = sender.text
-        } else if sender == passwordView.newPasswordTextField {
+        } else if sender == authView.newPasswordTextField {
             viewModel.newPassword = sender.text
         } else {
             viewModel.confirmPassword = sender.text
@@ -65,12 +66,19 @@ class ChangePasswordViewController: UIViewController {
     // MARK: - Helper
     
     func setSignView() {
-        passwordView.changeButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        authView.authButton.setTitle("변경하기", for: .normal)
+        authView.authButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
-        passwordView.currentPasswordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
-        passwordView.newPasswordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
-        passwordView.confirmPasswordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
-
+        authView.currentPasswordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        authView.newPasswordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        authView.confirmPasswordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
+    
+    func hideContainerView() {
+        authView.nameContainerView.isHidden = true
+        authView.emailContainerView.isHidden = true
+        authView.passwordContainerView.isHidden = true
+        authView.rePasswordContainerView.isHidden = true
     }
 }
 
@@ -78,7 +86,7 @@ class ChangePasswordViewController: UIViewController {
 
 extension ChangePasswordViewController: FormViewModel {
     func updateForm() {
-        passwordView.changeButton.isEnabled = viewModel.formIsValid
-        passwordView.changeButton.backgroundColor = viewModel.buttonBackgroundColor
+        authView.authButton.isEnabled = viewModel.formIsValid
+        authView.authButton.backgroundColor = viewModel.buttonBackgroundColor
     }
 }

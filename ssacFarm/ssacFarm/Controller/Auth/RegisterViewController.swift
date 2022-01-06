@@ -11,13 +11,13 @@ class RegisterViewController: UIViewController {
     
     // MARK: - Properties
     
-    let signView = SignView()
+    let authView = AuthView()
     var viewModel = RegisterViewModel()
 
     // MARK: - Lifecycle
     
     override func loadView() {
-        self.view = signView
+        self.view = authView
     }
     
     override func viewDidLoad() {
@@ -26,15 +26,16 @@ class RegisterViewController: UIViewController {
         self.title = "새싹농장 회원가입"
         
         setSignView()
+        hideContainerView()
     }
     
     // MARK: - Action
     
     @objc func loginButtonTapped() {
-        guard let email = signView.emailTextField.text else { return }
-        guard let name = signView.nameTextField.text else { return }
-        guard let password = signView.passwordTextField.text else { return }
-        guard let repassword = signView.rePasswordTextField.text else { return }
+        guard let email = authView.emailTextField.text else { return }
+        guard let name = authView.nameTextField.text else { return }
+        guard let password = authView.passwordTextField.text else { return }
+        guard let repassword = authView.rePasswordTextField.text else { return }
 
         if password != repassword {
             self.view.makeToast("비밀번호가 일치하지 않습니다.")
@@ -58,11 +59,11 @@ class RegisterViewController: UIViewController {
     }
     
     @objc func textDidChange(sender: UITextField) {
-        if sender == signView.emailTextField {
+        if sender == authView.emailTextField {
             viewModel.email = sender.text
-        } else if sender == signView.nameTextField {
+        } else if sender == authView.nameTextField {
             viewModel.name = sender.text
-        } else if sender == signView.passwordTextField {
+        } else if sender == authView.passwordTextField {
             viewModel.password = sender.text
         } else {
             viewModel.repassword = sender.text
@@ -73,13 +74,19 @@ class RegisterViewController: UIViewController {
     // MARK: - Helper
     
     func setSignView() {
-        signView.loginButton.setTitle("회원가입", for: .normal)
-        signView.loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        authView.authButton.setTitle("회원가입", for: .normal)
+        authView.authButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
 
-        signView.emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
-        signView.nameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
-        signView.passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
-        signView.rePasswordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        authView.emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        authView.nameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        authView.passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        authView.rePasswordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
+    
+    func hideContainerView() {
+        authView.currentPasswordTextFieldContainerView.isHidden = true
+        authView.newPasswordContainerView.isHidden = true
+        authView.confirmPasswordTextFieldContainerView.isHidden = true
     }
 }
 
@@ -87,7 +94,7 @@ class RegisterViewController: UIViewController {
 
 extension RegisterViewController: FormViewModel {
     func updateForm() {
-        signView.loginButton.isEnabled = viewModel.formIsValid
-        signView.loginButton.backgroundColor = viewModel.buttonBackgroundColor
+        authView.authButton.isEnabled = viewModel.formIsValid
+        authView.authButton.backgroundColor = viewModel.buttonBackgroundColor
     }
 }

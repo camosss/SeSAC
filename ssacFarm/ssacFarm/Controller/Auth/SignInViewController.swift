@@ -12,13 +12,13 @@ class SignInViewController: UIViewController {
     
     // MARK: - Properties
     
-    let signView = SignView()
+    let authView = AuthView()
     var viewModel = SignInViewModel()
     
     // MARK: - Lifecycle
     
     override func loadView() {
-        self.view = signView
+        self.view = authView
     }
     
     override func viewDidLoad() {
@@ -27,13 +27,14 @@ class SignInViewController: UIViewController {
         self.title = "새싹농장 로그인"
         
         setSignView()
+        hideContainerView()
     }
     
     // MARK: - Action
     
     @objc func loginButtonTapped() {
-        guard let email = signView.emailTextField.text else { return }
-        guard let password = signView.passwordTextField.text else { return }
+        guard let email = authView.emailTextField.text else { return }
+        guard let password = authView.passwordTextField.text else { return }
         
         viewModel.postUserLoginData(email: email, password: password) { user, error in
             if let _ = error {
@@ -52,7 +53,7 @@ class SignInViewController: UIViewController {
     }
     
     @objc func textDidChange(sender: UITextField) {
-        if sender == signView.emailTextField {
+        if sender == authView.emailTextField {
             viewModel.email = sender.text
         } else {
             viewModel.password = sender.text
@@ -63,14 +64,19 @@ class SignInViewController: UIViewController {
     // MARK: - Helper
     
     func setSignView() {
-        signView.loginButton.setTitle("로그인", for: .normal)
-        signView.loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        authView.authButton.setTitle("로그인", for: .normal)
+        authView.authButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
-        signView.nameContainerView.isHidden = true
-        signView.rePasswordContainerView.isHidden = true
-        
-        signView.emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
-        signView.passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        authView.emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        authView.passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
+    
+    func hideContainerView() {
+        authView.nameContainerView.isHidden = true
+        authView.rePasswordContainerView.isHidden = true
+        authView.currentPasswordTextFieldContainerView.isHidden = true
+        authView.newPasswordContainerView.isHidden = true
+        authView.confirmPasswordTextFieldContainerView.isHidden = true
     }
 }
 
@@ -78,7 +84,7 @@ class SignInViewController: UIViewController {
 
 extension SignInViewController: FormViewModel {
     func updateForm() {
-        signView.loginButton.isEnabled = viewModel.formIsValid
-        signView.loginButton.backgroundColor = viewModel.buttonBackgroundColor
+        authView.authButton.isEnabled = viewModel.formIsValid
+        authView.authButton.backgroundColor = viewModel.buttonBackgroundColor
     }
 }
