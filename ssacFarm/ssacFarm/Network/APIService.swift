@@ -54,6 +54,16 @@ class APIService {
     // MARK: - Post
     
     /// 조회
+    static func postDetailInquire(id: Int, token: String, completion: @escaping (Post?, APIError?) -> Void) {
+        
+        var request = URLRequest(url: Endpoint.post_detail_inquire(id: id).url)
+        request.httpMethod = Method.GET.rawValue
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        URLSession.request(endpoint: request, completion: completion)
+    }
+    
+    /// 조회
     static func postInquire(token: String, completion: @escaping (Posts?, APIError?) -> Void) {
         
         var request = URLRequest(url: Endpoint.post_inquire.url)

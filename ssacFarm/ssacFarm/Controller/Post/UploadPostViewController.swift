@@ -46,7 +46,6 @@ class UploadPostViewController: UIViewController {
         configureNavigationBar()
         configureUI()
         configureContentData()
-        print(commentId, postId, isUpdated)
     }
     
     // MARK: - Actions
@@ -67,7 +66,6 @@ class UploadPostViewController: UIViewController {
                 }
             }
         } else if isUpdated == "comment" {
-            print(commentId, postId)
             APIService.commentEdit(token: token, id: commentId, postId: postId, comment: text) { comment, error in
                 if let error = error {
                     print(error)

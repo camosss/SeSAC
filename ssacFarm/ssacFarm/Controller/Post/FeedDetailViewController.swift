@@ -60,17 +60,20 @@ class FeedDetailViewController: UIViewController {
         collectionView.frame = view.bounds
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.populatePostDetailData()
+        self.populateCommentData()
+    }
+    
     // MARK: - Action
     
     @objc func editButtonTapped() {
         AlertHelper.actionSheetAlert(first: "편집", second: "삭제", onFirst: {
             let controller = UploadPostViewController()
-            
             self.passData(controller: controller, navigationTitle: "게시물 수정하기", isUpdated: "post", content: self.post?.text ?? "", commentId: 0, postId: self.post?.id ?? 0)
-            
         }, onSecond: {
             self.DeletePost(id: self.post?.id ?? 0)
-            
         }, over: self)
     }
     
@@ -112,17 +115,34 @@ class FeedDetailViewController: UIViewController {
     
     // MARK: - Helper(Network)
     
+    func populatePostDetailData() {
+        let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? ""
+
+        APIService.postDetailInquire(id: post?.id ?? 0, token: token) { post, error in
+            if let error = error {
+                print("fetch post \(error)")
+                self.view.makeToast("게시물을 불러오지 못했어요..")
+                return
+            }
+            
+            if let post = post {
+                self.post = post
+            }
+        }
+    }
+    
     func populateCommentData() {
         let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? ""
 
         APIService.commentInquire(token: token, postId: post?.id ?? 0) { comments, error in
             if let error = error {
-                print("fetch comment \(error)")
+                print("fetch comments \(error)")
+                self.view.makeToast("댓글을 불러오지 못했어요..")
                 return
             }
             
             if let comments = comments {
-                self.comments = comments.sorted(by: { $0.updatedAt > $1.updatedAt })
+                self.comments = comments.sorted(by: { $0.createdAt > $1.createdAt })
             }
         }
     }
@@ -143,6 +163,7 @@ class FeedDetailViewController: UIViewController {
         AlertHelper.confirmAlert(title: "댓글을 삭제하시겠어요?", message: "", okMessage: "삭제", onConfirm: {
             APIService.commentDelete(id: id, token: token) { _, _ in
                 print("댓글 삭제 완료")
+                self.populateCommentData()
             }
         }, over: self)
     }
@@ -203,11 +224,15 @@ extension FeedDetailViewController: CommentInputAccesoryViewDelegate {
         APIService.commentWrite(token: token, postId: post?.id ?? 0, comment: comment) { comment, error in
             if let error = error {
                 print("comment write \(error)")
+                self.view.makeToast("게시물을 불러오지 못했어요..")
                 return
             }
+            
+            if let _ = comment {
+                self.commentInputView.clearCommentTextView()
+                self.populateCommentData()
+            }
         }
-        commentInputView.clearCommentTextView()
-        self.populateCommentData()
     }
 }
 
@@ -237,12 +262,9 @@ extension FeedDetailViewController: FeedDetailCollectionViewCellDelegate {
     func cell(_ cell: FeedDetailCollectionViewCell) {
         AlertHelper.actionSheetAlert(first: "편집", second: "삭제", onFirst: {
             let controller = UploadPostViewController()
-            
             self.passData(controller: controller, navigationTitle: "댓글 수정하기", isUpdated: "comment", content: cell.viewModel?.text ?? "", commentId: cell.viewModel?.comment.id ?? 0, postId: cell.viewModel?.comment.post.id ?? 0)
-            
         }, onSecond: {
             self.DeleteComment(id: cell.viewModel?.comment.id ?? 0)
-            
         }, over: self)
     }
 }

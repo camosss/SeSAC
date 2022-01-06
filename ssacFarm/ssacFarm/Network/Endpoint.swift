@@ -22,6 +22,7 @@ enum Endpoint {
     case auth_register
     case auth_login
     case auth_password
+    case post_detail_inquire(id: Int)
     case post_inquire
     case post_write
     case post_edit(id: Int)
@@ -38,6 +39,7 @@ extension Endpoint {
         case .auth_register: return .makeEndpoint("auth/local/register")
         case .auth_login: return .makeEndpoint("auth/local")
         case .auth_password: return .makeEndpoint("custom/change-password")
+        case .post_detail_inquire(id: let id): return .makeEndpoint("posts/\(id)")
         case .post_inquire: return .makeEndpoint("posts?_start=0&_limit=100&_sort=created_at:desc")
         case .post_write: return .makeEndpoint("posts")
         case .post_edit(id: let id): return .makeEndpoint("posts/\(id)")
