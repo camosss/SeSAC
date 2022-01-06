@@ -123,10 +123,9 @@ class FeedViewController: UIViewController {
     
     func initRefresh() {
         refreshControl.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
-        
         refreshControl.backgroundColor = .white
         refreshControl.tintColor = .systemGreen
-        refreshControl.attributedTitle = NSAttributedString(string: "당겨서 새로고침 🌱")
+        refreshControl.attributedTitle = NSAttributedString(string: "당겨서 새로고침 🌱", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
         
         collectionView.refreshControl = refreshControl
     }
