@@ -50,7 +50,6 @@ class FeedDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBar()
         configureUI()
         populateCommentData()
         checkPostOwner()
@@ -84,6 +83,8 @@ class FeedDetailViewController: UIViewController {
     // MARK: - Helper
     
     func configureUI() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(editButtonTapped))
+
         view.addSubview(collectionView)
         view.addSubview(commentInputView)
         commentInputView.commentTextView.delegate = self
@@ -92,10 +93,6 @@ class FeedDetailViewController: UIViewController {
             make.bottom.equalToSuperview()
             make.height.equalTo(80)
         }
-    }
-    
-    func configureNavigationBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(editButtonTapped))
     }
     
     func checkPostOwner() {

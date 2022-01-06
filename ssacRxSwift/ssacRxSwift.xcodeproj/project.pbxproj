@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B49A6DE927851F9400A63309 /* ReactiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49A6DE827851F9400A63309 /* ReactiveViewController.swift */; };
 		B49A6DEC27853CED00A63309 /* VaildationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49A6DEB27853CED00A63309 /* VaildationViewController.swift */; };
+		B49A6DF827866E7400A63309 /* ButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49A6DF727866E7400A63309 /* ButtonViewController.swift */; };
 		B4FEC387278287510056CFBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC386278287510056CFBB /* AppDelegate.swift */; };
 		B4FEC389278287510056CFBB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC388278287510056CFBB /* SceneDelegate.swift */; };
 		B4FEC38B278287510056CFBB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC38A278287510056CFBB /* TableViewController.swift */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		B49A6DE827851F9400A63309 /* ReactiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveViewController.swift; sourceTree = "<group>"; };
 		B49A6DEB27853CED00A63309 /* VaildationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaildationViewController.swift; sourceTree = "<group>"; };
+		B49A6DF727866E7400A63309 /* ButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonViewController.swift; sourceTree = "<group>"; };
 		B4FEC383278287510056CFBB /* ssacRxSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ssacRxSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4FEC386278287510056CFBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4FEC388278287510056CFBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				B4FEC3BE2783E5630056CFBB /* NetworkViewController.swift */,
 				B49A6DE827851F9400A63309 /* ReactiveViewController.swift */,
 				B49A6DEB27853CED00A63309 /* VaildationViewController.swift */,
+				B49A6DF727866E7400A63309 /* ButtonViewController.swift */,
 				B49A6DEA278535D700A63309 /* Resource */,
 				B4FEC394278287540056CFBB /* Info.plist */,
 			);
@@ -192,6 +195,7 @@
 				B49A6DEC27853CED00A63309 /* VaildationViewController.swift in Sources */,
 				B4FEC389278287510056CFBB /* SceneDelegate.swift in Sources */,
 				B4FEC3BF2783E5640056CFBB /* NetworkViewController.swift in Sources */,
+				B49A6DF827866E7400A63309 /* ButtonViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
