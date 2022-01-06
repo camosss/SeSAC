@@ -38,9 +38,7 @@ class SignInViewController: UIViewController {
         
         viewModel.postUserLoginData(email: email, password: password) { user, error in
             if let _ = error {
-                DispatchQueue.main.async {
-                    self.view.makeToast("로그인에 실패했습니다. 다시 시도해주세요.")
-                }
+                self.view.makeToast("로그인에 실패했습니다. 다시 시도해주세요.")
                 return
             }
             

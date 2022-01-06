@@ -39,7 +39,7 @@ class TokenUtils {
             kSecAttrService: url,
             kSecAttrAccount: account
         ]
-        
+
         let status = SecItemDelete(keyChainQuery)
         assert(status == noErr, "failed to delete the value, status code = \(status)")
     }
@@ -68,21 +68,6 @@ class TokenUtils {
             print("Nothing was retrieved from the ketchain. Status code \(status)")
             return nil
         }
-    }
-    
-    func update(_ url: String, value: String) {
-        
-        let query: NSDictionary = [
-            kSecClass: kSecClassGenericPassword,
-            kSecAttrService: url
-        ]
-        
-        let updateFields: NSDictionary = [
-            kSecValueData: value.data(using: .utf8, allowLossyConversion: false)!
-        ]
-        
-        let status = SecItemUpdate(query, updateFields)
-        print("Operation finished with status: \(status)")
     }
 }
  

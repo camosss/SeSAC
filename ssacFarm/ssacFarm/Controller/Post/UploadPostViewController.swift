@@ -60,6 +60,12 @@ class UploadPostViewController: UIViewController {
         
         if isUpdated == "post" {
             APIService.postEdit(id: postId, token: token, text: text) { post, error in
+                if let error = error {
+                    print(error)
+                    self.view.makeToast("게시물 수정을 완료하지 못했어요..")
+                    return
+                }
+                
                 if let _ = post {
                     print("게시물 수정, \(text)")
                     self.dismiss(animated: true, completion: nil)
@@ -69,6 +75,7 @@ class UploadPostViewController: UIViewController {
             APIService.commentEdit(token: token, id: commentId, postId: postId, comment: text) { comment, error in
                 if let error = error {
                     print(error)
+                    self.view.makeToast("댓글 수정을 완료하지 못했어요..")
                     return
                 }
                 
@@ -78,7 +85,13 @@ class UploadPostViewController: UIViewController {
                 }
             }
         } else {
-            APIService.postWrite(token: token, text: text) { post, _ in
+            APIService.postWrite(token: token, text: text) { post, error in
+                if let error = error {
+                    print(error)
+                    self.view.makeToast("게시물 작성을 완료하지 못했어요..")
+                    return
+                }
+                
                 if let _ = post {
                     print("게시물 작성, \(text)")
                     self.dismiss(animated: true, completion: nil)

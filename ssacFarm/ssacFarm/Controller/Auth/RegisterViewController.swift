@@ -44,9 +44,7 @@ class RegisterViewController: UIViewController {
                 
         APIService.register(username: name, email: email, password: password) { user, error in
             if let _ = error {
-                DispatchQueue.main.async {
-                    self.view.makeToast("이미 있는 회원 정보입니다. 다시 시도해주세요.")
-                }
+                self.view.makeToast("이미 있는 회원 정보입니다. 다시 시도해주세요.")
                 return
             }
             

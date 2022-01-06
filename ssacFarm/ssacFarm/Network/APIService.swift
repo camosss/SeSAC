@@ -53,7 +53,7 @@ class APIService {
     
     // MARK: - Post
     
-    /// 조회
+    /// 상세페이지 조회
     static func postDetailInquire(id: Int, token: String, completion: @escaping (Post?, APIError?) -> Void) {
         
         var request = URLRequest(url: Endpoint.post_detail_inquire(id: id).url)

@@ -114,6 +114,8 @@ class FeedDetailCollectionViewCell: UICollectionViewCell {
         let id = self.tk.load("\(Endpoint.auth_register.url)", account: "id") ?? ""
         if id != "\(viewModel.comment.user.id)" {
             editButton.isHidden = true
+        } else {
+            editButton.isHidden = false
         }
     }
 }

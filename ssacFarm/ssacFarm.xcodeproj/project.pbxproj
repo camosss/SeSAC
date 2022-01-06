@@ -18,6 +18,7 @@
 		B49A6DF02785B0D100A63309 /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49A6DEF2785B0D000A63309 /* CommentViewModel.swift */; };
 		B49A6DF22785C26200A63309 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49A6DF12785C26200A63309 /* PostView.swift */; };
 		B49A6DF4278618DA00A63309 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49A6DF3278618DA00A63309 /* ChangePasswordViewController.swift */; };
+		B49A6DFD2786D9D200A63309 /* VerticalAlignLabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49A6DFC2786D9D200A63309 /* VerticalAlignLabel+Extension.swift */; };
 		B4FEC34D277DE86B0056CFBB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B4FEC34C277DE86B0056CFBB /* SnapKit */; };
 		B4FEC34F277DE8A70056CFBB /* StartPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC34E277DE8A70056CFBB /* StartPageView.swift */; };
 		B4FEC351277DED8A0056CFBB /* Utility+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC350277DED8A0056CFBB /* Utility+Extension.swift */; };
@@ -59,6 +60,7 @@
 		B49A6DEF2785B0D000A63309 /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
 		B49A6DF12785C26200A63309 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		B49A6DF3278618DA00A63309 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		B49A6DFC2786D9D200A63309 /* VerticalAlignLabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerticalAlignLabel+Extension.swift"; sourceTree = "<group>"; };
 		B4FEC34E277DE8A70056CFBB /* StartPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageView.swift; sourceTree = "<group>"; };
 		B4FEC350277DED8A0056CFBB /* Utility+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utility+Extension.swift"; sourceTree = "<group>"; };
 		B4FEC352277DF0380056CFBB /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				B4FEC3AC2782F12D0056CFBB /* UIAlert+Extension.swift */,
 				B4FEC3BA278348CD0056CFBB /* TokenUtils+Extension.swift */,
 				B49A6DED278584B100A63309 /* Date+Extension.swift */,
+				B49A6DFC2786D9D200A63309 /* VerticalAlignLabel+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				B49A6DEE278584B100A63309 /* Date+Extension.swift in Sources */,
 				B49A6DE72784A54D00A63309 /* Comment.swift in Sources */,
 				B49A6DF22785C26200A63309 /* PostView.swift in Sources */,
+				B49A6DFD2786D9D200A63309 /* VerticalAlignLabel+Extension.swift in Sources */,
 				B4FEC36D277E23D90056CFBB /* PostViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

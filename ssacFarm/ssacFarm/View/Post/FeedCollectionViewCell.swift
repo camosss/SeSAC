@@ -53,7 +53,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
     
     func configureData() {
         guard let viewModel = viewModel else { return }
-        
+
         postView.nameLabel.text = viewModel.name
         postView.contentLabel.text = viewModel.text
         postView.dateLabel.text = Utility.dateFormat(dateString: viewModel.date)

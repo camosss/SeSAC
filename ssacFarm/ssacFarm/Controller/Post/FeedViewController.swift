@@ -47,7 +47,7 @@ class FeedViewController: UIViewController {
 
         configureCollectionView()
         configureActionButton()
-        configureLeftTitle(title: "새싹농장")
+        configureLeftTitle(title: "새싹농장 🌱")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -162,7 +162,7 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
         
         let viewModel = PostViewModel(post: posts[indexPath.row])
         let height = viewModel.size(forWidth: view.frame.width).height
-        return CGSize(width: view.frame.width, height: height + 150)
+        return CGSize(width: view.frame.width, height: height + 140)
     }
 }
 

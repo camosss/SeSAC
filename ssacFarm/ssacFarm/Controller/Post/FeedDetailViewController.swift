@@ -203,7 +203,7 @@ extension FeedDetailViewController: UICollectionViewDelegateFlowLayout {
         if let post = post {
             let viewModel = PostViewModel(post: post)
             let height = viewModel.size(forWidth: view.frame.width).height
-            return CGSize(width: view.frame.width, height: height + 170)
+            return CGSize(width: view.frame.width, height: height + 140)
         }
         return CGSize(width: 0, height: 0)
     }
@@ -227,7 +227,7 @@ extension FeedDetailViewController: CommentInputAccesoryViewDelegate {
                 self.view.makeToast("게시물을 불러오지 못했어요..")
                 return
             }
-            
+
             if let _ = comment {
                 self.commentInputView.clearCommentTextView()
                 self.populateCommentData()

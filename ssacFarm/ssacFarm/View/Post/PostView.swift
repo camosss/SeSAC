@@ -18,8 +18,9 @@ class PostView: UIView {
         return label
     }()
     
-    let contentLabel: UILabel = {
-        let label = UILabel()
+    let contentLabel: VerticalAlignLabel = {
+        let label = VerticalAlignLabel()
+        label.verticalAlignment = .top
         label.textColor = .black
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 15)
@@ -87,9 +88,8 @@ class PostView: UIView {
         
         addSubview(contentLabel)
         contentLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(10)
-            make.leading.equalTo(nameLabel)
-            make.trailing.equalTo(nameLabel)
+            make.top.equalTo(labelStack.snp.bottom).offset(16)
+            make.leading.trailing.equalTo(nameLabel)
         }
         
         addSubview(dividerView)
