@@ -66,17 +66,11 @@ class FeedDetailViewController: UIViewController {
         AlertHelper.actionSheetAlert(first: "편집", second: "삭제", onFirst: {
             let controller = UploadPostViewController()
             
-            controller.navigationTitle = "게시물 수정하기"
-            controller.content = self.post?.text ?? ""
-            controller.postId = self.post?.id ?? 0
-            controller.isUpdated = true
-            
-            let nav = UINavigationController(rootViewController: controller)
-            nav.modalPresentationStyle = .fullScreen
-            self.present(nav, animated: true)
+            self.passData(controller: controller, navigationTitle: "게시물 수정하기", isUpdated: "post", content: self.post?.text ?? "", commentId: 0, postId: self.post?.id ?? 0)
             
         }, onSecond: {
-            self.DeletePost()
+            self.DeletePost(id: self.post?.id ?? 0)
+            
         }, over: self)
     }
     
@@ -104,6 +98,18 @@ class FeedDetailViewController: UIViewController {
         }
     }
     
+    func passData(controller: UploadPostViewController, navigationTitle: String, isUpdated: String, content: String, commentId: Int, postId: Int) {
+        controller.navigationTitle = navigationTitle
+        controller.isUpdated = isUpdated
+        controller.content = content
+        controller.commentId = commentId
+        controller.postId = postId
+        
+        let nav = UINavigationController(rootViewController: controller)
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true)
+    }
+    
     // MARK: - Helper(Network)
     
     func populateCommentData() {
@@ -121,19 +127,19 @@ class FeedDetailViewController: UIViewController {
         }
     }
     
-    func DeletePost() {
+    func DeletePost(id: Int) {
         let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? "no token"
-        
+
         AlertHelper.confirmAlert(title: "게시물을 삭제하시겠어요?", message: "", okMessage: "삭제", onConfirm: {
-            APIService.postDelete(id: self.post?.id ?? 0, token: token) { _, _ in
+            APIService.postDelete(id: id, token: token) { _, _ in
                 self.navigationController?.popViewController(animated: true)
             }
         }, over: self)
     }
-    
+
     func DeleteComment(id: Int) {
         let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? "no token"
-        
+
         AlertHelper.confirmAlert(title: "댓글을 삭제하시겠어요?", message: "", okMessage: "삭제", onConfirm: {
             APIService.commentDelete(id: id, token: token) { _, _ in
                 print("댓글 삭제 완료")
@@ -192,7 +198,6 @@ extension FeedDetailViewController: UICollectionViewDelegateFlowLayout {
 
 extension FeedDetailViewController: CommentInputAccesoryViewDelegate {
     func inputView(_ inputView: CommentInputAccesoryView, wantsToUploadComment comment: String) {
-        print("DEBUG: Comment is \(comment)")
         let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? ""
 
         APIService.commentWrite(token: token, postId: post?.id ?? 0, comment: comment) { comment, error in
@@ -232,17 +237,12 @@ extension FeedDetailViewController: FeedDetailCollectionViewCellDelegate {
     func cell(_ cell: FeedDetailCollectionViewCell) {
         AlertHelper.actionSheetAlert(first: "편집", second: "삭제", onFirst: {
             let controller = UploadPostViewController()
-
-            controller.navigationTitle = "댓글 수정하기"
-            controller.content = cell.viewModel?.text ?? ""
-            controller.isUpdated = true
-
-            let nav = UINavigationController(rootViewController: controller)
-            nav.modalPresentationStyle = .fullScreen
-            self.present(nav, animated: true)
+            
+            self.passData(controller: controller, navigationTitle: "댓글 수정하기", isUpdated: "comment", content: cell.viewModel?.text ?? "", commentId: cell.viewModel?.comment.id ?? 0, postId: cell.viewModel?.comment.post.id ?? 0)
             
         }, onSecond: {
             self.DeleteComment(id: cell.viewModel?.comment.id ?? 0)
+            
         }, over: self)
     }
 }

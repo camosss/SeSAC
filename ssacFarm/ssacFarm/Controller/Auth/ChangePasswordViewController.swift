@@ -35,9 +35,17 @@ class ChangePasswordViewController: UIViewController {
         guard let newPassword = authView.newPasswordTextField.text else { return }
         guard let confirmPassword = authView.confirmPasswordTextField.text else { return }
 
+        if newPassword != confirmPassword {
+            self.view.makeToast("새로운 비밀번호가 일치하지 않습니다.")
+            return
+        }
+        
         viewModel.changeUserPassword(currentPassword: currentPassword, newPassword: newPassword, confirmNewPassword: confirmPassword) { user, error in
             if let error = error {
-                print("controller \(error)")
+                print(error)
+                if error == .invaildToken {
+                    self.view.makeToast("비밀번호가 틀렸습니다! 현재 비밀번호를 다시 입력해주세요.")
+                }
                 return
             }
             

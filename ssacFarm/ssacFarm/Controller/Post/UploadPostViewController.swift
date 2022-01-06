@@ -13,8 +13,10 @@ class UploadPostViewController: UIViewController {
     
     var navigationTitle = ""
     var content = ""
+    var isUpdated = ""
+    
     var postId = 0
-    var isUpdated = false
+    var commentId = 0
         
     private let captionTextView = InputTextView()
     var viewModel = ButtonViewModel()
@@ -44,7 +46,7 @@ class UploadPostViewController: UIViewController {
         configureNavigationBar()
         configureUI()
         configureContentData()
-        print(postId, isUpdated)
+        print(commentId, postId, isUpdated)
     }
     
     // MARK: - Actions
@@ -57,21 +59,35 @@ class UploadPostViewController: UIViewController {
         let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? "no token"
         let text = viewModel.content ?? ""
         
-        if isUpdated {
+        if isUpdated == "post" {
             APIService.postEdit(id: postId, token: token, text: text) { post, error in
                 if let _ = post {
-                    print("수정, \(text)")
+                    print("게시물 수정, \(text)")
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        } else if isUpdated == "comment" {
+            print(commentId, postId)
+            APIService.commentEdit(token: token, id: commentId, postId: postId, comment: text) { comment, error in
+                if let error = error {
+                    print(error)
+                    return
+                }
+                
+                if let _ = comment {
+                    print("댓글 수정, \(text)")
                     self.dismiss(animated: true, completion: nil)
                 }
             }
         } else {
             APIService.postWrite(token: token, text: text) { post, _ in
                 if let _ = post {
-                    print("작성, \(text)")
+                    print("게시물 작성, \(text)")
                     self.dismiss(animated: true, completion: nil)
                 }
             }
         }
+        
     }
 
     // MARK: - Helper

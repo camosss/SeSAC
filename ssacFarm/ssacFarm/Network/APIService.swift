@@ -46,6 +46,7 @@ class APIService {
         request.httpMethod = Method.POST.rawValue
         request.httpBody = "currentPassword=\(currentPassword)&newPassword=\(newPassword)&confirmNewPassword=\(confirmNewPassword)".data(using: .utf8, allowLossyConversion: false)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 
         URLSession.request(endpoint: request, completion: completion)
     }
@@ -67,9 +68,9 @@ class APIService {
         
         var request = URLRequest(url: Endpoint.post_write.url)
         request.httpMethod = Method.POST.rawValue
+        request.httpBody = "text=\(text)".data(using: .utf8, allowLossyConversion: false)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpBody = "text=\(text)".data(using: .utf8, allowLossyConversion: false)
         
         URLSession.request(endpoint: request, completion: completion)
     }
@@ -79,9 +80,9 @@ class APIService {
         
         var request = URLRequest(url: Endpoint.post_edit(id: id).url)
         request.httpMethod = Method.PUT.rawValue
+        request.httpBody = "text=\(text)".data(using: .utf8, allowLossyConversion: false)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpBody = "text=\(text)".data(using: .utf8, allowLossyConversion: false)
         
         URLSession.request(endpoint: request, completion: completion)
     }
@@ -113,9 +114,9 @@ class APIService {
         
         var request = URLRequest(url: Endpoint.comment_write.url)
         request.httpMethod = Method.POST.rawValue
+        request.httpBody = "comment=\(comment)&post=\(postId)".data(using: .utf8, allowLossyConversion: false)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpBody = "comment=\(comment)&post=\(postId)".data(using: .utf8, allowLossyConversion: false)
         
         URLSession.request(endpoint: request, completion: completion)
     }
@@ -125,9 +126,9 @@ class APIService {
         
         var request = URLRequest(url: Endpoint.comment_edit(id: id).url)
         request.httpMethod = Method.PUT.rawValue
+        request.httpBody = "comment=\(comment)&post=\(postId)".data(using: .utf8, allowLossyConversion: false)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpBody = "comment=\(comment)&post=\(postId)".data(using: .utf8, allowLossyConversion: false)
         
         URLSession.request(endpoint: request, completion: completion)
     }
