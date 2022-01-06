@@ -79,7 +79,6 @@ class Utility {
         let dateText = String(dateString[...endIndex])
         let date = dateText.toDate(stringValue: dateText) ?? Date()
         let dateValue = date.toString(dateValue: date)
-//        print("date \(date), string \(dateValue)")
         return dateValue
     }
 }

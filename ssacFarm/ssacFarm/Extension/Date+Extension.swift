@@ -10,7 +10,7 @@ import Foundation
 extension String {
     func toDate(stringValue: String) -> Date? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZ"
         return dateFormatter.date(from: stringValue)
     }
 }
@@ -19,7 +19,6 @@ extension Date {
     func toString(dateValue: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_KR")
-        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
         dateFormatter.dateFormat = "yyyy/MM/dd a hh:mm"
         return dateFormatter.string(from: dateValue)
     }

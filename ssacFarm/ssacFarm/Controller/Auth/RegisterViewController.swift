@@ -49,9 +49,11 @@ class RegisterViewController: UIViewController {
             }
             
             if let _ = user {
-                AlertHelper.confirmAlert(title: "환영합니다!", message: "회원가입을 완료했습니다.", okMessage: "로그인 하러가기", onConfirm: {
+                self.view.makeToast("환영합니다! 회원가입을 완료했습니다. 🌱", duration: 1.0, position: .center)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     self.navigationController?.popViewController(animated: true)
-                }, over: self)
+                }
             }
         }
     }

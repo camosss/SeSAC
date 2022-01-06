@@ -43,9 +43,13 @@ class SignInViewController: UIViewController {
             }
             
             if let _ = user {
-                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-                windowScene.windows.first?.rootViewController = UINavigationController(rootViewController: FeedViewController())
-                windowScene.windows.first?.makeKeyAndVisible()
+                self.view.makeToast("로그인 되었습니다. 🌱", duration: 1.0, position: .center)
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                    windowScene.windows.first?.rootViewController = UINavigationController(rootViewController: FeedViewController())
+                    windowScene.windows.first?.makeKeyAndVisible()
+                }
             }
         }
     }
