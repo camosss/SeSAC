@@ -86,7 +86,7 @@ class CommentInputAccesoryView: UIView {
             make.top.equalTo(dividerView.snp.bottom).offset(10)
             make.leading.equalTo(15)
             make.trailing.equalTo(-65)
-            make.bottom.equalTo(safeAreaLayoutGuide)
+            make.bottom.equalTo(-35)
         }
         
         addSubview(postButton)
