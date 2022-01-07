@@ -78,8 +78,6 @@ class FeedViewController: UIViewController {
     }
     
     @objc func handleRefreshControl() {
-        print("새로고침 시작")
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.populatePostData()
             self.collectionView.reloadData()

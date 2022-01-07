@@ -19,6 +19,7 @@
 		B49A6DF22785C26200A63309 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49A6DF12785C26200A63309 /* PostView.swift */; };
 		B49A6DF4278618DA00A63309 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49A6DF3278618DA00A63309 /* ChangePasswordViewController.swift */; };
 		B49A6DFD2786D9D200A63309 /* VerticalAlignLabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49A6DFC2786D9D200A63309 /* VerticalAlignLabel+Extension.swift */; };
+		B49A6DFF27881BEB00A63309 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49A6DFE27881BEB00A63309 /* Provider.swift */; };
 		B4FEC34D277DE86B0056CFBB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B4FEC34C277DE86B0056CFBB /* SnapKit */; };
 		B4FEC34F277DE8A70056CFBB /* StartPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC34E277DE8A70056CFBB /* StartPageView.swift */; };
 		B4FEC351277DED8A0056CFBB /* Utility+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FEC350277DED8A0056CFBB /* Utility+Extension.swift */; };
@@ -61,6 +62,7 @@
 		B49A6DF12785C26200A63309 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		B49A6DF3278618DA00A63309 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		B49A6DFC2786D9D200A63309 /* VerticalAlignLabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerticalAlignLabel+Extension.swift"; sourceTree = "<group>"; };
+		B49A6DFE27881BEB00A63309 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		B4FEC34E277DE8A70056CFBB /* StartPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPageView.swift; sourceTree = "<group>"; };
 		B4FEC350277DED8A0056CFBB /* Utility+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Utility+Extension.swift"; sourceTree = "<group>"; };
 		B4FEC352277DF0380056CFBB /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				B4FEC3B1278325C70056CFBB /* Endpoint.swift */,
+				B49A6DFE27881BEB00A63309 /* Provider.swift */,
 				B4FEC3B3278328C00056CFBB /* APIService.swift */,
 			);
 			path = Network;
@@ -324,6 +327,7 @@
 				B4FEC3B2278325C70056CFBB /* Endpoint.swift in Sources */,
 				B4FEC35E277E00070056CFBB /* FeedViewController.swift in Sources */,
 				B49A6DF02785B0D100A63309 /* CommentViewModel.swift in Sources */,
+				B49A6DFF27881BEB00A63309 /* Provider.swift in Sources */,
 				B4534822277DE6DC00DAEE03 /* AppDelegate.swift in Sources */,
 				B4FEC363277E02E80056CFBB /* ReusableView+Extension.swift in Sources */,
 				B4FEC371277EAFA20056CFBB /* FeedDetailViewController.swift in Sources */,
