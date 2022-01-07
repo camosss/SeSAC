@@ -59,44 +59,11 @@ class UploadPostViewController: UIViewController {
         let text = viewModel.content ?? ""
         
         if isUpdated == "post" {
-            APIService.postEdit(id: postId, token: token, text: text) { post, error in
-                if let error = error {
-                    print(error)
-                    self.view.makeToast("게시물 수정을 완료하지 못했어요..")
-                    return
-                }
-                
-                if let _ = post {
-                    print("게시물 수정, \(text)")
-                    self.dismiss(animated: true, completion: nil)
-                }
-            }
+            editPost(token: token, postId: postId, text: text)
         } else if isUpdated == "comment" {
-            APIService.commentEdit(token: token, id: commentId, postId: postId, comment: text) { comment, error in
-                if let error = error {
-                    print(error)
-                    self.view.makeToast("댓글 수정을 완료하지 못했어요..")
-                    return
-                }
-                
-                if let _ = comment {
-                    print("댓글 수정, \(text)")
-                    self.dismiss(animated: true, completion: nil)
-                }
-            }
+            editComment(token: token, commentId: commentId, postId: postId, text: text)
         } else {
-            APIService.postWrite(token: token, text: text) { post, error in
-                if let error = error {
-                    print(error)
-                    self.view.makeToast("게시물 작성을 완료하지 못했어요..")
-                    return
-                }
-                
-                if let _ = post {
-                    print("게시물 작성, \(text)")
-                    self.dismiss(animated: true, completion: nil)
-                }
-            }
+            WritePost(token: token, text: text)
         }
         
     }
@@ -126,6 +93,53 @@ class UploadPostViewController: UIViewController {
         if content != "" {
             captionTextView.placeholderText = nil
             captionTextView.text = content
+        }
+    }
+    
+    // MARK: - Helper(Network)
+    
+    func editPost(token: String, postId: Int, text: String) {
+        APIService.postEdit(id: postId, token: token, text: text) { post, error in
+            if let error = error {
+                print(error)
+                self.view.makeToast("게시물 수정을 완료하지 못했어요..")
+                return
+            }
+            
+            if let _ = post {
+                print("게시물 수정, \(text)")
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func editComment(token: String, commentId: Int, postId: Int, text: String) {
+        APIService.commentEdit(token: token, id: commentId, postId: postId, comment: text) { comment, error in
+            if let error = error {
+                print(error)
+                self.view.makeToast("댓글 수정을 완료하지 못했어요..")
+                return
+            }
+            
+            if let _ = comment {
+                print("댓글 수정, \(text)")
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func WritePost(token: String, text: String) {
+        APIService.postWrite(token: token, text: text) { post, error in
+            if let error = error {
+                print(error)
+                self.view.makeToast("게시물 작성을 완료하지 못했어요..")
+                return
+            }
+            
+            if let _ = post {
+                print("게시물 작성, \(text)")
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
 }

@@ -168,6 +168,23 @@ class FeedDetailViewController: UIViewController {
         }, over: self)
     }
     
+    func writeComment(comment: String) {
+        let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? ""
+
+        APIService.commentWrite(token: token, postId: post?.id ?? 0, comment: comment) { comment, error in
+            if let error = error {
+                print("comment write \(error)")
+                self.view.makeToast("게시물을 불러오지 못했어요..")
+                return
+            }
+
+            if let _ = comment {
+                self.commentInputView.clearCommentTextView()
+                self.populateCommentData()
+            }
+        }
+    }
+    
 }
 
 // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
@@ -219,20 +236,7 @@ extension FeedDetailViewController: UICollectionViewDelegateFlowLayout {
 
 extension FeedDetailViewController: CommentInputAccesoryViewDelegate {
     func inputView(_ inputView: CommentInputAccesoryView, wantsToUploadComment comment: String) {
-        let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? ""
-
-        APIService.commentWrite(token: token, postId: post?.id ?? 0, comment: comment) { comment, error in
-            if let error = error {
-                print("comment write \(error)")
-                self.view.makeToast("게시물을 불러오지 못했어요..")
-                return
-            }
-
-            if let _ = comment {
-                self.commentInputView.clearCommentTextView()
-                self.populateCommentData()
-            }
-        }
+        writeComment(comment: comment)
     }
 }
 
