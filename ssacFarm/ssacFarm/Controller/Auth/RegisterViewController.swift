@@ -41,8 +41,8 @@ class RegisterViewController: UIViewController {
             self.view.makeToast("비밀번호가 일치하지 않습니다.")
             return
         }
-                
-        APIService.register(username: name, email: email, password: password) { user, error in
+        
+        viewModel.postUserRegisterData(name: name, email: email, password: password) { user, error in
             if let _ = error {
                 self.view.makeToast("이미 있는 회원 정보입니다. 다시 시도해주세요.")
                 return
