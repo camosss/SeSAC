@@ -13,7 +13,9 @@ class FeedDetailViewController: UIViewController {
 
     let tk = TokenUtils()
 
-    var viewModel = ButtonViewModel()
+    let postViewModel = PostAPIViewModel()
+    let commentViewModel = CommentAPIViewModel()
+    var buttonViewModel = ButtonViewModel()
         
     var post: Post? {
         didSet { self.collectionView.reloadData() }
@@ -118,7 +120,7 @@ class FeedDetailViewController: UIViewController {
     func populatePostDetailData() {
         let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? ""
 
-        APIService.postDetailInquire(id: post?.id ?? 0, token: token) { post, error in
+        postViewModel.getPostDetailData(token: token, postId: post?.id ?? 0) { post, error in
             if let error = error {
                 print("fetch post \(error)")
                 self.view.makeToast("게시물을 불러오지 못했어요..")
@@ -133,8 +135,8 @@ class FeedDetailViewController: UIViewController {
     
     func populateCommentData() {
         let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? ""
-
-        APIService.commentInquire(token: token, postId: post?.id ?? 0) { comments, error in
+        
+        commentViewModel.getCommentData(token: token, postId: post?.id ?? 0) { comments, error in
             if let error = error {
                 print("fetch comments \(error)")
                 self.view.makeToast("댓글을 불러오지 못했어요..")
@@ -151,8 +153,15 @@ class FeedDetailViewController: UIViewController {
         let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? "no token"
 
         AlertHelper.confirmAlert(title: "게시물을 삭제하시겠어요?", message: "", okMessage: "삭제", onConfirm: {
-            APIService.postDelete(id: id, token: token) { _, _ in
-                self.navigationController?.popViewController(animated: true)
+            self.postViewModel.deletePostData(token: token, id: id) { post, error in
+                if let _ = error {
+                    self.view.makeToast("게시물을 삭제하지 못했어요..")
+                    return
+                }
+                
+                if let _ = post {
+                    self.navigationController?.popViewController(animated: true)
+                }
             }
         }, over: self)
     }
@@ -161,17 +170,23 @@ class FeedDetailViewController: UIViewController {
         let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? "no token"
 
         AlertHelper.confirmAlert(title: "댓글을 삭제하시겠어요?", message: "", okMessage: "삭제", onConfirm: {
-            APIService.commentDelete(id: id, token: token) { _, _ in
-                print("댓글 삭제 완료")
-                self.populateCommentData()
+            self.commentViewModel.deleteCommentData(token: token, id: id) { comment, error in
+                if let _ = error {
+                    self.view.makeToast("댓글을 삭제하지 못했어요..")
+                    return
+                }
+                
+                if let _ = comment {
+                    self.populateCommentData()
+                }
             }
         }, over: self)
     }
     
     func writeComment(comment: String) {
         let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? ""
-
-        APIService.commentWrite(token: token, postId: post?.id ?? 0, comment: comment) { comment, error in
+        
+        commentViewModel.writeCommentData(token: token, postId: post?.id ?? 0, comment: comment) { comment, error in
             if let error = error {
                 print("comment write \(error)")
                 self.view.makeToast("게시물을 불러오지 못했어요..")
@@ -244,8 +259,8 @@ extension FeedDetailViewController: CommentInputAccesoryViewDelegate {
 
 extension FeedDetailViewController: FormViewModel {
     func updateForm() {
-        commentInputView.postButton.isEnabled = viewModel.formIsValid
-        commentInputView.postButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+        commentInputView.postButton.isEnabled = buttonViewModel.formIsValid
+        commentInputView.postButton.setTitleColor(buttonViewModel.buttonTitleColor, for: .normal)
     }
 }
 
@@ -254,7 +269,7 @@ extension FeedDetailViewController: FormViewModel {
 extension FeedDetailViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         if textView == commentInputView.commentTextView {
-            viewModel.content = textView.text
+            buttonViewModel.content = textView.text
         }
         updateForm()
     }

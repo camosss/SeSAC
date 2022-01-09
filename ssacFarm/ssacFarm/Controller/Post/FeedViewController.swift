@@ -12,6 +12,7 @@ class FeedViewController: UIViewController {
     // MARK: - Properties
     
     let tk = TokenUtils()
+    let viewModel = PostAPIViewModel()
     let refreshControl = UIRefreshControl()
     
     private var posts = [Post]() {
@@ -133,8 +134,7 @@ class FeedViewController: UIViewController {
     func populatePostData() {
         let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? ""
         print("load \(token)")
-        
-        APIService.postInquire(token: token) { posts, error in
+        viewModel.getPostData(token: token) { posts, error in
             if let error = error {
                 print("error \(error)")
                 if error == .invaildToken {

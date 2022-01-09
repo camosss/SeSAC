@@ -19,7 +19,9 @@ class UploadPostViewController: UIViewController {
     var commentId = 0
         
     private let captionTextView = InputTextView()
-    var viewModel = ButtonViewModel()
+    let postViewModel = PostAPIViewModel()
+    let commentViewModel = CommentAPIViewModel()
+    var buttonViewModel = ButtonViewModel()
     
     let tk = TokenUtils()
     
@@ -56,7 +58,7 @@ class UploadPostViewController: UIViewController {
     
     @objc func handleUploadPost() {
         let token = tk.load("\(Endpoint.auth_register.url)", account: "token") ?? "no token"
-        let text = viewModel.content ?? ""
+        let text = buttonViewModel.content ?? ""
         
         if isUpdated == "post" {
             editPost(token: token, postId: postId, text: text)
@@ -99,7 +101,7 @@ class UploadPostViewController: UIViewController {
     // MARK: - Helper(Network)
     
     func editPost(token: String, postId: Int, text: String) {
-        APIService.postEdit(id: postId, token: token, text: text) { post, error in
+        postViewModel.editPostData(token: token, postId: postId, text: text) { post, error in
             if let error = error {
                 print(error)
                 self.view.makeToast("게시물 수정을 완료하지 못했어요..")
@@ -114,7 +116,7 @@ class UploadPostViewController: UIViewController {
     }
     
     func editComment(token: String, commentId: Int, postId: Int, text: String) {
-        APIService.commentEdit(token: token, id: commentId, postId: postId, comment: text) { comment, error in
+        commentViewModel.editCommentData(token: token, commentId: commentId, postId: postId, text: text) { comment, error in
             if let error = error {
                 print(error)
                 self.view.makeToast("댓글 수정을 완료하지 못했어요..")
@@ -129,7 +131,7 @@ class UploadPostViewController: UIViewController {
     }
     
     func WritePost(token: String, text: String) {
-        APIService.postWrite(token: token, text: text) { post, error in
+        postViewModel.writePostData(token: token, text: text) { post, error in
             if let error = error {
                 print(error)
                 self.view.makeToast("게시물 작성을 완료하지 못했어요..")
@@ -148,8 +150,8 @@ class UploadPostViewController: UIViewController {
 
 extension UploadPostViewController: FormViewModel {
     func updateForm() {
-        doneButton.isEnabled = viewModel.formIsValid
-        doneButton.backgroundColor = viewModel.buttonBackgroundColor
+        doneButton.isEnabled = buttonViewModel.formIsValid
+        doneButton.backgroundColor = buttonViewModel.buttonBackgroundColor
     }
 }
 
@@ -158,7 +160,7 @@ extension UploadPostViewController: FormViewModel {
 extension UploadPostViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         if textView == captionTextView {
-            viewModel.content = textView.text
+            buttonViewModel.content = textView.text
         }
         updateForm()
     }

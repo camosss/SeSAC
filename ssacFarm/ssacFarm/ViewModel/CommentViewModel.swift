@@ -28,3 +28,45 @@ struct CommentViewModel {
         self.comment = comment
     }
 }
+
+struct CommentAPIViewModel {
+    func getCommentData(token: String, postId: Int, completion: @escaping (Comments?, APIError?) -> Void) {
+        APIService.commentInquire(token: token, postId: postId) { comments, error in
+            if let error = error {
+                completion(nil, error)
+            }
+            guard let comments = comments else { return }
+            completion(comments, nil)
+        }
+    }
+    
+    func writeCommentData(token: String, postId: Int, comment: String, completion: @escaping (CommentElement?, APIError?) -> Void) {
+        APIService.commentWrite(token: token, postId: postId, comment: comment) { comment, error in
+            if let error = error {
+                completion(nil, error)
+            }
+            guard let comment = comment else { return }
+            completion(comment, nil)
+        }
+    }
+    
+    func editCommentData(token: String, commentId: Int, postId: Int, text: String, completion: @escaping (CommentElement?, APIError?) -> Void) {
+        APIService.commentEdit(token: token, id: commentId, postId: postId, comment: text) { comment, error in
+            if let error = error {
+                completion(nil, error)
+            }
+            guard let comment = comment else { return }
+            completion(comment, nil)
+        }
+    }
+    
+    func deleteCommentData(token: String, id: Int, completion: @escaping (CommentElement?, APIError?) -> Void) {
+        APIService.commentDelete(id: id, token: token) { comment, error in
+            if let error = error {
+                completion(nil, error)
+            }
+            guard let comment = comment else { return }
+            completion(comment, nil)
+        }
+    }
+}
