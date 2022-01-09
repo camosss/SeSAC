@@ -7,9 +7,9 @@
 
 import Foundation
 
-typealias Comments = [CommentElement]
+typealias Comments = [Comment]
 
-struct CommentElement: Codable {
+struct Comment: Codable {
     let id: Int
     let comment: String
     let user: UserModel

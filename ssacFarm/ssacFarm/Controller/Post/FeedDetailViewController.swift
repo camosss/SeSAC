@@ -21,7 +21,7 @@ class FeedDetailViewController: UIViewController {
         didSet { self.collectionView.reloadData() }
     }
     
-    var comments = [CommentElement]() {
+    var comments = [Comment]() {
         didSet { self.collectionView.reloadData() }
     }
     

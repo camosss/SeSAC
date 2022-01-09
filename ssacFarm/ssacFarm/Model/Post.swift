@@ -14,7 +14,7 @@ struct Post: Codable {
     let text: String
     let user: UserModel
     let createdAt, updatedAt: String
-    let comments: [Comment]
+    let comments: [CommentElement]
 
     enum CodingKeys: String, CodingKey {
         case id, text, user
@@ -24,7 +24,7 @@ struct Post: Codable {
     }
 }
 
-struct Comment: Codable {
+struct CommentElement: Codable {
     let id: Int
     let comment: String
     let user, post: Int

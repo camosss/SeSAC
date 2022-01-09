@@ -21,5 +21,5 @@ struct UserElement: Codable {
     let id: Int
     let username, email: String
     let posts: [PostElement]
-    let comments: [Comment]
+    let comments: [CommentElement]
 }

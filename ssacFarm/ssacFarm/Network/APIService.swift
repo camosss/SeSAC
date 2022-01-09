@@ -120,7 +120,7 @@ class APIService {
     }
     
     /// 작성
-    static func commentWrite(token: String, postId: Int, comment: String, completion: @escaping (CommentElement?, APIError?) -> Void) {
+    static func commentWrite(token: String, postId: Int, comment: String, completion: @escaping (Comment?, APIError?) -> Void) {
         
         var request = URLRequest(url: Endpoint.comment_write.url)
         request.httpMethod = Method.POST.rawValue
@@ -132,7 +132,7 @@ class APIService {
     }
     
     /// 수정
-    static func commentEdit(token: String, id: Int, postId: Int, comment: String, completion: @escaping (CommentElement?, APIError?) -> Void) {
+    static func commentEdit(token: String, id: Int, postId: Int, comment: String, completion: @escaping (Comment?, APIError?) -> Void) {
         
         var request = URLRequest(url: Endpoint.comment_edit(id: id).url)
         request.httpMethod = Method.PUT.rawValue
@@ -144,7 +144,7 @@ class APIService {
     }
     
     /// 삭제
-    static func commentDelete(id: Int, token: String, completion: @escaping (CommentElement?, APIError?) -> Void) {
+    static func commentDelete(id: Int, token: String, completion: @escaping (Comment?, APIError?) -> Void) {
         
         var request = URLRequest(url: Endpoint.comment_delete(id: id).url)
         request.httpMethod = Method.DELETE.rawValue

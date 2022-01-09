@@ -8,7 +8,7 @@
 import UIKit
 
 struct CommentViewModel {
-    var comment: CommentElement
+    var comment: Comment
 
     var name: String { return comment.user.username }
     var text: String { return comment.comment }
@@ -24,7 +24,7 @@ struct CommentViewModel {
         return measurementLabel.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
     }
     
-    init(comment: CommentElement) {
+    init(comment: Comment) {
         self.comment = comment
     }
 }
@@ -40,7 +40,7 @@ struct CommentAPIViewModel {
         }
     }
     
-    func writeCommentData(token: String, postId: Int, comment: String, completion: @escaping (CommentElement?, APIError?) -> Void) {
+    func writeCommentData(token: String, postId: Int, comment: String, completion: @escaping (Comment?, APIError?) -> Void) {
         APIService.commentWrite(token: token, postId: postId, comment: comment) { comment, error in
             if let error = error {
                 completion(nil, error)
@@ -50,7 +50,7 @@ struct CommentAPIViewModel {
         }
     }
     
-    func editCommentData(token: String, commentId: Int, postId: Int, text: String, completion: @escaping (CommentElement?, APIError?) -> Void) {
+    func editCommentData(token: String, commentId: Int, postId: Int, text: String, completion: @escaping (Comment?, APIError?) -> Void) {
         APIService.commentEdit(token: token, id: commentId, postId: postId, comment: text) { comment, error in
             if let error = error {
                 completion(nil, error)
@@ -60,7 +60,7 @@ struct CommentAPIViewModel {
         }
     }
     
-    func deleteCommentData(token: String, id: Int, completion: @escaping (CommentElement?, APIError?) -> Void) {
+    func deleteCommentData(token: String, id: Int, completion: @escaping (Comment?, APIError?) -> Void) {
         APIService.commentDelete(id: id, token: token) { comment, error in
             if let error = error {
                 completion(nil, error)
