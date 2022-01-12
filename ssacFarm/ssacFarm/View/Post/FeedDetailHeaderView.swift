@@ -45,6 +45,6 @@ class FeedDetailHeaderView: UICollectionReusableView {
         postView.nameLabel.text = viewModel.name
         postView.contentLabel.text = viewModel.text
         postView.dateLabel.text = Utility.dateFormat(dateString: viewModel.date)
-        postView.countLabel.text = "\(viewModel.comment)"
+        postView.countLabel.text = "\(viewModel.commentCount)"
     }
 }

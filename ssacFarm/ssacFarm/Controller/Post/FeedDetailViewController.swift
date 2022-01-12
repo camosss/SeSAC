@@ -53,7 +53,6 @@ class FeedDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        populateCommentData()
         checkPostOwner()
     }
     
@@ -192,10 +191,11 @@ class FeedDetailViewController: UIViewController {
                 self.view.makeToast("게시물을 불러오지 못했어요..")
                 return
             }
-
+            
             if let _ = comment {
                 self.commentInputView.clearCommentTextView()
                 self.populateCommentData()
+                self.populatePostDetailData()
             }
         }
     }

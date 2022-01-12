@@ -23,14 +23,14 @@ struct ButtonViewModel {
     }
 }
 
-
 struct PostViewModel {
     var post: Post
-    
+
     var name: String { return post.user.username }
     var text: String { return post.text }
     var date: String { return post.updatedAt }
-    var comment: Int { return post.comments.count }
+    var commentCount: Int { return post.comments.count }
+
     
     func size(forWidth width: CGFloat) -> CGSize {
         let measurementLabel = UILabel()
