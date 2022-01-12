@@ -8,8 +8,6 @@
 ![Badge](https://img.shields.io/badge/Toast-5.0.1-yellow)
 ![Badge](https://img.shields.io/badge/IQKeyboardManager-6.5.9-important)
 
-<br>
-
 
 - 서버와 iOS 클라이언트 통신 (iOS 클라이언트 개발 담당)
 
@@ -23,9 +21,7 @@
 
 ## 🌱 기간별 일정
 
-<br>
-
-기간: 21.12.31 - 22.01.06  **(총 5일)**
+2021.12.31 - 22.01.06  **(총 5일)**
 
 <br>
 
