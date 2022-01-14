@@ -45,6 +45,6 @@
   > | [Auth](https://github.com/camosss/SSAC/tree/main/ssacAuth) | MVC, MVVM |
   > | [새싹농장 커뮤니티](https://github.com/camosss/SSAC/tree/main/ssacFarm) | 평가 과제, [시연 영상 및 일정별 기록](https://www.notion.so/Community-App-7967d96e14c447109cf853ef3495654f) |
   > | [RxSwift](https://github.com/camosss/SSAC/tree/main/ssacRxSwift) | Observable, Subject, Operator, Network/MVVM with RxSwift |
-
+  > | [채팅](https://github.com/camosss/SSAC/tree/main/ssacChatting) | Socket.IO |
 
 
