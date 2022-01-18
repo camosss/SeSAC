@@ -31,7 +31,6 @@ struct PostViewModel {
     var date: String { return post.updatedAt }
     var commentCount: Int { return post.comments.count }
 
-    
     func size(forWidth width: CGFloat) -> CGSize {
         let measurementLabel = UILabel()
         measurementLabel.text = post.text
