@@ -49,7 +49,7 @@
   > | [전화번호 인증](https://github.com/camosss/FirebaseAuthDemo) | Phone number authentication using FirebaseAuth |
 
 
-* **서비스레벨 **
+* **서비스레벨 프로젝트**
 
 22.01.17 ~ 
 
