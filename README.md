@@ -33,7 +33,7 @@
 
 * **Section II**
 
-21.12.13 ~
+21.12.13 ~ 22.01.14
 
   > | Project | Topic |
   > | ------ | ------ |
@@ -48,4 +48,12 @@
   > | [채팅](https://github.com/camosss/SSAC/tree/main/ssacChatting) | Socket.IO |
   > | [전화번호 인증](https://github.com/camosss/FirebaseAuthDemo) | Phone number authentication using FirebaseAuth |
 
+
+* **서비스레벨 **
+
+22.01.17 ~ 
+
+  > | Project | Topic |
+  > | ------ | ------ |
+  > |  |  |
 
