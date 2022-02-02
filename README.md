@@ -55,5 +55,5 @@
 
   > | Project | Topic |
   > | ------ | ------ |
-  > | [SPL](https://github.com/camosss/SeSAC_SPL) |  |
+  > | [SPL](https://github.com/camosss/SeSAC_SPL) | 인증 프로세스, RxSwift, MVVM, Moya, R.Swift  |
 
