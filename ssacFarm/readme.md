@@ -260,6 +260,19 @@ extension URLSession {
  <br>
 	
 ```swift
+enum APIError: Error {
+    case invaildResponse
+    case invaildData
+    case invaildToken
+    case noData
+    case failed
+}
+```
+
+<br>
+
+	
+```swift
 /// 회원가입
 static func register(username: String, email: String, password: String, completion: @escaping (User?, APIError?) -> Void) {
     var request = URLRequest(url: Endpoint.auth_register.url)
