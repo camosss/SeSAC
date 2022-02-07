@@ -252,7 +252,26 @@ extension URLSession {
 
  <br>
 
+`APIService.`
 
+- Response가 Generic하여 하드코딩되지 않은 형태
+- URLSession의 dataTask메소드를 함수로 선언하여 response를 testable하도록 구현
+- 공통 Error 타입 정의
+
+ <br>
+	
+```swift
+/// 회원가입
+static func register(username: String, email: String, password: String, completion: @escaping (User?, APIError?) -> Void) {
+    var request = URLRequest(url: Endpoint.auth_register.url)
+    request.httpMethod = Method.POST.rawValue
+    request.httpBody = "username=\(username)&email=\(email)&password=\(password)".data(using: .utf8, allowLossyConversion: false)
+    
+    URLSession.request(endpoint: request, completion: completion)
+}
+```
+	
+ <br>
 
 </div>
 </details>
