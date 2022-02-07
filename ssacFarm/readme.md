@@ -144,7 +144,6 @@ https://user-images.githubusercontent.com/93528918/149188506-9745fae7-3390-4f93-
 `Endpoint.`
  
 - URL, path, method, parameters 등의 데이터 객체.
-- 응답 프로토콜을 준수하는 상태
 
 <br>
 
