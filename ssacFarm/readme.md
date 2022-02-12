@@ -37,91 +37,38 @@
 <br>
 <br>
 
-## 🌱 View 시연 영상
+## 🌱 View
 
 <br>
 
-<details>
-<summary>Auth</summary>
- 
+> Auth
+
+
+| 회원가입, 로그인 | 비밀번호 변경, 로그아웃 |
+| ------ | ------ |
+| <img src = "https://user-images.githubusercontent.com/93528918/153704073-694bf0f0-c947-4fc3-b83b-fbe3593cea0a.gif" width="60%" height="60%"> | <img src = "https://user-images.githubusercontent.com/93528918/153704079-b2b97e1c-8af7-40d9-9d16-42bac7c916aa.gif" width="60%" height="60%"> |
+
+
+<br>
 <br>
 
- - 회원가입, 로그인
+> Post
 
-https://user-images.githubusercontent.com/93528918/149186739-361524ef-8019-489c-b1b1-92105b7e74a8.mov
-
-<br>
-
-
-- 비밀번호 변경, 로그아웃
 	
-https://user-images.githubusercontent.com/93528918/149187957-8a460709-5f88-4096-b4b5-b83d5f0ce201.mov
+| Post 작성 | Post 수정 | Post 삭제 |
+| ------ | ------ | ------ |
+| <img src = "https://user-images.githubusercontent.com/93528918/153704227-6b25609e-af4a-48e5-8378-3d2e2b7f3861.gif" width="70%" height="70%"> | <img src = "https://user-images.githubusercontent.com/93528918/153704228-981b7788-d207-480d-9954-10d4f73a75dd.gif" width="70%" height="70%"> | <img src = "https://user-images.githubusercontent.com/93528918/153704229-f8df7e8a-88f0-46ce-86d0-c96aaaee470d.gif" width="70%" height="70%"> |
 
-
-</div>
-</details>
 
 <br>
+<br>
 
-<details>
-<summary>Post</summary>
+> Comment
  
-<br>
+| Comment 작성 | Comment 수정 | Comment 삭제 |
+| ------ | ------ | ------ |
+| <img src = "https://user-images.githubusercontent.com/93528918/153704250-7e552dac-9002-4e31-ab58-fb72c2644b32.gif" width="70%" height="70%"> | <img src = "https://user-images.githubusercontent.com/93528918/153704254-935cad72-1aee-4a91-b814-38ba31590a51.gif" width="70%" height="70%"> | <img src = "https://user-images.githubusercontent.com/93528918/153704256-40be7628-9f9e-470e-9e81-56fe09443c53.gif" width="70%" height="70%"> |
 
-- Post 작성
-	
-https://user-images.githubusercontent.com/93528918/149188233-e25d92b6-3922-4557-88dd-2b47ab02c072.mov
-
-
-<br>
-
-- Post 수정
-
-https://user-images.githubusercontent.com/93528918/149188242-bf08da41-7dc4-435c-a16e-3f0b11e18cf8.mov
-
-<br>
-
-- Post 삭제
-
-https://user-images.githubusercontent.com/93528918/149188255-edfcd8f4-e2ef-409e-8583-0791c1463352.mov
-
-
-</div>
-</details>
-
-<br>
-
-<details>
-<summary>Comment</summary>
- 
-<br>
-
-- Comment 작성
-	
-https://user-images.githubusercontent.com/93528918/149188487-cac62e0f-c75a-44da-bdfe-9153352dd45d.mov
-
-
-
-<br>
-
-- Comment 수정
-
-
-https://user-images.githubusercontent.com/93528918/149188496-71a26733-ba54-48dc-b5f8-c10df0828fbf.mov
-
-
-
-<br>
-
-- Comment 삭제
-
-
-https://user-images.githubusercontent.com/93528918/149188506-9745fae7-3390-4f93-a84f-576922f460ae.mov
-
-
-
-</div>
-</details>
 
 <br>
 <br>
@@ -328,4 +275,6 @@ static func register(username: String, email: String, password: String, completi
 </div>
 </details>
 
+ <br>
+ <br>
 
