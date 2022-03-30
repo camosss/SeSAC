@@ -1,3 +1,4 @@
+
 ![스크린샷 2022-02-01 오전 1 15 32](https://user-images.githubusercontent.com/93528918/151830849-c3d53fbe-6024-489b-8aa0-f74730dba198.png)
 
 <br>
@@ -17,12 +18,23 @@
 - 회원가입/로그인 후 게시글과 게시글에 대한 댓글을 작성/수정/삭제 기능 구현
 
 
-
-<br>
 <br>
 
+## 기술 스택
 
-## 🌱 기간별 일정
+- Swift, MVVM, Rest API
+
+- AutoLayout, Codebase UI
+
+- URLSession, Codable, Keychain, UIRefreshControl, CustomView
+
+- SnapKit, Toast, IQKeyboardManagerSwift
+
+
+<br>
+
+
+## 기간별 일정
 
 2021.12.31 - 22.01.06  **(총 5일)**
 
@@ -37,11 +49,19 @@
 <br>
 <br>
 
-## 🌱 View
+## View
 
 <br>
 
 > Auth
+
+- 회원가입, 로그인, 비밀번호 변경 View는 CustomView를 생성하여 재사용.
+
+- 회원가입, 로그인, 비밀번호 변경 버튼은 각 UITextField에 입력 유무에 따라 활성화.
+
+    - 로그인 또는 비밀번호 변경이 완료되면 피드 화면으로 전환.
+    
+    - 로그아웃을 선택하면 alert으로 재확인 후, 시작 페이지로 전환.
 
 
 | 회원가입, 로그인 | 비밀번호 변경, 로그아웃 |
@@ -54,6 +74,17 @@
 
 > Post
 
+- Post 작성 화면과 수정 화면은 재사용.
+
+- Post 수정/삭제는 우측 상단 BarButtonItem을 통해 기능 구현.
+
+    - 사용자가 아니라면 BarButtonItem에 Hidden 적용.
+    
+    - 삭제 전 alert을 통해 사용자에게 삭제 재확인.
+    
+    - 수정/삭제가 완료되면 Post 조회 화면으로 전환.
+    
+
 	
 | Post 작성 | Post 수정 | Post 삭제 |
 | ------ | ------ | ------ |
@@ -64,6 +95,14 @@
 <br>
 
 > Comment
+
+- Comment 작성은 메인 View 하단에 CustomView를 생성하여 UITextView에 작성.
+
+- Comment 수정/삭제는 댓글 우측 상단 UIButton을 통해 기능 구현.
+
+    - 사용자가 아니라면 UIButton에 Hidden 적용.
+    
+    - 삭제 전 alert을 통해 사용자에게 삭제 재확인.
  
 | Comment 작성 | Comment 수정 | Comment 삭제 |
 | ------ | ------ | ------ |
@@ -75,7 +114,7 @@
 
 
 
-## 🌱 구현 이슈
+## 구현 이슈
 
 <br>
 
@@ -277,4 +316,26 @@ static func register(username: String, email: String, password: String, completi
 
  <br>
  <br>
+
+
+## 프로젝트 회고
+
+
+> MVVM 패턴에 대한 이해
+> 
+
+MVVM 패턴으로 프로젝트를 진행했지만, 해당 아키텍처 패턴에 대한 미숙한 이해로 역할 분리를 제대로 하지 못했다. 아키텍처 패턴에 대한 학습과 리펙토링을 통해 더 깊은 이해가 필요함을 느꼈다.
+
+<br>
+
+> Network 레이어 설계
+> 
+
+이전 프로젝트들에서는 서버와 통신을 하는 코드를 작성할 때, URL, path, method, parameters 등의 데이터 객체를 작성하는 코드나 네트워크를 호출하는 코드를 한 메서드 내에서 처리를 해줬는데,
+
+이번 프로젝트를 계기로 Network 레이어를 설계해 봄으로써, 각각의 역할에 맞게 분리된 개선된 코드를 볼 수 있었으며, 더 세세한 분리의 필요성을 느꼈다.
+
+
+
+
 
